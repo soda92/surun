@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{942f4b52-a8cf-457e-87da-76889ce1443c}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{377de3cf-ab1c-4e58-9b76-1839815e97da}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{43cda912-c28d-4dcb-b51f-380004bcccbc}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DBGTrace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DynWTSAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IsAdmin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LogonDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lsa_laar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LSALogon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ReqAdmin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Service.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Setup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sspi_auth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TrayMsgWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TrayShowAdmin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserGroups.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WatchDog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinStaDesk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SuRun.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="anchor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CmdLine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBGTrace.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DynWTSAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IsAdmin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LogonDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lsa_laar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LSALogon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pugxml.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReqAdmin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResStr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenSnap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Service.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Setup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sspi_auth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SuRunVer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TrayMsgWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TrayShowAdmin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserGroups.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WatchDog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinStaDesk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Admin.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\AutoCancel.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\CancelWindows.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ico10605.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ico10606.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ico10607.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\neverquestion.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\NoAdmin.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\NoQuestion.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\NoRestrict.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\NoWindow.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\NoWindows.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Question.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Restrict.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\SHADMIN.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Shield.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\SrAdmin.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\SuRun.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\SuRunBW.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Windows.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="res\app.manifest">
+      <Filter>Resource Files</Filter>
+    </Manifest>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SuRunVer.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ChangeLog.txt" />
+    <Text Include="gpedit.txt" />
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

@@ -1,15 +1,20 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.11.35312.102
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InstallSuRun", "InstallSuRun\InstallSuRunVC9.vcxproj", "{6A6CCFF6-F29A-441F-9E27-7E82F90968D3}"
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InstallSuRun", "InstallSuRun\InstallSuRunVC9.vcproj", "{6A6CCFF6-F29A-441F-9E27-7E82F90968D3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DAFA8E39-3DE2-4F20-9379-5EE5999D2BAF} = {DAFA8E39-3DE2-4F20-9379-5EE5999D2BAF}
+		{EED1FEA4-9C37-4452-A8C0-B01F2ED49C68} = {EED1FEA4-9C37-4452-A8C0-B01F2ED49C68}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRun", "SuRunVC9.vcxproj", "{EED1FEA4-9C37-4452-A8C0-B01F2ED49C68}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRun", "SuRunVC9.vcproj", "{EED1FEA4-9C37-4452-A8C0-B01F2ED49C68}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DAFA8E39-3DE2-4F20-9379-5EE5999D2BAF} = {DAFA8E39-3DE2-4F20-9379-5EE5999D2BAF}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRunExt", "SuRunExt\SuRunExtVC9.vcxproj", "{DAFA8E39-3DE2-4F20-9379-5EE5999D2BAF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRunExt", "SuRunExt\SuRunExtVC9.vcproj", "{DAFA8E39-3DE2-4F20-9379-5EE5999D2BAF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRunC", "SuRunC\SuRunC.vcxproj", "{7965D390-1BFC-4729-A404-C3D2064250BB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRunC", "SuRunC\SuRunC.vcproj", "{7965D390-1BFC-4729-A404-C3D2064250BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -145,8 +150,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {207658F0-F62D-47B3-9282-BB141ADB30EA}
 	EndGlobalSection
 EndGlobal

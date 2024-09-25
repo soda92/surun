@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{d91b6e05-a09a-463f-bbd1-5fe63c8fb33e}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{184402ba-44c8-409b-beee-22a42725a8c3}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{3552321c-451f-4550-af60-76f7dbc04bb5}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="InstallSuRun.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="InstallSuRun.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="app.manifest">
+      <Filter>Resource Files</Filter>
+    </Manifest>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="InstSuRunVer.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\ReleaseU\SuRun.exe">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\ReleaseUx64\SuRun.exe">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\ReleaseUx64\SuRun32.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\ReleaseU\SuRunExt.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\ReleaseUx64\SuRunExt.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\ReleaseUx64\SuRunExt32.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\res\SuRun.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
