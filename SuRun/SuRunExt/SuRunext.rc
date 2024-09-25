@@ -1,0 +1,322 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winresrc.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Polish resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_PLK)
+#ifdef _WIN32
+LANGUAGE LANG_POLISH, SUBLANG_DEFAULT
+#pragma code_page(1250)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_FILENOTFOUND        "Plik nie znaleziony: SuRun.exe"
+    IDS_ERR                 "B³¹d SuRunExt.dll"
+    IDS_TOOLTIP             "Uruchom panel sterowania z uprawnieniami administracyjnymi"
+    IDS_SURUN               "Panel sterowania (SuRun)"
+    IDS_SURUNCMD            "Wiersz polecenia (SuRun)"
+    IDS_SURUNEXP            "Eksploruj (SuRun)"
+    IDS_RESTARTSHELL        "Czy napewno chcesz uruchomiæ ponownie pow³okê Windows\n(%s) z uprawnieniami administracyjnymi?"
+    IDS_CPLNAME             "Ustawienia SuRun"
+    IDS_MENURESTART         "Restartuj (SuRun)"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_MENUSTART           "Uruchom (SuRun)"
+END
+
+#endif    // Polish resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_MAINICON            ICON                    "..\\res\\SuRun.ico"
+IDI_SR_SHIELD           ICON                    "..\\res\\Shield.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+1                       RT_MANIFEST             "..\\res\\app.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_FILENOTFOUND        "Datei nicht gefunden: SuRun.exe"
+    IDS_ERR                 "SuRunExt.dll Fehler"
+    IDS_TOOLTIP             "Systemsteuerung als Administrator starten"
+    IDS_SURUN               "Systemsteuerung als Administrator"
+    IDS_SURUNCMD            "'SuRun cmd' hier"
+    IDS_SURUNEXP            "'SuRun Explorer' hier"
+    IDS_RESTARTSHELL        "Wollen Sie wirklich die Windows Shell (%s)\nmit gehobenen Rechten neu starten?"
+    IDS_CPLNAME             "SuRun Einstellungen"
+    IDS_MENURESTART         "Neustart als Administrator"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_MENUSTART           "Start als Administrator"
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winresrc.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#include ""SuRunExtVer.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_FILENOTFOUND        "File not found: SuRun.exe"
+    IDS_ERR                 "SuRunExt.dll error"
+    IDS_TOOLTIP             "Launch control panel with administrative rights"
+    IDS_SURUN               "Control panel as administrator"
+    IDS_SURUNCMD            "'SuRun cmd' here"
+    IDS_SURUNEXP            "'SuRun Explorer' here"
+    IDS_RESTARTSHELL        "Do you really want to restart the Windows Shell\n(%s) with elevated rights?"
+    IDS_CPLNAME             "SuRun Settings"
+    IDS_MENURESTART         "Restart as Administrator"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_MENUSTART           "Start as Administrator"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Spanish (Castilian) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESP)
+#ifdef _WIN32
+LANGUAGE LANG_SPANISH, SUBLANG_SPANISH
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_FILENOTFOUND        "File not found: SuRun.exe"
+    IDS_ERR                 "SuRunExt.dll error"
+    IDS_TOOLTIP             "Launch control panel with administrative rights"
+    IDS_SURUN               "Control panel as Administrator"
+    IDS_SURUNCMD            "'SuRun cmd' here"
+    IDS_SURUNEXP            "'SuRun Explorer' here"
+    IDS_RESTARTSHELL        "Do you really want to restart the Windows Shell\n(%s) with elevated rights?"
+    IDS_CPLNAME             "SuRun Settings"
+    IDS_MENURESTART         "Restart as Administrator"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_MENUSTART           "Start as Administrator"
+END
+
+#endif    // Spanish (Castilian) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// French (France) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
+#ifdef _WIN32
+LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_FILENOTFOUND        "Fichier introuvable : SuRun.exe"
+    IDS_ERR                 "Erreur dans SuRunExt.dll"
+    IDS_TOOLTIP             "Ouvrir le panneau de configurations avec des droits administrateur"
+    IDS_SURUN               "Panneau de configuration en tant qu'administrateur"
+    IDS_SURUNCMD            "Ouvrir une fenêtre de commande avec SuRun ici"
+    IDS_SURUNEXP            "Ouvrir l'Explorateur Windows avec SuRun ici"
+    IDS_RESTARTSHELL        "Voulez-vous réellement redémarrer le shell Windows avec des droits administrateur ?"
+    IDS_CPLNAME             "Réglage de SuRun"
+    IDS_MENURESTART         "Relancer en tant qu'administrateur"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_MENUSTART           "Démarrer en tant qu'administrateur"
+END
+
+#endif    // French (France) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Dutch (Netherlands) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NLD)
+#ifdef _WIN32
+LANGUAGE LANG_DUTCH, SUBLANG_DUTCH
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_FILENOTFOUND        "Bestand niet gevonden: SuRun.exe"
+    IDS_ERR                 "SuRunExt.dll fout"
+    IDS_TOOLTIP             "Configuratiescherm starten als Administrator"
+    IDS_SURUN               "Configuratiescherm als Administrator"
+    IDS_SURUNCMD            "'SuRun Opdrachtprompt' hier"
+    IDS_SURUNEXP            "'SuRun Verkenner' hier"
+    IDS_RESTARTSHELL        "Wilt u de Windows omgeving (%s)\nopnieuw starten met Administrator-rechten?"
+    IDS_CPLNAME             "SuRun instellingen"
+    IDS_MENURESTART         "Opnieuw starten als Administrator"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_MENUSTART           "Start als Administrator"
+END
+
+#endif    // Dutch (Netherlands) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Portuguese (Portugal) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_PTG)
+#ifdef _WIN32
+LANGUAGE LANG_PORTUGUESE, SUBLANG_PORTUGUESE
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_FILENOTFOUND        "Ficheiro não encontrado: SuRun.exe"
+    IDS_ERR                 "Erro SuRunExt.dll"
+    IDS_TOOLTIP             "Abrir Painel de Controlo com direitos administrativos"
+    IDS_SURUN               "Painel de Controlo como administrador"
+    IDS_SURUNCMD            "'SuRun Linha de comandos' aqui"
+    IDS_SURUNEXP            "'SuRun Explorador do Windows' here"
+    IDS_RESTARTSHELL        "Tem a certeza que pretende reiniciar a shell do Windows\n(%s) com direitos elevados?"
+    IDS_CPLNAME             "Configurações do SuRun"
+    IDS_MENURESTART         "Reiniciar como administrador"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_MENUSTART           "Iniciar como administrador"
+END
+
+#endif    // Portuguese (Portugal) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "SuRunExtVer.rc2"  // non-Microsoft Visual C++ edited resources
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

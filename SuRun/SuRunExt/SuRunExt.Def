@@ -1,0 +1,11 @@
+LIBRARY     SuRunExt
+
+SECTIONS
+     .SHDATA   READ WRITE SHARED 
+
+EXPORTS
+   DllCanUnloadNow   PRIVATE
+   DllGetClassObject PRIVATE
+   CPlApplet         PRIVATE
+   CPlApplet         PRIVATE
+   SuRunLogoffUser

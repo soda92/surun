@@ -1,0 +1,8 @@
+LIBRARY     SuRunExt32
+
+SECTIONS
+     .SHDATA   READ WRITE SHARED 
+
+EXPORTS
+   DllCanUnloadNow   PRIVATE
+   DllGetClassObject PRIVATE
