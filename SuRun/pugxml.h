@@ -26,6 +26,7 @@
 
 
 #include <ostream>
+#include <tchar.h>
 #include <string>
 #if defined(PUGOPT_MEMFIL) | defined(PUGOPT_NONSEG)
 #	include <assert.h>

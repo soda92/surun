@@ -48,8 +48,6 @@ END
 #endif    // APSTUDIO_INVOKED
 
 1                       RT_MANIFEST             "app.manifest"
-SURUN.EXE               EXE_FILE                "..\\ReleaseU\\SuRun.exe"
-SURUNEXT.DLL            EXE_FILE                "..\\ReleaseU\\SuRunExt.dll"
 SURUN.EXE               EXE64_FILE              "..\\ReleaseUx64\\SuRun.exe"
 SURUNEXT.DLL            EXE64_FILE              "..\\ReleaseUx64\\SuRunExt.dll"
 SURUN32.BIN             EXE64_FILE              "..\\ReleaseUx64\\SuRun32.bin"

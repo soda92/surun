@@ -1,7 +1,9 @@
 UpgradeLog.htm
 .vs
 DebugUx64
+ReleaseUx64
 Debug
+Release
 x64
 *.user
 *.aps

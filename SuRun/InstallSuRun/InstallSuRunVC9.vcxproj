@@ -140,9 +140,7 @@
     </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
-      <Command>upx --lzma $(TargetPath)
-if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(TargetPath)
-</Command>
+      <Command></Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -193,9 +191,7 @@ if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(T
     </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
-      <Command>upx --lzma $(TargetPath)
-if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(TargetPath)
-</Command>
+      <Command></Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64 Unicode Debug|Win32'">
@@ -246,9 +242,7 @@ if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(T
     </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
-      <Command>upx --lzma $(TargetPath)
-if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(TargetPath)
-</Command>
+      <Command></Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SuRun32 Unicode Debug|Win32'">
@@ -299,9 +293,7 @@ if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(T
     </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
-      <Command>upx --lzma $(TargetPath)
-if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(TargetPath)
-</Command>
+      <Command></Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
