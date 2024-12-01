@@ -1,8 +1,8 @@
 #pragma once
 
-DWORD WINAPI TSAThreadProc(void* p);
+DWORD WINAPI TSAThreadProc(void *p);
 
 void InitTrayShowAdmin();
-BOOL ProcessTrayShowAdmin(BOOL bShowTray,BOOL bBalloon);
+BOOL ProcessTrayShowAdmin(BOOL bShowTray, BOOL bBalloon);
 void CloseTrayShowAdmin();
 BOOL StartTSAThread();

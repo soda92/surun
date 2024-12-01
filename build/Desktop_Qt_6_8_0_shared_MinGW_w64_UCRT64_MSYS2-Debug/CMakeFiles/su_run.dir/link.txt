@@ -1,0 +1,3 @@
+E:\msys64\ucrt64\bin\cmake.exe -E rm -f CMakeFiles\su_run.dir/objects.a
+E:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\su_run.dir/objects.a @CMakeFiles\su_run.dir\objects1.rsp
+E:\msys64\ucrt64\bin\g++.exe -DQT_QML_DEBUG -g -Wl,--whole-archive CMakeFiles\su_run.dir/objects.a -Wl,--no-whole-archive -o su_run.exe -Wl,--out-implib,libsu_run.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\su_run.dir\linkLibs.rsp
