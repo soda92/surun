@@ -11,12 +11,13 @@
 //  Copyright (C) 2001.  Microsoft Corporation.  All rights reserved.
 ///////////////////////////////////////////////////////////////////////////////
 #define SECURITY_WIN32
-#include "sspi_auth.h"
-#include "DBGTrace.h"
+
+
+#include <windows.h>
 #include <sspi.h>
 #include <tchar.h>
-#include <windows.h>
-
+#include "sspi_auth.h"
+#include "DBGTrace.h"
 
 typedef struct _AUTH_SEQ {
   BOOL fInitialized;

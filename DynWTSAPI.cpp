@@ -1,8 +1,8 @@
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
+#include <windows.h>
 #include "DynWTSAPI.h"
 #include <tchar.h>
-#include <windows.h>
 
 
 HINSTANCE g_wtsapi32 = NULL;

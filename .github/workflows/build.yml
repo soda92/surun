@@ -1,0 +1,13 @@
+name: Build SuRun
+on: pull_request
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pwsh build.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          path: InstallSuRun.exe
+

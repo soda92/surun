@@ -13,17 +13,19 @@
 
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
-#include "DBGTrace.h"
-#include "Helpers.h"
-#include "LSA_laar.h"
-#include "Resource.h"
-#include "setup.h"
+#include <windows.h>
 #include <lm.h>
 #include <malloc.h>
 #include <ntsecapi.h>
 #include <shlwapi.h>
 #include <tchar.h>
-#include <windows.h>
+
+#include "DBGTrace.h"
+#include "Helpers.h"
+#include "LSA_laar.h"
+#include "Resource.h"
+#include "setup.h"
+
 
 #pragma comment(lib, "Advapi32.lib")
 #pragma comment(lib, "Kernel32.lib")

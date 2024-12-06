@@ -7,3 +7,22 @@ Release
 x64
 *.user
 *.aps
+
+# VS build
+DebugUsr32/
+InstallSuRun/SuRun32 Unicode Debug/
+SuRunExt/DebugUsr32/
+
+DebugU/
+InstallSuRun.exe
+InstallSuRun/x64 Unicode Debug/
+ReleaseU/
+ReleaseUsr32/
+SuRunExt/DebugU/
+SuRunExt/ReleaseU/
+SuRunExt/ReleaseUsr32/
+SuRunExt/x64 Unicode Release/
+
+
+# Qt build
+/build

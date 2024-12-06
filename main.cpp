@@ -16,6 +16,15 @@
 
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
+#include <windows.h>
+#include <Tlhelp32.h>
+#include <dbghelp.h>
+#include <lm.h>
+#include <shlwapi.h>
+#include <stdio.h>
+#include <tchar.h>
+
+
 #include "DBGTrace.h"
 #include "Helpers.h"
 #include "IsAdmin.h"
@@ -26,13 +35,6 @@
 #include "TrayMsgWnd.h"
 #include "UserGroups.h"
 #include "WinStaDesk.h"
-#include <Tlhelp32.h>
-#include <dbghelp.h>
-#include <lm.h>
-#include <shlwapi.h>
-#include <stdio.h>
-#include <tchar.h>
-#include <windows.h>
 
 
 #pragma comment(lib, "netapi32.lib")

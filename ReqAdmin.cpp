@@ -1,10 +1,10 @@
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
+#include <windows.h>
+#include <tchar.h>
+#include <shlwapi.h>
 #include "DBGTrace.h"
 #include "Setup.h"
-#include <shlwapi.h>
-#include <tchar.h>
-#include <windows.h>
 
 #pragma comment(lib, "shlwapi.lib")
 

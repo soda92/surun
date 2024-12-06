@@ -22,6 +22,17 @@
 
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
+#include <windows.h>
+#include <Aclapi.h>
+#include <Psapi.h>
+#include <Sddl.h>
+#include <Tlhelp32.h>
+#include <USERENV.H>
+#include <lm.h>
+#include <ntsecapi.h>
+#include <stdio.h>
+#include <tchar.h>
+
 #include "Service.h"
 #include "CmdLine.h"
 #include "DBGTrace.h"
@@ -41,16 +52,7 @@
 #include "UserGroups.h"
 #include "WatchDog.h"
 #include "WinStaDesk.h"
-#include <Aclapi.h>
-#include <Psapi.h>
-#include <Sddl.h>
-#include <Tlhelp32.h>
-#include <USERENV.H>
-#include <lm.h>
-#include <ntsecapi.h>
-#include <stdio.h>
-#include <tchar.h>
-#include <windows.h>
+
 
 
 #pragma comment(lib, "Userenv.lib")

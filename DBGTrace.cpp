@@ -12,7 +12,6 @@
 //////////////////////////////////////////////////////////////////////////////
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
-#include "DBGTrace.h"
 #include <TCHAR.h>
 #include <windows.h>
 
@@ -22,6 +21,8 @@
 
 
 #include <lmerr.h>
+#include "DBGTrace.h"
+
 #pragma warning(disable : 4996)
 
 void GetErrorName(int ErrorCode, LPTSTR s) {
