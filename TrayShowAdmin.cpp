@@ -1,6 +1,11 @@
 #define _WIN32_IE 0x0600
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
+#include <windows.h>
+#include <LMAccess.h>
+#include <TCHAR.h>
+#include <stdio.h>
+
 #include "DBGTrace.h"
 #include "IsAdmin.h"
 #include "LSALogon.h"
@@ -9,10 +14,7 @@
 #include "resstr.h"
 #include "service.h"
 #include "setup.h"
-#include <LMAccess.h>
-#include <TCHAR.h>
-#include <stdio.h>
-#include <windows.h>
+
 
 
 #pragma comment(lib, "advapi32.lib")

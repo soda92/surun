@@ -12,14 +12,16 @@
 //////////////////////////////////////////////////////////////////////////////
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
+#include <windows.h>
+#include <LMAccess.h>
+#include <SHLWAPI.H>
+#include <TCHAR.h>
+
+
 #include "IsAdmin.h"
 #include "DBGTrace.H"
 #include "Helpers.h"
 #include "LogonDlg.h"
-#include <LMAccess.h>
-#include <SHLWAPI.H>
-#include <TCHAR.h>
-#include <windows.h>
 
 
 #pragma comment(lib, "ShlWapi.lib")

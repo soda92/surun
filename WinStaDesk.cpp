@@ -13,17 +13,20 @@
 
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
-#include "WinStaDesk.h"
-#include "DBGTrace.h"
-#include "Helpers.h"
-#include "ResStr.h"
-#include "Setup.h"
+
+#include <windows.h>
 #include <aclapi.h>
 #include <psapi.h>
 #include <shlwapi.h>
 #include <tchar.h>
 #include <userenv.h>
-#include <windows.h>
+
+#include "WinStaDesk.h"
+#include "DBGTrace.h"
+#include "Helpers.h"
+#include "ResStr.h"
+#include "Setup.h"
+
 
 
 #pragma comment(lib, "psapi.lib")
