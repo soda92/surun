@@ -22,6 +22,7 @@
 #include <lmerr.h>
 
 #pragma warning(disable : 4996)
+#pragma warning(disable : 4473)
 
 void GetErrorName(int ErrorCode, LPTSTR s) {
   HMODULE hModule = NULL;
