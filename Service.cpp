@@ -130,7 +130,7 @@ LPTSTR GetSvcName() {
   if (!IsCorrectServiceName(hdlSCM, SvcNameID)) {
     SvcNameID = L"Super User Run (SuRun) Service";
     if (!IsCorrectServiceName(hdlSCM, SvcNameID)) {
-      SvcNameID = L"Us³uga Super User Run (SuRun)";
+      SvcNameID = L"UsÂ³uga Super User Run (SuRun)";
       if (!IsCorrectServiceName(hdlSCM, SvcNameID)) {
         SvcNameID = L"Servicio de Super User Run (SuRun)";
         if (!IsCorrectServiceName(hdlSCM, SvcNameID)) {
@@ -734,7 +734,7 @@ VOID WINAPI ServiceMain(DWORD argc, LPTSTR *argv) {
   g_ss.dwWaitHint = 0;
   SetServiceStatus(g_hSS, &g_ss);
   DWORD StartDelay =
-      max(0, min(600, GetRegInt(HKLM, SURUNKEY, L"StartDelay", 0)));
+      max(0, min(600, int(GetRegInt(HKLM, SURUNKEY, L"StartDelay", 0))));
   // Wait to start the services, because else Windows deletes credentials
   if (StartDelay) {
     DBGTrace1("SuRun Service start delay: %d s", StartDelay);

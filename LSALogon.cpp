@@ -26,6 +26,8 @@
 #include "Resource.h"
 #include "setup.h"
 
+#include <algorithm>
+using std::min, std::max;
 
 #pragma comment(lib, "Advapi32.lib")
 #pragma comment(lib, "Kernel32.lib")

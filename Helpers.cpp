@@ -33,6 +33,8 @@
 #include "UserGroups.h"
 #include "lsa_laar.h"
 #include "resource.h"
+#include <algorithm>
+using std::min, std::max;
 
 
 #pragma comment(lib, "ShlWapi.lib")
@@ -326,7 +328,7 @@ BOOL GetRegStr(HKEY HK, LPCTSTR SubKey, LPCTSTR Val, LPTSTR Str, DWORD ccMax) {
   TCHAR s[4096];
   DWORD n = 4096;
   if (GetRegAny(HK, SubKey, Val, REG_EXPAND_SZ, (BYTE *)&s, &n))
-    return ExpandEnvironmentStrings(s, Str, min(4096, ccMax)), TRUE;
+    return ExpandEnvironmentStrings(s, Str, min(4096, (int)ccMax)), TRUE;
   return FALSE;
 }
 

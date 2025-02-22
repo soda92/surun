@@ -19,6 +19,9 @@
 #include "Resource.h"
 #include "Setup.h"
 
+#include <algorithm>
+using std::min, std::max;
+
 
 #define Classname _T("SRTRMSGWND")
 /////////////////////////////////////////////////////////////////////////////

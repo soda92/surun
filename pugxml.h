@@ -26,6 +26,9 @@
 #include <ostream>
 #include <string>
 #include <tchar.h>
+#include <algorithm>
+using std::min;
+using std::max;
 
 #if defined(PUGOPT_MEMFIL) | defined(PUGOPT_NONSEG)
 #include <assert.h>
