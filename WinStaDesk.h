@@ -23,6 +23,7 @@
 
 #pragma once
 
+#include <windows.h>
 #include "ScreenSnap.h"
 
 // This class creates a new desktop with a darkened blurred image of the

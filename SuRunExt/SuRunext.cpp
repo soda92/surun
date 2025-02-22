@@ -52,13 +52,13 @@
 #ifdef DoDBGTrace
 #include <msi.h>
 #pragma comment(lib,"msi.lib")
-#endif DoDBGTrace
+#endif //DoDBGTrace
 
 #ifdef _WIN64
 #pragma comment(lib,"../bin/Crypt32x64.lib")
-#else _WIN64
+#else //_WIN64
 #pragma comment(lib,"../bin/Crypt32x86.lib")
-#endif _WIN64
+#endif //_WIN64
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -380,7 +380,7 @@ static UINT g_CF_ShellIdList=0;
 //  if(pefEtc)
 //    pefEtc->Release();
 // }
-#endif DoDBGTrace
+#endif //DoDBGTrace
 
 STDMETHODIMP CShellExt::Initialize(LPCITEMIDLIST pIDFolder, LPDATAOBJECT pDataObj, HKEY hRegKey)
 {
@@ -442,7 +442,7 @@ STDMETHODIMP CShellExt::Initialize(LPCITEMIDLIST pIDFolder, LPDATAOBJECT pDataOb
 //   }
 //   zero(m_ClickFolderName);
 //   zero(ClickCmdLine);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   //Non SuRunners don't need the Shell Extension!
   if ((!l_IsSuRunner)||GetHideFromUser(l_User))
     return NOERROR;
@@ -468,7 +468,7 @@ STDMETHODIMP CShellExt::Initialize(LPCITEMIDLIST pIDFolder, LPDATAOBJECT pDataOb
     if(g_CF_ShellIdList==0)
       g_CF_ShellIdList=RegisterClipboardFormat(CFSTR_SHELLIDLIST);
     FORMATETC fe = {CF_HDROP, NULL, DVASPECT_CONTENT, -1, TYMED_HGLOBAL};
-    FORMATETC fe1= {g_CF_ShellIdList, NULL, DVASPECT_CONTENT, -1, TYMED_HGLOBAL};
+    FORMATETC fe1= {static_cast<CLIPFORMAT>(g_CF_ShellIdList), NULL, DVASPECT_CONTENT, -1, TYMED_HGLOBAL};
     STGMEDIUM m;
     if ((SUCCEEDED(pDataObj->GetData(&fe,&m)))
       &&(DragQueryFile((HDROP)m.hGlobal,(UINT)-1,NULL,0)==1)) 
@@ -524,7 +524,7 @@ STDMETHODIMP CShellExt::QueryContextMenu(HMENU hMenu, UINT indexMenu, UINT idCmd
         {
           //right click target is folder background
           InsertMenu(hMenu, indexMenu++, MF_SEPARATOR|MF_BYPOSITION, NULL, NULL);
-          MENUITEMINFO mi={(UINT)sizeof(MENUITEMINFO),(l_Shield?MIIM_BITMAP:0)|MIIM_ID|MIIM_STRING,0,MFS_ENABLED,id++,0,0,0,0,s,(UINT)_tcslen(s),l_Shield};
+          MENUITEMINFO mi={(UINT)sizeof(MENUITEMINFO),static_cast<UINT>((l_Shield?MIIM_BITMAP:0)|MIIM_ID|MIIM_STRING),0,MFS_ENABLED,id++,0,0,0,0,s,(UINT)_tcslen(s),l_Shield};
           InsertMenuItem(hMenu,indexMenu++,TRUE,&mi);
           InsertMenu(hMenu, indexMenu++, MF_SEPARATOR|MF_BYPOSITION, NULL, NULL);
         }
@@ -655,7 +655,7 @@ HRESULT ShellExtExecute(LPSHELLEXECUTEINFOW pei)
 //     (((pei->fMask&SEE_MASK_CLASSNAME)==SEE_MASK_CLASSNAME)&& (pei->lpClass))?pei->lpClass:L"(null)",
 //     pei->hkeyClass,
 //     pei->hProcess);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   //Admins don't need the ShellExec Hook!
   if (l_IsAdmin)
     return S_FALSE;
@@ -669,7 +669,7 @@ HRESULT ShellExtExecute(LPSHELLEXECUTEINFOW pei)
 //      pei->lpDirectory,pei->nShow,pei->hInstApp,pei->lpIDList,
 //      pei->lpClass,
 //      pei->hkeyClass,pei->dwHotKey,pei->hIcon,pei->hProcess);
-#endif DoDBGTrace
+#endif //DoDBGTrace
     return S_FALSE;
   }
   EnterCriticalSection(&l_SxHkCs);
@@ -715,7 +715,7 @@ HRESULT ShellExtExecute(LPSHELLEXECUTEINFOW pei)
 //      L"dir=%s, idlist=%X, class=%s, hkc=%X, hProc=%X",
 //      pei->fMask,pei->lpVerb,pei->lpFile,pei->lpParameters,pei->lpDirectory,
 //      pei->lpIDList,pei->lpClass,pei->hkeyClass,pei->hProcess);
-#endif DoDBGTrace
+#endif //DoDBGTrace
       return LeaveCriticalSection(&l_SxHkCs),S_FALSE;
     }
   }
@@ -989,7 +989,7 @@ __declspec(dllexport) void InstallShellExt()
 #ifdef DoDBGTrace
 //  SetRegStr(HKCR,L"*\\shellex\\ContextMenuHandlers\\SuRun",L"",sGUID);
 //   SetRegStr(HKCR,L"lnkfile\\shellex\\ContextMenuHandlers\\SuRun",L"",sGUID);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   //self Approval
   SetRegStr(HKLM,L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Approved",
             sGUID,L"SuRun Shell Extension");
@@ -1020,7 +1020,7 @@ __declspec(dllexport) void RemoveShellExt()
 #ifdef DoDBGTrace
   DelRegKey(HKEY_CLASSES_ROOT,L"*\\shellex\\ContextMenuHandlers\\SuRun");
   DelRegKey(HKCR,L"lnkfile\\shellex\\ContextMenuHandlers\\SuRun");
-#endif DoDBGTrace
+#endif //DoDBGTrace
   //ShellExecuteHook
   RegDelVal(HKLM,L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ShellExecuteHooks",sGUID);
   //self Approval
@@ -1030,7 +1030,7 @@ __declspec(dllexport) void RemoveShellExt()
 bool g_bDoExit=FALSE;
 DWORD WINAPI InitProc(void* p)
 {
-  __try
+  try
   {
     //  CTimeLog l(L"InitProc");
     //Try to make shure that the NT Dll Loader is done:
@@ -1082,7 +1082,7 @@ DWORD WINAPI InitProc(void* p)
           SR_PathQuoteSpacesW(fNoHook);
           l_bSetHook=_tcsicmp(fMod,fNoHook)==0;
         }
-#endif _TEST_STABILITY
+#endif //_TEST_STABILITY
         //Do not set hooks into blacklisted files!
         l_bSetHook=l_bSetHook && (!IsInBlackList(fMod));
         //      DBGTrace3("SuRunExt: %s Hook=%d [%s]",fMod,l_bSetHook,GetCommandLine());
@@ -1091,7 +1091,7 @@ DWORD WINAPI InitProc(void* p)
       }
     }
     l_InitThread=0;
-  }__except(GetExceptionCode()==EXCEPTION_ACCESS_VIOLATION)
+  }catch(...)
   {
     extern BOOL g_IATInit;
     g_IATInit=FALSE;

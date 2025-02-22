@@ -11,4 +11,5 @@
 //                                (c) Kay Bruns (http://kay-bruns.de), 2007-15
 //////////////////////////////////////////////////////////////////////////////
 #pragma once
+#include <windows.h>
 void TrayMsgWnd(LPCTSTR DlgTitle, LPCTSTR Message, int IconId, DWORD TimeOut);

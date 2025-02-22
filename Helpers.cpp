@@ -33,6 +33,9 @@
 #include "UserGroups.h"
 #include "lsa_laar.h"
 #include "resource.h"
+#include <algorithm>
+using std::min;
+using std::max;
 
 
 #pragma comment(lib, "ShlWapi.lib")
@@ -49,7 +52,7 @@ unsigned int _osver = 0;
 unsigned int _winmajor = 0;
 unsigned int _winminor = 0;
 
-static unsigned int _GetWinVer() {
+inline unsigned int _GetWinVer() {
   OSVERSIONINFO vi;
   vi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
   GetVersionEx(&vi);
@@ -61,7 +64,7 @@ static unsigned int _GetWinVer() {
     _osver |= 0x08000;
   return (_winmajor << 8) + _winminor;
 }
-unsigned int _winver = _GetWinVer();
+unsigned int _a_winver = _GetWinVer();
 #endif //_MSC_VER
 
 LANGID SetLocale(LANGID locale) {
@@ -90,8 +93,10 @@ PACL CopyAcl(PACL pFrom) {
   PACL pTo = (PACL)malloc(info.AclBytesInUse);
   if (!pTo)
     return NULL;
-  if (!InitializeAcl(pTo, info.AclBytesInUse, ACL_REVISION))
-    return free(pTo), NULL;
+  if (!InitializeAcl(pTo, info.AclBytesInUse, ACL_REVISION)) {
+    free(pTo);
+    return NULL;
+  }
   for (DWORD i = 0; i < info.AceCount; i++) {
     ACE_HEADER *pace = 0;
     if (GetAce(pFrom, i, (void **)(&pace)))
@@ -326,7 +331,7 @@ BOOL GetRegStr(HKEY HK, LPCTSTR SubKey, LPCTSTR Val, LPTSTR Str, DWORD ccMax) {
   TCHAR s[4096];
   DWORD n = 4096;
   if (GetRegAny(HK, SubKey, Val, REG_EXPAND_SZ, (BYTE *)&s, &n))
-    return ExpandEnvironmentStrings(s, Str, min(4096, ccMax)), TRUE;
+    return ExpandEnvironmentStrings(s, Str, min(4096, (int)ccMax)), TRUE;
   return FALSE;
 }
 
@@ -1071,8 +1076,8 @@ BOOL QualifyPath(LPTSTR app, LPTSTR path, LPTSTR file, LPTSTR ext,
 
 BOOL ResolveCommandLine(IN LPWSTR CmdLine, IN LPCWSTR CurDir, OUT LPTSTR cmd) {
   // ToDo: use dynamic allocated strings
-  if (((CmdLine == NULL) || ((*CmdLine) == NULL)) &&
-      ((cmd == NULL) || ((*cmd) == NULL)))
+  if (((CmdLine == NULL) || ((*CmdLine) == 0)) &&
+      ((cmd == NULL) || ((*cmd) == 0)))
     return false;
   if (StrLenW(CmdLine) + StrLenW(CurDir) > 4096 - 64)
     return false;
@@ -2049,9 +2054,9 @@ HBITMAP GetMenuShieldIcon() {
   HICON ico = NULL;
 #ifndef _SR32
   HMODULE hMod = GetModuleHandle(L"SuRunExt.dll");
-#else _SR32
+#else //_SR32
   HMODULE hMod = GetModuleHandle(L"SuRunExt32.dll");
-#endif _SR32
+#endif //_SR32
   if (!ico)
     ico = (HICON)LoadImage(hMod, MAKEINTRESOURCE(IDI_SR_SHIELD), IMAGE_ICON, cx,
                            cy, LR_SHARED | LR_CREATEDIBSECTION);
@@ -2059,7 +2064,7 @@ HBITMAP GetMenuShieldIcon() {
     return NULL;
   // Copy the icon to a Bitmap
   BITMAPINFO bmi = {
-      {sizeof(BITMAPINFOHEADER), cx, cy, 1, 32, 0, cx * cy * 4, 0, 0, 0, 0},
+      {sizeof(BITMAPINFOHEADER), cx, cy, 1, 32, 0, static_cast<DWORD>(cx * cy * 4), 0, 0, 0, 0},
       {{0, 0, 0, 0}}};
   void *Bits = 0;
   HDC dc = CreateCompatibleDC(NULL);

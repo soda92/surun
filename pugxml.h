@@ -1,3 +1,4 @@
+#include <windows.h>
 // pugxml.h
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -26,6 +27,9 @@
 #include <ostream>
 #include <string>
 #include <tchar.h>
+#include <algorithm>
+using std::min;
+using std::max;
 
 #if defined(PUGOPT_MEMFIL) | defined(PUGOPT_NONSEG)
 #include <assert.h>
@@ -37,7 +41,9 @@
 #endif
 
 #define stdstring std::basic_string<TCHAR>
-
+#define PUGAPI_VARIANT 0x58475550
+#define PUGAPI_VERSION_MAJOR 1
+#define PUGAPI_VERSION_MINOR 2
 //<summary>
 //	Library variant ID. The ID 0x58475550 is owned by Kristen Wegner. You
 //*MUST* 	provide your own unique ID if you modify or fork the code in this
@@ -477,7 +483,7 @@ int strcmpwild_impl(const TCHAR *src, const TCHAR *dst); // Forward declaration.
 //<param name="lhs">String or expression for left-hand side of
 //comparison.</param> <param name="rhs">String for right-hand side of
 //comparison.</param> <remarks>Used by 'strcmpwild'.</remarks>
-int strcmpwild_astr(const TCHAR **src, const TCHAR **dst) {
+inline int strcmpwild_astr(const TCHAR **src, const TCHAR **dst) {
   int find = 1;
   ++(*src);
   while ((**dst != 0 && **src == _T('?')) || **src == _T('*')) {
@@ -510,7 +516,7 @@ int strcmpwild_astr(const TCHAR **src, const TCHAR **dst) {
 //<param name="lhs">String or expression for left-hand side of
 //comparison.</param> <param name="rhs">String for right-hand side of
 //comparison.</param> <remarks>Used by 'strcmpwild'.</remarks>
-int strcmpwild_impl(const TCHAR *src, const TCHAR *dst) {
+inline int strcmpwild_impl(const TCHAR *src, const TCHAR *dst) {
   int find = 1;
   for (; *src != 0 && find == 1 && *dst != 0; ++src) {
     switch (*src) {
@@ -2168,6 +2174,7 @@ public:
               ? true
               : false; // Return true if matches above, else false.
     }
+    return false;
   }
   //<summary>Set attribute to stdstring.</summary>
   //<param name="rhs">Value stdstring to set.</param>
@@ -2730,7 +2737,7 @@ public:
     return has_name(name.c_str());
   } // Node is named 'name'.
 #endif
-#endif _WIN64
+#endif //_WIN64
   bool has_attribute(const stdstring &name) {
     return has_attribute(name.c_str());
   } // Node has an attribute named 'name'.
@@ -3812,8 +3819,10 @@ public:
   //wrapper.</returns> <remarks>Pointer space may be grown, memory for
   //name/value members allocated.</remarks>
   xml_attribute append_attribute(const TCHAR *name, long value) {
-    if (!name)
-      return false;
+    if (!name) {
+      xml_attribute a;
+      return a;
+    }
     TCHAR temp[32] = {0};
     _stprintf(temp, _T("%ld"), value);
     return append_attribute(name, temp);
@@ -3826,7 +3835,7 @@ public:
   //name/value members allocated.</remarks>
   xml_attribute append_attribute(const TCHAR *name, double value) {
     if (!name)
-      return false;
+      return {};
     TCHAR temp[32] = {0};
     _stprintf(temp, _T("%lf"), value);
     return append_attribute(name, temp);
@@ -3839,7 +3848,7 @@ public:
   //name/value members allocated.</remarks>
   xml_attribute append_attribute(const TCHAR *name, bool value) {
     if (!name)
-      return false;
+      return {};
     return append_attribute(name, ((value) ? _T("true") : _T("false")));
   }
 
@@ -4329,7 +4338,7 @@ public:
       return os;
     unsigned int n = list.size();
     for (unsigned int i = 0; i < n; ++i)
-      os << list[i];
+      os << (void*)list[i];
     return os;
   }
 };

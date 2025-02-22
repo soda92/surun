@@ -15,15 +15,14 @@
 #include <TCHAR.h>
 #include <windows.h>
 
-
 #include <stdarg.h>
 #include <stdio.h>
 
-
-#include <lmerr.h>
 #include "DBGTrace.h"
+#include <lmerr.h>
 
 #pragma warning(disable : 4996)
+#pragma warning(disable : 4473)
 
 void GetErrorName(int ErrorCode, LPTSTR s) {
   HMODULE hModule = NULL;
@@ -304,9 +303,9 @@ void WriteLog(LPTSTR S, ...) {
     va_end(va);
     fclose(f);
   }
-#else UNICODE
+#else  // UNICODE
   WriteLogA(S);
-#endif UNICODE
+#endif // UNICODE
 }
 
 // #pragma pack(push,1)
@@ -342,7 +341,7 @@ void WriteLog(LPTSTR S, ...) {
 //   DBGSTRBUF* Buf=(DBGSTRBUF*)MapViewOfFile(DBWBuf,FILE_MAP_WRITE,0,0,0);
 //   HANDLE evRdy=OpenEventA(EVENT_MODIFY_STATE,FALSE,"DBWIN_DATA_READY");
 //   HANDLE evAck=OpenEventA(SYNCHRONIZE,FALSE,"DBWIN_BUFFER_READY");
-//   __try
+//   try
 //   {
 //     if (evRdy && WaitForSingleObject(evAck,5000) == WAIT_OBJECT_0)
 //     {
@@ -372,7 +371,7 @@ void WriteLog(LPTSTR S, ...) {
 // }
 
 void TRACEx(LPCTSTR s, ...) {
-  __try {
+  try {
     static TCHAR S[4096] = {0};
     va_list va;
     va_start(va, s);
@@ -394,15 +393,13 @@ void TRACEx(LPCTSTR s, ...) {
     //	  WideCharToMultiByte(CP_ACP,0,S,_tcslen(S),Sa,4096,NULL,NULL);
     //	  DbgOutA(Sa);
     WriteLog(S);
-  } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
-                  ? EXCEPTION_EXECUTE_HANDLER
-                  : EXCEPTION_CONTINUE_SEARCH) {
+  } catch(...) {
     OutputDebugStringA("FATAL: Exception in TRACEx");
   }
 }
 
 void TRACExA(LPCSTR s, ...) {
-  __try {
+  try {
     static char S[4096] = {0};
     va_list va;
     va_start(va, s);
@@ -422,9 +419,7 @@ void TRACExA(LPCSTR s, ...) {
     //    DbgOutA(S);
     OutputDebugStringA(S);
     WriteLogA(S);
-  } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
-                  ? EXCEPTION_EXECUTE_HANDLER
-                  : EXCEPTION_CONTINUE_SEARCH) {
+  } catch (...) {
     OutputDebugStringA("FATAL: Exception in TRACExA");
   }
 }

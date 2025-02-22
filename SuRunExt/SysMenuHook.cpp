@@ -105,9 +105,9 @@ int FindSCClose(HMENU m)
 //  TRACEx(_T("%s SuRunExt %s (%s,0x%08X,0x%08X)==0x%08X"),
 //    f,Name,MsgName(message),wParam,lParam,lResult);
 //}
-//#else DoDBGTrace
+//#else //DoDBGTrace
 //#define DBGOutMsg(m)
-//#endif DoDBGTrace
+//#endif //DoDBGTrace
 
 LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
@@ -195,7 +195,7 @@ LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
           if (i>=0)
           {
             CResStr s(l_hInst,IDS_MENURESTART);
-            MENUITEMINFO mi={(UINT)sizeof(MENUITEMINFO),(l_Shield?MIIM_BITMAP:0)|MIIM_ID|MIIM_STRING,0,MFS_ENABLED,WM_SYSMH0,0,0,0,0,s,(UINT)_tcslen(s),l_Shield};
+            MENUITEMINFO mi={(UINT)sizeof(MENUITEMINFO),static_cast<UINT>((l_Shield?MIIM_BITMAP:0)|MIIM_ID|MIIM_STRING),0,MFS_ENABLED,WM_SYSMH0,0,0,0,0,s,(UINT)_tcslen(s),l_Shield};
             if (InsertMenuItem(hmenu,i,TRUE,&mi))
               i++;
           }
@@ -208,7 +208,7 @@ LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
           if (i>=0)
           {
             CResStr s(l_hInst,IDS_MENUSTART);
-            MENUITEMINFO mi={(UINT)sizeof(MENUITEMINFO),(l_Shield?MIIM_BITMAP:0)|MIIM_ID|MIIM_STRING,0,MFS_ENABLED,WM_SYSMH1,0,0,0,0,s,(UINT)_tcslen(s),l_Shield};
+            MENUITEMINFO mi={(UINT)sizeof(MENUITEMINFO),static_cast<UINT>((l_Shield?MIIM_BITMAP:0)|MIIM_ID|MIIM_STRING),0,MFS_ENABLED,WM_SYSMH1,0,0,0,0,s,(UINT)_tcslen(s),l_Shield};
             if (InsertMenuItem(hmenu,i,TRUE,&mi))
               i++;
           }

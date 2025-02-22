@@ -12,6 +12,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #pragma once
+#include <windows.h>
 
 typedef enum { DelPrivilege = 0, AddPrivilege, HasPrivilege } PrivOp;
 

@@ -19,6 +19,7 @@
 // *Ask, if something should be started with administrative rights
 //////////////////////////////////////////////////////////////////////////////
 #pragma once
+#include <windows.h>
 
 // Check is a password for a user is correct
 BOOL PasswordOK(DWORD SessionId, LPCTSTR User, LPCTSTR Password,
@@ -48,4 +49,4 @@ bool SavedPasswordOk(DWORD SessionId, LPTSTR RunAsUser, LPTSTR UserName);
 
 #ifdef _DEBUG
 BOOL TestLogonDlg();
-#endif _DEBUG
+#endif //_DEBUG

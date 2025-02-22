@@ -13,7 +13,7 @@
 
 #ifdef _DEBUG
 #define _DEBUGSETUP
-#endif _DEBUG
+#endif //_DEBUG
 
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
@@ -81,7 +81,7 @@ void DeletePassword(LPTSTR UserName) {
 void SavePassword(LPTSTR UserName, LPTSTR Password) {
   DATA_BLOB pw = {0};
   DATA_BLOB entropy = {sizeof(KEYPASS), KEYPASS};
-  DATA_BLOB PW = {(DWORD)(_tcslen(Password) + 1) * sizeof(TCHAR),
+  DATA_BLOB PW = {static_cast<DWORD>((DWORD)(_tcslen(Password) + 1) * sizeof(TCHAR)),
                   (BYTE *)Password};
   if (!CryptProtectData(&PW, _T("SuRunUPW"), &entropy, 0, 0,
                         CRYPTPROTECT_UI_FORBIDDEN, &pw))
@@ -2223,7 +2223,7 @@ INT_PTR CALLBACK SetupDlg4Proc(HWND hwnd, UINT msg, WPARAM wParam,
   case WM_INITDIALOG: {
     CheckDlgButton(hwnd, IDC_NOLOGONDESK, GetUseWinLogonDesk == 0);
     SetDlgItemInt(hwnd, IDC_START_DELAY,
-                  max(0, min(600, GetRegInt(HKLM, SURUNKEY, L"StartDelay", 0))),
+                  max(0, min(600, int(GetRegInt(HKLM, SURUNKEY, L"StartDelay", 0)))),
                   false);
     CheckDlgButton(hwnd, IDC_DORUNAS, GetHandleRunAs);
     if (GetUseSuRunGrp) {
@@ -2274,7 +2274,7 @@ INT_PTR CALLBACK SetupDlg4Proc(HWND hwnd, UINT msg, WPARAM wParam,
     ApplyChanges:
       SetUseWinLogonDesk(IsDlgButtonChecked(hwnd, IDC_NOLOGONDESK) == 0);
       SetRegInt(HKLM, SURUNKEY, L"StartDelay",
-                max(0, min(600, GetDlgItemInt(hwnd, IDC_START_DELAY, 0, 0))));
+                max(0, min(600, (int)(GetDlgItemInt(hwnd, IDC_START_DELAY, 0, 0)))));
       switch (IsDlgButtonChecked(hwnd, IDC_DORUNAS)) {
       case BST_CHECKED:
         ReplaceRunAsWithSuRun();
@@ -2512,4 +2512,4 @@ BOOL TestSetup() {
   // return TRUE;
 }
 
-#endif _DEBUGSETUP
+#endif //_DEBUGSETUP

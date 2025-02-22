@@ -11,5 +11,6 @@
 //  Copyright (C) 2001.  Microsoft Corporation.  All rights reserved.
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
+#include <windows.h>
 
 HANDLE SSPLogonUser(LPCTSTR szDomain, LPCTSTR szUser, LPCTSTR szPassword);

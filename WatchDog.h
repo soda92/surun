@@ -11,5 +11,6 @@
 //                                (c) Kay Bruns (http://kay-bruns.de), 2007-15
 //////////////////////////////////////////////////////////////////////////////
 #pragma once
+#include <windows.h>
 
 void DoWatchDog(LPCTSTR SafeDesk, LPCTSTR UserDesk, DWORD ParentPID);

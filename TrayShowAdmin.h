@@ -1,5 +1,6 @@
 #pragma once
 
+#include <windows.h>
 DWORD WINAPI TSAThreadProc(void *p);
 
 void InitTrayShowAdmin();

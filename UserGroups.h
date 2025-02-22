@@ -19,6 +19,7 @@
 
 #pragma once
 #include <LMCONS.H>
+#include <windows.h>
 
 // SuRun users group name
 #define SURUNNERSGROUP _T("SuRunners")

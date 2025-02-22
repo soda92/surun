@@ -12,6 +12,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #pragma once
+#include <windows.h>
 
 #include <Psapi.h>
 // #include "DBGTrace.H"
@@ -29,29 +30,30 @@
 #if _MSC_VER >= 1500
 extern unsigned int _osplatform;
 extern unsigned int _osver;
-extern unsigned int _winver;
+extern unsigned int _a_winver;
 extern unsigned int _winmajor;
 extern unsigned int _winminor;
 #endif //_MSC_VER >= 1500
 
-#define IsWin2k (_winver == 0x500)
-#define IsVista (_winver == 0x600)
-#define IsVistapp (_winver >= 0x600)
-#define IsWin7 (_winver == 0x601)
-#define IsWin7pp (_winver >= 0x601)
-#define IsWin8 (_winver == 0x602)
-#define IsWin8pp (_winver >= 0x602)
-#define IsWin81 (_winver == 0x603)
-#define IsWin81pp (_winver >= 0x603)
-#define IsWin10 (_winver == 0xA00)
-#define IsWin10pp (_winver >= 0xA00)
-#define IsWin1709pp ((_winver >= 0xA00) && (_osver >= 16299))
+extern unsigned int _GetWinVer();
+#define IsWin2k (_GetWinVer() == 0x500)
+#define IsVista (_GetWinVer() == 0x600)
+#define IsVistapp (_GetWinVer() >= 0x600)
+#define IsWin7 (_GetWinVer() == 0x601)
+#define IsWin7pp (_GetWinVer() >= 0x601)
+#define IsWin8 (_GetWinVer() == 0x602)
+#define IsWin8pp (_GetWinVer() >= 0x602)
+#define IsWin81 (_GetWinVer() == 0x603)
+#define IsWin81pp (_GetWinVer() >= 0x603)
+#define IsWin10 (_GetWinVer() == 0xA00)
+#define IsWin10pp (_GetWinVer() >= 0xA00)
+#define IsWin1709pp ((_GetWinVer() >= 0xA00) && (_osver >= 16299))
 
 LANGID SetLocale(LANGID locale);
 
 #ifndef PROCESS_QUERY_LIMITED_INFORMATION
 #define PROCESS_QUERY_LIMITED_INFORMATION (0x1000)
-#endif PROCESS_QUERY_LIMITED_INFORMATION
+#endif //PROCESS_QUERY_LIMITED_INFORMATION
 
 //  Registry Helper
 #define HKCR HKEY_CLASSES_ROOT
@@ -63,11 +65,11 @@ LANGID SetLocale(LANGID locale);
 #define KSAM(a) a | KEY_WOW64_64KEY
 #else
 #define KSAM(a) a
-#endif _SR32
+#endif //_SR32
 
 #ifndef SS_REALSIZECONTROL
 #define SS_REALSIZECONTROL 0x00000040L
-#endif SS_REALSIZECONTROL
+#endif //SS_REALSIZECONTROL
 
 bool RegSetDACL(HKEY HK, LPCTSTR SubKey, PACL pACL);
 PACL RegGrantAdminAccess(HKEY HK, LPCTSTR SubKey);

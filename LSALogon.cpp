@@ -26,6 +26,9 @@
 #include "Resource.h"
 #include "setup.h"
 
+#include <algorithm>
+using std::min;
+using std::max;
 
 #pragma comment(lib, "Advapi32.lib")
 #pragma comment(lib, "Kernel32.lib")
@@ -67,7 +70,7 @@ typedef struct _TOKEN_LINKED_TOKEN {
   HANDLE LinkedToken;
 } TOKEN_LINKED_TOKEN, *PTOKEN_LINKED_TOKEN;
 
-#endif SYSTEM_MANDATORY_LABEL_NO_WRITE_UP
+#endif //SYSTEM_MANDATORY_LABEL_NO_WRITE_UP
 
 BOOL GetElevatedToken(HANDLE &hToken) {
   if (hToken == 0) {
@@ -156,7 +159,7 @@ int _stringLenInBytes(const LPWSTR s) {
 }
 
 void _initUnicodeString(UNICODE_STRING *target, LPWSTR source, USHORT cbMax) {
-  target->Length = max(sizeof *source, cbMax) - sizeof *source;
+  target->Length = max(sizeof (*source),(size_t) cbMax) - sizeof *source;
   target->MaximumLength = cbMax;
   target->Buffer = source;
 }
@@ -216,7 +219,7 @@ HANDLE LSALogon(DWORD SessionID, LPWSTR UserName, LPWSTR Domain,
   //
   // Initialize source context structure
   //
-  __try {
+  try {
     HANDLE hShell = GetSessionUserToken(SessionID);
     if (hShell) {
       DWORD n = 0;
@@ -229,27 +232,27 @@ HANDLE LSALogon(DWORD SessionID, LPWSTR UserName, LPWSTR Domain,
       CloseHandle(hShell);
       hShell = 0;
     } else
-      __leave;
+       throw 123;
     // Initialize Admin SID
     SID_IDENTIFIER_AUTHORITY sidAuth = SECURITY_NT_AUTHORITY;
     if (!AllocateAndInitializeSid(&sidAuth, 2, SECURITY_BUILTIN_DOMAIN_RID,
                                   DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0, 0,
                                   &AdminSID)) {
       DBGTrace1("AllocateAndInitializeSid failed %s", GetLastErrorNameStatic());
-      __leave;
+       throw 123;
     }
     // Local SID
     SID_IDENTIFIER_AUTHORITY IdentifierAuthority = SECURITY_LOCAL_SID_AUTHORITY;
     if (!AllocateAndInitializeSid(&IdentifierAuthority, 1, SECURITY_LOCAL_RID,
                                   0, 0, 0, 0, 0, 0, 0, &LocalSid)) {
       DBGTrace1("AllocateAndInitializeSid failed %s", GetLastErrorNameStatic());
-      __leave;
+       throw 123;
     }
     // Initialize TOKEN_GROUPS
     ptg = (PTOKEN_GROUPS)malloc(sizeof(DWORD) + 3 * sizeof(SID_AND_ATTRIBUTES));
     if (ptg == NULL) {
       DBGTrace("malloc failed");
-      __leave;
+       throw 123;
     }
     ptg->GroupCount = bNoAdmin ? 2 : 3;
     ptg->Groups[0].Sid = LogonSID;
@@ -264,14 +267,14 @@ HANDLE LSALogon(DWORD SessionID, LPWSTR UserName, LPWSTR Domain,
     // AuthInfo
     AuthInfo = GetLogonRequest(Domain, UserName, Password, &AuthInfoSize);
     if (!AuthInfo)
-      __leave;
+       throw 123;
     // PackageName
     LSASTR(PackageName, AUTH_PACKAGE);
     DWORD AuthPackageId = 0;
     if ((LsaLookupAuthenticationPackage(hLSA, &PackageName, &AuthPackageId)) !=
         STATUS_SUCCESS) {
       DBGTrace("LsaLookupAuthenticationPackage failed");
-      __leave;
+       throw 123;
     }
     LUID LogonLuid = {0};
     NTSTATUS SubStatus = 0;
@@ -280,14 +283,14 @@ HANDLE LSALogon(DWORD SessionID, LPWSTR UserName, LPWSTR Domain,
                           &LogonLuid, &hUser, &Quotas, &SubStatus);
     if (Status != ERROR_SUCCESS) {
       DBGTrace("LsaLogonUser failed");
-      __leave;
+       throw 123;
     }
     if (!bNoAdmin) {
       GetElevatedToken(hUser);
       SetHighIL(hUser);
     }
   } // try
-  __finally {
+  catch(...) {} {
     cbUserName = cbDomain = cbPassword = 0; // sensitive information
     if (ptg)
       free(ptg);
@@ -547,7 +550,7 @@ LPVOID GetFromToken(HANDLE hToken, TOKEN_INFORMATION_CLASS tic) {
   DWORD dw;
   BOOL bRet = FALSE;
   LPVOID lpData = NULL;
-  __try {
+  try {
     bRet = GetTokenInformation(hToken, tic, 0, 0, &dw);
     if ((bRet == FALSE) && (GetLastError() != ERROR_INSUFFICIENT_BUFFER)) {
       DBGTrace1("GetTokenInformation failed %s", GetLastErrorNameStatic());
@@ -560,7 +563,7 @@ LPVOID GetFromToken(HANDLE hToken, TOKEN_INFORMATION_CLASS tic) {
         DBGTrace1("GetTokenInformation failed %s", GetLastErrorNameStatic());
     } else
       DBGTrace("malloc failed");
-  } __finally {
+  } catch(...) {} {
     if (!bRet) {
       if (lpData)
         free(lpData);
@@ -736,24 +739,24 @@ HANDLE GetAdminToken(DWORD SessionID) {
   PTOKEN_PRIMARY_GROUP lpPriGrp = NULL;
   PTOKEN_DEFAULT_DACL lpDaclToken = NULL;
   PTOKEN_OWNER pTO = NULL;
-  __try {
+  try {
     HANDLE hShell = GetSessionUserToken(SessionID);
     if (!hShell) {
       DBGTrace("GetSessionUserToken failed");
-      __leave;
+       throw 123;
     }
     // Is the Shell token a Vista Split token?
     if (GetElevatedToken(hShell)) {
       SetHighIL(hShell);
       hUser = hShell;
       hShell = 0;
-      __leave;
+       throw 123;
     }
     // Copy Logon SID from the Shell Process of SessionID:
     LogonSID = GetLogonSid(hShell);
     if (!LogonSID) {
       DBGTrace("GetLogonSid failed");
-      __leave;
+       throw 123;
     }
     // Copy TokenSource from the Shell Process of SessionID:
     TOKEN_SOURCE tsrc = {0};
@@ -765,7 +768,7 @@ HANDLE GetAdminToken(DWORD SessionID) {
     ptg = (PTOKEN_GROUPS)(GetFromToken(hShell, TokenGroups));
     if (ptg == NULL) {
       DBGTrace("GetFromToken failed");
-      __leave;
+       throw 123;
     }
     for (DWORD i = 0; i < ptg->GroupCount; i++)
       ptg->Groups[i].Attributes &= ~SE_GROUP_OWNER;
@@ -775,7 +778,7 @@ HANDLE GetAdminToken(DWORD SessionID) {
                                   DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0, 0,
                                   &AdminSID)) {
       DBGTrace1("AllocateAndInitializeSid failed %s", GetLastErrorNameStatic());
-      __leave;
+       throw 123;
     }
     // copy Admin Sid to token groups
     SID_AND_ATTRIBUTES sia;
@@ -785,7 +788,7 @@ HANDLE GetAdminToken(DWORD SessionID) {
     PTOKEN_GROUPS p = AddTokenGroups(ptg, &sia);
     if (!p) {
       DBGTrace("AddTokenGroups failed");
-      __leave;
+       throw 123;
     }
     free(ptg);
     ptg = p;
@@ -817,7 +820,7 @@ HANDLE GetAdminToken(DWORD SessionID) {
     free(aRights);
     if (!priv) {
       DBGTrace("AddPrivileges failed");
-      __leave;
+       throw 123;
     }
     free(lpPrivToken);
     lpPrivToken = priv;
@@ -841,7 +844,7 @@ HANDLE GetAdminToken(DWORD SessionID) {
     if (!ZwCreateToken) {
       DBGTrace1("GetProcAddress(ZwCreateToken) failed: %s",
                 GetLastErrorNameStatic());
-      __leave;
+       throw 123;
     }
     NTSTATUS ntStatus = ZwCreateToken(
         &hUser, READ_CONTROL | TOKEN_ALL_ACCESS, &oa, TokenPrimary,
@@ -851,7 +854,7 @@ HANDLE GetAdminToken(DWORD SessionID) {
     if (ntStatus != STATUS_SUCCESS)
       DBGTrace1("GetAdminToken ZwCreateToken Failed: 0x%08X", ntStatus);
     SetHighIL(hUser);
-  } __finally {
+  } catch(...) {} {
     if (hShell)
       CloseHandle(hShell);
     if (LogonSID)

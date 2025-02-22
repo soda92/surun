@@ -17,6 +17,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 #pragma once
+#include <windows.h>
 #pragma warning(disable : 4996)
 
 template <const int _S> class CResourceString {
@@ -68,7 +69,10 @@ public:
     m_hInst = hInst;
     memset(&m_str, 0, sizeof(m_str));
     TCHAR S[_S];
+    int nID;
+    va_start(va, nID);
     LoadString(hInst, nID, S, _S - 1);
+    va_end(va);
     _vsntprintf(m_str, _S - 1, S, va);
   }
   const LPCTSTR operator=(int nID) {

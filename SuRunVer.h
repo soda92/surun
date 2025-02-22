@@ -1,4 +1,5 @@
 #pragma once
+#include <windows.h>
 
 #define VERSION_HH 1
 #define VERSION_HL 2

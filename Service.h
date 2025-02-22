@@ -15,6 +15,7 @@
 // The service bootstraps itself before WinMain gats called
 
 #pragma once
+#include <windows.h>
 #include <LMCons.h>
 
 // PROCESS_INFORMATION data size is different on x64 and x86
