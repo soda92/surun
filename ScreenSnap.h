@@ -26,6 +26,9 @@
 #include <TCHAR.h>
 #include <WINDOWS.h>
 
+#ifndef min
+#define min(x, y) ((x>y)? y : x)
+#endif
 
 // Simplified 3x3 Gausian blur
 inline void Blur(COLORREF *pDst, COLORREF *pSrc, DWORD w, DWORD h) {
