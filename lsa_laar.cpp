@@ -119,9 +119,11 @@ BOOL AccountPrivilege(LPTSTR Account, LPTSTR Privilege, PrivOp op) {
   PLSA_TRANSLATED_SID sidList = NULL;
   PLSA_UNICODE_STRING Rights = 0;
   // open the policy object on the target computer
-  static SECURITY_QUALITY_OF_SERVICE sqos = {sizeof SECURITY_QUALITY_OF_SERVICE,
-                                             SecurityImpersonation,
-                                             SECURITY_DYNAMIC_TRACKING, FALSE};
+  static SECURITY_QUALITY_OF_SERVICE sqos;
+  sqos.Length = sizeof SECURITY_QUALITY_OF_SERVICE;
+  sqos.ImpersonationLevel = SecurityImpersonation;
+  sqos.ContextTrackingMode = SECURITY_DYNAMIC_TRACKING;
+  sqos.EffectiveOnly = FALSE;
   static LSA_OBJECT_ATTRIBUTES lsaOA = {
       sizeof LSA_OBJECT_ATTRIBUTES, NULL, NULL, 0, NULL, &sqos};
   RET_ERR(LsaOpenPolicy(0, &lsaOA,
