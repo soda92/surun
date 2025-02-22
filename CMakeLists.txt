@@ -3,6 +3,7 @@ project("aaa")
 
 set(CMAKE_CXX_STANDARD 17)
 add_compile_options(-Wno-write-strings -Wno-register)
+add_subdirectory(SuRunExt)
 
 set(SOURCES "DBGTrace.cpp"
 "DynWTSAPI.cpp"
@@ -28,5 +29,7 @@ add_executable(aaa ${SOURCES})
 target_link_libraries(aaa PRIVATE winmm.lib Psapi.lib Netapi32.lib 
 Shlwapi.lib Secur32.lib Mpr.lib Userenv.lib advapi32.lib 
 ole32.lib shell32.lib version.lib comctl32.lib kernel32.lib
-rpcrt4.lib msi.lib crypt32.lib)
+rpcrt4.lib msi.lib crypt32.lib
+SuRunExt
+)
 # SuRunExt/ReleaseUx64/SuRunExt.lib)
