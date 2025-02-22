@@ -10,6 +10,7 @@
 // 
 //                                (c) Kay Bruns (http://kay-bruns.de), 2007-15
 //////////////////////////////////////////////////////////////////////////////
+#include <windows.h>
 extern "C" 
 {
 __declspec(dllexport) BOOL InstallSysMenuHook();

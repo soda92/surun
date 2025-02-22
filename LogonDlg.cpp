@@ -170,7 +170,7 @@ void SaveRunAsPassword(LPTSTR RunAsUser, LPTSTR UserName, LPTSTR Password) {
     return;
   DATA_BLOB pw = {0};
   DATA_BLOB entropy = {sizeof(KEYPASS), KEYPASS};
-  DATA_BLOB PW = {(DWORD)(_tcslen(Password) + 1) * sizeof(TCHAR),
+  DATA_BLOB PW = {static_cast<DWORD>((DWORD)(_tcslen(Password) + 1) * sizeof(TCHAR)),
                   (BYTE *)Password};
   if (!CryptProtectData(&PW, _T("SuRunRAPW"), &entropy, 0, 0,
                         CRYPTPROTECT_UI_FORBIDDEN, &pw))

@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.23)
 project("aaa")
 
 set(CMAKE_CXX_STANDARD 17)
-add_compile_options(-Wno-write-strings -Wno-register)
+add_compile_options(-Wno-write-strings -Wno-register
+-Wno-pointer-arith -Wno-conversion-null)
 add_subdirectory(SuRunExt)
 
 set(SOURCES "DBGTrace.cpp"
