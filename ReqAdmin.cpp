@@ -29,7 +29,7 @@
 using namespace std;
 using namespace pug;
 
-BOOL RequiresAdmin(xml_node &document) {
+BOOL RequiresAdmin(xml_node document) {
   BOOL bReqAdmin = FALSE;
   xml_node xn = document.first_element_by_name(_T("*trustInfo"));
   if (!xn.empty()) {

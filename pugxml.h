@@ -3815,8 +3815,10 @@ public:
   //wrapper.</returns> <remarks>Pointer space may be grown, memory for
   //name/value members allocated.</remarks>
   xml_attribute append_attribute(const TCHAR *name, long value) {
-    if (!name)
-      return false;
+    if (!name) {
+      xml_attribute a;
+      return a;
+    }
     TCHAR temp[32] = {0};
     _stprintf(temp, _T("%ld"), value);
     return append_attribute(name, temp);
@@ -3829,7 +3831,7 @@ public:
   //name/value members allocated.</remarks>
   xml_attribute append_attribute(const TCHAR *name, double value) {
     if (!name)
-      return false;
+      return {};
     TCHAR temp[32] = {0};
     _stprintf(temp, _T("%lf"), value);
     return append_attribute(name, temp);
@@ -3842,7 +3844,7 @@ public:
   //name/value members allocated.</remarks>
   xml_attribute append_attribute(const TCHAR *name, bool value) {
     if (!name)
-      return false;
+      return {};
     return append_attribute(name, ((value) ? _T("true") : _T("false")));
   }
 
@@ -4332,7 +4334,7 @@ public:
       return os;
     unsigned int n = list.size();
     for (unsigned int i = 0; i < n; ++i)
-      os << list[i];
+      os << (void*)list[i];
     return os;
   }
 };
