@@ -61,7 +61,7 @@ static unsigned int _GetWinVer() {
     _osver |= 0x08000;
   return (_winmajor << 8) + _winminor;
 }
-unsigned int _winver = _GetWinVer();
+unsigned int _a_winver = _GetWinVer();
 #endif //_MSC_VER
 
 LANGID SetLocale(LANGID locale) {

@@ -29,23 +29,23 @@
 #if _MSC_VER >= 1500
 extern unsigned int _osplatform;
 extern unsigned int _osver;
-extern unsigned int _winver;
+extern unsigned int _a_winver;
 extern unsigned int _winmajor;
 extern unsigned int _winminor;
 #endif //_MSC_VER >= 1500
 
-#define IsWin2k (_winver == 0x500)
-#define IsVista (_winver == 0x600)
-#define IsVistapp (_winver >= 0x600)
-#define IsWin7 (_winver == 0x601)
-#define IsWin7pp (_winver >= 0x601)
-#define IsWin8 (_winver == 0x602)
-#define IsWin8pp (_winver >= 0x602)
-#define IsWin81 (_winver == 0x603)
-#define IsWin81pp (_winver >= 0x603)
-#define IsWin10 (_winver == 0xA00)
-#define IsWin10pp (_winver >= 0xA00)
-#define IsWin1709pp ((_winver >= 0xA00) && (_osver >= 16299))
+#define IsWin2k (_a_winver == 0x500)
+#define IsVista (_a_winver == 0x600)
+#define IsVistapp (_a_winver >= 0x600)
+#define IsWin7 (_a_winver == 0x601)
+#define IsWin7pp (_a_winver >= 0x601)
+#define IsWin8 (_a_winver == 0x602)
+#define IsWin8pp (_a_winver >= 0x602)
+#define IsWin81 (_a_winver == 0x603)
+#define IsWin81pp (_a_winver >= 0x603)
+#define IsWin10 (_a_winver == 0xA00)
+#define IsWin10pp (_a_winver >= 0xA00)
+#define IsWin1709pp ((_a_winver >= 0xA00) && (_osver >= 16299))
 
 LANGID SetLocale(LANGID locale);
 
