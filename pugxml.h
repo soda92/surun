@@ -2730,7 +2730,7 @@ public:
     return has_name(name.c_str());
   } // Node is named 'name'.
 #endif
-#endif _WIN64
+#endif //_WIN64
   bool has_attribute(const stdstring &name) {
     return has_attribute(name.c_str());
   } // Node has an attribute named 'name'.

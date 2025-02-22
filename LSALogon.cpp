@@ -67,7 +67,7 @@ typedef struct _TOKEN_LINKED_TOKEN {
   HANDLE LinkedToken;
 } TOKEN_LINKED_TOKEN, *PTOKEN_LINKED_TOKEN;
 
-#endif SYSTEM_MANDATORY_LABEL_NO_WRITE_UP
+#endif //SYSTEM_MANDATORY_LABEL_NO_WRITE_UP
 
 BOOL GetElevatedToken(HANDLE &hToken) {
   if (hToken == 0) {

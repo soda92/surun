@@ -12,7 +12,7 @@
 //////////////////////////////////////////////////////////////////////////////
 #ifdef _DEBUG
 // #define _DEBUGSETUP
-#endif _DEBUG
+#endif //_DEBUG
 
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
@@ -44,12 +44,12 @@
 #pragma comment(lib, "bin/Crypt32x64.lib")
 #else _WIN64
 #pragma comment(lib, "bin/Crypt32x86.lib")
-#endif _WIN64
+#endif //_WIN64
 
 #ifdef _DEBUG
 #include "LogonDlg.h"
 #include "WatchDog.h"
-#endif _DEBUG
+#endif //_DEBUG
 
 extern RUNDATA g_RunData;
 
@@ -101,7 +101,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
 //     DBGTrace("1 ok");
 //   TestLogonDlg();
 //   return 0;
-#endif _DEBUG
+#endif //_DEBUG
   switch (GetRegInt(HKLM, SURUNKEY, L"Language", 0)) {
   case 1:
     SetLocale(MAKELANGID(LANG_GERMAN, SUBLANG_GERMAN));
@@ -214,7 +214,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
         g_RunData.RetPtr = wcstoul(Args, 0, 16);
 #else _WIN64
         g_RunData.RetPtr = _wcstoui64(Args, 0, 16);
-#endif _WIN64
+#endif //_WIN64
         Args = PathGetArgs(Args);
         // If we run on a desktop we cannot switch from, bail out!
         HDESK d = OpenInputDesktop(0, 0, 0);

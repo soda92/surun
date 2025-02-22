@@ -47,8 +47,8 @@ extern DWORD g_nTimes;
     g_RunTimes[g_nTimes] = timeGetTime();                                      \
     g_RunTimeNames[g_nTimes++] = _TEXT(s);                                     \
   }
-#endif DoDBGTrace
-#endif SuRunEXT_EXPORTS
+#endif //DoDBGTrace
+#endif //SuRunEXT_EXPORTS
 extern TOKEN_STATISTICS g_AdminTStat;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -511,8 +511,8 @@ INT_PTR CALLBACK DialogProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     //         visible\t\t %d ms\r\n}",
     //           p->Msg,c1,timeGetTime()-g_RunTimes[0]));
     //       }
-    // #endif DoDBGTrace
-    // #endif SuRunEXT_EXPORTS
+    // #endif //DoDBGTrace
+    // #endif //SuRunEXT_EXPORTS
 
     SetDlgItemText(hwnd, IDC_PASSWORD, p->Password);
     SendDlgItemMessage(hwnd, IDC_PASSWORD, EM_SETPASSWORDCHAR, '*', 0);
@@ -890,4 +890,4 @@ BOOL TestLogonDlg() {
   return TRUE;
 }
 
-#endif _DEBUG
+#endif //_DEBUG

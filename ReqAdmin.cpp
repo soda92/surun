@@ -91,7 +91,7 @@ BOOL CALLBACK EnumResProc(HMODULE hExe, LPCTSTR rType, LPTSTR rName,
     free(m);
     InfoDBGTrace("RequiresAdmin: WideCharToMultiByte!");
   }
-#endif UNICODE
+#endif //UNICODE
   if (Manifest) {
     xml_parser xml; // Construct.
     if (xml.parse(Manifest))

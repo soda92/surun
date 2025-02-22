@@ -107,7 +107,7 @@ int FindSCClose(HMENU m)
 //}
 //#else DoDBGTrace
 //#define DBGOutMsg(m)
-//#endif DoDBGTrace
+//#endif //DoDBGTrace
 
 LRESULT CALLBACK ShellProc(int nCode, WPARAM wParam, LPARAM lParam)
 {

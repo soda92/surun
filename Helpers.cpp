@@ -2051,7 +2051,7 @@ HBITMAP GetMenuShieldIcon() {
   HMODULE hMod = GetModuleHandle(L"SuRunExt.dll");
 #else _SR32
   HMODULE hMod = GetModuleHandle(L"SuRunExt32.dll");
-#endif _SR32
+#endif //_SR32
   if (!ico)
     ico = (HICON)LoadImage(hMod, MAKEINTRESOURCE(IDI_SR_SHIELD), IMAGE_ICON, cx,
                            cy, LR_SHARED | LR_CREATEDIBSECTION);

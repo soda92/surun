@@ -13,7 +13,7 @@
 
 #ifdef _DEBUG
 #define _DEBUGSETUP
-#endif _DEBUG
+#endif //_DEBUG
 
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
@@ -2512,4 +2512,4 @@ BOOL TestSetup() {
   // return TRUE;
 }
 
-#endif _DEBUGSETUP
+#endif //_DEBUGSETUP

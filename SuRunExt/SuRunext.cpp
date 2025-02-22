@@ -52,13 +52,13 @@
 #ifdef DoDBGTrace
 #include <msi.h>
 #pragma comment(lib,"msi.lib")
-#endif DoDBGTrace
+#endif //DoDBGTrace
 
 #ifdef _WIN64
 #pragma comment(lib,"../bin/Crypt32x64.lib")
 #else _WIN64
 #pragma comment(lib,"../bin/Crypt32x86.lib")
-#endif _WIN64
+#endif //_WIN64
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -380,7 +380,7 @@ static UINT g_CF_ShellIdList=0;
 //  if(pefEtc)
 //    pefEtc->Release();
 // }
-#endif DoDBGTrace
+#endif //DoDBGTrace
 
 STDMETHODIMP CShellExt::Initialize(LPCITEMIDLIST pIDFolder, LPDATAOBJECT pDataObj, HKEY hRegKey)
 {
@@ -442,7 +442,7 @@ STDMETHODIMP CShellExt::Initialize(LPCITEMIDLIST pIDFolder, LPDATAOBJECT pDataOb
 //   }
 //   zero(m_ClickFolderName);
 //   zero(ClickCmdLine);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   //Non SuRunners don't need the Shell Extension!
   if ((!l_IsSuRunner)||GetHideFromUser(l_User))
     return NOERROR;
@@ -655,7 +655,7 @@ HRESULT ShellExtExecute(LPSHELLEXECUTEINFOW pei)
 //     (((pei->fMask&SEE_MASK_CLASSNAME)==SEE_MASK_CLASSNAME)&& (pei->lpClass))?pei->lpClass:L"(null)",
 //     pei->hkeyClass,
 //     pei->hProcess);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   //Admins don't need the ShellExec Hook!
   if (l_IsAdmin)
     return S_FALSE;
@@ -669,7 +669,7 @@ HRESULT ShellExtExecute(LPSHELLEXECUTEINFOW pei)
 //      pei->lpDirectory,pei->nShow,pei->hInstApp,pei->lpIDList,
 //      pei->lpClass,
 //      pei->hkeyClass,pei->dwHotKey,pei->hIcon,pei->hProcess);
-#endif DoDBGTrace
+#endif //DoDBGTrace
     return S_FALSE;
   }
   EnterCriticalSection(&l_SxHkCs);
@@ -715,7 +715,7 @@ HRESULT ShellExtExecute(LPSHELLEXECUTEINFOW pei)
 //      L"dir=%s, idlist=%X, class=%s, hkc=%X, hProc=%X",
 //      pei->fMask,pei->lpVerb,pei->lpFile,pei->lpParameters,pei->lpDirectory,
 //      pei->lpIDList,pei->lpClass,pei->hkeyClass,pei->hProcess);
-#endif DoDBGTrace
+#endif //DoDBGTrace
       return LeaveCriticalSection(&l_SxHkCs),S_FALSE;
     }
   }
@@ -989,7 +989,7 @@ __declspec(dllexport) void InstallShellExt()
 #ifdef DoDBGTrace
 //  SetRegStr(HKCR,L"*\\shellex\\ContextMenuHandlers\\SuRun",L"",sGUID);
 //   SetRegStr(HKCR,L"lnkfile\\shellex\\ContextMenuHandlers\\SuRun",L"",sGUID);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   //self Approval
   SetRegStr(HKLM,L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Approved",
             sGUID,L"SuRun Shell Extension");
@@ -1020,7 +1020,7 @@ __declspec(dllexport) void RemoveShellExt()
 #ifdef DoDBGTrace
   DelRegKey(HKEY_CLASSES_ROOT,L"*\\shellex\\ContextMenuHandlers\\SuRun");
   DelRegKey(HKCR,L"lnkfile\\shellex\\ContextMenuHandlers\\SuRun");
-#endif DoDBGTrace
+#endif //DoDBGTrace
   //ShellExecuteHook
   RegDelVal(HKLM,L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\ShellExecuteHooks",sGUID);
   //self Approval
@@ -1082,7 +1082,7 @@ DWORD WINAPI InitProc(void* p)
           SR_PathQuoteSpacesW(fNoHook);
           l_bSetHook=_tcsicmp(fMod,fNoHook)==0;
         }
-#endif _TEST_STABILITY
+#endif //_TEST_STABILITY
         //Do not set hooks into blacklisted files!
         l_bSetHook=l_bSetHook && (!IsInBlackList(fMod));
         //      DBGTrace3("SuRunExt: %s Hook=%d [%s]",fMod,l_bSetHook,GetCommandLine());

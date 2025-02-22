@@ -59,14 +59,14 @@ private:
 /////////////////////////////////////////////////////////////////////////////
 #ifdef DoDBGTrace
 extern RUNDATA g_RunData;
-#endif DoDBGTrace
+#endif //DoDBGTrace
 
 CWDMsgWnd::CWDMsgWnd(LPCTSTR Text, int IconId) {
 #ifdef DoDBGTrace
 //  GetWinStaName(g_RunData.WinSta,countof(g_RunData.WinSta));
 //  GetDesktopName(g_RunData.Desk,countof(g_RunData.Desk));
 //  DBGTrace2("CWDMsgWnd() on %s\\%s",g_RunData.WinSta,g_RunData.Desk);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   m_Clicked = FALSE;
   LoadLibrary(_T("Shell32.dll")); // Load Shell Window Classes
   m_Icon = (HICON)LoadImage(GetModuleHandle(0), MAKEINTRESOURCE(IconId),
@@ -235,7 +235,7 @@ static bool ProcessRunning(DWORD PID) {
 #ifdef DoDBGTrace
   if (WaitRes != WAIT_TIMEOUT)
     DBGTrace1("ProcessRunning failed: Wait result==%08X", WaitRes);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   return WaitRes == WAIT_TIMEOUT;
 }
 

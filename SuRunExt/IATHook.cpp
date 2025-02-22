@@ -44,7 +44,7 @@ BOOL g_IATInit = FALSE;
 #define DLLNAME "SuRunExt32"
 #else _SR32
 #define DLLNAME "SuRunExt"
-#endif _SR32
+#endif //_SR32
 
 // Function Prototypes:
 typedef HMODULE(WINAPI *lpLoadLibraryA)(LPCSTR);
@@ -289,7 +289,7 @@ static CHookDescriptor *need_hdt[] = {
 #ifdef _TEST_STABILITY
     &hkCrPAUA,
     &hkCrPAUW,
-#endif _TEST_STABILITY
+#endif //_TEST_STABILITY
 };
 
 // Functions that will be hooked
@@ -313,7 +313,7 @@ static CHookDescriptor *hdt[] = {
     &hkGetPAdr,
     &hkCrPAUA,
     &hkCrPAUW,
-#endif _TEST_STABILITY
+#endif //_TEST_STABILITY
 };
 
 static CHookDescriptor *sys_need_hdt[] = {
@@ -326,7 +326,7 @@ static CHookDescriptor *sys_need_hdt[] = {
 //    &hkShExA,
 //    &hkShExW,
 // END TEMP!!!
-#endif _TEST_STABILITY
+#endif //_TEST_STABILITY
 };
 
 static CHookDescriptor *sys_hdt[] = {
@@ -340,7 +340,7 @@ static CHookDescriptor *sys_hdt[] = {
 //    &hkShExA,
 //    &hkShExW,
 // END TEMP!!!
-#endif _TEST_STABILITY
+#endif //_TEST_STABILITY
 };
 
 // relative pointers in PE images
@@ -439,7 +439,7 @@ DWORD HookIAT(char *fMod, HMODULE hMod, PIMAGE_IMPORT_DESCRIPTOR pID) {
 //    SR_PathStripPathA(p);
 //  }
 //  TRACExA("%s: %sHookIAT(%s[%x])\n",(bUnHook?"Un":""),DLLNAME,fmod,hMod);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   for (; pID->Name; pID++) {
     char *DllName = RelPtr(char *, hMod, pID->Name);
     if (DoHookDll(DllName, fMod)) {
@@ -469,7 +469,7 @@ DWORD HookIAT(char *fMod, HMODULE hMod, PIMAGE_IMPORT_DESCRIPTOR pID) {
 //                  TRACExA("%s: %sHookFunc(%s):%s,%s (%x->%x) newProt:%x;
 //                  oldProt:%x\n",DLLNAME,
 //                    (bUnHook?"Un":""),fmod,DllName,pBN->Name,pThunk->u1.Function,newFunc,PAGE_EXECUTE_WRITECOPY,oldProt);
-#endif DoDBGTrace
+#endif //DoDBGTrace
                 InterlockedExchangePointer((VOID **)&pThunk->u1.Function,
                                            newFunc);
                 VirtualProtect(&pThunk->u1.Function,
@@ -518,7 +518,7 @@ DWORD Hook(HMODULE hMod) {
 #else _WIN64
   if (pNTH->FileHeader.Machine != IMAGE_FILE_MACHINE_I386)
     return 0;
-#endif _WIN64
+#endif //_WIN64
   if (pNTH->FileHeader.SizeOfOptionalHeader != sizeof(IMAGE_OPTIONAL_HEADER))
     return 0;
   // parse IAT
@@ -732,7 +732,7 @@ BOOL WINAPI CreateProcA(LPCSTR lpApplicationName, LPSTR lpCommandLine,
 #ifdef DoDBGTrace
 //   TRACExA("%s: call to
 //   CreateProcA(%s,%s)",DLLNAME,lpApplicationName,lpCommandLine);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   DWORD tas = RETVAL_SX_NOTINLIST;
   if ((!l_IsAdmin) && l_IsSuRunner)
     tas = TestAutoSuRunA(lpApplicationName, lpCommandLine, lpCurrentDirectory,
@@ -757,7 +757,7 @@ BOOL WINAPI CreateProcW(LPCWSTR lpApplicationName, LPWSTR lpCommandLine,
 #ifdef DoDBGTrace
 //   TRACEx(L"%s: call to
 //   CreateProcW(%s,%s)",_T(DLLNAME),lpApplicationName,lpCommandLine);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   DWORD tas = RETVAL_SX_NOTINLIST;
   if ((!l_IsAdmin) && l_IsSuRunner)
     tas = TestAutoSuRunW(lpApplicationName, lpCommandLine, lpCurrentDirectory,
@@ -777,7 +777,7 @@ extern HRESULT ShellExtExecute(LPSHELLEXECUTEINFOW pei); // SuRunExt.cpp
 BOOL WINAPI ShellExExW(LPSHELLEXECUTEINFOW pei) {
 #ifdef DoDBGTrace
 //  TRACExA("%s: call to ShellExExW()",DLLNAME);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   HINSTANCE hInstApp = pei->hInstApp;
   HANDLE hProcess = pei->hProcess;
   if (S_OK == ShellExtExecute(pei))
@@ -790,7 +790,7 @@ BOOL WINAPI ShellExExW(LPSHELLEXECUTEINFOW pei) {
 BOOL WINAPI ShellExExA(LPSHELLEXECUTEINFOA peiA) {
 #ifdef DoDBGTrace
 //   TRACExA("%s: call to ShellExExA()",DLLNAME);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   if (peiA) {
     SHELLEXECUTEINFOW pei;
     pei.cbSize = sizeof(SHELLEXECUTEINFOW);
@@ -839,7 +839,7 @@ HINSTANCE WINAPI ShellExA(HWND hwnd, LPCSTR lpOperation, LPCSTR lpFile,
                           INT nShowCmd) {
 #ifdef DoDBGTrace
 //   TRACExA("%s: call to ShellExA()",DLLNAME);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   {
     SHELLEXECUTEINFOW pei;
     pei.cbSize = sizeof(SHELLEXECUTEINFOW);
@@ -881,7 +881,7 @@ HINSTANCE WINAPI ShellExW(HWND hwnd, LPCWSTR lpOperation, LPCWSTR lpFile,
                           INT nShowCmd) {
 #ifdef DoDBGTrace
 //   TRACExA("%s: call to ShellExW()",DLLNAME);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   {
     SHELLEXECUTEINFOW pei;
     pei.cbSize = sizeof(SHELLEXECUTEINFOW);
@@ -948,7 +948,7 @@ BOOL WINAPI CreatePAUA(HANDLE hToken, LPCSTR lpApplicationName,
 #ifdef DoDBGTrace
 //  TRACExA("%s: call to
 //  CreatePAUA(%s,%s)",DLLNAME,lpApplicationName,lpCommandLine);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   if (IsShellAndSuRunner(hToken)) {
     DWORD tas =
         TestAutoSuRunA(lpApplicationName, lpCommandLine, lpCurrentDirectory,
@@ -975,7 +975,7 @@ BOOL WINAPI CreatePAUW(HANDLE hToken, LPCWSTR lpApplicationName,
 #ifdef DoDBGTrace
 //  TRACEx(L"%s: call to
 //  CreatePAUW(%s,%s)",_T(DLLNAME),lpApplicationName,lpCommandLine);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   // ToDo: *original function may call CreateProcess. SuRun must not ask twice!
   if (IsShellAndSuRunner(hToken)) {
     DWORD tas =
@@ -1003,7 +1003,7 @@ FARPROC WINAPI GetProcAddr(HMODULE hModule, LPCSTR lpProcName) {
       if (p)
         TRACExA("%s: intercepting call to GetProcAddr(%s,%s)", DLLNAME, f,
                 lpProcName);
-#endif DoDBGTrace
+#endif //DoDBGTrace
       SetLastError(NOERROR);
     }
   }
@@ -1015,7 +1015,7 @@ FARPROC WINAPI GetProcAddr(HMODULE hModule, LPCSTR lpProcName) {
 //    SR_PathStripPathA(f);
 //    TRACExA("%s: call to GetProcAddr(%s,0x%x)",DLLNAME,f,lpProcName);
 //  }
-#endif DoDBGTrace
+#endif //DoDBGTrace
   if (!p)
     p = ((lpGetProcAddress)hkGetPAdr.OrgFunc())(hModule, lpProcName);
   return p;
@@ -1024,7 +1024,7 @@ FARPROC WINAPI GetProcAddr(HMODULE hModule, LPCSTR lpProcName) {
 HMODULE WINAPI LoadLibA(LPCSTR lpLibFileName) {
 #ifdef DoDBGTrace
 //    TRACExA("%s: call to LoadLibA(%s)",DLLNAME,lpLibFileName);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   if (g_IATInit) {
     DWORD dwe = GetLastError();
     EnterCriticalSection(&g_HookCs);
@@ -1050,7 +1050,7 @@ HMODULE WINAPI LoadLibA(LPCSTR lpLibFileName) {
 HMODULE WINAPI LoadLibW(LPCWSTR lpLibFileName) {
 #ifdef DoDBGTrace
 //    TRACEx(L"%s: call to LoadLibW(%s)",_T(DLLNAME),lpLibFileName);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   if (g_IATInit) {
     EnterCriticalSection(&g_HookCs);
     DWORD dwe = GetLastError();
@@ -1076,7 +1076,7 @@ HMODULE WINAPI LoadLibW(LPCWSTR lpLibFileName) {
 HMODULE WINAPI LoadLibExA(LPCSTR lpLibFileName, HANDLE hFile, DWORD dwFlags) {
 #ifdef DoDBGTrace
 //    TRACExA("%s: call to LoadLibExA(%s)",DLLNAME,lpLibFileName);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   if (g_IATInit) {
     EnterCriticalSection(&g_HookCs);
     DWORD dwe = GetLastError();
@@ -1104,7 +1104,7 @@ HMODULE WINAPI LoadLibExA(LPCSTR lpLibFileName, HANDLE hFile, DWORD dwFlags) {
 HMODULE WINAPI LoadLibExW(LPCWSTR lpLibFileName, HANDLE hFile, DWORD dwFlags) {
 #ifdef DoDBGTrace
 //    TRACEx(L"%s: call to LoadLibExW(%s)",_T(DLLNAME),lpLibFileName);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   if (g_IATInit) {
     EnterCriticalSection(&g_HookCs);
     DWORD dwe = GetLastError();
@@ -1132,7 +1132,7 @@ HMODULE WINAPI LoadLibExW(LPCWSTR lpLibFileName, HANDLE hFile, DWORD dwFlags) {
 BOOL WINAPI FreeLib(HMODULE hLibModule) {
 #ifdef DoDBGTrace
 //    TRACExA("%s: call to FreeLib()",DLLNAME);
-#endif DoDBGTrace
+#endif //DoDBGTrace
   // The DLL must not be unloaded while the process is running!
   if (hLibModule == l_hInst) {
     if (g_IATInit) {
@@ -1161,7 +1161,7 @@ VOID WINAPI FreeLibAndExitThread(HMODULE hLibModule, DWORD dwExitCode) {
 BOOL WINAPI SwitchDesk(HDESK Desk) {
 #ifdef DoDBGTrace
 //  DBGTrace1("%s: call to SwitchDesk()",_T(DLLNAME));
-#endif DoDBGTrace
+#endif //DoDBGTrace
   if ((!l_IsAdmin) && (!IsLocalSystem())) {
     HDESK d = OpenInputDesktop(0, 0, 0);
     if (!d) {

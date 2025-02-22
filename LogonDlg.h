@@ -48,4 +48,4 @@ bool SavedPasswordOk(DWORD SessionId, LPTSTR RunAsUser, LPTSTR UserName);
 
 #ifdef _DEBUG
 BOOL TestLogonDlg();
-#endif _DEBUG
+#endif //_DEBUG

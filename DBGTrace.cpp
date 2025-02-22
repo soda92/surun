@@ -306,7 +306,7 @@ void WriteLog(LPTSTR S, ...) {
   }
 #else UNICODE
   WriteLogA(S);
-#endif UNICODE
+#endif //UNICODE
 }
 
 // #pragma pack(push,1)

@@ -68,8 +68,8 @@
 #pragma comment(lib, "SuRunExt/ReleaseUsr32/SuRunExt32.lib")
 #else _SR32
 #pragma comment(lib, "SuRunExt/ReleaseU/SuRunExt.lib")
-#endif _SR32
-#endif _WIN64
+#endif //_SR32
+#endif //_WIN64
 
 #else _DEBUG
 
@@ -80,17 +80,17 @@
 #pragma comment(lib, "SuRunExt/DebugUsr32/SuRunExt32.lib")
 #else _SR32
 #pragma comment(lib, "SuRunExt/DebugU/SuRunExt.lib")
-#endif _SR32
-#endif _WIN64
+#endif //_SR32
+#endif //_WIN64
 
-#endif _DEBUG
+#endif //_DEBUG
 
 // #ifdef DoDBGTrace
 // DWORD g_RunTimes[16]={0};
 // LPCTSTR g_RunTimeNames[16]={0};
 // DWORD g_nTimes=0;
 // #define AddTime(s) { g_RunTimes[g_nTimes]=timeGetTime();
-// g_RunTimeNames[g_nTimes++]=_TEXT(s); } #endif DoDBGTrace
+// g_RunTimeNames[g_nTimes++]=_TEXT(s); } #endif //DoDBGTrace
 //////////////////////////////////////////////////////////////////////////////
 //
 //  Globals
@@ -238,7 +238,7 @@ void ShowFUSGUI() {
                          (!(g_RunData.Groups & IS_TERMINAL_USER)) &
                              GetFadeDesk))
     return;
-#endif _DEBUG
+#endif //_DEBUG
   USERLIST ul;
   ul.Add(g_RunData.UserName);
   {
@@ -279,7 +279,7 @@ void ShowFUSGUI() {
   ul.Add(L"Nikki2");
   ul.Add(L"GastNutzer2");
   ul.Add(L"SuperUser2");
-#endif _DEBUG
+#endif //_DEBUG
   if (ul.GetCount()) {
     ul.LoadUserBitmaps();
     int dx = ul.GetCount();
@@ -296,7 +296,7 @@ void ShowFUSGUI() {
   }
 #ifndef _DEBUG
   DeleteSafeDesktop(false);
-#endif _DEBUG
+#endif //_DEBUG
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -1109,7 +1109,7 @@ LPCTSTR BeautifyCmdLine(LPTSTR cmd) {
 DWORD PrepareSuRun() {
   // #ifdef DoDBGTrace
   //   AddTime("PrepareSuRun start")
-  // #endif DoDBGTrace
+  // #endif //DoDBGTrace
   zero(g_RunPwd);
   if ((!g_CliIsInSuRunners) && GetNoConvUser) {
     DBGTrace1("PrepareSuRun EXIT: User %s is no SuRunner, no auto convert",
@@ -1143,7 +1143,7 @@ DWORD PrepareSuRun() {
   // Get real groups for the user: (Not just the groups from the Client Token)
   // #ifdef DoDBGTrace
   //   AddTime("IsInSuRunnersOrAdmins start")
-  // #endif DoDBGTrace
+  // #endif //DoDBGTrace
   g_RunData.Groups =
       IsInSuRunnersOrAdmins(g_RunData.UserName, g_RunData.SessionID);
   if (HideSuRun(g_RunData.UserName, g_RunData.Groups)) {
@@ -1155,7 +1155,7 @@ DWORD PrepareSuRun() {
   bool bFadeDesk = (!(g_RunData.Groups & IS_TERMINAL_USER)) && GetFadeDesk;
   // #ifdef DoDBGTrace
   //   AddTime("CreateSafeDesktop start")
-  // #endif DoDBGTrace
+  // #endif //DoDBGTrace
   if (!CreateSafeDesktop(g_RunData.WinSta, g_RunData.Desk, GetBlurDesk,
                          bFadeDesk)) {
     DBGTrace("PrepareSuRun EXIT: CreateSafeDesktop failed");
@@ -1163,7 +1163,7 @@ DWORD PrepareSuRun() {
   }
   // #ifdef DoDBGTrace
   //   AddTime("CreateSafeDesktop done")
-  // #endif DoDBGTrace
+  // #endif //DoDBGTrace
   __try {
     // safe desktop created...
     if ((!g_CliIsInSuRunners) &&
@@ -1710,7 +1710,7 @@ void SuRun() {
   // #ifdef DoDBGTrace
   //   g_nTimes++;
   //   AddTime("Client to service comm.")
-  // #endif DoDBGTrace
+  // #endif //DoDBGTrace
   // This is called from a separate process created by the service
   if (!IsLocalSystem()) {
     DBGTrace("FATAL: SuRun() not running as SYSTEM; EXIT!");
@@ -2060,8 +2060,8 @@ void InstallRegistry() {
 #ifdef _WIN64
   SetRegInt(HKLM, AppInit32, _T("LoadAppInit_DLLs"), 1);
   AddAppInit(AppInit32, _T("SuRunExt32.dll"));
-#endif _WIN64
-#endif _TEST_STABILITY
+#endif //_WIN64
+#endif //_TEST_STABILITY
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -2074,7 +2074,7 @@ void RemoveRegistry() {
   RemoveAppInit(AppInit, _T("SuRunExt.dll"));
 #ifdef _WIN64
   RemoveAppInit(AppInit32, _T("SuRunExt32.dll"));
-#endif _WIN64
+#endif //_WIN64
   if (!g_bKeepRegistry) {
     InstLog(CResStr(IDS_REMASSOC));
     // exefile
@@ -2248,7 +2248,7 @@ BOOL DeleteService(BOOL bJustStop = FALSE) {
   GetSystemWindowsDirectory(File, 4096);
   PathAppend(File, _T("SuRunExt32.dll"));
   DelFile(File);
-#endif _WIN64
+#endif //_WIN64
   // Start Menu
   TCHAR file[4096];
   GetRegStr(HKLM,
@@ -2332,7 +2332,7 @@ BOOL InstallService() {
 #ifdef _WIN64
   CopyToWinDir(_T("SuRun32.bin"));
   CopyToWinDir(_T("SuRunExt32.dll"));
-#endif _WIN64
+#endif //_WIN64
   InstLog(CResStr(IDS_INSTSVC));
   TCHAR SvcFile[4096];
   GetSystemWindowsDirectory(SvcFile, 4096);
@@ -2668,7 +2668,7 @@ static void HandleHooks() {
   CreateMutex(NULL, true, _T("SuRun64_SysMenuHookIsRunning"));
 #else _WIN64
   CreateMutex(NULL, true, _T("SuRun_SysMenuHookIsRunning"));
-#endif _WIN64
+#endif //_WIN64
   if (GetLastError() == ERROR_ALREADY_EXISTS)
     return;
   g_RunData.CliProcessId = GetCurrentProcessId();
@@ -2702,7 +2702,7 @@ static void HandleHooks() {
       CloseHandle(pi.hThread);
     }
   }
-#endif _WIN64
+#endif //_WIN64
   // DWORD HkTID=0;
   // HANDLE hHkThread=CreateThread(0,0,HKThreadProc,0,0,&HkTID);
   CTimeOut t;
@@ -2715,7 +2715,7 @@ static void HandleHooks() {
   BOOL bAdmin = g_CliIsInAdmins;
 #ifndef _SR32
   InitTrayShowAdmin();
-#endif _SR32
+#endif //_SR32
   for (;;) {
     if (WaitForSingleObject(hEvent, 0) == WAIT_OBJECT_0) {
       ResetEvent(hEvent);
@@ -2754,7 +2754,7 @@ static void HandleHooks() {
 #else _SR32
     Sleep(1000);
   }
-#endif _SR32
+#endif //_SR32
   UninstallSysMenuHook();
   //  if(WaitForSingleObject(hHkThread,0)==WAIT_TIMEOUT)
   //    PostThreadMessage(HkTID,WM_QUIT,0,0);
@@ -2884,7 +2884,7 @@ bool HandleServiceStuff() {
         ;
     }
   }
-#endif _DEBUG
+#endif //_DEBUG
   // In the first three Minutes after Sytstem start:
   // Wait for the service to start
   DWORD ss = CheckServiceStatus();

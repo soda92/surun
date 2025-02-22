@@ -142,7 +142,7 @@ typedef enum _TOKEN_ELEVATION_TYPE {
   TokenElevationTypeLimited,
 } TOKEN_ELEVATION_TYPE,
     *PTOKEN_ELEVATION_TYPE;
-#endif SYSTEM_MANDATORY_LABEL_NO_WRITE_UP
+#endif //SYSTEM_MANDATORY_LABEL_NO_WRITE_UP
 
 bool IsInAdminGroup(HANDLE hToken) {
   bool bRet = false;
