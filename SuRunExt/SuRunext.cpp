@@ -468,7 +468,7 @@ STDMETHODIMP CShellExt::Initialize(LPCITEMIDLIST pIDFolder, LPDATAOBJECT pDataOb
     if(g_CF_ShellIdList==0)
       g_CF_ShellIdList=RegisterClipboardFormat(CFSTR_SHELLIDLIST);
     FORMATETC fe = {CF_HDROP, NULL, DVASPECT_CONTENT, -1, TYMED_HGLOBAL};
-    FORMATETC fe1= {g_CF_ShellIdList, NULL, DVASPECT_CONTENT, -1, TYMED_HGLOBAL};
+    FORMATETC fe1= {static_cast<CLIPFORMAT>(g_CF_ShellIdList), NULL, DVASPECT_CONTENT, -1, TYMED_HGLOBAL};
     STGMEDIUM m;
     if ((SUCCEEDED(pDataObj->GetData(&fe,&m)))
       &&(DragQueryFile((HDROP)m.hGlobal,(UINT)-1,NULL,0)==1)) 
@@ -524,7 +524,7 @@ STDMETHODIMP CShellExt::QueryContextMenu(HMENU hMenu, UINT indexMenu, UINT idCmd
         {
           //right click target is folder background
           InsertMenu(hMenu, indexMenu++, MF_SEPARATOR|MF_BYPOSITION, NULL, NULL);
-          MENUITEMINFO mi={(UINT)sizeof(MENUITEMINFO),(l_Shield?MIIM_BITMAP:0)|MIIM_ID|MIIM_STRING,0,MFS_ENABLED,id++,0,0,0,0,s,(UINT)_tcslen(s),l_Shield};
+          MENUITEMINFO mi={(UINT)sizeof(MENUITEMINFO),static_cast<UINT>((l_Shield?MIIM_BITMAP:0)|MIIM_ID|MIIM_STRING),0,MFS_ENABLED,id++,0,0,0,0,s,(UINT)_tcslen(s),l_Shield};
           InsertMenuItem(hMenu,indexMenu++,TRUE,&mi);
           InsertMenu(hMenu, indexMenu++, MF_SEPARATOR|MF_BYPOSITION, NULL, NULL);
         }
