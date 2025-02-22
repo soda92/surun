@@ -156,7 +156,7 @@ int _stringLenInBytes(const LPWSTR s) {
 }
 
 void _initUnicodeString(UNICODE_STRING *target, LPWSTR source, USHORT cbMax) {
-  target->Length = max(sizeof *source, cbMax) - sizeof *source;
+  target->Length = max(sizeof (*source), cbMax) - sizeof *source;
   target->MaximumLength = cbMax;
   target->Buffer = source;
 }
