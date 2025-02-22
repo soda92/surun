@@ -1,3 +1,4 @@
+#include <windows.h>
 // pugxml.h
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -40,7 +41,9 @@ using std::max;
 #endif
 
 #define stdstring std::basic_string<TCHAR>
-
+#define PUGAPI_VARIANT 0x58475550
+#define PUGAPI_VERSION_MAJOR 1
+#define PUGAPI_VERSION_MINOR 2
 //<summary>
 //	Library variant ID. The ID 0x58475550 is owned by Kristen Wegner. You
 //*MUST* 	provide your own unique ID if you modify or fork the code in this
@@ -480,7 +483,7 @@ int strcmpwild_impl(const TCHAR *src, const TCHAR *dst); // Forward declaration.
 //<param name="lhs">String or expression for left-hand side of
 //comparison.</param> <param name="rhs">String for right-hand side of
 //comparison.</param> <remarks>Used by 'strcmpwild'.</remarks>
-int strcmpwild_astr(const TCHAR **src, const TCHAR **dst) {
+inline int strcmpwild_astr(const TCHAR **src, const TCHAR **dst) {
   int find = 1;
   ++(*src);
   while ((**dst != 0 && **src == _T('?')) || **src == _T('*')) {
@@ -513,7 +516,7 @@ int strcmpwild_astr(const TCHAR **src, const TCHAR **dst) {
 //<param name="lhs">String or expression for left-hand side of
 //comparison.</param> <param name="rhs">String for right-hand side of
 //comparison.</param> <remarks>Used by 'strcmpwild'.</remarks>
-int strcmpwild_impl(const TCHAR *src, const TCHAR *dst) {
+inline int strcmpwild_impl(const TCHAR *src, const TCHAR *dst) {
   int find = 1;
   for (; *src != 0 && find == 1 && *dst != 0; ++src) {
     switch (*src) {
@@ -2171,6 +2174,7 @@ public:
               ? true
               : false; // Return true if matches above, else false.
     }
+    return false;
   }
   //<summary>Set attribute to stdstring.</summary>
   //<param name="rhs">Value stdstring to set.</param>

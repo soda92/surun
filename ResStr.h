@@ -17,6 +17,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 #pragma once
+#include <windows.h>
 #pragma warning(disable : 4996)
 
 template <const int _S> class CResourceString {

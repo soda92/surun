@@ -12,7 +12,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #pragma once
-
+#include <windows.h>
 #include "IsAdmin.h"
 #include "SuRunExt/SuRunExt.h"
 #include "UserGroups.h"
