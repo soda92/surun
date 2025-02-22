@@ -34,7 +34,8 @@
 #include "lsa_laar.h"
 #include "resource.h"
 #include <algorithm>
-using std::min, std::max;
+using std::min;
+using std::max;
 
 
 #pragma comment(lib, "ShlWapi.lib")

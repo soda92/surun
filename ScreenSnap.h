@@ -26,7 +26,8 @@
 #include <TCHAR.h>
 #include <WINDOWS.h>
 #include <algorithm>
-using std::min, std::max;
+using std::min;
+using std::max;
 // Simplified 3x3 Gausian blur
 inline void Blur(COLORREF *pDst, COLORREF *pSrc, DWORD w, DWORD h) {
   CTimeLog l(_T("Blur %dx%d"), w, h);
