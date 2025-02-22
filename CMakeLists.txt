@@ -25,4 +25,8 @@ set(SOURCES "DBGTrace.cpp"
 add_definitions(-D_UNICODE -DUNICODE -DWIN32 -D_WINDOWS)
 # include_directories(C:/TDM-GCC-64/x86_64-w64-mingw32/include C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32)
 add_executable(aaa ${SOURCES})
-target_link_libraries(aaa PRIVATE winmm.lib Psapi.lib Netapi32.lib Shlwapi.lib)
+target_link_libraries(aaa PRIVATE winmm.lib Psapi.lib Netapi32.lib 
+Shlwapi.lib Secur32.lib Mpr.lib Userenv.lib advapi32.lib 
+ole32.lib shell32.lib version.lib comctl32.lib kernel32.lib
+rpcrt4.lib msi.lib crypt32.lib)
+# SuRunExt/ReleaseUx64/SuRunExt.lib)
