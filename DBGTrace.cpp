@@ -15,13 +15,11 @@
 #include <TCHAR.h>
 #include <windows.h>
 
-
 #include <stdarg.h>
 #include <stdio.h>
 
-
-#include <lmerr.h>
 #include "DBGTrace.h"
+#include <lmerr.h>
 
 #pragma warning(disable : 4996)
 

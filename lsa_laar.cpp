@@ -19,11 +19,10 @@
 #define _WIN32_WINNT 0x500
 #define WINVER 0x500
 
-#include <windows.h>
 #include "lsa_laar.h"
 #include <TCHAR.h>
 #include <ntsecapi.h>
-
+#include <windows.h>
 
 #pragma warning(disable : 4996)
 

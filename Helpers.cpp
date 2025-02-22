@@ -12,7 +12,7 @@
 //////////////////////////////////////////////////////////////////////////////
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
-#include <windows.h>
+#include "DynWTSAPI.h"
 #include <Aclapi.h>
 #include <MMSYSTEM.H>
 #include <SHLWAPI.H>
@@ -22,8 +22,7 @@
 #include <Tlhelp32.h>
 #include <lm.h>
 #include <tchar.h>
-#include "DynWTSAPI.h"
-
+#include <windows.h>
 
 #include "DBGTRace.h"
 #include "Helpers.h"
@@ -33,7 +32,6 @@
 #include "UserGroups.h"
 #include "lsa_laar.h"
 #include "resource.h"
-
 
 #pragma comment(lib, "ShlWapi.lib")
 #pragma comment(lib, "advapi32.lib")

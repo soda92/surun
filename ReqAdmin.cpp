@@ -1,19 +1,25 @@
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
-#include <windows.h>
-#include <tchar.h>
-#include <shlwapi.h>
 #include "DBGTrace.h"
 #include "Setup.h"
+#include <shlwapi.h>
+#include <tchar.h>
+#include <windows.h>
 
 #pragma comment(lib, "shlwapi.lib")
 
 #define InfoDBGTrace(msg)                                                      \
-  { (void)0; }
+  {                                                                            \
+    (void)0;                                                                   \
+  }
 #define InfoDBGTrace1(msg, d1)                                                 \
-  { (void)0; }
+  {                                                                            \
+    (void)0;                                                                   \
+  }
 #define InfoDBGTrace2(msg, d1, d2)                                             \
-  { (void)0; }
+  {                                                                            \
+    (void)0;                                                                   \
+  }
 
 // Define this in any implementation, before "pugxml.h", to be notified of API
 // campatibility.

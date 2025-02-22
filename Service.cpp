@@ -22,7 +22,6 @@
 
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
-#include <windows.h>
 #include <Aclapi.h>
 #include <Psapi.h>
 #include <Sddl.h>
@@ -32,8 +31,8 @@
 #include <ntsecapi.h>
 #include <stdio.h>
 #include <tchar.h>
+#include <windows.h>
 
-#include "Service.h"
 #include "CmdLine.h"
 #include "DBGTrace.h"
 #include "DynWTSAPI.h"
@@ -45,6 +44,7 @@
 #include "ReqAdmin.h"
 #include "ResStr.h"
 #include "Resource.h"
+#include "Service.h"
 #include "Setup.h"
 #include "SuRunExt/SuRunExt.h"
 #include "SuRunExt/SysMenuHook.h"
@@ -52,8 +52,6 @@
 #include "UserGroups.h"
 #include "WatchDog.h"
 #include "WinStaDesk.h"
-
-
 
 #pragma comment(lib, "Userenv.lib")
 #pragma comment(lib, "AdvApi32.lib")
@@ -1076,8 +1074,8 @@ LPCTSTR BeautifyCmdLine(LPTSTR cmd) {
       {IDS_SHNAME6, _T("::{D20EA4E1-3957-11d2-A40B-0C5020524152}")}, //"Fonts"
       {IDS_SHNAME7,
        _T("::{D20EA4E1-3957-11d2-A40B-0C5020524153}")}, //"Administrative Tools"
-      {IDS_SHNAME8,
-       _T("::{450D8FBA-AD25-11D0-98A8-0800361B1103}")} //"My Documents"
+      {IDS_SHNAME8, _T("::{450D8FBA-AD25-11D0-98A8-0800361B1103}")}
+      //"My Documents"
   };
   static TCHAR c1[4096];
   zero(c1);

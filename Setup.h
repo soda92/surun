@@ -20,7 +20,6 @@
 #include "resstr.h"
 #include <tchar.h>
 
-
 #define WATCHDOG_EVENT_NAME _T("SURUN_WATCHDOG_EVENT")
 
 //////////////////////////////////////////////////////////////////////////////
@@ -394,7 +393,7 @@ void UpdLastRunTime(LPTSTR UserName);
 #define FLAG_AUTOCANCEL 0x08 // SuRun will always answer "cancel"
 #define FLAG_CANCEL_SX 0x10  // SuRun will answer "cancel" on ShellExec
 #define FLAG_NEVERASK 0x20   // Never ask for password, even after password
-                           // timeout
+                             // timeout
 
 BOOL IsInWhiteList(LPCTSTR User, LPCTSTR CmdLine, DWORD Flag);
 DWORD GetCommonWhiteListFlags(LPCTSTR User, LPCTSTR CmdLine, DWORD Default);

@@ -14,13 +14,12 @@
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
 
-#include <windows.h>
 #include <Psapi.h>
+#include <windows.h>
 
 #include <algorithm>
 #include <iterator>
 #include <list>
-
 
 #include "../DBGTrace.h"
 #include "../IsAdmin.h"
@@ -28,7 +27,6 @@
 #include "../Setup.h"
 #include "../UserGroups.h"
 #include "../helpers.h"
-
 
 #pragma comment(lib, "PSAPI.lib")
 
@@ -511,7 +509,7 @@ DWORD Hook(HMODULE hMod) {
   if (IsBadReadPtr(pNTH, sizeof(IMAGE_NT_HEADERS)) ||
       (pNTH->Signature != IMAGE_NT_SIGNATURE))
     return 0;
-    // the right header?
+  // the right header?
 #ifdef _WIN64
   if (pNTH->FileHeader.Machine != IMAGE_FILE_MACHINE_AMD64)
     return 0;

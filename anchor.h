@@ -16,41 +16,40 @@
  *  parent window or can be docked to all edges and fill it.
  */
 
-#define ANCHOR_TOP          0x0001
-#define ANCHOR_LEFT         0x0002
-#define ANCHOR_RIGHT        0x0004
-#define ANCHOR_BOTTOM       0x0008
-#define ANCHOR_TOPLEFT      0x0003
-#define ANCHOR_TOPRIGHT     0x0005
-#define ANCHOR_BOTTOMLEFT   0x000a
-#define ANCHOR_BOTTOMRIGHT  0x000c
-#define ANCHOR_ALL          0x000f
+#define ANCHOR_TOP 0x0001
+#define ANCHOR_LEFT 0x0002
+#define ANCHOR_RIGHT 0x0004
+#define ANCHOR_BOTTOM 0x0008
+#define ANCHOR_TOPLEFT 0x0003
+#define ANCHOR_TOPRIGHT 0x0005
+#define ANCHOR_BOTTOMLEFT 0x000a
+#define ANCHOR_BOTTOMRIGHT 0x000c
+#define ANCHOR_ALL 0x000f
 
-#define DOCK_TOP            0x0100
-#define DOCK_LEFT           0x0200
-#define DOCK_RIGHT          0x0400
-#define DOCK_BOTTOM         0x0800
-#define DOCK_FILL           0x0f00
+#define DOCK_TOP 0x0100
+#define DOCK_LEFT 0x0200
+#define DOCK_RIGHT 0x0400
+#define DOCK_BOTTOM 0x0800
+#define DOCK_FILL 0x0f00
 
 typedef struct _CDlgAncItem {
-  HWND hWnd;    // hWnd of element
-  UINT uFlag;   // anchor
-  RECT pRect;   // window rect
-  struct _CDlgAncItem *next;  // next item
+  HWND hWnd;                 // hWnd of element
+  UINT uFlag;                // anchor
+  RECT pRect;                // window rect
+  struct _CDlgAncItem *next; // next item
   _CDlgAncItem() {
-    this->hWnd  = NULL;
-    this->next  = NULL;
+    this->hWnd = NULL;
+    this->next = NULL;
     this->uFlag = 0;
     ZeroMemory(&pRect, sizeof(pRect));
   }
   _CDlgAncItem(HWND hWnd, UINT uFlag, LPRECT lpRect) {
-    this->hWnd  = hWnd;
-    this->next  = NULL;
+    this->hWnd = hWnd;
+    this->next = NULL;
     this->uFlag = uFlag;
     memcpy(&pRect, lpRect, sizeof(pRect));
   }
-}
-CDlgAncItem;
+} CDlgAncItem;
 
 class CDlgAnchor {
 public:
@@ -84,16 +83,12 @@ public:
     }
     return item->next ? TRUE : FALSE;
   }
-  BOOL Add(UINT uID, UINT uFlag) {
-    return Add(GetDlgItem(m_hWnd, uID), uFlag);
-  }
-  BOOL Remove(UINT uID) {
-    return Remove(GetDlgItem(m_hWnd, uID));
-  }
+  BOOL Add(UINT uID, UINT uFlag) { return Add(GetDlgItem(m_hWnd, uID), uFlag); }
+  BOOL Remove(UINT uID) { return Remove(GetDlgItem(m_hWnd, uID)); }
   BOOL Remove(HWND hWnd) {
     CDlgAncItem *item = &m_pControls;
     while (item->next) {
-      if (item->next->hWnd==hWnd) { // remove it
+      if (item->next->hWnd == hWnd) { // remove it
         CDlgAncItem *s = item->next->next;
         delete item->next;
         item->next = s;
@@ -103,13 +98,11 @@ public:
     }
     return FALSE;
   }
-  BOOL Update(UINT uID) {
-    return Update(GetDlgItem(m_hWnd, uID));
-  }
+  BOOL Update(UINT uID) { return Update(GetDlgItem(m_hWnd, uID)); }
   BOOL Update(HWND hWnd) {
     CDlgAncItem *item = m_pControls.next;
     while (item) {
-      if (item->hWnd==hWnd) { // update position
+      if (item->hWnd == hWnd) { // update position
         if (GetWindowRect(hWnd, &item->pRect)) {
           ScreenToClient(m_hWnd, &((LPPOINT)&item->pRect)[0]);
           ScreenToClient(m_hWnd, &((LPPOINT)&item->pRect)[1]);
@@ -130,13 +123,9 @@ public:
       item = item->next;
     }
   }
-  void RemoveAll() {
-    RemoveIt(m_pControls.next);
-  }
-  ~CDlgAnchor() {
-    RemoveAll();
-  }
-  BOOL OnSize(BOOL bRepaint=TRUE) {
+  void RemoveAll() { RemoveIt(m_pControls.next); }
+  ~CDlgAnchor() { RemoveAll(); }
+  BOOL OnSize(BOOL bRepaint = TRUE) {
     RECT pRect;
     if (GetClientRect(m_hWnd, &pRect)) {
       CDlgAncItem *item = m_pControls.next;
@@ -144,42 +133,44 @@ public:
         // horizontal
         if ((item->uFlag & ANCHOR_LEFT) && (item->uFlag & ANCHOR_RIGHT)) {
           item->pRect.right += pRect.right - m_pRect.right;
-        }
-        else if (item->uFlag & ANCHOR_LEFT) {
+        } else if (item->uFlag & ANCHOR_LEFT) {
           // left is default
-        }
-        else if (item->uFlag & ANCHOR_RIGHT) {
+        } else if (item->uFlag & ANCHOR_RIGHT) {
           item->pRect.right += pRect.right - m_pRect.right;
           item->pRect.left += pRect.right - m_pRect.right;
-        }
-        else {
+        } else {
           // relative move
-          LONG sx = ((pRect.right-pRect.left)/2)-((m_pRect.right-m_pRect.left)/2);
+          LONG sx = ((pRect.right - pRect.left) / 2) -
+                    ((m_pRect.right - m_pRect.left) / 2);
           item->pRect.right += sx;
           item->pRect.left += sx;
         }
         // vertical
         if ((item->uFlag & ANCHOR_TOP) && (item->uFlag & ANCHOR_BOTTOM)) {
           item->pRect.bottom += pRect.bottom - m_pRect.bottom;
-        }
-        else if (item->uFlag & ANCHOR_TOP) {
+        } else if (item->uFlag & ANCHOR_TOP) {
           // top is default
-        }
-        else if (item->uFlag & ANCHOR_BOTTOM) {
+        } else if (item->uFlag & ANCHOR_BOTTOM) {
           item->pRect.bottom += pRect.bottom - m_pRect.bottom;
           item->pRect.top += pRect.bottom - m_pRect.bottom;
-        }
-        else {
+        } else {
           // relative move
-          LONG sy = ((pRect.bottom-pRect.top)/2)-((m_pRect.bottom-m_pRect.top)/2);
+          LONG sy = ((pRect.bottom - pRect.top) / 2) -
+                    ((m_pRect.bottom - m_pRect.top) / 2);
           item->pRect.bottom += sy;
           item->pRect.top += sy;
         }
-        if (item->uFlag & DOCK_TOP) item->pRect.top = pRect.top;
-        if (item->uFlag & DOCK_LEFT) item->pRect.left = pRect.left;
-        if (item->uFlag & DOCK_RIGHT) item->pRect.right = pRect.right;
-        if (item->uFlag & DOCK_BOTTOM) item->pRect.bottom = pRect.bottom;
-        MoveWindow(item->hWnd, item->pRect.left, item->pRect.top, item->pRect.right-item->pRect.left, item->pRect.bottom-item->pRect.top, bRepaint);
+        if (item->uFlag & DOCK_TOP)
+          item->pRect.top = pRect.top;
+        if (item->uFlag & DOCK_LEFT)
+          item->pRect.left = pRect.left;
+        if (item->uFlag & DOCK_RIGHT)
+          item->pRect.right = pRect.right;
+        if (item->uFlag & DOCK_BOTTOM)
+          item->pRect.bottom = pRect.bottom;
+        MoveWindow(item->hWnd, item->pRect.left, item->pRect.top,
+                   item->pRect.right - item->pRect.left,
+                   item->pRect.bottom - item->pRect.top, bRepaint);
         item = item->next;
       }
       memcpy(&m_pRect, &pRect, sizeof(pRect));
@@ -187,13 +178,15 @@ public:
     }
     return FALSE;
   }
+
 protected:
-  void RemoveIt(CDlgAncItem* item) {
+  void RemoveIt(CDlgAncItem *item) {
     if (item) {
       RemoveIt(item->next);
       delete item;
     }
   }
+
 protected:
   HWND m_hWnd;
   RECT m_pRect;

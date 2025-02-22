@@ -12,7 +12,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #pragma once
-#include<Windows.h>
+#include <Windows.h>
 
 // returns true if the hToken/the current Thread belongs to the Administrators
 BOOL IsAdmin(HANDLE hToken = NULL);

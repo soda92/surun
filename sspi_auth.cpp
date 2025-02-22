@@ -12,12 +12,11 @@
 ///////////////////////////////////////////////////////////////////////////////
 #define SECURITY_WIN32
 
-
-#include <windows.h>
-#include <sspi.h>
-#include <tchar.h>
 #include "sspi_auth.h"
 #include "DBGTrace.h"
+#include <sspi.h>
+#include <tchar.h>
+#include <windows.h>
 
 typedef struct _AUTH_SEQ {
   BOOL fInitialized;

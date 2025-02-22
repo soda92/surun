@@ -16,7 +16,7 @@
       STRINGIZE(VERSION_LL)) _T("b") _T(STRINGIZE(VERSION_BUILD))
 // VER_INTERNALNAME will be used to rename InstallSuRun.exe
 #define VER_INTERNALNAME                                                       \
-  "InstallSuRun" STRINGIZE(VERSION_HH) STRINGIZE(VERSION_HL)                   \
+  "InstallSuRun" STRINGIZE(VERSION_HH) STRINGIZE(VERSION_HL)                               \
       STRINGIZE(VERSION_LH) STRINGIZE(VERSION_LL) "b" STRINGIZE(VERSION_BETA)
 #else //(VERSION_BETA != 0)
 #define LPCTSTR_VERSION                                                        \
@@ -25,7 +25,7 @@
       STRINGIZE(VERSION_LH)) _T(".") _T(STRINGIZE(VERSION_LL))
 // VER_INTERNALNAME will be used to rename InstallSuRun.exe
 #define VER_INTERNALNAME                                                       \
-  "InstallSuRun" STRINGIZE(VERSION_HH) STRINGIZE(VERSION_HL)                   \
+  "InstallSuRun" STRINGIZE(VERSION_HH) STRINGIZE(VERSION_HL)                               \
       STRINGIZE(VERSION_LH) STRINGIZE(VERSION_LL)
 #endif //(VERSION_BETA != 0)
 

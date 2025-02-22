@@ -17,27 +17,25 @@
 
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
-#include <windows.h>
 #include <WinCrypt.h>
 #include <commctrl.h>
 #include <lm.h>
 #include <shlwapi.h>
 #include <stdio.h>
 #include <tchar.h>
+#include <windows.h>
 #include <windowsx.h>
 
-
-#include "Setup.h"
 #include "Anchor.h"
 #include "DBGTrace.h"
 #include "Helpers.h"
 #include "LSALogon.h"
 #include "ResStr.h"
 #include "Resource.h"
+#include "Setup.h"
 #include "UserGroups.h"
 #include "WinStaDesk.h"
 #include "lsa_laar.h"
-
 
 #pragma comment(lib, "comctl32.lib")
 #pragma comment(lib, "Comdlg32.lib")

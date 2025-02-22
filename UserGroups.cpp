@@ -19,13 +19,12 @@
 
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
-#include <windows.h>
 #include <TCHAR.h>
 #include <lm.h>
 #include <malloc.h>
 #include <shlwapi.h>
+#include <windows.h>
 
-#include "UserGroups.h"
 #include "DBGTrace.h"
 #include "Helpers.h"
 #include "LSALogon.h"
@@ -33,7 +32,7 @@
 #include "ResStr.h"
 #include "Resource.h"
 #include "Setup.h"
-
+#include "UserGroups.h"
 
 #ifdef DoDBGTrace
 #include <Sddl.h>

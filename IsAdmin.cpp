@@ -12,17 +12,15 @@
 //////////////////////////////////////////////////////////////////////////////
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
-#include <windows.h>
 #include <LMAccess.h>
 #include <SHLWAPI.H>
 #include <TCHAR.h>
+#include <windows.h>
 
-
-#include "IsAdmin.h"
 #include "DBGTrace.H"
 #include "Helpers.h"
+#include "IsAdmin.h"
 #include "LogonDlg.h"
-
 
 #pragma comment(lib, "ShlWapi.lib")
 #pragma comment(lib, "advapi32.lib")
