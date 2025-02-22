@@ -34,7 +34,7 @@ extern unsigned int _winmajor;
 extern unsigned int _winminor;
 #endif //_MSC_VER >= 1500
 
-static unsigned int _GetWinVer();
+extern unsigned int _GetWinVer();
 #define IsWin2k (_GetWinVer() == 0x500)
 #define IsVista (_GetWinVer() == 0x600)
 #define IsVistapp (_GetWinVer() >= 0x600)

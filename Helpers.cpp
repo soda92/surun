@@ -51,7 +51,7 @@ unsigned int _osver = 0;
 unsigned int _winmajor = 0;
 unsigned int _winminor = 0;
 
-static unsigned int _GetWinVer() {
+inline unsigned int _GetWinVer() {
   OSVERSIONINFO vi;
   vi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
   GetVersionEx(&vi);
