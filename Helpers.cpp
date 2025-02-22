@@ -947,7 +947,7 @@ BOOL QualifyPath(LPTSTR app, LPTSTR path, LPTSTR file, LPTSTR ext,
     CHK_BOOL_FN(PathCanonicalize(path, app));
     Combine(app, path, file, ext);
   }
-  if ((path[0] == '\\')) {
+  if (path[0] == '\\') {
     if (path[1] == '\\')
       // UNC path: must be fully qualified!
       return PathFileExists(app) && (!PathIsDirectory(app));
