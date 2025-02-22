@@ -2049,7 +2049,7 @@ HBITMAP GetMenuShieldIcon() {
   HICON ico = NULL;
 #ifndef _SR32
   HMODULE hMod = GetModuleHandle(L"SuRunExt.dll");
-#else _SR32
+#else //_SR32
   HMODULE hMod = GetModuleHandle(L"SuRunExt32.dll");
 #endif //_SR32
   if (!ico)

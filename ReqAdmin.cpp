@@ -82,7 +82,7 @@ BOOL CALLBACK EnumResProc(HMODULE hExe, LPCTSTR rType, LPTSTR rName,
     free(m);
     InfoDBGTrace("RequiresAdmin: MultiByteToWideChar!");
   }
-#else UNICODE
+#else //UNICODE
   if ((Manifest[0] == 0xFF) || (Manifest[0] == 0xFE)) {
     LPTSTR m = (LPTSTR)calloc(siz + 1, 2);
     memmove(m, Manifest, 2 * siz);

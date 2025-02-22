@@ -42,7 +42,7 @@ BOOL g_IATInit = FALSE;
 
 #ifdef _SR32
 #define DLLNAME "SuRunExt32"
-#else _SR32
+#else //_SR32
 #define DLLNAME "SuRunExt"
 #endif //_SR32
 
@@ -513,7 +513,7 @@ DWORD Hook(HMODULE hMod) {
 #ifdef _WIN64
   if (pNTH->FileHeader.Machine != IMAGE_FILE_MACHINE_AMD64)
     return 0;
-#else _WIN64
+#else //_WIN64
   if (pNTH->FileHeader.Machine != IMAGE_FILE_MACHINE_I386)
     return 0;
 #endif //_WIN64

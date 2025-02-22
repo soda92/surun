@@ -63,22 +63,22 @@
 
 #ifdef _WIN64
 #pragma comment(lib, "SuRunExt/ReleaseUx64/SuRunExt.lib")
-#else _WIN64
+#else //_WIN64
 #ifdef _SR32
 #pragma comment(lib, "SuRunExt/ReleaseUsr32/SuRunExt32.lib")
-#else _SR32
+#else //_SR32
 #pragma comment(lib, "SuRunExt/ReleaseU/SuRunExt.lib")
 #endif //_SR32
 #endif //_WIN64
 
-#else _DEBUG
+#else //_DEBUG
 
 #ifdef _WIN64
 #pragma comment(lib, "SuRunExt/DebugUx64/SuRunExt.lib")
-#else _WIN64
+#else //_WIN64
 #ifdef _SR32
 #pragma comment(lib, "SuRunExt/DebugUsr32/SuRunExt32.lib")
-#else _SR32
+#else //_SR32
 #pragma comment(lib, "SuRunExt/DebugU/SuRunExt.lib")
 #endif //_SR32
 #endif //_WIN64
@@ -2656,7 +2656,7 @@ DWORD WINAPI HKThreadProc(void *p) {
 static void HandleHooks() {
 #ifdef _WIN64
   CreateMutex(NULL, true, _T("SuRun64_SysMenuHookIsRunning"));
-#else _WIN64
+#else //_WIN64
   CreateMutex(NULL, true, _T("SuRun_SysMenuHookIsRunning"));
 #endif //_WIN64
   if (GetLastError() == ERROR_ALREADY_EXISTS)
@@ -2741,7 +2741,7 @@ static void HandleHooks() {
     }
   }
   CloseTrayShowAdmin();
-#else _SR32
+#else //_SR32
     Sleep(1000);
   }
 #endif //_SR32

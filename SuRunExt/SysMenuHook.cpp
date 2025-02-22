@@ -105,7 +105,7 @@ int FindSCClose(HMENU m)
 //  TRACEx(_T("%s SuRunExt %s (%s,0x%08X,0x%08X)==0x%08X"),
 //    f,Name,MsgName(message),wParam,lParam,lResult);
 //}
-//#else DoDBGTrace
+//#else //DoDBGTrace
 //#define DBGOutMsg(m)
 //#endif //DoDBGTrace
 

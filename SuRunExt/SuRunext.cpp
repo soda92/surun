@@ -56,7 +56,7 @@
 
 #ifdef _WIN64
 #pragma comment(lib,"../bin/Crypt32x64.lib")
-#else _WIN64
+#else //_WIN64
 #pragma comment(lib,"../bin/Crypt32x86.lib")
 #endif //_WIN64
 
