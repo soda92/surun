@@ -12,12 +12,13 @@
 //////////////////////////////////////////////////////////////////////////////
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
+#include <windows.h>
+#include <tchar.h>
 #include "TrayMsgWnd.h"
 #include "Helpers.h"
 #include "Resource.h"
 #include "Setup.h"
-#include <tchar.h>
-#include <windows.h>
+
 
 #define Classname _T("SRTRMSGWND")
 /////////////////////////////////////////////////////////////////////////////

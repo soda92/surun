@@ -48,9 +48,9 @@ typedef struct {
   DWORD TimeOut;   // Service->Tray Window timeout
   bool bShlExHook; // we're run from a hook
   bool beQuiet;    // No message boxes
-  BYTE bRunAs;  // Bit0=1:do a RunAs Logon; Bit1=1: start with low privileges;
-                // Bit2=1: RunAs Username given
-  DWORD Groups; // IS_IN_ADMINS,IS_IN_SURUNNERS
+  BYTE bRunAs; // Bit0=1:do a RunAs Logon; Bit1=1: start with low privileges;
+               // Bit2=1: RunAs Username given
+  DWORD Groups;         // IS_IN_ADMINS,IS_IN_SURUNNERS
   bool bShExNoSafeDesk; // if a safe desktop is required, cancel the request
   // DWORD ConsolePID;     //SuRunC initiated SuRun and the Main Thread of
   // ConsolePID is waiting to be resumed

@@ -13,13 +13,14 @@
 
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
-#include <winbase.h>
 #include <windows.h>
+#include <winbase.h>
 
 #include "DBGTrace.h"
 #include "Service.h"
 #include "Setup.h"
 #include "WinstaDesk.h"
+
 
 #include "Resource.h"
 
