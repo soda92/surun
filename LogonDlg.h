@@ -19,6 +19,7 @@
 // *Ask, if something should be started with administrative rights
 //////////////////////////////////////////////////////////////////////////////
 #pragma once
+#include <windows.h>
 
 // Check is a password for a user is correct
 BOOL PasswordOK(DWORD SessionId, LPCTSTR User, LPCTSTR Password,

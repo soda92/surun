@@ -1075,8 +1075,8 @@ BOOL QualifyPath(LPTSTR app, LPTSTR path, LPTSTR file, LPTSTR ext,
 
 BOOL ResolveCommandLine(IN LPWSTR CmdLine, IN LPCWSTR CurDir, OUT LPTSTR cmd) {
   // ToDo: use dynamic allocated strings
-  if (((CmdLine == NULL) || ((*CmdLine) == NULL)) &&
-      ((cmd == NULL) || ((*cmd) == NULL)))
+  if (((CmdLine == NULL) || ((*CmdLine) == 0)) &&
+      ((cmd == NULL) || ((*cmd) == 0)))
     return false;
   if (StrLenW(CmdLine) + StrLenW(CurDir) > 4096 - 64)
     return false;
@@ -2063,7 +2063,7 @@ HBITMAP GetMenuShieldIcon() {
     return NULL;
   // Copy the icon to a Bitmap
   BITMAPINFO bmi = {
-      {sizeof(BITMAPINFOHEADER), cx, cy, 1, 32, 0, cx * cy * 4, 0, 0, 0, 0},
+      {sizeof(BITMAPINFOHEADER), cx, cy, 1, 32, 0, static_cast<DWORD>(cx * cy * 4), 0, 0, 0, 0},
       {{0, 0, 0, 0}}};
   void *Bits = 0;
   HDC dc = CreateCompatibleDC(NULL);
