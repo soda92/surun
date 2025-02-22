@@ -2223,7 +2223,7 @@ INT_PTR CALLBACK SetupDlg4Proc(HWND hwnd, UINT msg, WPARAM wParam,
   case WM_INITDIALOG: {
     CheckDlgButton(hwnd, IDC_NOLOGONDESK, GetUseWinLogonDesk == 0);
     SetDlgItemInt(hwnd, IDC_START_DELAY,
-                  max(0, min(600, GetRegInt(HKLM, SURUNKEY, L"StartDelay", 0))),
+                  max(0, min(600, int(GetRegInt(HKLM, SURUNKEY, L"StartDelay", 0)))),
                   false);
     CheckDlgButton(hwnd, IDC_DORUNAS, GetHandleRunAs);
     if (GetUseSuRunGrp) {

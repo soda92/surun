@@ -60,7 +60,7 @@ extern TOKEN_STATISTICS g_AdminTStat;
 HANDLE GetUserToken(DWORD SessionId, LPCTSTR User, LPCTSTR Password,
                     bool AllowEmptyPassword) {
   if ((User == 0) || (*User == 0))
-    return false;
+    return NULL;
   TCHAR un[2 * UNLEN + 2] = {0};
   TCHAR dn[2 * UNLEN + 2] = {0};
   _tcscpy(un, User);

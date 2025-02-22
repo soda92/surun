@@ -92,8 +92,10 @@ PACL CopyAcl(PACL pFrom) {
   PACL pTo = (PACL)malloc(info.AclBytesInUse);
   if (!pTo)
     return NULL;
-  if (!InitializeAcl(pTo, info.AclBytesInUse, ACL_REVISION))
-    return free(pTo), NULL;
+  if (!InitializeAcl(pTo, info.AclBytesInUse, ACL_REVISION)) {
+    free(pTo);
+    return NULL;
+  }
   for (DWORD i = 0; i < info.AceCount; i++) {
     ACE_HEADER *pace = 0;
     if (GetAce(pFrom, i, (void **)(&pace)))
