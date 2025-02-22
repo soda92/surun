@@ -42,7 +42,7 @@
 
 #ifdef _WIN64
 #pragma comment(lib, "bin/Crypt32x64.lib")
-#else _WIN64
+#else //_WIN64
 #pragma comment(lib, "bin/Crypt32x86.lib")
 #endif //_WIN64
 
@@ -212,7 +212,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
         Args = PathGetArgs(Args);
 #ifndef _WIN64
         g_RunData.RetPtr = wcstoul(Args, 0, 16);
-#else _WIN64
+#else //_WIN64
         g_RunData.RetPtr = _wcstoui64(Args, 0, 16);
 #endif //_WIN64
         Args = PathGetArgs(Args);
