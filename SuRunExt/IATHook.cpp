@@ -396,7 +396,7 @@ PROC DoHookFn(char *DllName, char *ImpName) {
       }
     }
   }
-  return false;
+  return NULL;
 }
 
 // Detect if a module is using CreateProcess, if yes, it needs to be hooked
@@ -471,7 +471,7 @@ DWORD HookIAT(char *fMod, HMODULE hMod, PIMAGE_IMPORT_DESCRIPTOR pID) {
 //                    (bUnHook?"Un":""),fmod,DllName,pBN->Name,pThunk->u1.Function,newFunc,PAGE_EXECUTE_WRITECOPY,oldProt);
 #endif //DoDBGTrace
                 InterlockedExchangePointer((VOID **)&pThunk->u1.Function,
-                                           newFunc);
+                                           (void*)newFunc);
                 VirtualProtect(&pThunk->u1.Function,
                                sizeof(pThunk->u1.Function), oldProt, &oldProt);
                 nHooked++;
@@ -1197,7 +1197,9 @@ void LoadHooks() {
     ((lpLoadLibraryA)hkLdLibA.OrgFunc())(fmod);
     if (!IsWin2k) {
       HMODULE hMod = 0;
+#ifndef GET_MODULE_HANDLE_EX_FLAG_PIN
 #define GET_MODULE_HANDLE_EX_FLAG_PIN (0x00000001)
+#endif
       typedef BOOL(WINAPI * GMHExA)(DWORD, LPCSTR, HMODULE *);
       GMHExA GetModuleHandleExA = (GMHExA)GetProcAddress(
           GetModuleHandleA("kernel32.dll"), "GetModuleHandleExA");
