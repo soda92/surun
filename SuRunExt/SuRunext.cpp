@@ -1030,7 +1030,7 @@ __declspec(dllexport) void RemoveShellExt()
 bool g_bDoExit=FALSE;
 DWORD WINAPI InitProc(void* p)
 {
-  __try
+  try
   {
     //  CTimeLog l(L"InitProc");
     //Try to make shure that the NT Dll Loader is done:
@@ -1091,7 +1091,7 @@ DWORD WINAPI InitProc(void* p)
       }
     }
     l_InitThread=0;
-  }__except(GetExceptionCode()==EXCEPTION_ACCESS_VIOLATION)
+  }catch(...)
   {
     extern BOOL g_IATInit;
     g_IATInit=FALSE;

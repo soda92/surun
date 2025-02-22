@@ -455,7 +455,7 @@ DWORD HookIAT(char *fMod, HMODULE hMod, PIMAGE_IMPORT_DESCRIPTOR pID) {
           PROC newFunc = DoHookFn(DllName, (char *)pBN->Name);
           // PROC newFunc = DoHookFn(DllName,(PROC)pThunk->u1.Function);
           if (newFunc && (pThunk->u1.Function != (DWORD_PTR)newFunc)) {
-            __try {
+            try {
               // MEMORY_BASIC_INFORMATION mbi;
               DWORD oldProt = PAGE_READWRITE;
               if (VirtualProtect(&pThunk->u1.Function,
@@ -476,9 +476,7 @@ DWORD HookIAT(char *fMod, HMODULE hMod, PIMAGE_IMPORT_DESCRIPTOR pID) {
                                sizeof(pThunk->u1.Function), oldProt, &oldProt);
                 nHooked++;
               }
-            } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
-                            ? EXCEPTION_EXECUTE_HANDLER
-                            : EXCEPTION_CONTINUE_SEARCH) {
+            } catch(...) {
               DBGTrace("FATAL: Exception in HookIAT");
             }
           }
@@ -1029,13 +1027,11 @@ HMODULE WINAPI LoadLibA(LPCSTR lpLibFileName) {
     DWORD dwe = GetLastError();
     EnterCriticalSection(&g_HookCs);
     HMODULE hMOD = NULL;
-    __try {
+    try {
       hMOD = ((lpLoadLibraryA)hkLdLibA.OrgFunc())(lpLibFileName);
       if (hMOD)
         HookModules();
-    } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
-                    ? EXCEPTION_EXECUTE_HANDLER
-                    : EXCEPTION_CONTINUE_SEARCH) {
+    } catch(...) {
       DBGTrace("FATAL: Exception in LoadLibA");
     }
     LeaveCriticalSection(&g_HookCs);
@@ -1055,13 +1051,11 @@ HMODULE WINAPI LoadLibW(LPCWSTR lpLibFileName) {
     EnterCriticalSection(&g_HookCs);
     DWORD dwe = GetLastError();
     HMODULE hMOD = NULL;
-    __try {
+    try {
       hMOD = ((lpLoadLibraryW)hkLdLibW.OrgFunc())(lpLibFileName);
       if (hMOD)
         HookModules();
-    } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
-                    ? EXCEPTION_EXECUTE_HANDLER
-                    : EXCEPTION_CONTINUE_SEARCH) {
+    } catch(...) {
       DBGTrace("FATAL: Exception in LoadLibW");
     }
     LeaveCriticalSection(&g_HookCs);
@@ -1081,14 +1075,12 @@ HMODULE WINAPI LoadLibExA(LPCSTR lpLibFileName, HANDLE hFile, DWORD dwFlags) {
     EnterCriticalSection(&g_HookCs);
     DWORD dwe = GetLastError();
     HMODULE hMOD = NULL;
-    __try {
+    try {
       hMOD = ((lpLoadLibraryExA)hkLdLibXA.OrgFunc())(lpLibFileName, hFile,
                                                      dwFlags);
       if (hMOD)
         HookModules();
-    } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
-                    ? EXCEPTION_EXECUTE_HANDLER
-                    : EXCEPTION_CONTINUE_SEARCH) {
+    } catch(...) {
       DBGTrace("FATAL: Exception in LoadLibExA");
     }
     LeaveCriticalSection(&g_HookCs);
@@ -1109,14 +1101,12 @@ HMODULE WINAPI LoadLibExW(LPCWSTR lpLibFileName, HANDLE hFile, DWORD dwFlags) {
     EnterCriticalSection(&g_HookCs);
     DWORD dwe = GetLastError();
     HMODULE hMOD = NULL;
-    __try {
+    try {
       hMOD = ((lpLoadLibraryExW)hkLdLibXW.OrgFunc())(lpLibFileName, hFile,
                                                      dwFlags);
       if (hMOD)
         HookModules();
-    } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
-                    ? EXCEPTION_EXECUTE_HANDLER
-                    : EXCEPTION_CONTINUE_SEARCH) {
+    }catch(...) {
       DBGTrace("FATAL: Exception in LoadLibExW");
     }
     LeaveCriticalSection(&g_HookCs);
@@ -1229,11 +1219,9 @@ void LoadHooks() {
     for (int i = 0; i < countof(hdt); i++)
       PROC p = hdt[i]->OrgFunc();
   }
-  __try {
+  try {
     HookModules();
-  } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
-                  ? EXCEPTION_EXECUTE_HANDLER
-                  : EXCEPTION_CONTINUE_SEARCH) {
+  } catch(...) {
     DBGTrace("FATAL: Exception in LoadHooks()");
   }
   LeaveCriticalSection(&g_HookCs);

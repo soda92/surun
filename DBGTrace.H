@@ -74,7 +74,7 @@ LPCTSTR MsgName(UINT msg);
            d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15);          \
   }
 
-#else DoDBGTrace
+#else //DoDBGTrace
 
 #define DBGTrace(msg) (void)0
 #define DBGTrace1(msg, d1) (void)0

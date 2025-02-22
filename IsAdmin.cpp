@@ -53,41 +53,41 @@ BOOL IsAdmin(HANDLE hToken /*=NULL*/) {
     return FALSE;
   if (hTok)
     CloseHandle(hTok);
-  __try {
+  try {
     // Initialize Admin SID and SD
     SID_IDENTIFIER_AUTHORITY SystemSidAuthority = SECURITY_NT_AUTHORITY;
     if (!AllocateAndInitializeSid(
             &SystemSidAuthority, 2, SECURITY_BUILTIN_DOMAIN_RID,
             DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0, 0, &psidAdmin))
-      __leave;
+       throw 123;
     psdAdmin = LocalAlloc(LPTR, SECURITY_DESCRIPTOR_MIN_LENGTH);
     if (psdAdmin == NULL)
-      __leave;
+       throw 123;
     if (!InitializeSecurityDescriptor(psdAdmin, SECURITY_DESCRIPTOR_REVISION))
-      __leave;
+       throw 123;
     // Compute size needed for the ACL.
     DWORD dwACLSize = sizeof(ACL) + sizeof(ACCESS_ALLOWED_ACE) +
                       GetLengthSid(psidAdmin) - sizeof(DWORD);
     // Allocate memory for ACL.
     pACL = (PACL)LocalAlloc(LPTR, dwACLSize);
     if (pACL == NULL)
-      __leave;
+       throw 123;
     // Initialize the new ACL.
     if (!InitializeAcl(pACL, dwACLSize, ACL_REVISION2))
-      __leave;
+       throw 123;
     // Add the access-allowed ACE to the DACL.
     if (!AddAccessAllowedAce(pACL, ACL_REVISION2, ACCESS_READ | ACCESS_WRITE,
                              psidAdmin))
-      __leave;
+       throw 123;
     // Set our DACL to the SD.
     if (!SetSecurityDescriptorDacl(psdAdmin, TRUE, pACL, FALSE))
-      __leave;
+       throw 123;
     // AccessCheck is sensitive about what is in the SD; set the group and
     // owner.
     SetSecurityDescriptorGroup(psdAdmin, psidAdmin, FALSE);
     SetSecurityDescriptorOwner(psdAdmin, psidAdmin, FALSE);
     if (!IsValidSecurityDescriptor(psdAdmin))
-      __leave;
+       throw 123;
     // Initialize GenericMapping structure even though we won't be using generic
     // rights.
     GENERIC_MAPPING GenericMapping;
@@ -100,8 +100,8 @@ BOOL IsAdmin(HANDLE hToken /*=NULL*/) {
     DWORD dwStatus;
     if (!AccessCheck(psdAdmin, hToken, ACCESS_READ, &GenericMapping, &ps,
                      &dwStructureSize, &dwStatus, &bReturn))
-      __leave;
-  } __finally {
+       throw 123;
+  } catch(...) {} {
     // Cleanup
     if (pACL)
       LocalFree(pACL);
