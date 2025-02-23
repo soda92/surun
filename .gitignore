@@ -29,4 +29,7 @@ SuRunExt/x64 Unicode Release/
 
 
 # Qt build
-/build
+/build*
+
+# Py
+*.pyc

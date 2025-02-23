@@ -6,14 +6,6 @@ from sodatools import read_path, write_path, str_path
 
 CURRENT = Path(__file__).resolve().parent
 
-commands = CURRENT.joinpath("build").joinpath("compile_commands.json")
-commands2 = commands.parent.joinpath(commands.stem)
-if commands.exists():
-    if commands2.exists():
-        commands2.unlink()
-    commands.rename(commands2)
-commands = commands2
-
 
 def which(name):
     path = os.environ["PATH"]
@@ -55,14 +47,16 @@ def fix_command(c) -> str:
     return " ".join(list_)
 
 
-def fix_commands():
-    c = read_path(commands)
+def fix_commands(c: Path):
+    c = read_path(c)
     obj = json.loads(c)
     for item in obj:
         item["command"] = fix_command(item["command"])
-    s = json.dumps(obj, indent=2)
-    write_path(CURRENT.joinpath("compile_commands.json"), s)
+    return obj
 
 
 if __name__ == "__main__":
-    fix_commands()
+    commands = CURRENT.joinpath("build").joinpath("compile_commands.json")
+    obj = fix_commands(commands)
+    s = json.dumps(obj, indent=2)
+    write_path(CURRENT.joinpath("compile_commands.json"), s)

@@ -43,6 +43,19 @@
 #pragma comment(lib, "Comdlg32.lib")
 #pragma comment(lib, "shlwapi.lib")
 
+inline unsigned int _GetWinVer() {
+  OSVERSIONINFO vi;
+  vi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
+  GetVersionEx(&vi);
+  _osplatform = vi.dwPlatformId;
+  _winmajor = vi.dwMajorVersion;
+  _winminor = vi.dwMinorVersion;
+  _osver = (vi.dwBuildNumber) & 0x07fff;
+  if (_osplatform != VER_PLATFORM_WIN32_NT)
+    _osver |= 0x08000;
+  return (_winmajor << 8) + _winminor;
+}
+
 //////////////////////////////////////////////////////////////////////////////
 //
 //  Password cache
