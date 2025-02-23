@@ -22,7 +22,9 @@ set(SOURCES "DBGTrace.cpp"
 "TrayShowAdmin.cpp"
 "UserGroups.cpp"
 "WatchDog.cpp"
-"WinStaDesk.cpp")
+"WinStaDesk.cpp"
+SuRun.rc
+)
 
 add_definitions(-D_UNICODE -DUNICODE -DWIN32 -D_WINDOWS)
 
