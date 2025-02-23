@@ -1,64 +1,70 @@
 import win32file
 import pywintypes
 import win32pipe
+import win32event
+import winerror
+# https://resources.oreilly.com/examples/9781565926219/-/tree/master/ch18_services
 
-pipe_name = r'\\.\pipe\SuRunDebug'
+pipeName = r"\\.\pipe\SuRunDebug"
 
-pipe_handle = win32pipe.CreateNamedPipe(
-    pipe_name,
-    win32pipe.PIPE_ACCESS_DUPLEX,
-    win32pipe.PIPE_TYPE_MESSAGE | win32pipe.PIPE_READMODE_MESSAGE | win32pipe.PIPE_WAIT,
-    1,  # Max instances
-    65536,  # Out buffer size
-    65536,  # In buffer size
-    0,  # Default timeout
-    None
+
+openMode = win32pipe.PIPE_ACCESS_DUPLEX | win32file.FILE_FLAG_OVERLAPPED
+pipeMode = win32pipe.PIPE_TYPE_MESSAGE
+
+# When running as a service, we must use special security for the pipe
+sa = pywintypes.SECURITY_ATTRIBUTES()
+# Say we do have a DACL, and it is empty
+# (ie, allow full access!)
+sa.SetSecurityDescriptorDacl(1, None, 0)
+
+pipeHandle = win32pipe.CreateNamedPipe(
+    pipeName,
+    openMode,
+    pipeMode,
+    win32pipe.PIPE_UNLIMITED_INSTANCES,
+    0,
+    0,
+    6000,  # default buffers, and 6 second timeout.
+    sa,
 )
-print(f"Named pipe '{pipe_name}' created successfully.")
 
+hWaitStop = win32event.CreateEvent(None, 0, 0, None)
+# We need to use overlapped IO for this, so we dont block when
+# waiting for a client to connect.  This is the only effective way
+# to handle either a client connection, or a service stop request.
+overlapped = pywintypes.OVERLAPPED()
+# And create an event to be used in the OVERLAPPED object.
+overlapped.hEvent = win32event.CreateEvent(None, 0, 0, None)
 
-try:
-    handle = win32file.CreateFile(
-        pipe_name,
-        win32file.GENERIC_WRITE | win32file.GENERIC_READ, 0, None,
-        win32file.OPEN_EXISTING, 0, None)
-    print("Connected to pipe")
-except pywintypes.error as e:
-    print(f"Error connecting to pipe: {e}")
-    exit()
+# Loop accepting and processing connections
+while 1:
+    try:
+        hr = win32pipe.ConnectNamedPipe(pipeHandle, overlapped)
+    except Exception as e:
+        print("Error connecting pipe!", e)
+        pipeHandle.Close()
+        break
 
-try:
-    data_to_send = "Hello from Python!".encode('utf-8')
-    win32file.WriteFile(handle, data_to_send)
-    print("Data sent successfully")
-except pywintypes.error as e:
-        print(f"Error writing to pipe: {e}")
-
-# win32file.CloseHandle(handle)
-
-# pipe_handle = win32file.CreateFile(
-#         pipe_name,
-#         win32file.GENERIC_READ,
-#         0,  # no sharing
-#         None,
-#         win32file.OPEN_EXISTING,
-#         0,  # default attributes
-#         None
-#     )
-
-try:
-    while True:
-        hr, data = win32file.ReadFile(pipe_handle, 8) # Read in 64kb chunks
-        # if hr != 0: # Check for successful read
-        if data:
-            print(f"Received: {data.decode()}")
-        else:
-            print("Pipe closed by client.")
-            break
-        # else:
-        #     print(f"Error reading from pipe: {hr}")
-        #     break
-except pywintypes.error as e:
-    print(f"Error during read operation: {e}")
-
-win32file.CloseHandle(pipe_handle)
+    if hr == winerror.ERROR_PIPE_CONNECTED:
+        # Client is fast, and already connected - signal event
+        win32event.SetEvent(overlapped.hEvent)
+    # Wait for either a connection, or a service stop request.
+    timeout = win32event.INFINITE
+    waitHandles = hWaitStop, overlapped.hEvent
+    rc = win32event.WaitForMultipleObjects(waitHandles, 0, timeout)
+    if rc == win32event.WAIT_OBJECT_0:
+        # Stop event
+        break
+    else:
+        # Pipe event - read the data, and write it back.
+        # (We only handle a max of 255 characters for this sample)
+        try:
+            hr, data = win32file.ReadFile(pipeHandle, 256)
+            win32file.WriteFile(pipeHandle, ("You sent me:" + data.decode()).encode())
+            # And disconnect from the client.
+            win32pipe.DisconnectNamedPipe(pipeHandle)
+        except win32file.error:
+            # Client disconnected without sending data
+            # or before reading the response.
+            # Thats OK - just get the next connection
+            continue
