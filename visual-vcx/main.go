@@ -12,7 +12,8 @@ func main() {
 	myWindow := myApp.NewWindow("TabContainer Widget")
 	tabs := container.NewAppTabs()
 
-	solution := ParseSolution("../SuRun.sln")
+	p := NewParser("../SuRun.sln")
+	solution := p.ParseSolution()
 	for _, proj := range solution.projects {
 		item := container.NewTabItem(proj.name, widget.NewLabel("content"))
 		tabs.Append(item)
