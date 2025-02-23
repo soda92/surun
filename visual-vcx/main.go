@@ -10,13 +10,13 @@ import (
 func main() {
 	myApp := app.New()
 	myWindow := myApp.NewWindow("TabContainer Widget")
+	tabs := container.NewAppTabs()
 
-	tabs := container.NewAppTabs(
-		container.NewTabItem("Tab 1", widget.NewLabel("Hello")),
-		container.NewTabItem("Tab 2", widget.NewLabel("World!")),
-	)
-
-	//tabs.Append(container.NewTabItemWithIcon("Home", theme.HomeIcon(), widget.NewLabel("Home tab")))
+	solution := ParseSolution("../SuRun.sln")
+	for _, proj := range solution.projects {
+		item := container.NewTabItem(proj.name, widget.NewLabel("content"))
+		tabs.Append(item)
+	}
 
 	tabs.SetTabLocation(container.TabLocationLeading)
 
