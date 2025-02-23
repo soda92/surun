@@ -887,7 +887,7 @@ VOID WINAPI ServiceMain(DWORD argc, LPTSTR *argv) {
             g_RunData = rd;
           }
         }
-        // Process Check succeded, now start this exe in the calling processes
+        // Process Check succeeded, now start this exe in the calling processes
         // Terminal server session to get SwitchDesktop working:
         if (hRunLSASS) {
           DWORD SessionID = 0;

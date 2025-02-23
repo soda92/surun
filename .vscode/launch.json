@@ -11,6 +11,7 @@
             "program": "${workspaceFolder}/build-debug/SuRun.exe",
             "cwd": "${workspaceFolder}/build-debug",
             "args": ["pwsh"],
+            "preLaunchTask": "build2"
         },
         {
             "name": "visual-vcx",
