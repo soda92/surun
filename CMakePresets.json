@@ -54,7 +54,8 @@
       "cacheVariables": {
         "CMAKE_CXX_FLAGS": "-m32",
         "CMAKE_C_FLAGS": "-m32",
-        "CMAKE_RC_FLAGS": " -F pe-i386 "
+        "CMAKE_RC_FLAGS": " -F pe-i386 ",
+        "ARCH_WIN32" : "true"
       },
       "binaryDir": "${sourceDir}/build32"
     },

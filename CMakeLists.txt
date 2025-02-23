@@ -6,7 +6,8 @@ add_compile_options(-Wno-write-strings -Wno-register
 -Wno-pointer-arith -Wno-conversion-null)
 add_subdirectory(SuRunExt)
 
-set(SOURCES "DBGTrace.cpp"
+set(SOURCES
+"DBGTrace.cpp"
 "DynWTSAPI.cpp"
 "Helpers.cpp"
 "IsAdmin.cpp"
@@ -29,14 +30,18 @@ SuRun.rc
 add_definitions(-D_UNICODE -DUNICODE -DWIN32 -D_WINDOWS)
 
 if(DEFINED SKIP_WINDIR)
-add_definitions(-DSKIP_WINDIR -D_DEBUG)
+    add_definitions(-DSKIP_WINDIR -D_DEBUG)
 endif()
 
-add_executable(SuRun ${SOURCES})
-target_link_libraries(SuRun PRIVATE winmm.lib Psapi.lib Netapi32.lib 
-Shlwapi.lib Secur32.lib Mpr.lib Userenv.lib advapi32.lib 
+set(EXT SuRunExt)
+if(DEFINED ARCH_WIN32)
+    set(EXT SuRunExt32)
+endif()
+
+add_executable(SuRun WIN32 ${SOURCES})
+target_link_libraries(SuRun PRIVATE winmm.lib Psapi.lib Netapi32.lib
+Shlwapi.lib Secur32.lib Mpr.lib Userenv.lib advapi32.lib
 ole32.lib shell32.lib version.lib comctl32.lib kernel32.lib
 rpcrt4.lib msi.lib crypt32.lib
-SuRunExt
+${EXT}
 )
-# SuRunExt/ReleaseUx64/SuRunExt.lib)
