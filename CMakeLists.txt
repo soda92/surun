@@ -27,7 +27,7 @@ set(SOURCES "DBGTrace.cpp"
 add_definitions(-D_UNICODE -DUNICODE -DWIN32 -D_WINDOWS)
 
 if(DEFINED SKIP_WINDIR)
-add_definitions(-DSKIP_WINDIR)
+add_definitions(-DSKIP_WINDIR -D_DEBUG)
 endif()
 
 add_executable(SuRun ${SOURCES})

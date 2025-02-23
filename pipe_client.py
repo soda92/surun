@@ -1,6 +1,4 @@
 import win32pipe
-import sys
-import string
 
 if __name__ == "__main__":
     message = "aaa"
