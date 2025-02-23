@@ -11,7 +11,7 @@
       "displayName": "Default Config",
       "description": "Default build using Ninja generator",
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build",
+      "binaryDir": "${sourceDir}/../build-i",
       "cacheVariables": {
         "FIRST_CACHE_VARIABLE": {
           "type": "BOOL",
@@ -59,8 +59,7 @@
       "displayName": "Windows-only (32bit)",
       "cacheVariables": {
         "CMAKE_CXX_FLAGS": "-m32",
-        "CMAKE_C_FLAGS": "-m32",
-        "CMAKE_RC_FLAGS": " -F pe-i386 "
+        "CMAKE_C_FLAGS": "-m32"
       },
       "binaryDir": "${sourceDir}/build32"
     }
