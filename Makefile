@@ -15,3 +15,7 @@ build32: configure32
 	cmake --build build32
 	pwsh -c "cp build32/SuRunExt/SuRunExt.dll ReleaseUx64/SuRunExt32.dll"
 	pwsh -c "cp build32/SuRun.exe ReleaseUx64/SuRun32.bin"
+
+bi: #build installer
+	cd InstallSuRUn && cmake --preset windows-only
+	cmake --build build-i
