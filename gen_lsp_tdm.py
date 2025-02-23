@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 import os
 import functools
+import argparse
 from sodatools import read_path, write_path, str_path
 
 CURRENT = Path(__file__).resolve().parent
@@ -56,7 +57,10 @@ def fix_commands(c: Path):
 
 
 if __name__ == "__main__":
-    commands = CURRENT.joinpath("build").joinpath("compile_commands.json")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--builddir", "-B", type=str, default="build", help="build dir")
+    args = parser.parse_args()
+    commands = CURRENT.joinpath(args.builddir).joinpath("compile_commands.json")
     obj = fix_commands(commands)
     s = json.dumps(obj, indent=2)
     write_path(CURRENT.joinpath("compile_commands.json"), s)

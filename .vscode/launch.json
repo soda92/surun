@@ -7,13 +7,13 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Launch",
+            "name": "SuRun",
             "program": "${workspaceFolder}/build-debug/SuRun.exe",
             "cwd": "${workspaceFolder}/build-debug",
             "args": ["pwsh"],
         },
         {
-            "name": "Launch Package",
+            "name": "visual-vcx",
             "type": "go",
             "request": "launch",
             "mode": "auto",
