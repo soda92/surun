@@ -1,6 +1,6 @@
 __cmake*
 /.cache
-
+/*.json
 
 UpgradeLog.htm
 .vs

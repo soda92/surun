@@ -1,8 +1,0 @@
-[
-  {
-    "directory": "C:/src/surun/",
-    "command": "C:/TDM-GCC-64/bin/g++.exe  -DUNICODE -D_UNICODE -I. -g -o CMakeFiles/six-degrees.dir/six-degrees.cc.obj -c C:/src/cs107/assn-2-six-degrees/six-degrees.cc -isystem C:/TDM-GCC-64/virtual/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++ -isystem C:/TDM-GCC-64/virtual/x86_64-w64-mingw32/include -isystem C:/TDM-GCC-64/virtual/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32",
-    "file": "C:/src/surun/Helpers.cpp",
-    "output": "CMakeFiles\\six-degrees.dir\\six-degrees.cc.obj"
-  }
-]

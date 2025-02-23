@@ -1,0 +1,8 @@
+Diagnostics:
+  ClangTidy:
+    Add: modernize*
+    Remove: [modernize-use-trailing-return-type,modernize-use-auto]
+CompileFlags:                     # Tweak the parse settings
+  Add: [-xc++, -Wno-switch, -Wno-unused-value, -Wno-array-bounds]
+  # Remove: [-Wswitch]
+  Compiler: clang++

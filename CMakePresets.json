@@ -17,7 +17,8 @@
           "type": "BOOL",
           "value": "OFF"
         },
-        "SECOND_CACHE_VARIABLE": "ON"
+        "SECOND_CACHE_VARIABLE": "ON",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       },
       "environment": {
       },
