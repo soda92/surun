@@ -5,15 +5,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "lldb",
+            "name": "pipe_server",
+            "type": "debugpy",
             "request": "launch",
-            "name": "Launch",
-            "program": "${workspaceFolder}/build-debug/SuRun.exe",
-            "cwd": "${workspaceFolder}/build-debug",
-            "args": ["pwsh"],
+            "program": "${workspaceFolder}/pipe_server.py",
+            "console": "integratedTerminal"
         },
         {
-            "name": "Launch Package",
+            "type": "lldb",
+            "request": "launch",
+            "name": "SuRun",
+            "program": "${workspaceFolder}/build-debug/SuRun.exe",
+            "cwd": "${workspaceFolder}/build-debug",
+            "args": [
+                "pwsh"
+            ],
+            "preLaunchTask": "build2"
+        },
+        {
+            "name": "visual-vcx",
             "type": "go",
             "request": "launch",
             "mode": "auto",

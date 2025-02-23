@@ -25,3 +25,10 @@ clean:
 	pwsh -nop -c "rm -r build"
 	pwsh -nop -c "rm -r build32"
 	pwsh -nop -c "rm -r build-i"
+	pwsh -nop -c "rm -r build-debug"
+
+debug:
+	cmake --preset windows-debug
+	cmake --build build-debug
+	python gen_lsp_tdm.py -B build-debug
+	python merge_cc.py -B build-debug

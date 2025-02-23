@@ -15,8 +15,7 @@
       "cacheVariables": {
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       },
-      "environment": {
-      },
+      "environment": {},
       "vendor": {
         "example.com/ExampleIDE/1.0": {
           "autoFormat": true
@@ -57,6 +56,15 @@
         "CMAKE_C_FLAGS": "-m32"
       },
       "binaryDir": "${sourceDir}/build32"
+    },
+    {
+      "name": "windows-debug",
+      "inherits": "windows-only",
+      "displayName": "Windows-only (debug)",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      },
+      "binaryDir": "${sourceDir}/../build-ig"
     }
   ],
   "buildPresets": [

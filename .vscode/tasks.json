@@ -6,6 +6,12 @@
             "type": "shell",
             "command": "cmake --build build",
             "problemMatcher": "$gcc"
+        },
+        {
+            "label": "build2",
+            "type": "shell",
+            "command": "make debug",
+            "problemMatcher": "$gcc"
         }
     ]
 }

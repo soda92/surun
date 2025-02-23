@@ -887,7 +887,7 @@ VOID WINAPI ServiceMain(DWORD argc, LPTSTR *argv) {
             g_RunData = rd;
           }
         }
-        // Process Check succeded, now start this exe in the calling processes
+        // Process Check succeeded, now start this exe in the calling processes
         // Terminal server session to get SwitchDesktop working:
         if (hRunLSASS) {
           DWORD SessionID = 0;
@@ -2872,6 +2872,7 @@ bool HandleServiceStuff() {
     PathRemoveBackslash(fn);
     GetSystemWindowsDirectory(wd, 4096);
     PathRemoveBackslash(wd);
+    #ifndef SKIP_WINDIR
     if (_tcsicmp(fn, wd)) {
       DBGTrace2("Running from \"%s\" and NOT from WinDir(\"%s\")", fn, wd);
       // Only call UserInstall with empty command line
@@ -2884,6 +2885,7 @@ bool HandleServiceStuff() {
       for (;;)
         ;
     }
+    #endif
   }
 #endif //_DEBUG
   // In the first three Minutes after Sytstem start:
