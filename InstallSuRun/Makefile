@@ -11,3 +11,7 @@ debug:
 	cmake --build ../build-ig
 	cmake --build ../build-ig
 	python ../merge_cc.py -B build-debug -I build-ig
+
+clean:
+	pwsh -nop -c "rm -r -Force ../build-i || 1"
+	pwsh -nop -c "rm -r -Force ../build-ig || 1"
