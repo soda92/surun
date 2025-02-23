@@ -49,6 +49,20 @@ func (p *parser) SkipWhiteLines() {
 	}
 }
 
+func (p *parser) HasPrefix(s string) bool {
+	line := p.GetLine()
+	if len(line) >= len(s) && line[:len(s)] == s {
+		return true
+	}
+	return false
+}
+
+func (p *parser) SkipPrefix(s string) {
+	if p.HasPrefix(s) {
+		p.Advance()
+	}
+}
+
 func (p *parser) Advance() {
 	p.lineno += 1
 }
@@ -57,16 +71,11 @@ func (p *parser) ParseSolution() Solution {
 	var ret Solution
 
 	p.SkipWhiteLines()
-	if p.GetLine()[:len("Microsoft")] == "Microsoft" {
-		p.Advance()
-	}
-	if p.GetLine()[:2] == "# " {
-		p.Advance()
-	}
+	p.SkipPrefix("Microsoft")
+	p.SkipPrefix("# ")
 
 	for {
-		line := p.GetLine()
-		if len(line) > len("Project") && line[:len("Project")] == "Project" {
+		if p.HasPrefix("Project") {
 			a, sid := p.ParseProject()
 			ret.id = sid
 			ret.projects = append(ret.projects, a)
