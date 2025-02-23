@@ -15,6 +15,8 @@ pipe_handle = win32pipe.CreateNamedPipe(
     None
 )
 print(f"Named pipe '{pipe_name}' created successfully.")
+
+
 try:
     handle = win32file.CreateFile(
         pipe_name,
@@ -32,30 +34,31 @@ try:
 except pywintypes.error as e:
         print(f"Error writing to pipe: {e}")
 
-win32file.CloseHandle(handle)
+# win32file.CloseHandle(handle)
 
-
-pipe_handle = win32file.CreateFile(
-        pipe_name,
-        win32file.GENERIC_READ,
-        0,  # no sharing
-        None,
-        win32file.OPEN_EXISTING,
-        0,  # default attributes
-        None
-    )
+# pipe_handle = win32file.CreateFile(
+#         pipe_name,
+#         win32file.GENERIC_READ,
+#         0,  # no sharing
+#         None,
+#         win32file.OPEN_EXISTING,
+#         0,  # default attributes
+#         None
+#     )
 
 try:
     while True:
-        hr, data = win32file.ReadFile(handle, 18500) # Read in 64kb chunks
-        if hr == 0: # Check for successful read
-            if data:
-                print(f"Received: {data.decode()}")
-            else:
-                print("Pipe closed by client.")
-                break
+        hr, data = win32file.ReadFile(pipe_handle, 8) # Read in 64kb chunks
+        # if hr != 0: # Check for successful read
+        if data:
+            print(f"Received: {data.decode()}")
         else:
-            print(f"Error reading from pipe: {hr}")
+            print("Pipe closed by client.")
             break
+        # else:
+        #     print(f"Error reading from pipe: {hr}")
+        #     break
 except pywintypes.error as e:
     print(f"Error during read operation: {e}")
+
+win32file.CloseHandle(pipe_handle)
