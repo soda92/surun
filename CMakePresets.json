@@ -63,7 +63,11 @@
       "inherits": "windows-only",
       "displayName": "Windows-only-debug",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "DEBUG"
+        "CMAKE_BUILD_TYPE": "DEBUG",
+        "SKIP_WINDIR": {
+          "type": "string",
+          "value": "aaa"
+        }
       },
       "binaryDir": "${sourceDir}/build-debug"
     }

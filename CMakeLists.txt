@@ -25,7 +25,11 @@ set(SOURCES "DBGTrace.cpp"
 "WinStaDesk.cpp")
 
 add_definitions(-D_UNICODE -DUNICODE -DWIN32 -D_WINDOWS)
-# include_directories(C:/TDM-GCC-64/x86_64-w64-mingw32/include C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32)
+
+if(DEFINED SKIP_WINDIR)
+add_definitions(-DSKIP_WINDIR)
+endif()
+
 add_executable(SuRun ${SOURCES})
 target_link_libraries(SuRun PRIVATE winmm.lib Psapi.lib Netapi32.lib 
 Shlwapi.lib Secur32.lib Mpr.lib Userenv.lib advapi32.lib 
