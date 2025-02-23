@@ -66,11 +66,10 @@ func (p *parser) ParseSolution() Solution {
 
 	for {
 		line := p.GetLine()
-		if line[:len("Project")] == "Project" {
+		if len(line) > len("Project") && line[:len("Project")] == "Project" {
 			a, sid := p.ParseProject()
 			ret.id = sid
 			ret.projects = append(ret.projects, a)
-			p.Advance()
 		} else {
 			break
 		}
@@ -112,7 +111,9 @@ func (p *parser) ParseProject() (Project, uuid.UUID) {
 	ret.file = GetString(arr[1])
 	ret.id = uuid.MustParse(TrimBrace(GetString(arr[2])))
 	p.Advance()
-	ret.depend_uuids = p.ParseDepends()
+	if strings.TrimSpace(p.GetLine()) != "EndProject" {
+		ret.depend_uuids = p.ParseDepends()
+	}
 	p.Advance() // endproject
 	return ret, sid
 }
