@@ -23,11 +23,16 @@ SuRunExt.rc
 
 include_directories(. ..)
 
-add_library(SuRunExt SHARED ${SOURCES})
-SET_TARGET_PROPERTIES(SuRunExt PROPERTIES PREFIX "")
+set(TARGET SuRunExt)
+if(DEFINED ARCH_WIN32)
+    set(TARGET SuRunExt32)
+endif()
 
-target_link_libraries(SuRunExt PRIVATE winmm.lib Psapi.lib Netapi32.lib 
-Shlwapi.lib Secur32.lib Mpr.lib Userenv.lib advapi32.lib 
+add_library(${TARGET} SHARED ${SOURCES})
+SET_TARGET_PROPERTIES(${TARGET} PROPERTIES PREFIX "")
+
+target_link_libraries(${TARGET} PRIVATE winmm.lib Psapi.lib Netapi32.lib
+Shlwapi.lib Secur32.lib Mpr.lib Userenv.lib advapi32.lib
 ole32.lib shell32.lib version.lib comctl32.lib kernel32.lib
 rpcrt4.lib msi.lib crypt32.lib
 )
