@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Launch",
+            "program": "${workspaceFolder}/build-debug/SuRun.exe",
+            "cwd": "${workspaceFolder}/build-debug",
+            "args": ["pwsh"],
+        },
+        {
             "name": "Launch Package",
             "type": "go",
             "request": "launch",

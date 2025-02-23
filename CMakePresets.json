@@ -13,11 +13,6 @@
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
-        "FIRST_CACHE_VARIABLE": {
-          "type": "BOOL",
-          "value": "OFF"
-        },
-        "SECOND_CACHE_VARIABLE": "ON",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       },
       "environment": {
@@ -63,6 +58,15 @@
         "CMAKE_RC_FLAGS": " -F pe-i386 "
       },
       "binaryDir": "${sourceDir}/build32"
+    },
+    {
+      "name": "windows-debug",
+      "inherits": "windows-only",
+      "displayName": "Windows-only-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "DEBUG"
+      },
+      "binaryDir": "${sourceDir}/build-debug"
     }
   ],
   "buildPresets": [
