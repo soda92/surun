@@ -13,7 +13,7 @@ configure32:
 	cmake --preset windows-only-32
 build32: configure32
 	cmake --build build32
-	pwsh -nop -c "cp build32/SuRunExt/SuRunExt.dll ReleaseUx64/SuRunExt32.dll"
+	pwsh -nop -c "cp build32/SuRunExt/SuRunExt32.dll ReleaseUx64/SuRunExt32.dll"
 	pwsh -nop -c "cp build32/SuRun.exe ReleaseUx64/SuRun32.bin"
 
 bi: #build installer

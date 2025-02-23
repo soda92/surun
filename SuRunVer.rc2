@@ -36,7 +36,7 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "CompanyName", VER_COMPANYNAME
-            VALUE "FileVersion", "1.2.1.6"
+            VALUE "FileVersion", VER_FILE_VERSION_STR
             VALUE "LegalCopyright", VER_LEGALCOPYRIGHT
             VALUE "ProductName", VER_PRODUCTNAME
             VALUE "ProductVersion", VER_PRODUCT_VERSION_STR
