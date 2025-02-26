@@ -1,6 +1,7 @@
 *.exe
 *.dll
 __pycache__
+/data.txt
 
 !vswhere.exe
 

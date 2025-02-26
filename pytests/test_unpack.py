@@ -81,53 +81,54 @@ def test_rundata(data):
         print(f"Size of the data given = {len(data)}")
 
 
-# --- Test ---
+if __name__ == "__main__":
+    # --- Test ---
 
-# 1. Create sample data (as if it came from the C struct)
-# It is crucial to create data *exactly* matching the packed struct, including endianness.
-# We are assuming little-endian here (typical for Windows).
+    # 1. Create sample data (as if it came from the C struct)
+    # It is crucial to create data *exactly* matching the packed struct, including endianness.
+    # We are assuming little-endian here (typical for Windows).
 
-sample_data = (
-    b"\x01\x00\x00\x00"  # CliProcessId (1)
-    b"\x02\x00\x00\x00"  # CliThreadId (2)
-    b"\x03\x00\x00\x00",  # SessionID (3)
-    b"WinSta0\0".ljust(MAX_PATH * 2, b"\0"),  # WinSta, padded with nulls
-    b"Default\0".ljust(MAX_PATH * 2, b"\0"),  # Desk, padded
-    b"TestUser\0".ljust((UNLEN + UNLEN + 2) * 2, b"\0"),  # UserName
-    b"cmd.exe /c dir\0".ljust(4096 * 2, b"\0"),  # cmdLine
-    b"C:\\Windows\\System32\0".ljust(4096 * 2, b"\0"),  # CurDir
-    b"\x04\x00\x00\x00",  # KillPID (4)
-    b"\x05\x00\x00\x00"  # RetPID (5)
-    + (
-        b"\x06\x00\x00\x00\x00\x00\x00\x00" if is_64bit else b"\x06\x00\x00\x00"
-    ),  # RetPtr (6)
-    b"\x07\x00\x00\x00"  # NewPID (7)
-    b"\x08\x00\x00\x00"  # IconId (8)
-    b"\x09\x00\x00\x00"  # TimeOut (9)
-    b"\x01"  # bShlExHook (True)
-    b"\x00"  # beQuiet (False)
-    b"\x03"  # bRunAs (bit flags)
-    b"\x0a\x00\x00\x00"  # Groups (10)
-    b"\x01"  # bShExNoSafeDesk (True)
-    # b'\x0b\x00\x00\x00'          # ConsolePID (11) , commented out
-)
+    sample_data = (
+        b"\x01\x00\x00\x00"  # CliProcessId (1)
+        b"\x02\x00\x00\x00"  # CliThreadId (2)
+        b"\x03\x00\x00\x00",  # SessionID (3)
+        b"WinSta0\0".ljust(MAX_PATH * 2, b"\0"),  # WinSta, padded with nulls
+        b"Default\0".ljust(MAX_PATH * 2, b"\0"),  # Desk, padded
+        b"TestUser\0".ljust((UNLEN + UNLEN + 2) * 2, b"\0"),  # UserName
+        b"cmd.exe /c dir\0".ljust(4096 * 2, b"\0"),  # cmdLine
+        b"C:\\Windows\\System32\0".ljust(4096 * 2, b"\0"),  # CurDir
+        b"\x04\x00\x00\x00",  # KillPID (4)
+        b"\x05\x00\x00\x00"  # RetPID (5)
+        + (
+            b"\x06\x00\x00\x00\x00\x00\x00\x00" if is_64bit else b"\x06\x00\x00\x00"
+        ),  # RetPtr (6)
+        b"\x07\x00\x00\x00"  # NewPID (7)
+        b"\x08\x00\x00\x00"  # IconId (8)
+        b"\x09\x00\x00\x00"  # TimeOut (9)
+        b"\x01"  # bShlExHook (True)
+        b"\x00"  # beQuiet (False)
+        b"\x03"  # bRunAs (bit flags)
+        b"\x0a\x00\x00\x00"  # Groups (10)
+        b"\x01"  # bShExNoSafeDesk (True)
+        # b'\x0b\x00\x00\x00'          # ConsolePID (11) , commented out
+    )
 
-x = b""
-for i in sample_data:
-    x += i
+    x = b""
+    for i in sample_data:
+        x += i
 
-# 2. Test the struct
-test_rundata(x)
+    # 2. Test the struct
+    test_rundata(x)
 
 
-# Example of creating and packing an instance:
-rundata_instance = RUNDATA()
-rundata_instance.CliProcessId = 1234
-rundata_instance.WinSta = "WinSta0"
-rundata_instance.UserName = "MyUser"
-rundata_instance.bRunAs = 0b00000101  # Example bit flags
+    # Example of creating and packing an instance:
+    rundata_instance = RUNDATA()
+    rundata_instance.CliProcessId = 1234
+    rundata_instance.WinSta = "WinSta0"
+    rundata_instance.UserName = "MyUser"
+    rundata_instance.bRunAs = 0b00000101  # Example bit flags
 
-packed_instance = bytes(rundata_instance)
+    packed_instance = bytes(rundata_instance)
 
-# Test the packed instance
-test_rundata(packed_instance)
+    # Test the packed instance
+    test_rundata(packed_instance)
