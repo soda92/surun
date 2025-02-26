@@ -21,6 +21,8 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     from gen_lsp_tdm import fix_commands
+    if not Path(f"{args.installer_builddir}/compile_commands.json").exists():
+        exit(0)
 
     c2 = fix_commands(get_file(f"{args.installer_builddir}/compile_commands.json"))
     c1 = fix_commands(get_file(f"{args.builddir}/compile_commands.json"))

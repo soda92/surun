@@ -1,3 +1,7 @@
+// clang-format off
+//go:build ignore
+// clang-format on
+
 #include "main.h"
 
 int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,

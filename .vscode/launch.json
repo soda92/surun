@@ -5,9 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Attach to Process",
+            "type": "go",
+            "request": "attach",
+            "mode": "local",
+            "processId": 0
+        },
+        {
             "type": "lldb",
             "request": "attach",
-            "name": "Attach",
+            "name": "lldb-Attach",
             "program": "${workspaceFolder}/SuRunD.exe"
         },
         {
