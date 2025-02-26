@@ -1,3 +1,8 @@
+*.exe
+*.dll
+
+!vswhere.exe
+
 __cmake*
 /.cache
 /*.json

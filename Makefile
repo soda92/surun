@@ -8,6 +8,8 @@ build: configure
 	python gen_lsp_tdm.py
 	pwsh -nop -c "cp build/SuRunExt/SuRunExt.dll ReleaseUx64"
 	pwsh -nop -c "cp build/SuRun.exe ReleaseUx64"
+	pwsh -nop -c "cp build/SuRun.dll ."
+	go build .
 
 configure32:
 	cmake --preset windows-only-32

@@ -39,6 +39,7 @@
 #include "UserGroups.h"
 #include "WinStaDesk.h"
 
+#include "main.h"
 
 #pragma comment(lib, "netapi32.lib")
 #pragma comment(lib, "shlwapi")
@@ -92,6 +93,7 @@ int WINAPI _WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
     }
   }
   DBGTrace1("SuRun started with (%s)", GetCommandLine());
+  printf("SuRun started with (%s)", GetCommandLine());
 #ifdef _DEBUG
 //   CreateEvent(0,1,0,WATCHDOG_EVENT_NAME);
 //   DoWatchDog(L"Winlogon",L"Default",GetCurrentProcessId());

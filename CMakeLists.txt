@@ -38,10 +38,12 @@ if(DEFINED ARCH_WIN32)
     set(EXT SuRunExt32)
 endif()
 
-add_executable(SuRun WIN32 ${SOURCES})
+add_library(SuRun SHARED ${SOURCES})
+SET_TARGET_PROPERTIES(SuRun PROPERTIES PREFIX "")
 target_link_libraries(SuRun PRIVATE winmm.lib Psapi.lib Netapi32.lib
 Shlwapi.lib Secur32.lib Mpr.lib Userenv.lib advapi32.lib
 ole32.lib shell32.lib version.lib comctl32.lib kernel32.lib
 rpcrt4.lib msi.lib crypt32.lib
 ${EXT}
 )
+set_target_properties(SuRun PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
