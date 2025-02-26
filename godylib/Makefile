@@ -1,4 +1,4 @@
-prereq0:
+prereq:
 	pacman -S --needed mingw-w64-i686-toolchain
 	pacman -S --needed mingw32/mingw-w64-i686-go
 	pacman -S --needed mingw-w64-ucrt-x86_64-toolchain
@@ -8,10 +8,10 @@ lib32:
 	GOROOT=/mingw32/lib/go GOPATH=~/go GOCACHE=~/go/pkg go build -buildmode=c-shared -o lib32.dll ./lib.go
 
 lib64:
-	GOROOT=/mingw32/lib/go GOPATH=~/go GOCACHE=~/go/pkg go build -buildmode=c-shared -o lib.dll ./lib.go
+	GOROOT=/ucrt64/lib/go GOPATH=~/go GOCACHE=~/go/pkg go build -buildmode=c-shared -o lib.dll ./lib.go
 
 wlib32:
-	pwsh -nop mingw32.ps1 'make lib32'
+	pwsh -nop msys.ps1 -mingw32 -c "make lib32"
 
 wlib64:
 	pwsh -nop msys.ps1 -ucrt64 -c "make lib64"

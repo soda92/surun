@@ -6,6 +6,5 @@ if ($args[0] -eq "-ucrt64") {
     $Env:MSYSTEM = "UCRT64"
 }
 
-$Env:WD = $PWD
-
-& "${Env:USERPROFILE}/scoop/apps/msys2/current/usr/bin/fish.exe" -l $args[1..$args.Length]
+$Env:CHERE_INVOKING = 1
+& "${Env:USERPROFILE}/scoop/apps/msys2/current/usr/bin/bash.exe" -l $args[1..$args.Length]
