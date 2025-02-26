@@ -1,27 +1,24 @@
 package main
 
-// #cgo LDFLAGS: -Lbuild -lSuRun
-// #define UNICODE
-// #define _UNICODE
-// #include "main.h"
-// #include <wchar.h>
-import "C"
-
-import(
+import (
 	"golang.org/x/sys/windows"
+	"runtime"
+	"syscall"
+	"unsafe"
 )
 
-func WCharPtrToString(p *C.wchar_t) string {
-	return windows.UTF16PtrToString((*uint16)(p))
-}
-
-func WCharPtrFromString(s string) (*C.wchar_t, error) {
-	p, err := windows.UTF16PtrFromString(s)
-	return (*C.wchar_t)(p), err
-}
-
 func start(arg string) {
-	p, _ := WCharPtrFromString(arg);
+	arch := runtime.GOARCH
+	var surun syscall.Handle
+	if arch == "amd64" {
+		surun, _ = syscall.LoadLibrary("SuRun.dll")
+	} else {
+		surun, _ = syscall.LoadLibrary("SuRun32.dll")
+	}
+	_WinMain, _ := syscall.GetProcAddress(surun, "_WinMain")
 
-	C._WinMain(nil, nil, p, 0);
+	p2, _ := windows.UTF16PtrFromString(arg)
+	p := uintptr(unsafe.Pointer(p2))
+
+	syscall.SyscallN(_WinMain, 0, 0, p, 0)
 }
