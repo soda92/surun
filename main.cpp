@@ -70,7 +70,7 @@ static void HideAppStartCursor() {
 }
 
 // extern LPTSTR GetSvcName();
-int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
+int WINAPI _WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
                    int nCmdShow) {
   UNREFERENCED_PARAMETER(hInst);
   UNREFERENCED_PARAMETER(hPrevInst);
