@@ -1,3 +1,6 @@
+// clang-format off
+//go:build ignore
+// clang-format on
 //////////////////////////////////////////////////////////////////////////////
 //
 //  CCmdLine is a little handy class for handling command line parameters
