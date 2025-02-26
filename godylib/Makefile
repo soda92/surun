@@ -11,7 +11,13 @@ lib64:
 	GOROOT=/mingw32/lib/go GOPATH=~/go GOCACHE=~/go/pkg go build -buildmode=c-shared -o lib.dll ./lib.go
 
 wlib32:
-	pwsh mingw32.ps1 -c "make lib32"
+	pwsh -nop mingw32.ps1 'make lib32'
+
+wlib64:
+	pwsh -nop msys.ps1 -ucrt64 -c "make lib64"
 
 testenv:
 	MSYSTEM="IMGSDN" python env_make.py
+
+testarg:
+	pwsh -nop echoarg.ps1 -mingw32 -c "1112"
