@@ -700,12 +700,14 @@ if exist $(OutDir)SuRun.exe $(OutDir)SuRun.exe /DeleteService 1&gt;NUL 2&gt;NUL
     <ClCompile Include="UserGroups.cpp" />
     <ClCompile Include="WatchDog.cpp" />
     <ClCompile Include="WinStaDesk.cpp" />
+    <ClCompile Include="launcher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SuRun.rc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="anchor.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="CmdLine.h" />
     <ClInclude Include="DBGTrace.H" />
     <ClInclude Include="DynWTSAPI.h" />
