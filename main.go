@@ -16,8 +16,9 @@ func readline() string {
 }
 
 func main() {
-	arg := "/asgej asgdejew"
+	args := strings.Join(os.Args, " ")
+
 	fmt.Print("press enter to continue")
 	readline()
-	start(arg)
+	start(args)
 }
