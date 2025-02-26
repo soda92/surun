@@ -1,4 +1,4 @@
-module example.com/SuRunD
+module example.com/SuRun
 
 go 1.24.0
 
