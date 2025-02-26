@@ -1,5 +1,6 @@
 *.exe
 *.dll
+__pycache__
 
 !vswhere.exe
 

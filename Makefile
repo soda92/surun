@@ -34,3 +34,5 @@ debug:
 	cmake --build build-debug
 	python gen_lsp_tdm.py -B build-debug
 	python merge_cc.py -B build-debug
+	pwsh -nop -c "cp build-debug/SuRun.dll ."
+	go build -gcflags="-N -l" .
