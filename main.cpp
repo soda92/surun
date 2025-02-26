@@ -74,7 +74,7 @@ static void HideAppStartCursor() {
 }
 
 // extern LPTSTR GetSvcName();
-int WINAPI _WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
+int WINAPI _WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPTSTR lpCmdLine,
                    int nCmdShow) {
   UNREFERENCED_PARAMETER(hInst);
   UNREFERENCED_PARAMETER(hPrevInst);
@@ -92,8 +92,8 @@ int WINAPI _WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
         SetProcessDEPPolicy(PROCESS_DEP_ENABLE);
     }
   }
-  DBGTrace1("SuRun started with (%s)", GetCommandLine());
-  printf("SuRun started with (%s)", GetCommandLine());
+  DBGTrace1("SuRun started with (%s)", lpCmdLine);
+  wprintf(L"SuRun started with (%s)", lpCmdLine);
 #ifdef _DEBUG
 //   CreateEvent(0,1,0,WATCHDOG_EVENT_NAME);
 //   DoWatchDog(L"Winlogon",L"Default",GetCurrentProcessId());
@@ -168,7 +168,8 @@ int WINAPI _WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine,
     g_RunData.beQuiet = TRUE;
   // cmdLine
   {
-    LPTSTR args = _tcsdup(PathGetArgs(GetCommandLine()));
+    LPTSTR args = _tcsdup(PathGetArgs(lpCmdLine));
+    wprintf(L"%s\n", lpCmdLine);
     LPTSTR Args = args;
     while (Args[0] == L' ')
       Args++;

@@ -1,9 +1,23 @@
 package main
 
-// #cgo LDFLAGS: -Lbuild -lSuRun
-// #include "main.h"
-import "C"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
 
-func main(){
-	C._WinMain(nil, nil, nil, 0);
+func readline() string {
+	reader := bufio.NewReader(os.Stdin)
+	text, _ := reader.ReadString('\n')
+	text = strings.TrimSuffix(text, "\n")
+	text = strings.TrimSuffix(text, "\r")
+	return text
+}
+
+func main() {
+	arg := "/asgej asgdejew"
+	fmt.Print("press enter to continue")
+	readline()
+	start(arg)
 }

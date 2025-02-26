@@ -1,9 +1,9 @@
-all: build build32 bi
+all: surun build32 bi
 
-configure:
+configure-surun:
 	cmake --preset windows-only
 
-build: configure
+surun: configure-surun
 	cmake --build build
 	python gen_lsp_tdm.py
 	pwsh -nop -c "cp build/SuRunExt/SuRunExt.dll ReleaseUx64"

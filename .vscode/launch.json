@@ -5,6 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "lldb",
+            "request": "attach",
+            "name": "Attach",
+            "program": "${workspaceFolder}/SuRunD.exe"
+        },
+        {
+            "name": "Go-SuRun",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}"
+        },
+        {
             "name": "pipe_server",
             "type": "debugpy",
             "request": "launch",
