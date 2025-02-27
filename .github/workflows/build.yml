@@ -9,12 +9,13 @@ jobs:
       - run: pwsh build.ps1
       - uses: actions/upload-artifact@v4
         with:
+          name: release
           path: |
             InstallSuRun.exe
             ReleaseUx64
       - run: pwsh build-debug.ps1
       - uses: actions/upload-artifact@v4
         with:
+          name: debug
           path: |
-            InstallSuRun.exe
             DebugUx64
