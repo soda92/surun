@@ -71,6 +71,15 @@
         }
       },
       "binaryDir": "${sourceDir}/build-debug"
+    },
+    {
+      "name": "msys2",
+      "inherits": "default",
+      "displayName": "MSYS2",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "DEBUG"
+      },
+      "binaryDir": "${sourceDir}/build-msys"
     }
   ],
   "buildPresets": [

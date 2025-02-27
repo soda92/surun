@@ -10,6 +10,16 @@ surun: configure-surun
 	pwsh -nop -c "cp build/SuRun.dll ."
 	go build .
 
+msys-surun:
+	pwsh -nop msys.ps1 -ucrt64 -c "make _msys_surun"
+
+_msys_surun:
+	cmake --preset msys2
+	cmake --build build
+	cp build/SuRunExt/SuRunExt.dll ReleaseUx64/
+	cp build/SuRun.dll .
+	go build .
+
 configure32:
 	cmake --preset windows-only-32
 build32: configure32
