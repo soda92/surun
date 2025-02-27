@@ -3,6 +3,8 @@
 __pycache__
 /data.txt
 
+/SuRun32.bin
+
 !vswhere.exe
 
 __cmake*

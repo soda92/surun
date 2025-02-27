@@ -1,6 +1,8 @@
 all: surun build32 bi
 msys: msys-surun msys-32 bi
 
+.PHONY: build32
+
 surun:
 	cmake --preset windows-only
 	cmake --build build
@@ -26,8 +28,9 @@ build32:
 	cmake --build build32
 	pwsh -nop -c "cp build32/SuRunExt/SuRunExt32.dll ReleaseUx64/SuRunExt32.dll"
 	pwsh -nop -c "cp build32/SuRun32.dll ."
+	pwsh -nop -c "cp build32/SuRun32.dll ReleaseUx64/"
 	GOARCH=386 go build -o SuRun32.bin .
-	pwsh -nop -c "mv SuRun32.bin ReleaseUx64/"
+	pwsh -nop -c "cp SuRun32.bin ReleaseUx64/"
 
 msys-32:
 	pwsh -nop msys.ps1 -mingw32 -c "make _msys_32"
