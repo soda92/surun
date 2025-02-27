@@ -44,7 +44,8 @@
           "type": "STRING",
           "value": "C:/TDM-GCC-64/bin/g++.exe"
         },
-        "CMAKE_C_COMPILER": "C:/TDM-GCC-64/bin/gcc.exe"
+        "CMAKE_C_COMPILER": "C:/TDM-GCC-64/bin/gcc.exe",
+        "CMAKE_RC_COMPILER": "C:/TDM-GCC-64/bin/windres.exe"
       }
     },
     {

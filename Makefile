@@ -1,5 +1,5 @@
 all: surun build32 bi
-msys: msys-surun msys-32 msys-installer
+msys: msys-surun msys-32 bi
 
 surun:
 	cmake --preset windows-only
@@ -41,16 +41,10 @@ _msys_32:
 	mv SuRun32.bin ReleaseUx64/
 
 bi: #build installer
+	rm -r build-i 	# clean cache to make sure RC file is recompiled
 	cd InstallSuRun && cmake --preset windows-only
 	cmake --build build-i
 	python merge_cc.py
-
-msys-installer:
-	pwsh -nop msys.ps1 -ucrt64 -c "make _msys_installer"
-
-_msys_installer:
-	cd InstallSuRun && cmake --preset msys2
-	cmake --build build-msys-installer
 
 clean:
 	pwsh -nop -c "rm -r build"
