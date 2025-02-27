@@ -1,3 +1,6 @@
+// clang-format off
+//go:build ignore
+// clang-format on
 ///////////////////////////////////////////////////////////////////////////////
 // This code was taken from the: SSPI Authentication Sample
 //

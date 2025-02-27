@@ -1,3 +1,12 @@
+*.exe
+*.dll
+__pycache__
+/data.txt
+
+/SuRun32.bin
+
+!vswhere.exe
+
 __cmake*
 /.cache
 /*.json

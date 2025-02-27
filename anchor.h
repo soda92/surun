@@ -1,3 +1,6 @@
+// clang-format off
+//go:build ignore
+// clang-format on
 #ifndef _CDLGANCHOR_
 #define _CDLGANCHOR_
 /*

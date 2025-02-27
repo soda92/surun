@@ -59,8 +59,17 @@ while 1:
         # Pipe event - read the data, and write it back.
         # (We only handle a max of 255 characters for this sample)
         try:
-            hr, data = win32file.ReadFile(pipeHandle, 256)
-            win32file.WriteFile(pipeHandle, ("You sent me:" + data.decode()).encode())
+            hr, data = win32file.ReadFile(pipeHandle, 18500)
+            # win32file.WriteFile(pipeHandle, ("You sent me:" + data.decode()).encode())
+            import pickle
+
+            d = pickle.dumps(data)
+            import base64
+
+            d_s = base64.b64encode(d)
+            from pathlib import Path
+
+            Path("data.txt").write_bytes(d_s)
             # And disconnect from the client.
             win32pipe.DisconnectNamedPipe(pipeHandle)
         except win32file.error:

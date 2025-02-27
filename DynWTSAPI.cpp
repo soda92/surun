@@ -1,3 +1,6 @@
+// clang-format off
+//go:build ignore
+// clang-format on
 #define _WIN32_WINNT 0x0500
 #define WINVER 0x0500
 #include <windows.h>

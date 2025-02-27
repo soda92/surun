@@ -1,3 +1,6 @@
+// clang-format off
+//go:build ignore
+// clang-format on
 //////////////////////////////////////////////////////////////////////////////
 //
 // This source code is part of SuRun
@@ -112,7 +115,7 @@ void SavePassword(LPTSTR UserName, LPTSTR Password) {
 //////////////////////////////////////////////////////////////////////////////
 
 // FILETIME(100ns) to minutes multiplier
-#define ft2min (__int64)(10 /*1µs*/ * 1000 /*1ms*/ * 1000 /*1s*/ * 60 /*1min*/)
+#define ft2min (__int64)(10 /*1Âµs*/ * 1000 /*1ms*/ * 1000 /*1s*/ * 60 /*1min*/)
 
 BOOL PasswordExpired(LPTSTR UserName) {
   if ((UserName == 0) || (*UserName == 0))
