@@ -17,7 +17,9 @@ _msys_surun:
 	cmake --build build
 	cp build/SuRunExt/SuRunExt.dll ReleaseUx64/
 	cp build/SuRun.dll .
+	cp build/SuRun.dll ReleaseUx64/
 	go build .
+	cp SuRun.exe ReleaseUx64/
 
 build32:
 	cmake --preset windows-only-32

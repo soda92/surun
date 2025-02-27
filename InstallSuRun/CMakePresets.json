@@ -71,7 +71,8 @@
       "inherits": "default",
       "displayName": "MSYS2",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "DEBUG"
+        "CMAKE_BUILD_TYPE": "DEBUG",
+        "MSYS2": "true"
       },
       "binaryDir": "${sourceDir}/../build-msys-installer"
     }
