@@ -1,0 +1,37 @@
+{
+    "version": 10,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 23,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "default",
+            "displayName": "Default Config",
+            "description": "Default build using Ninja generator",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            },
+            "environment": {}
+        },
+        {
+            "name": "windows",
+            "inherits": "default",
+            "displayName": "Windows-only configuration",
+            "description": "This build is only available on Windows",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            },
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "C:/TDM-GCC-64/bin/g++.exe",
+                "CMAKE_C_COMPILER": "C:/TDM-GCC-64/bin/gcc.exe",
+                "CMAKE_RC_COMPILER": "C:/TDM-GCC-64/bin/windres.exe"
+            }
+        }
+    ]
+}
