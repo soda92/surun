@@ -65,6 +65,15 @@
         "CMAKE_BUILD_TYPE": "Debug"
       },
       "binaryDir": "${sourceDir}/../build-ig"
+    },
+    {
+      "name": "msys2",
+      "inherits": "default",
+      "displayName": "MSYS2",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "DEBUG"
+      },
+      "binaryDir": "${sourceDir}/../build-msys-installer"
     }
   ],
   "buildPresets": [

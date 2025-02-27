@@ -80,6 +80,15 @@
         "CMAKE_BUILD_TYPE": "DEBUG"
       },
       "binaryDir": "${sourceDir}/build-msys"
+    },
+    {
+      "name": "msys2_32",
+      "inherits": "default",
+      "displayName": "MSYS2 (32bit)",
+      "cacheVariables": {
+        "ARCH_WIN32" : "true"
+      },
+      "binaryDir": "${sourceDir}/build-msys-32"
     }
   ],
   "buildPresets": [
