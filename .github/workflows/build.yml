@@ -19,3 +19,4 @@ jobs:
           name: debug
           path: |
             DebugUx64
+            DebugU
