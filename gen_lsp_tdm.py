@@ -42,8 +42,11 @@ def get_includes():
 
 
 def fix_command(c) -> str:
-    list_ = c.replace("\\", "/").split()
-    list_.extend(get_includes())
+    list_: list[str] = c.replace("\\", "/").split()
+    includes = get_includes()
+    for i in includes:
+        if i not in list_:
+            list_.append(i)
 
     return " ".join(list_)
 
@@ -59,8 +62,9 @@ def fix_commands(c: Path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--builddir", "-B", type=str, default="build", help="build dir")
+    parser.add_argument("--destdir", "-D", type=str, default=".", help="dest dir")
     args = parser.parse_args()
     commands = CURRENT.joinpath(args.builddir).joinpath("compile_commands.json")
     obj = fix_commands(commands)
     s = json.dumps(obj, indent=2)
-    write_path(CURRENT.joinpath("compile_commands.json"), s)
+    write_path(CURRENT.joinpath(args.destdir).joinpath("compile_commands.json"), s)

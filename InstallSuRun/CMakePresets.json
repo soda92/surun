@@ -44,7 +44,8 @@
           "type": "STRING",
           "value": "C:/TDM-GCC-64/bin/g++.exe"
         },
-        "CMAKE_C_COMPILER": "C:/TDM-GCC-64/bin/gcc.exe"
+        "CMAKE_C_COMPILER": "C:/TDM-GCC-64/bin/gcc.exe",
+        "CMAKE_RC_COMPILER": "C:/TDM-GCC-64/bin/windres.exe"
       }
     },
     {
@@ -65,6 +66,16 @@
         "CMAKE_BUILD_TYPE": "Debug"
       },
       "binaryDir": "${sourceDir}/../build-ig"
+    },
+    {
+      "name": "msys2",
+      "inherits": "default",
+      "displayName": "MSYS2",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "DEBUG",
+        "MSYS2": "true"
+      },
+      "binaryDir": "${sourceDir}/../build-msys-installer"
     }
   ],
   "buildPresets": [

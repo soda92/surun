@@ -1,3 +1,6 @@
+// clang-format off
+//go:build ignore
+// clang-format on
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
 // Used by SuRun.rc

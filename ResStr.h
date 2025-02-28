@@ -1,3 +1,6 @@
+// clang-format off
+//go:build ignore
+// clang-format on
 //////////////////////////////////////////////////////////////////////////////
 //
 // This source code is part of SuRun
@@ -31,7 +34,7 @@ public:
     memset(&m_str, 0, sizeof(m_str));
   }
   CResourceString(int nID, ...) {
-    m_hInst = GetModuleHandle(0);
+    m_hInst = GetModuleHandle(L"SuRun.dll");
     memset(&m_str, 0, sizeof(m_str));
     TCHAR S[_S];
     LoadString(m_hInst, nID, S, _S - 1);

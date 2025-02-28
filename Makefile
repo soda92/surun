@@ -1,23 +1,51 @@
-all: build build32 bi
+all: surun build32 bi
+msys: msys-surun msys-32 bi
 
-configure:
+.PHONY: build32
+
+surun:
 	cmake --preset windows-only
-
-build: configure
 	cmake --build build
 	python gen_lsp_tdm.py
-	pwsh -nop -c "cp build/SuRunExt/SuRunExt.dll ReleaseUx64"
-	pwsh -nop -c "cp build/SuRun.exe ReleaseUx64"
+	pwsh -nop -c "cp build/SuRunExt/SuRunExt.dll ReleaseUx64/"
+	pwsh -nop -c "cp build/SuRun.dll ."
+	go build .
 
-configure32:
+msys-surun:
+	pwsh -nop msys.ps1 -ucrt64 -c "make _msys_surun"
+
+_msys_surun:
+	cmake --preset msys2
+	cmake --build build
+	cp build/SuRunExt/SuRunExt.dll ReleaseUx64/
+	cp build/SuRun.dll .
+	cp build/SuRun.dll ReleaseUx64/
+	go build .
+	cp SuRun.exe ReleaseUx64/
+
+build32:
 	cmake --preset windows-only-32
-build32: configure32
 	cmake --build build32
 	pwsh -nop -c "cp build32/SuRunExt/SuRunExt32.dll ReleaseUx64/SuRunExt32.dll"
-	pwsh -nop -c "cp build32/SuRun.exe ReleaseUx64/SuRun32.bin"
+	pwsh -nop -c "cp build32/SuRun32.dll ."
+	pwsh -nop -c "cp build32/SuRun32.dll ReleaseUx64/"
+	GOARCH=386 go build -o SuRun32.bin .
+	pwsh -nop -c "cp SuRun32.bin ReleaseUx64/"
+
+msys-32:
+	pwsh -nop msys.ps1 -mingw32 -c "make _msys_32"
+
+_msys_32:
+	cmake --preset msys2_32
+	cmake --build build-msys-32
+	cp build32/SuRunExt/SuRunExt32.dll ReleaseUx64/SuRunExt32.dll
+	cp build32/SuRun32.dll .
+	GOARCH=386 go build -o SuRun32.bin .
+	mv SuRun32.bin ReleaseUx64/
 
 bi: #build installer
-	cd InstallSuRUn && cmake --preset windows-only
+	rm -r build-i 	# clean cache to make sure RC file is recompiled
+	cd InstallSuRun && cmake --preset windows-only
 	cmake --build build-i
 	python merge_cc.py
 
@@ -27,8 +55,16 @@ clean:
 	pwsh -nop -c "rm -r build-i"
 	pwsh -nop -c "rm -r build-debug"
 
+clean-msys:
+	pwsh -nop msys.ps1 -ucrt64 -c "make _clean_msys"
+
+_clean_msys:
+	rm -r build-msys* || true
+
 debug:
 	cmake --preset windows-debug
 	cmake --build build-debug
 	python gen_lsp_tdm.py -B build-debug
 	python merge_cc.py -B build-debug
+	pwsh -nop -c "cp build-debug/SuRun.dll ."
+	go build -gcflags="-N -l" -o SuRunD.exe .
