@@ -8,8 +8,8 @@ import (
 )
 
 func QueryAvailablePort() int {
-	port := DefaultPort()
-	portEnd := PortQueryMax()
+	port := DefaultPort
+	portEnd := PortQueryMax
 
 	for {
 		if port == portEnd {
@@ -26,8 +26,8 @@ func QueryAvailablePort() int {
 }
 
 func QueryProgramPort() int {
-	port := DefaultPort()
-	portEnd := PortQueryMax()
+	port := DefaultPort
+	portEnd := PortQueryMax
 
 	for {
 		if port == portEnd {

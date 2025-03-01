@@ -1,9 +1,5 @@
 package main
 
-func DefaultPort() int {
-	return 12534
-}
+const DefaultPort = 12534
+const PortQueryMax = DefaultPort + 100
 
-func PortQueryMax() int {
-	return DefaultPort() + 100
-}
