@@ -9,7 +9,7 @@ import (
 )
 
 func RunServer() {
-	obj := new(Path)
+	obj := new(APIVersion)
 	rpc.Register(obj)
 	rpc.HandleHTTP()
 	port := QueryAvailablePort()

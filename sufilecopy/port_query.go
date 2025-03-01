@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/rpc"
-	"os"
 )
 
 func QueryAvailablePort() int {
@@ -47,10 +46,9 @@ func QueryProgramPort() int {
 			log.Print(err)
 			continue
 		}
-		p, _ := os.Executable()
-		if reply != p {
+		if reply != API_VER {
 			port += 1
-			log.Printf("found path: %s, expected: %s", reply, p)
+			log.Printf("found version: %s, expected: %s", reply, API_VER)
 			continue
 		}
 		fmt.Printf("found port: %d\n", port)
