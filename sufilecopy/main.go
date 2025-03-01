@@ -1,9 +1,9 @@
 package main
 
-import "time"
+// import "time"
 
 func main() {
 	RunServer()
-	time.Sleep(1 * time.Second)
+	// time.Sleep(1 * time.Second)
 	QueryProgramPort()
 }

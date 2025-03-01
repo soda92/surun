@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "sufilecopy",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/sufilecopy"
+        },
+        {
             "name": "Attach to Process",
             "type": "go",
             "request": "attach",
