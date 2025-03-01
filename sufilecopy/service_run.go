@@ -8,6 +8,8 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"os"
 	"strings"
 	"time"
 
@@ -76,4 +78,40 @@ func runService(name string, isDebug bool) {
 		return
 	}
 	elog.Info(1, fmt.Sprintf("%s service stopped", name))
+}
+
+func Deploy() {
+	p, _ := os.Executable()
+	running_name, err := determineRunningService()
+	if err != nil {
+		log.Fatal(err)
+	}
+	target_name := GetTargetName(running_name)
+	err = remoteFileCopy(p, target_name)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = remoteSwitchService()
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func InitServices() {
+	p, _ := os.Executable()
+	dest_a := "C:/surunfilecopy_a.exe"
+	dest_b := "C:/surunfilecopy_b.exe"
+	copy(p, dest_a)
+	copy(p, dest_b)
+	installService(NAME_A, dest_a, "Super User File Copy (slot A)")
+	installService(NAME_B, dest_b, "Super User File Copy (slot B)")
+
+	startService(NAME_A)
+}
+
+func RemoveServices() {
+	controlService(NAME_A, svc.Stop, svc.Stopped)
+	controlService(NAME_B, svc.Stop, svc.Stopped)
+	removeService(NAME_A)
+	removeService(NAME_B)
 }
