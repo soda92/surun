@@ -101,17 +101,44 @@ func InitServices() {
 	p, _ := os.Executable()
 	dest_a := "C:/surunfilecopy_a.exe"
 	dest_b := "C:/surunfilecopy_b.exe"
-	copy(p, dest_a)
-	copy(p, dest_b)
-	installService(NAME_A, dest_a, "Super User File Copy (slot A)")
-	installService(NAME_B, dest_b, "Super User File Copy (slot B)")
+	_, err := copy(p, dest_a)
+	if err != nil {
+		log.Fatal(err)
+	}
+	_, err = copy(p, dest_b)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = installService(NAME_A, dest_a, "Super User File Copy (slot A)")
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = installService(NAME_B, dest_b, "Super User File Copy (slot B)")
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	startService(NAME_A)
+	err = startService(NAME_A)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func RemoveServices() {
-	controlService(NAME_A, svc.Stop, svc.Stopped)
-	controlService(NAME_B, svc.Stop, svc.Stopped)
-	removeService(NAME_A)
-	removeService(NAME_B)
+	err := controlService(NAME_A, svc.Stop, svc.Stopped)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = controlService(NAME_B, svc.Stop, svc.Stopped)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = removeService(NAME_A)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = removeService(NAME_B)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
