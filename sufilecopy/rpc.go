@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"net"
@@ -8,6 +9,7 @@ import (
 	"net/rpc"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"golang.org/x/sys/windows/svc"
 )
@@ -21,27 +23,32 @@ func (pa *APIVersion) Get(arg int, reply *string) error {
 
 type Service string
 
-func (s *Service) SwitchAB(_ int, result_service *string) error {
-	p, err := os.Executable()
-	if err != nil {
-		return err
-	}
-	base := filepath.Base(p)
-	var target_name string
-	if base == NAME_A {
-		target_name = NAME_B
-	} else if base == NAME_B {
-		target_name = NAME_A
+func (s *Service) StartService(service_name string, result_service *string) error {
+	err := startService(service_name)
+	return err
+}
+
+func (s *Service) SwitchService(service_name string, result_service *string) error {
+	var base_name string
+	if service_name == NAME_A {
+		base_name = NAME_B
+	} else if service_name == NAME_B {
+		base_name = NAME_A
 	} else {
 		log.Fatal("incorrect executable name")
 	}
-	service_name := base
-	err = controlService(service_name, svc.Stop, svc.Stopped)
-	if err != nil {
-		return err
-	}
-	startService(target_name)
-	return nil
+	err := startService(service_name)
+	var errstr string
+	errstr = fmt.Sprintf("%s", err)
+
+	err = controlService(base_name, svc.Stop, svc.Stopped)
+	errstr = fmt.Sprintf("%s %s", errstr, err)
+	return errors.New(errstr)
+}
+
+func (s *Service) StopService(service_name string, result *string) error {
+	err := controlService(service_name, svc.Stop, svc.Stopped)
+	return err
 }
 
 type Exe string
@@ -51,7 +58,9 @@ func (e *Exe) GetName(_ int, name *string) error {
 	if err != nil {
 		return err
 	}
-	base := filepath.Base(p)
+	name2 := filepath.Base(p)
+	ext := filepath.Ext(p)
+	base := strings.TrimSuffix(name2, ext)
 	*name = base
 	return nil
 }
@@ -108,8 +117,40 @@ func remoteSwitchService() error {
 		return err
 	}
 
+	var base string
+	err = client.Call("Exe.GetName", 0, &base)
+	if err != nil {
+		log.Print(err)
+	}
+
+	var target_name string
+	if base == NAME_A {
+		target_name = NAME_B
+	} else if base == NAME_B {
+		target_name = NAME_A
+	} else {
+		log.Fatal("incorrect executable name")
+	}
+
 	var reply string
-	err = client.Call("Service.SwitchAB", 0, &reply)
+	err = client.Call("Service.SwitchService", target_name, &reply)
+	if err != nil {
+		log.Print(err)
+	}
+	client.Close()
+	return err
+}
+
+func RemoteStopService(service_name string) error {
+	port := QueryProgramPort()
+	client, err := rpc.DialHTTP("tcp", fmt.Sprintf("127.0.0.1:%d", port))
+	if err != nil {
+		log.Printf("connect to port %d failed: %v", port, err)
+		return err
+	}
+
+	var reply string
+	err = client.Call("Service.StopService", service_name, &reply)
 	if err != nil {
 		log.Print(err)
 	}
