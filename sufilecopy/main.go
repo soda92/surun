@@ -23,12 +23,6 @@ import (
 	"golang.org/x/sys/windows/svc"
 )
 
-func main1() {
-	RunServer()
-	// time.Sleep(1 * time.Second)
-	QueryProgramPort()
-}
-
 func usage(errmsg string) {
 	fmt.Fprintf(os.Stderr,
 		"%s\n\n"+
@@ -39,18 +33,12 @@ func usage(errmsg string) {
 	os.Exit(2)
 }
 
-var svcName = "exampleservice"
+var svcName = "SuFileCopy"
 
 func main() {
-	beep()
 	flag.StringVar(&svcName, "name", svcName, "name of the service")
-
-	m1 := flag.Bool("m1", false, "main1")
 	flag.Parse()
 
-	if *m1 {
-		main1()
-	}
 	inService, err := svc.IsWindowsService()
 	if err != nil {
 		log.Fatalf("failed to determine if we are running in service: %v", err)
@@ -69,9 +57,12 @@ func main() {
 	case "debug":
 		runService(svcName, true)
 		return
+	case "test":
+		QueryProgramPort()
 	case "install":
-		err = installService(svcName, "example service")
+		err = installService(svcName, "Super User File Copy Service")
 	case "remove":
+		controlService(svcName, svc.Stop, svc.Stopped)
 		err = removeService(svcName)
 	case "start":
 		err = startService(svcName)
