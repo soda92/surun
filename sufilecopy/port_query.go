@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/rpc"
+	"os"
 )
 
 func QueryAvailablePort() int {
@@ -27,7 +28,6 @@ func QueryAvailablePort() int {
 func QueryProgramPort() int {
 	port := 12534
 	portEnd := port + 100
-	found := false
 
 	for {
 		if port == portEnd {
@@ -40,7 +40,18 @@ func QueryProgramPort() int {
 			continue
 		}
 
-		
+		var reply string
+		err = client.Call("Path.Get", nil, &reply)
+		if err != nil {
+			port += 1
+			continue
+		}
+		p, _ := os.Executable()
+		if reply != p {
+			port += 1
+			continue
+		}
+		fmt.Printf("found port: %d\n", port)
+		return port
 	}
-
 }
