@@ -98,16 +98,17 @@ func Deploy() {
 }
 
 func InitServices() {
+	RemoveServices()
 	p, _ := os.Executable()
-	dest_a := "C:/surunfilecopy_a.exe"
-	dest_b := "C:/surunfilecopy_b.exe"
+	dest_a := "C:/sufilecopy_a.exe"
+	dest_b := "C:/sufilecopy_b.exe"
 	_, err := copy(p, dest_a)
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("could not copy %s to %s", p, dest_a)
 	}
 	_, err = copy(p, dest_b)
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("could not copy %s to %s", p, dest_b)
 	}
 	err = installService(NAME_A, dest_a, "Super User File Copy (slot A)")
 	if err != nil {
@@ -122,23 +123,25 @@ func InitServices() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Print("init completed")
 }
 
 func RemoveServices() {
 	err := controlService(NAME_A, svc.Stop, svc.Stopped)
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("cound not stop %s, error:%s", NAME_A, err)
 	}
 	err = controlService(NAME_B, svc.Stop, svc.Stopped)
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("cound not stop %s, error: %s", NAME_B, err)
 	}
 	err = removeService(NAME_A)
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("cound not remove service %s, error %s", NAME_A, err)
 	}
 	err = removeService(NAME_B)
 	if err != nil {
-		log.Fatal(err)
+		log.Printf("cound not remove service %s, error %s", NAME_B, err)
 	}
+	log.Print("remove completed")
 }

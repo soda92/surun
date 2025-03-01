@@ -12,6 +12,13 @@ import (
 	"golang.org/x/sys/windows/svc"
 )
 
+type APIVersion string
+
+func (pa *APIVersion) Get(arg int, reply *string) error {
+	*reply = API_VER
+	return nil
+}
+
 type Service string
 
 func (s *Service) SwitchAB(_ int, result_service *string) error {
@@ -110,8 +117,18 @@ func remoteSwitchService() error {
 }
 
 func RunServer() {
-	obj := new(APIVersion)
-	rpc.Register(obj)
+	api := new(APIVersion)
+	rpc.Register(api)
+
+	exe := new(Exe)
+	rpc.Register(exe)
+
+	tool := new(Tool)
+	rpc.Register(tool)
+
+	service := new(Service)
+	rpc.Register(service)
+
 	rpc.HandleHTTP()
 	port := QueryAvailablePort()
 	l, err := net.Listen("tcp", fmt.Sprintf("127.0.0.1:%d", port))

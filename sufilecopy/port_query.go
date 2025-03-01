@@ -35,12 +35,12 @@ func QueryProgramPort() int {
 		client, err := rpc.DialHTTP("tcp", fmt.Sprintf("127.0.0.1:%d", port))
 		if err != nil {
 			port += 1
-			log.Printf("connect to port %d failed: %v", port, err)
+			log.Printf("error: connect to port %d failed: %v", port, err)
 			continue
 		}
 
 		var reply string
-		err = client.Call("Path.Get", 0, &reply)
+		err = client.Call("APIVersion.Get", 0, &reply)
 		if err != nil {
 			port += 1
 			log.Print(err)
@@ -48,10 +48,10 @@ func QueryProgramPort() int {
 		}
 		if reply != API_VER {
 			port += 1
-			log.Printf("found version: %s, expected: %s", reply, API_VER)
+			log.Printf("error: found version: %s, expected: %s", reply, API_VER)
 			continue
 		}
-		fmt.Printf("found port: %d\n", port)
+		log.Printf("found port: %d\n", port)
 		return port
 	}
 }

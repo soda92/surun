@@ -12,6 +12,14 @@ import (
 	"golang.org/x/sys/windows/svc"
 )
 
+func GetSelfServiceName() string {
+	p, _ := os.Executable()
+	name := filepath.Base(p)
+	ext := filepath.Ext(p)
+	base := strings.TrimSuffix(name, ext)
+	return base
+}
+
 func main() {
 	inService, err := svc.IsWindowsService()
 	if err != nil {
@@ -19,6 +27,10 @@ func main() {
 	}
 	if inService {
 		runService(GetSelfServiceName(), false)
+		return
+	}
+	if len(os.Args) < 2 {
+		usage()
 		return
 	}
 
@@ -35,18 +47,37 @@ func main() {
 		InitServices()
 	case "-uninstall":
 		RemoveServices()
-	default:
-		if len(os.Args) != 3 {
+	case "copy":
+		if len(os.Args) != 4 {
 			usage()
 			return
 		}
-		source, _ := filepath.Abs(os.Args[1])
-		dest, _ := filepath.Abs(os.Args[2])
-		remoteFileCopy(source, dest)
+		source, err := filepath.Abs(os.Args[2])
+		if err != nil {
+			log.Fatal(err)
+		}
+		dest, err := filepath.Abs(os.Args[3])
+		if err != nil {
+			log.Fatal(err)
+		}
+		stat, err := os.Stat(dest)
+		if err != nil {
+			log.Fatal(err)
+		}
+		if stat.IsDir() {
+			dest += "/" + filepath.Base(source)
+		}
+		err = remoteFileCopy(source, dest)
+		if err != nil {
+			log.Fatal(err)
+		}
+		log.Print("copy succeeded")
+	default:
+		usage()
+		return
 	}
 }
 
 func usage() {
-	fmt.Printf(`usage: -debug, -test, -deploy, -init or:
-		supply two path names as source and destination to copy`)
+	fmt.Printf(`usage: -debug, -test, -deploy, -init or "copy [A] [B]"`)
 }
