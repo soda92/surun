@@ -42,9 +42,15 @@ func usage(errmsg string) {
 var svcName = "exampleservice"
 
 func main() {
+	beep()
 	flag.StringVar(&svcName, "name", svcName, "name of the service")
+
+	m1 := flag.Bool("m1", false, "main1")
 	flag.Parse()
 
+	if *m1 {
+		main1()
+	}
 	inService, err := svc.IsWindowsService()
 	if err != nil {
 		log.Fatalf("failed to determine if we are running in service: %v", err)
@@ -81,5 +87,4 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to %s %s: %v", cmd, svcName, err)
 	}
-	return
 }

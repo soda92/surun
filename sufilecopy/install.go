@@ -35,7 +35,7 @@ func exePath() (string, error) {
 			if !fi.Mode().IsDir() {
 				return p, nil
 			}
-			err = fmt.Errorf("%s is directory", p)
+			_ = fmt.Errorf("%s is directory", p)
 		}
 	}
 	return "", err
