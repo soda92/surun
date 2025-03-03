@@ -24,11 +24,16 @@ SuRunExt.rc
 include_directories(. ..)
 
 set(TARGET SuRunExt)
+
+
 if(DEFINED ARCH_WIN32)
+    set(SOURCES ${SOURCES} "mingw32.def")
     set(TARGET SuRunExt32)
+else()
+    set(SOURCES ${SOURCES} "mingw.def")
 endif()
 
-add_library(${TARGET} SHARED ${SOURCES} "mingw.def")
+add_library(${TARGET} SHARED ${SOURCES})
 
 SET_TARGET_PROPERTIES(${TARGET} PROPERTIES PREFIX "")
 set_target_properties(${TARGET} PROPERTIES
