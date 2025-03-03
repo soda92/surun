@@ -28,8 +28,12 @@ if(DEFINED ARCH_WIN32)
     set(TARGET SuRunExt32)
 endif()
 
-add_library(${TARGET} SHARED ${SOURCES})
+add_library(${TARGET} SHARED ${SOURCES} "mingw.def")
+
 SET_TARGET_PROPERTIES(${TARGET} PROPERTIES PREFIX "")
+set_target_properties(${TARGET} PROPERTIES
+    WINDOWS_EXPORT_ALL_SYMBOLS TRUE
+)
 
 target_link_libraries(${TARGET} PRIVATE winmm.lib Psapi.lib Netapi32.lib
 Shlwapi.lib Secur32.lib Mpr.lib Userenv.lib advapi32.lib

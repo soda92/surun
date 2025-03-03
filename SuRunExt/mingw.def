@@ -1,0 +1,7 @@
+LIBRARY     SuRunExt
+
+EXPORTS
+   DllCanUnloadNow   PRIVATE
+   DllGetClassObject PRIVATE
+   CPlApplet         PRIVATE
+   SuRunLogoffUser
