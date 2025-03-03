@@ -1,0 +1,9 @@
+#include "resource.h"
+
+IDI_SAMPLE_CPL            ICON                    "app.ico"
+
+STRINGTABLE
+BEGIN
+    IDS_SAMPLE_CPL_NAME     "MyCPLApplet"
+    IDS_SAMPLE_CPL_DESCRIPTION "Example of control panel applet"
+END

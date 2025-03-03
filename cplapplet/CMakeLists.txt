@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
 project(cplapplet)
 
-set(SOURCES main.c app.def)
+set(SOURCES main.c app.def app.rc)
 set(TARGET myapplet)
 
 add_library(${TARGET} SHARED ${SOURCES})
