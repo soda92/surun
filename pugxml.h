@@ -2736,9 +2736,9 @@ public:
   bool has_name() { return (!empty() && _root->name != 0); } // Node has a name.
 #ifndef _WIN64 //"const stdstring& name" is "const TCHAR* name" in Win64
 #if _MSC_VER <= 1200
-  bool has_name(const stdstring &name) {
-    return has_name(name.c_str());
-  } // Node is named 'name'.
+  // bool has_name(const stdstring &name) {
+  //   return has_name((const TCHAR*)(name.c_str()));
+  // } // Node is named 'name'.
 #endif
 #endif //_WIN64
   bool has_attribute(const stdstring &name) {

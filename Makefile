@@ -44,7 +44,7 @@ _msys_32:
 	mv SuRun32.bin ReleaseUx64/
 
 bi: #build installer
-	rm -r build-i 	# clean cache to make sure RC file is recompiled
+	rm -r build-i || true 	# clean cache to make sure RC file is recompiled
 	cd InstallSuRun && cmake --preset windows-only
 	cmake --build build-i
 	python merge_cc.py
