@@ -6,8 +6,9 @@ msys: msys-surun msys-32 bi
 surun:
 	cmake --preset windows-only
 	cmake --build build
-	python gen_lsp_tdm.py
-	pwsh -nop -c "cp build/SuRunExt/SuRunExt.dll ReleaseUx64/"
+	gen_lsp_tdm.exe
+	pwsh -nop -c "cp build/SuRunExt/SuRunExt.dll ReleaseUx64"
+	pwsh -nop -c "cp build/SuRun.exe ReleaseUx64"
 	pwsh -nop -c "cp build/SuRun.dll ."
 	go build .
 
@@ -64,7 +65,7 @@ _clean_msys:
 debug:
 	cmake --preset windows-debug
 	cmake --build build-debug
-	python gen_lsp_tdm.py -B build-debug
+	gen_lsp_tdm.exe -B build-debug
 	python merge_cc.py -B build-debug
 	pwsh -nop -c "cp build-debug/SuRun.dll ."
 	go build -gcflags="-N -l" -o SuRunD.exe .
