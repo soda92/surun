@@ -329,7 +329,7 @@ typedef struct _SETUPDATA {
     UserIcon =
         (HICON)LoadImage(GetModuleHandle(0), MAKEINTRESOURCE(IDI_MAINICON),
                          IMAGE_ICON, 48, 48, 0);
-    ImgList = ImageList_Create(16, 16, ILC_COLOR8, 7, 1);
+    ImgList = ImageList_Create(128, 128, ILC_COLOR8, 7, 1);
     for (i = 0; i < 9; i++) {
       HICON icon = (HICON)LoadImage(GetModuleHandle(0),
                                     MAKEINTRESOURCE(IDI_LISTICON + i),

@@ -107,7 +107,7 @@ CTrayMsgWnd::CTrayMsgWnd(LPCTSTR DlgTitle, LPCTSTR Text, int IconId,
                          DWORD TimeOut) {
   LoadLibrary(_T("Shell32.dll")); // Load Shell Window Classes
   m_Icon = (HICON)LoadImage(GetModuleHandle(0), MAKEINTRESOURCE(IconId),
-                            IMAGE_ICON, 16, 16, 0);
+                            IMAGE_ICON, 128, 128, 0);
   WM_SRTRMSGWNDCLOSED = RegisterWindowMessage(_T("WM_SRTRMSGWNDCLOSED"));
   m_DoSlide = 0;
   m_hFont = CreateFont(-14, 0, 0, 0, FW_MEDIUM, 0, 0, 0, 0, 0, 0, 0, 0,
