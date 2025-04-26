@@ -5,18 +5,32 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: pwsh build.ps1
-      - uses: actions/upload-artifact@v4
+      - name: Clone
+        uses: actions/checkout@v4
+
+      - name: Build debug
+        run: pwsh build-debug.ps1
+
+      - name: Build release
+        run: pwsh build.ps1
+
+      - name: Set timestamp
+        id: timestamp
+        run: |
+          now=$(date +'%Y%m%d%H%M%S')
+          echo "TIMESTAMP=$now" >> $GITHUB_ENV
+
+      - name: update artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: release
+          name: surun-release-${{ env.TIMESTAMP }}
           path: |
             InstallSuRun.exe
             ReleaseUx64
-      - run: pwsh build-debug.ps1
+
       - uses: actions/upload-artifact@v4
         with:
-          name: debug
+          name: surun-debug-${{ env.TIMESTAMP }}
           path: |
             DebugUx64
             DebugU
