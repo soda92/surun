@@ -220,7 +220,7 @@ static void DisplayIcon() {
   if (bIsFGAdm == -1) {
     g_NotyData.hIcon =
         (HICON)LoadImage(g_hInstance, MAKEINTRESOURCE(IDI_NOWINDOW), IMAGE_ICON,
-                         16, 16, LR_DEFAULTCOLOR);
+                         128, 128, LR_DEFAULTCOLOR);
     if (GetHideNormalIcon)
       g_NotyData.dwState = NIS_HIDDEN;
   } else if (bIsFGAdm) {
@@ -228,7 +228,7 @@ static void DisplayIcon() {
         g_hInstance,
         MAKEINTRESOURCE(bDiffUser ? IDI_ADMIN
                                   : (g_CliIsAdmin ? IDI_SHADMIN : IDI_SRADMIN)),
-        IMAGE_ICON, 16, 16, LR_DEFAULTCOLOR);
+        IMAGE_ICON, 128, 128, LR_DEFAULTCOLOR);
     if (g_BallonTips && bDiffUser && (CurPID != LastPID)) {
       LastPID = CurPID;
       BalloonTimeOut.Set(20000);
@@ -241,7 +241,7 @@ static void DisplayIcon() {
   } else {
     g_NotyData.hIcon =
         (HICON)LoadImage(g_hInstance, MAKEINTRESOURCE(IDI_NOADMIN), IMAGE_ICON,
-                         16, 16, LR_DEFAULTCOLOR);
+                         128, 128, LR_DEFAULTCOLOR);
     if (g_BallonTips && bDiffUser && (CurPID != LastPID)) {
       LastPID = CurPID;
       BalloonTimeOut.Set(20000);
@@ -373,7 +373,7 @@ void InitTrayShowAdmin() {
       WS_POPUP, 0, 0, 0, 0, 0, 0, g_hInstance, NULL);
   g_NotyData.hIcon =
       (HICON)LoadImage(g_hInstance, MAKEINTRESOURCE(IDI_NOWINDOW), IMAGE_ICON,
-                       16, 16, LR_DEFAULTCOLOR);
+                       128, 128, LR_DEFAULTCOLOR);
 
   _stprintf(g_NotyData.szTip, _T("SuRun %s"), GetVersionString());
   g_NotyData.dwInfoFlags = NIIF_INFO | NIIF_NOSOUND;

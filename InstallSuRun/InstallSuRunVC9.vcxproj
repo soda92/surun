@@ -23,6 +23,7 @@
     <ProjectName>InstallSuRun</ProjectName>
     <ProjectGuid>{6A6CCFF6-F29A-441F-9E27-7E82F90968D3}</ProjectGuid>
     <RootNamespace>InstallSuRun</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SuRun32 Unicode Debug|Win32'" Label="Configuration">
@@ -75,7 +76,7 @@
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>.\Release\</OutDir>
+    <OutDir>..\</OutDir>
     <IntDir>.\Release\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
@@ -140,7 +141,8 @@
     </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
-      <Command></Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -191,7 +193,8 @@
     </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
-      <Command></Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='x64 Unicode Debug|Win32'">
@@ -242,7 +245,8 @@
     </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
-      <Command></Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='SuRun32 Unicode Debug|Win32'">
@@ -293,7 +297,8 @@
     </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
-      <Command></Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

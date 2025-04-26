@@ -290,7 +290,7 @@ int APIENTRY WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
       ||(!ResToTmp("EXE_FILE","SuRunExt.dll")))
       return -1;
   }
-  if (args)
+  if (args && *args != '\0')
     RunTmp("SuRun.exe",args);
   else
     RunTmp("SuRun.exe /USERINST");
