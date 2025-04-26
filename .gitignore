@@ -1,16 +1,20 @@
-*.exe
-*.dll
-__pycache__
+# Custom
 /data.txt
+*.ico~
+*.kra~
 
-/SuRun32.bin
-
+# include
 !vswhere.exe
 
+# language server
 __cmake*
 /.cache
 /*.json
 
+# Visual Studio
+/SuRun32.bin
+*.exe
+*.dll
 UpgradeLog.htm
 .vs
 DebugUx64
@@ -43,3 +47,4 @@ x64 Unicode Debug/
 
 # Py
 *.pyc
+__pycache__
