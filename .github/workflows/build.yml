@@ -17,8 +17,8 @@ jobs:
       - name: Set timestamp
         id: timestamp
         run: |
-          now=$(date +'%Y%m%d%H%M%S')
-          echo "TIMESTAMP=$now" >> $GITHUB_ENV
+          $now = Get-Date -Format "yyyyMMddHHmmss"
+          echo "TIMESTAMP=$now" | Out-File -Path $env:GITHUB_ENV -Append
 
       - name: update artifact
         uses: actions/upload-artifact@v4
