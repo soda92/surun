@@ -2864,33 +2864,6 @@ bool HandleServiceStuff() {
         ;
     }
   }
-  // Are we run from the Windows directory?, if Not, ask for Install/update
-#ifndef _DEBUG
-  {
-    TCHAR fn[4096];
-    TCHAR wd[4096];
-    GetProcessFileName(fn, 4096);
-    NetworkPathToUNCPath(fn);
-    PathRemoveFileSpec(fn);
-    PathRemoveBackslash(fn);
-    GetSystemWindowsDirectory(wd, 4096);
-    PathRemoveBackslash(wd);
-    // #ifndef SKIP_WINDIR
-    // if (_tcsicmp(fn, wd)) {
-    //   DBGTrace2("Running from \"%s\" and NOT from WinDir(\"%s\")", fn, wd);
-    //   // Only call UserInstall with empty command line
-    //   if (cmd.argc() != 1)
-    //     ExitProcess(RETVAL_SX_NOTINLIST);
-    //   else {
-    //     UserInstall();
-    //     ExitProcess(0);
-    //   }
-    //   for (;;)
-    //     ;
-    // }
-    // #endif
-  }
-#endif //_DEBUG
   // In the first three Minutes after Sytstem start:
   // Wait for the service to start
   DWORD ss = CheckServiceStatus();

@@ -1035,26 +1035,14 @@ DWORD WINAPI InitProc(void* p)
     //  CTimeLog l(L"InitProc");
     //Try to make shure that the NT Dll Loader is done:
     HINSTANCE h=0;
-    for(;;)
-    {
-      h=GetModuleHandleA("psapi.dll");
-      if (h)
-        break;
-      if (l_InitThread)
-        LoadLibraryA("psapi.dll");
-      Sleep(1);
+    h = LoadLibraryA("psapi.dll");
+    DWORD lastError = GetLastError();
+    if (lastError != ERROR_SUCCESS) {
+      DBGTrace1("LoadLibraryA failed: %d", lastError); // Log the error
     }
     GetProcAddress(h,"EnumProcessModules");
     h=0;
-    for(;;)
-    {
-      h=GetModuleHandleA("advapi32.dll");
-      if (h)
-        break;
-      if (l_InitThread)
-        LoadLibraryA("advapi32.dll");
-      Sleep(1);
-    }
+    LoadLibraryA("advapi32.dll");
     GetProcAddress(h,"CreateProcessAsUserW");
     //Resources
     l_Groups=UserIsInSuRunnersOrAdmins();
