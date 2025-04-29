@@ -10,8 +10,8 @@
 // 
 //                                (c) Kay Bruns (http://kay-bruns.de), 2007-15
 //////////////////////////////////////////////////////////////////////////////
-#define _WIN32_WINNT 0x0500
-#define WINVER       0x0500
+#define _WIN32_WINNT 0x0A00
+#define WINVER       0x0A00
 #include <windows.h>
 #include <shlwapi.h>
 #include <stdio.h>
@@ -233,7 +233,7 @@ bool GetVersionStringFileInfoString(LPTSTR FName, LPCTSTR WhatString,LPTSTR sRet
         // Retrieve file description for language and code page "i". 
         LPTSTR lpBuffer=0;
         UINT dwBytes=0;
-        VerQueryValue(VerInfo, SubBlock, (LPVOID*)&lpBuffer, &dwBytes); 
+        VerQueryValue(VerInfo, SubBlock, (LPVOID*)&lpBuffer, &dwBytes);
         if (dwBytes)
         {
           bRet=true;
