@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"
           xmlns:asmv3="urn:schemas-microsoft-com:asm.v3">
+	 <application>
+    <windowsSettings xmlns="http://schemas.microsoft.com/SMI/2016/windowsSettings">
+      <dpiAwareness>PerMonitorV2</dpiAwareness>
+      <dpiAwareness>PerMonitor</dpiAwareness>
+      <dpiAwareness>System</dpiAwareness>
+      <dpiAwareness>Unaware</dpiAwareness>
+    </windowsSettings>
+  </application>
 <assemblyIdentity
     version="1.0.0.0"
     processorArchitecture="*"
@@ -32,10 +40,6 @@
       <supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}"/>
       <!-- Windows 10 --> 
       <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>
-	
-      <asmv3:windowsSettings xmlns="http://schemas.microsoft.com/SMI/2016/windowsSettings">
-      <asmv3:dpiAwareness>PerMonitorV2</asmv3:dpiAwareness>
-    </asmv3:windowsSettings>
     </application>
   </compatibility>
   <ms_asmv2:trustInfo xmlns:ms_asmv2="urn:schemas-microsoft-com:asm.v2">
