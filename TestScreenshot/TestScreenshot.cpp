@@ -74,6 +74,9 @@ int main() {
   ULONG_PTR gdiplusToken;
   GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, nullptr);
 
+  DPI_AWARENESS_CONTEXT oldContext =
+      SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+
   int screenWidth = GetSystemMetrics(SM_CXVIRTUALSCREEN);
   int screenHeight = GetSystemMetrics(SM_CYVIRTUALSCREEN);
   int screenLeft = GetSystemMetrics(SM_XVIRTUALSCREEN);
@@ -95,13 +98,14 @@ int main() {
 
   // Save the bitmap to a file
   std::wstring timestamp = GetTimestamp();
-  std::wstring filename = L"screenshot_" + timestamp + L".bmp";
+  std::wstring filename = L"screenshot.bmp";
   SaveBitmapToFile(hBitmap, filename);
 
   DeleteObject(hBitmap);
 
   // Shutdown GDI+
   GdiplusShutdown(gdiplusToken);
+  SetThreadDpiAwarenessContext(oldContext); // Restore previous context
 
   return 0;
 }
