@@ -46,13 +46,23 @@ BEGIN
 END
 
 #endif    // APSTUDIO_INVOKED
-
-1                       RT_MANIFEST             "app.manifest"
-SURUN.EXE               EXE64_FILE              "..\\ReleaseUx64\\SuRun.exe"
-SURUNEXT.DLL            EXE64_FILE              "..\\ReleaseUx64\\SuRunExt.dll"
-SURUN32.BIN             EXE64_FILE              "..\\ReleaseUx64\\SuRun32.bin"
-SURUNEXT32.DLL          EXE64_FILE              "..\\ReleaseUx64\\SuRunExt32.dll"
-IDI_MAINICON            ICON                    "..\\res\\SuRun.ico"
+#ifdef _DEBUG
+// must use one tab, or VS will throw an error!
+// build: first build surun and surunExt using "Surun32 unicode debug", then build "InstallSuRun"
+1   RT_MANIFEST "app.manifest"
+SURUN.EXE   EXE64_FILE  "..\\DebugUx64\\SuRun.exe"
+SURUNEXT.DLL    EXE64_FILE  "..\\DebugUx64\\SuRunExt.dll"
+SURUN32.BIN EXE64_FILE  "..\\DebugUx64\\SuRun32.bin"
+SURUNEXT32.DLL  EXE64_FILE  "..\\DebugUx64\\SuRunExt32.dll"
+IDI_MAINICON    ICON    "..\\res\\SuRun.ico"
+#else
+1   RT_MANIFEST "app.manifest"
+SURUN.EXE   EXE64_FILE  "..\\ReleaseUx64\\SuRun.exe"
+SURUNEXT.DLL    EXE64_FILE  "..\\ReleaseUx64\\SuRunExt.dll"
+SURUN32.BIN EXE64_FILE  "..\\ReleaseUx64\\SuRun32.bin"
+SURUNEXT32.DLL  EXE64_FILE  "..\\ReleaseUx64\\SuRunExt32.dll"
+IDI_MAINICON    ICON    "..\\res\\SuRun.ico"
+#endif
 
 #endif    // Neutral (Sys. Default) resources
 /////////////////////////////////////////////////////////////////////////////
