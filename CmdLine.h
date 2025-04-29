@@ -18,8 +18,8 @@
 //////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#define _WIN32_WINNT 0x0500
-#define WINVER 0x0500
+#define _WIN32_WINNT 0x0A00
+#define WINVER 0x0A00
 #include <SHLWAPI.H>
 #include <TCHAR.h>
 #include <stdio.h>

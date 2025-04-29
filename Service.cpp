@@ -23,8 +23,8 @@
 // -requesting permission/password in the logon session of the user
 // -putting the users password to the user process via WriteProcessMemory
 
-#define _WIN32_WINNT 0x0500
-#define WINVER 0x0500
+#define _WIN32_WINNT 0x0A00
+#define WINVER 0x0A00
 #include <windows.h>
 #include <Aclapi.h>
 #include <Psapi.h>

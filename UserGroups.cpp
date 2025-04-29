@@ -20,8 +20,8 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-#define _WIN32_WINNT 0x0500
-#define WINVER 0x0500
+#define _WIN32_WINNT 0x0A00
+#define WINVER 0x0A00
 #include <windows.h>
 #include <TCHAR.h>
 #include <lm.h>

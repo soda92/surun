@@ -1,8 +1,8 @@
 // SuRunC.cpp : Defines the entry point for the console application.
 //
 
-#define _WIN32_WINNT 0x0500
-#define WINVER       0x0500
+#define _WIN32_WINNT 0x0A00
+#define WINVER       0x0A00
 #include <windows.h>
 #include <stdio.h>
 #include <tchar.h>
