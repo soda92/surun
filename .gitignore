@@ -2,6 +2,7 @@
 /data.txt
 *.ico~
 *.kra~
+src_bak/
 
 # include
 !vswhere.exe

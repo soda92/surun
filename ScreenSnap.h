@@ -26,9 +26,13 @@
 #pragma once
 #include "DBGTrace.H"
 #include "setup.H"
-#include <TCHAR.h>
-#include <WINDOWS.h>
 #include <algorithm>
+extern "C" {
+    #include <gdiplus.h>
+    #include <TCHAR.h>
+    #include <WINDOWS.h>
+}
+#pragma comment(lib, "Gdiplus.lib")
 using std::min;
 using std::max;
 // Simplified 3x3 Gausian blur
@@ -147,6 +151,8 @@ public:
   }
   HWND hWnd() { return m_hWndTrans; };
   void Init() {
+    DPI_AWARENESS_CONTEXT oldContext =
+    SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
     m_x = GetSystemMetrics(SM_XVIRTUALSCREEN);
     m_y = GetSystemMetrics(SM_YVIRTUALSCREEN);
     m_dx = GetSystemMetrics(SM_CXVIRTUALSCREEN);
