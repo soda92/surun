@@ -23,6 +23,7 @@ func main() {
 
 		timestamp := time.Now().Format("20060102_150405")
 		filename := fmt.Sprintf("screenshot_%d_%s.png", i, timestamp)
+		filename_blurred := fmt.Sprintf("screenshot_%d_%s_blurred.png", i, timestamp)
 
 		file, err := os.Create(filename)
 		if err != nil {
@@ -31,6 +32,17 @@ func main() {
 		defer file.Close()
 
 		err = png.Encode(file, img)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		file_blurred, err := os.Create(filename_blurred)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer file_blurred.Close()
+
+		err = png.Encode(file_blurred, BlurSimilar(img))
 		if err != nil {
 			log.Fatal(err)
 		}
