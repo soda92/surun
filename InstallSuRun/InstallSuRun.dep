@@ -1,6 +1,0 @@
-# Microsoft Developer Studio Generated Dependency File, included by InstallSuRun.mak
-
-.\InstallSuRun.rc : \
-	"..\res\SuRun.ico"\
-	".\app.manifest"\
-	
