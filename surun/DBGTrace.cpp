@@ -290,88 +290,8 @@ void WriteLogA(LPSTR S, ...) {
 }
 
 void WriteLog(LPTSTR S, ...) {
-#ifdef UNICODE
-  WCHAR tmp[MAX_PATH];
-  GetTempPathW(MAX_PATH, tmp);
-  wcscat(tmp, L"SuRunLog.log");
-  FILE *f = _wfopen(tmp, L"a+t");
-  if (f) {
-    SYSTEMTIME st;
-    GetLocalTime(&st);
-    fwprintf(f, L"%02d:%02d:%02d.%03d [%d]: ", st.wHour, st.wMinute, st.wSecond,
-             st.wMilliseconds, GetCurrentProcessId());
-    va_list va;
-    va_start(va, S);
-    vfwprintf(f, S, va);
-    va_end(va);
-    fclose(f);
-  }
-#else  // UNICODE
-  WriteLogA(S);
-#endif // UNICODE
+  // code removed due to exceptions
 }
-
-// #pragma pack(push,1)
-// typedef struct
-//{
-//   DWORD PID;
-//   char s[4096-sizeof(DWORD)];
-// }DBGSTRBUF;
-// #pragma pack(pop)
-////DbgOutA was created after reading:
-////http://unixwiz.net/techtips/outputdebugstring.html
-// void DbgOutA(LPCSTR s)
-//{
-//   static HANDLE DBWMtx=NULL;
-//   if (!DBWMtx)
-//     DBWMtx=OpenMutexA(SYNCHRONIZE,false,"DBWinMutex");
-//   if (!DBWMtx)
-//   {
-//     //Just in case Microsoft changes OutputDebugString in future:
-//     OutputDebugStringA("FATAL: DBWinMutex not available\n");
-//     return;
-//   }
-//   WaitForSingleObject(DBWMtx,INFINITE);
-//   HANDLE
-//   DBWBuf=OpenFileMappingA(FILE_MAP_READ|FILE_MAP_WRITE,FALSE,"DBWIN_BUFFER");
-//   if (!DBWBuf)
-//   {
-//     ReleaseMutex(DBWMtx);
-//     //Just in case Microsoft changes OutputDebugString in future:
-//     OutputDebugStringA("FATAL: DBWIN_BUFFER not available\n");
-//     return;
-//   }
-//   DBGSTRBUF* Buf=(DBGSTRBUF*)MapViewOfFile(DBWBuf,FILE_MAP_WRITE,0,0,0);
-//   HANDLE evRdy=OpenEventA(EVENT_MODIFY_STATE,FALSE,"DBWIN_DATA_READY");
-//   HANDLE evAck=OpenEventA(SYNCHRONIZE,FALSE,"DBWIN_BUFFER_READY");
-//   try
-//   {
-//     if (evRdy && WaitForSingleObject(evAck,5000) == WAIT_OBJECT_0)
-//     {
-//       Buf->PID=GetCurrentProcessId();
-//       memset(&Buf->s,0,sizeof(Buf->s));
-//       memmove(&Buf->s,s,min(strlen(s),sizeof(Buf->s)-1));
-//       SetEvent(evRdy);
-//     }else
-//     {
-//       //Just in case Microsoft changes OutputDebugString in future:
-//       OutputDebugStringA("FATAL: DBWIN_xxx events not available\n");
-//     }
-//   }
-//  }__except((GetExceptionCode()!=DBG_PRINTEXCEPTION_C)?EXCEPTION_EXECUTE_HANDLER:EXCEPTION_CONTINUE_SEARCH)
-//   {
-//     //Just in case Microsoft changes OutputDebugString in future:
-//     OutputDebugStringA("FATAL: Exception in DbgOutA\n");
-//   }
-//   if (evAck)
-//     CloseHandle(evAck);
-//   if (evRdy)
-//     CloseHandle(evRdy);
-//   if (Buf)
-//     UnmapViewOfFile(Buf);
-//   CloseHandle(DBWBuf);
-//   ReleaseMutex(DBWMtx);
-// }
 
 void TRACEx(LPCTSTR s, ...) {
   try {
