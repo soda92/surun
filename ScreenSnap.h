@@ -263,6 +263,7 @@ public:
 
 public:
   static DWORD WINAPI BlurProc(void *p) {
+    SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
     SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_IDLE);
     Sleep(200);
     CBlurredScreen *bs = (CBlurredScreen *)p;

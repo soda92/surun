@@ -1,4 +1,4 @@
-// clang-format off
+﻿// clang-format off
 //go:build ignore
 // clang-format on
 //////////////////////////////////////////////////////////////////////////////
@@ -232,8 +232,38 @@ public:
   }
   void FadeIn() {
     m_hDesk = GetThreadDesktop(GetCurrentThreadId());
-    if (m_hWndTrans && m_hWnd && m_bm && (m_Thread == NULL))
-      m_Thread = CreateThread(0, 0, BlurProc, this, 0, 0);
+    if (m_hWndTrans && m_hWnd && m_bm && (m_Thread == NULL)) {
+      // 1. Prepare parameters for the thread
+      struct BlurThreadParams {
+        CBlurredScreen1 *bs;
+        DPI_AWARENESS_CONTEXT callerContext; // Store the caller's context
+      };
+      BlurThreadParams *params = new BlurThreadParams;
+      params->bs = this;
+
+      // 2. Get the current DPI awareness context
+      typedef DPI_AWARENESS_CONTEXT(WINAPI *
+                                    GetThreadDpiAwarenessContextFunc)(void);
+      GetThreadDpiAwarenessContextFunc GetThreadDpiAwarenessContext =
+          (GetThreadDpiAwarenessContextFunc)GetProcAddress(
+              GetModuleHandle(L"user32.dll"), "GetThreadDpiAwarenessContext");
+      if (GetThreadDpiAwarenessContext) {
+        params->callerContext = GetThreadDpiAwarenessContext();
+      } else {
+        params->callerContext = NULL; // Or a default context if needed
+      }
+
+      // 3. Create the thread
+      m_Thread = CreateThread(0, 0, BlurProc, params, 0, 0);
+
+      if (m_Thread) {
+        // We don't need the params anymore in this thread
+        // The thread is responsible for deleting it
+      } else {
+        delete params; // Clean up if thread creation failed
+        //DBGTrace1("CreateThread failed: %s", GetLastErrorNameStatic());
+      }
+    }
   }
   void FadeOut() {
     if (m_Thread && m_hWndTrans && m_hWnd) {
@@ -251,6 +281,7 @@ public:
 
 public:
   static DWORD WINAPI BlurProc(void *p) {
+    SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
     SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_IDLE);
     Sleep(200);
     CBlurredScreen1 *bs = (CBlurredScreen1 *)p;
