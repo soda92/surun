@@ -31,6 +31,10 @@ def rm_dirs(*args):
         if isinstance(d, list):
             for dir in d:
                 dir = str_path(dir)
-                shutil.rmtree(dir)
+                try:
+                    shutil.rmtree(dir)
+                except Exception as e:
+                    print(e)
+                    continue
         elif isinstance(d, str):
             shutil.rmtree(d)
