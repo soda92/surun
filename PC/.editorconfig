@@ -8,5 +8,5 @@ indent_style = space
 [*.xml]
 indent_size = 2
 
-[cpp]
+[*.cpp, *.h]
 indent_size = 2

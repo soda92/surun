@@ -132,6 +132,7 @@ inline HBITMAP CreateDIB(HDC dc, int w, int h, void **Bits) {
 class CBlurredScreen {
 public:
   CBlurredScreen() {
+    m_hDesk = nullptr;
     m_hWnd = 0;
     m_hWndTrans = 0;
     m_x = 0;

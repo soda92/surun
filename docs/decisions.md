@@ -10,3 +10,5 @@ that means, you will create directories for scripts, docs, and tests.
 - Do not use cmake.
 
 - Visual Studio for code editing & language server, VSCode for data analysis, Github Desktop for code commit.
+
+- Don't try to fix any of the project build warnings, except for some very basic ones.
