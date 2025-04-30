@@ -3,6 +3,7 @@
 *.ico~
 *.kra~
 src_bak/
+*.bmp
 
 # include
 !vswhere.exe

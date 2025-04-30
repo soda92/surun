@@ -24,9 +24,9 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #pragma once
-#include "DBGTrace.H"
-#include "setup.H"
 #include <algorithm>
+#include "Helpers.h"
+#include "DbgTrace.h"
 extern "C" {
     #include <gdiplus.h>
     #include <TCHAR.h>
@@ -261,7 +261,7 @@ public:
     }
   }
 
-private:
+public:
   static DWORD WINAPI BlurProc(void *p) {
     SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_IDLE);
     Sleep(200);
