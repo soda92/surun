@@ -52,7 +52,7 @@ END
 // RT_MANIFEST
 //
 
-1                       RT_MANIFEST             "res\\app.manifest"
+1                       RT_MANIFEST             "resources\\app.manifest"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -61,7 +61,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_MAINICON            ICON                    "res\\SuRun.ico"
+IDI_MAINICON            ICON                    "resources\\SuRun.ico"
 #endif    // German (Germany) resources
 /////////////////////////////////////////////////////////////////////////////
 
