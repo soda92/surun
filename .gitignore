@@ -1,9 +1,15 @@
 # Custom
 /data.txt
-*.ico~
-*.kra~
 src_bak/
 *.bmp
+
+# Icon resources
+*.ico~
+*.kra~
+
+# Python
+__pycache__
+.venv
 /dist
 
 # include
@@ -45,9 +51,5 @@ SuRunExt/x64 Unicode Release/
 SuRunExt/x64 Unicode Debug/
 x64 Unicode Debug/
 
-# Qt build
+# makefile build
 /build*
-
-# Py
-*.pyc
-__pycache__
