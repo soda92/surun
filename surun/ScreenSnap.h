@@ -151,7 +151,6 @@ public:
   }
   HWND hWnd() { return m_hWndTrans; };
   void Init() {
-    DPI_AWARENESS_CONTEXT oldContext =
     SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
     m_x = GetSystemMetrics(SM_XVIRTUALSCREEN);
     m_y = GetSystemMetrics(SM_YVIRTUALSCREEN);

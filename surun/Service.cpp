@@ -2458,8 +2458,8 @@ INT_PTR CALLBACK InstallDlgProc(HWND hwnd, UINT msg, WPARAM wParam,
         EnableWindow(GetDlgItem(hwnd, IDCLOSE), 0);
         EnableWindow(GetDlgItem(hwnd, IDCANCEL), 0);
         // remove all pending WM_COMMAND messages
-        MSG msg;
-        while (PeekMessage(&msg, hwnd, WM_COMMAND, WM_COMMAND, PM_REMOVE))
+        MSG msg1;
+        while (PeekMessage(&msg1, hwnd, WM_COMMAND, WM_COMMAND, PM_REMOVE))
           ;
         // Settings
         g_bKeepRegistry = IsDlgButtonChecked(hwnd, IDC_KEEPREGISTRY) != 0;
@@ -2543,7 +2543,14 @@ INT_PTR CALLBACK InstallDlgProc(HWND hwnd, UINT msg, WPARAM wParam,
         // 2k/XP Reboot required for WinLogon Notification
         // ExitWindowsEx(EWX_REBOOT|EWX_FORCE,SHTDN_REASON_MINOR_RECONFIG);
         EnablePrivilege(SE_SHUTDOWN_NAME);
-        InitiateSystemShutdown(0, 0, 0, true, true);
+        if (!InitiateSystemShutdownEx(NULL, NULL, 0, FALSE, FALSE,
+                                      SHTDN_REASON_MAJOR_OPERATINGSYSTEM |
+                                          SHTDN_REASON_MINOR_RECONFIG)) {
+          // Handle the error appropriately
+          DWORD dwError = GetLastError();
+          // Log the error or display a message
+          OutputDebugString(L"InitiateSystemShutdownEx failed on older OS.");
+        }
       } else
         // Vista++ no WinLogon Notification, just LogOff
         WTSLogoffSession(WTS_CURRENT_SERVER_HANDLE, WTS_CURRENT_SESSION, 0);
@@ -2741,8 +2748,8 @@ static void HandleHooks() {
           hEvent, TRUE);
     }
     if (t.TimedOut()) {
-      DWORD ss = CheckServiceStatus();
-      if (ss != SERVICE_RUNNING) {
+      DWORD ss1 = CheckServiceStatus();
+      if (ss1 != SERVICE_RUNNING) {
         DBGTrace1("SysmenuHook service not running(%X)==>Exit", ss);
         break;
       }
