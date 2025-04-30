@@ -22,6 +22,7 @@ __cmake*
 
 # Visual Studio
 /SuRun32.bin
+*.map
 *.exe
 *.dll
 UpgradeLog.htm
