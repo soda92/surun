@@ -1508,6 +1508,15 @@ wheels = [
 ]
 
 [[package]]
+name = "sodatools"
+version = "2025.2.16.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/20/18/0b1ed8f69f350fd63613c653250c42c292f730b50cf57b7a072e37700834/sodatools-2025.2.16.0.tar.gz", hash = "sha256:297eb126d9f93b440e7e5fc5c86593199e56eef7b89cd0897dfbbe931a94ff0b", size = 1014, upload_time = "2025-02-16T01:00:05.392Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f3/d5/7ff84b93545cb70dab66ec1cc1cf590c826abf113a78bbe81c76dc120d83/sodatools-2025.2.16.0-py3-none-any.whl", hash = "sha256:17fdd6e477ebc8488851d88af66c1a49bcd83efc732e17566598efe7001afe82", size = 1416, upload_time = "2025-02-16T01:00:04.181Z" },
+]
+
+[[package]]
 name = "soupsieve"
 version = "2.7"
 source = { registry = "https://pypi.org/simple" }
@@ -1534,6 +1543,10 @@ wheels = [
 name = "surun"
 version = "2025.4.30.0"
 source = { editable = "." }
+dependencies = [
+    { name = "pywin32" },
+    { name = "sodatools" },
+]
 
 [package.dev-dependencies]
 dev = [
@@ -1542,6 +1555,10 @@ dev = [
 ]
 
 [package.metadata]
+requires-dist = [
+    { name = "pywin32", specifier = ">=310" },
+    { name = "sodatools", specifier = ">=2025.2.16.0" },
+]
 
 [package.metadata.requires-dev]
 dev = [

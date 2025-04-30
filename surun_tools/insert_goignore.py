@@ -1,6 +1,6 @@
 import glob
 
-from sodatools import CD, read_path, write_path
+from sodatools import CD, read_path, write_path  # noqa: F401
 from pathlib import Path
 
 files = list(glob.glob("*.h"))
