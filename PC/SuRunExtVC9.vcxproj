@@ -732,12 +732,12 @@
     <ClInclude Include="SysMenuHook.h" />
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="..\res\app.manifest" />
+    <Manifest Include="..\resources\app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\res\icon1.ico" />
-    <Image Include="..\res\Shield.ico" />
-    <Image Include="..\res\SuRun.ico" />
+    <Image Include="..\resources\icon1.ico" />
+    <Image Include="..\resources\Shield.ico" />
+    <Image Include="..\resources\SuRun.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

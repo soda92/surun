@@ -302,35 +302,29 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="InstallSuRun.cpp" />
+    <ClCompile Include="..\install_surun\InstallSuRun.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="InstallSuRun.rc" />
+    <ResourceCompile Include="..\install_surun\InstallSuRun.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="..\install_surun\resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="app.manifest" />
+    <Manifest Include="..\install_surun\app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\ReleaseUx64\SuRun.exe" />
-    <None Include="..\ReleaseUx64\SuRun32.bin" />
-    <None Include="..\ReleaseUx64\SuRunExt.dll" />
-    <None Include="..\ReleaseUx64\SuRunExt32.dll" />
-    <None Include="..\ReleaseU\SuRun.exe" />
-    <None Include="..\ReleaseU\SuRunExt.dll" />
-    <None Include="InstSuRunVer.rc2" />
+    <None Include="..\install_surun\InstSuRunVer.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\res\SuRun.ico" />
+    <Image Include="..\resources\SuRun.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SuRunExt\SuRunExtVC9.vcxproj">
+    <ProjectReference Include="SuRunExtVC9.vcxproj">
       <Project>{dafa8e39-3de2-4f20-9379-5ee5999d2baf}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\SuRunVC9.vcxproj">
+    <ProjectReference Include="SuRunVC9.vcxproj">
       <Project>{eed1fea4-9c37-4452-a8c0-b01f2ed49c68}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

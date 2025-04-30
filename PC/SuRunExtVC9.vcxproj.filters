@@ -89,18 +89,18 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="..\res\app.manifest">
+    <Manifest Include="..\resources\app.manifest">
       <Filter>Resource Files</Filter>
     </Manifest>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\res\icon1.ico">
+    <Image Include="..\resources\icon1.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\res\Shield.ico">
+    <Image Include="..\resources\Shield.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\res\SuRun.ico">
+    <Image Include="..\resources\SuRun.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

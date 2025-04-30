@@ -1164,33 +1164,33 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_MAINICON            ICON                    "res\\SuRun.ico"
-IDI_ADMIN               ICON                    "res\\Admin.ico"
-IDI_LISTICON            ICON                    "res\\Windows.ico"
-IDI_LISTICON1           ICON                    "res\\NoWindows.ico"
-IDI_LISTICON2           ICON                    "res\\Question.ico"
-IDI_LISTICON3           ICON                    "res\\NoQuestion.ico"
-IDI_LISTICON4           ICON                    "res\\Restrict.ico"
-IDI_LISTICON5           ICON                    "res\\NoRestrict.ico"
-IDI_LISTICON6           ICON                    "res\\AutoCancel.ico"
-IDI_LISTICON7           ICON                    "res\\CancelWindows.ico"
-IDI_LISTICON8           ICON                    "res\\neverquestion.ico"
-IDI_NOADMIN             ICON                    "res\\NoAdmin.ico"
-IDI_NOWINDOW            ICON                    "res\\NoWindow.ico"
-IDI_SHADMIN             ICON                    "res\\SHADMIN.ico"
-IDI_SHIELD0             ICON                    "res\\ico10605.ico"
-IDI_SHIELD1             ICON                    "res\\ico10607.ico"
-IDI_SHIELD2             ICON                    "res\\ico10606.ico"
-IDI_SRADMIN             ICON                    "res\\SrAdmin.ico"
-IDI_MAIN_BW             ICON                    "res\\SuRunBW.ico"
-IDI_SR_SHIELD           ICON                    "res\\Shield.ico"
+IDI_MAINICON            ICON                    "..\resources\\SuRun.ico"
+IDI_ADMIN               ICON                    "..\resources\\Admin.ico"
+IDI_LISTICON            ICON                    "..\resources\\Windows.ico"
+IDI_LISTICON1           ICON                    "..\resources\\NoWindows.ico"
+IDI_LISTICON2           ICON                    "..\resources\\Question.ico"
+IDI_LISTICON3           ICON                    "..\resources\\NoQuestion.ico"
+IDI_LISTICON4           ICON                    "..\resources\\Restrict.ico"
+IDI_LISTICON5           ICON                    "..\resources\\NoRestrict.ico"
+IDI_LISTICON6           ICON                    "..\resources\\AutoCancel.ico"
+IDI_LISTICON7           ICON                    "..\resources\\CancelWindows.ico"
+IDI_LISTICON8           ICON                    "..\resources\\neverquestion.ico"
+IDI_NOADMIN             ICON                    "..\resources\\NoAdmin.ico"
+IDI_NOWINDOW            ICON                    "..\resources\\NoWindow.ico"
+IDI_SHADMIN             ICON                    "..\resources\\SHADMIN.ico"
+IDI_SHIELD0             ICON                    "..\resources\\ico10605.ico"
+IDI_SHIELD1             ICON                    "..\resources\\ico10607.ico"
+IDI_SHIELD2             ICON                    "..\resources\\ico10606.ico"
+IDI_SRADMIN             ICON                    "..\resources\\SrAdmin.ico"
+IDI_MAIN_BW             ICON                    "..\resources\\SuRunBW.ico"
+IDI_SR_SHIELD           ICON                    "..\resources\\Shield.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // RT_MANIFEST
 //
 
-1                       RT_MANIFEST             "res\\app.manifest"
+1                       RT_MANIFEST             "..\resources\\app.manifest"
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////

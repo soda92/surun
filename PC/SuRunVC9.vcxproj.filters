@@ -144,69 +144,69 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\Admin.ico">
+    <Image Include="..\resources\Admin.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\AutoCancel.ico">
+    <Image Include="..\resources\AutoCancel.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\CancelWindows.ico">
+    <Image Include="..\resources\CancelWindows.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\ico10605.ico">
+    <Image Include="..\resources\ico10605.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\ico10606.ico">
+    <Image Include="..\resources\ico10606.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\ico10607.ico">
+    <Image Include="..\resources\ico10607.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\neverquestion.ico">
+    <Image Include="..\resources\neverquestion.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\NoAdmin.ico">
+    <Image Include="..\resources\NoAdmin.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\NoQuestion.ico">
+    <Image Include="..\resources\NoQuestion.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\NoRestrict.ico">
+    <Image Include="..\resources\NoRestrict.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\NoWindow.ico">
+    <Image Include="..\resources\NoWindow.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\NoWindows.ico">
+    <Image Include="..\resources\NoWindows.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\Question.ico">
+    <Image Include="..\resources\Question.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\Restrict.ico">
+    <Image Include="..\resources\Restrict.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\SHADMIN.ico">
+    <Image Include="..\resources\SHADMIN.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\Shield.ico">
+    <Image Include="..\resources\Shield.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\SrAdmin.ico">
+    <Image Include="..\resources\SrAdmin.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\SuRun.ico">
+    <Image Include="..\resources\SuRun.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\SuRunBW.ico">
+    <Image Include="..\resources\SuRunBW.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\Windows.ico">
+    <Image Include="..\resources\Windows.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="res\app.manifest">
+    <Manifest Include="..\resources\app.manifest">
       <Filter>Resource Files</Filter>
     </Manifest>
   </ItemGroup>

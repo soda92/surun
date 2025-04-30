@@ -706,66 +706,66 @@ if exist $(OutDir)SuRun.exe $(OutDir)SuRun.exe /DeleteService 1&gt;NUL 2&gt;NUL
     <ResourceCompile Include="SuRun.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="anchor.h" />
-    <ClInclude Include="main.h" />
-    <ClInclude Include="CmdLine.h" />
-    <ClInclude Include="DBGTrace.H" />
-    <ClInclude Include="DynWTSAPI.h" />
-    <ClInclude Include="Helpers.h" />
-    <ClInclude Include="IsAdmin.h" />
-    <ClInclude Include="LogonDlg.h" />
-    <ClInclude Include="LSALogon.h" />
-    <ClInclude Include="lsa_laar.h" />
-    <ClInclude Include="pugxml.h" />
-    <ClInclude Include="ReqAdmin.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="ResStr.h" />
-    <ClInclude Include="ScreenSnap.h" />
-    <ClInclude Include="Service.h" />
-    <ClInclude Include="Setup.h" />
-    <ClInclude Include="sspi_auth.h" />
-    <ClInclude Include="SuRunVer.h" />
-    <ClInclude Include="TrayMsgWnd.h" />
-    <ClInclude Include="TrayShowAdmin.h" />
-    <ClInclude Include="UserGroups.h" />
-    <ClInclude Include="WatchDog.h" />
-    <ClInclude Include="WinStaDesk.h" />
+    <ClInclude Include="..\surun\anchor.h" />
+    <ClInclude Include="..\surun\main.h" />
+    <ClInclude Include="..\surun\CmdLine.h" />
+    <ClInclude Include="..\surun\DBGTrace.H" />
+    <ClInclude Include="..\surun\DynWTSAPI.h" />
+    <ClInclude Include="..\surun\Helpers.h" />
+    <ClInclude Include="..\surun\IsAdmin.h" />
+    <ClInclude Include="..\surun\LogonDlg.h" />
+    <ClInclude Include="..\surun\LSALogon.h" />
+    <ClInclude Include="..\surun\lsa_laar.h" />
+    <ClInclude Include="..\surun\pugxml.h" />
+    <ClInclude Include="..\surun\ReqAdmin.h" />
+    <ClInclude Include="..\surun\resource.h" />
+    <ClInclude Include="..\surun\ResStr.h" />
+    <ClInclude Include="..\surun\ScreenSnap.h" />
+    <ClInclude Include="..\surun\Service.h" />
+    <ClInclude Include="..\surun\Setup.h" />
+    <ClInclude Include="..\surun\sspi_auth.h" />
+    <ClInclude Include="..\surun\SuRunVer.h" />
+    <ClInclude Include="..\surun\TrayMsgWnd.h" />
+    <ClInclude Include="..\surun\TrayShowAdmin.h" />
+    <ClInclude Include="..\surun\UserGroups.h" />
+    <ClInclude Include="..\surun\WatchDog.h" />
+    <ClInclude Include="..\surun\WinStaDesk.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\Admin.ico" />
-    <Image Include="res\AutoCancel.ico" />
-    <Image Include="res\CancelWindows.ico" />
-    <Image Include="res\ico10605.ico" />
-    <Image Include="res\ico10606.ico" />
-    <Image Include="res\ico10607.ico" />
-    <Image Include="res\neverquestion.ico" />
-    <Image Include="res\NoAdmin.ico" />
-    <Image Include="res\NoQuestion.ico" />
-    <Image Include="res\NoRestrict.ico" />
-    <Image Include="res\NoWindow.ico" />
-    <Image Include="res\NoWindows.ico" />
-    <Image Include="res\Question.ico" />
-    <Image Include="res\Restrict.ico" />
-    <Image Include="res\SHADMIN.ico" />
-    <Image Include="res\Shield.ico" />
-    <Image Include="res\SrAdmin.ico" />
-    <Image Include="res\SuRun.ico" />
-    <Image Include="res\SuRunBW.ico" />
-    <Image Include="res\Windows.ico" />
+    <Image Include="..\resources\Admin.ico" />
+    <Image Include="..\resources\AutoCancel.ico" />
+    <Image Include="..\resources\CancelWindows.ico" />
+    <Image Include="..\resources\ico10605.ico" />
+    <Image Include="..\resources\ico10606.ico" />
+    <Image Include="..\resources\ico10607.ico" />
+    <Image Include="..\resources\neverquestion.ico" />
+    <Image Include="..\resources\NoAdmin.ico" />
+    <Image Include="..\resources\NoQuestion.ico" />
+    <Image Include="..\resources\NoRestrict.ico" />
+    <Image Include="..\resources\NoWindow.ico" />
+    <Image Include="..\resources\NoWindows.ico" />
+    <Image Include="..\resources\Question.ico" />
+    <Image Include="..\resources\Restrict.ico" />
+    <Image Include="..\resources\SHADMIN.ico" />
+    <Image Include="..\resources\Shield.ico" />
+    <Image Include="..\resources\SrAdmin.ico" />
+    <Image Include="..\resources\SuRun.ico" />
+    <Image Include="..\resources\SuRunBW.ico" />
+    <Image Include="..\resources\Windows.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="res\app.manifest" />
+    <Manifest Include="..\resources\app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SuRunVer.rc2" />
+    <None Include="..\surun\SuRunVer.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ChangeLog.txt" />
-    <Text Include="gpedit.txt" />
-    <Text Include="ReadMe.txt" />
+    <Text Include="..\docs\ChangeLog.md" />
+    <Text Include="..\docs\gpedit.md" />
+    <Text Include="..\ReadMe.md" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="SuRunExt\SuRunExtVC9.vcxproj">
+    <ProjectReference Include="SuRunExtVC9.vcxproj">
       <Project>{dafa8e39-3de2-4f20-9379-5ee5999d2baf}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

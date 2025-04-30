@@ -6,7 +6,7 @@ SURUN.EXE   EXE64_FILE  "..\\DebugU\\SuRun.exe"
 SURUNEXT.DLL    EXE64_FILE  "..\\DebugU\\SuRunExt.dll"
 SURUN32.BIN EXE64_FILE  "..\\DebugUx64\\SuRun32.bin"
 SURUNEXT32.DLL  EXE64_FILE  "..\\DebugUx64\\SuRunExt32.dll"
-IDI_MAINICON    ICON    "..\\res\\SuRun.ico"
+IDI_MAINICON    ICON    "..\\resources\\SuRun.ico"
 ```
 
 and InstallSurun was at

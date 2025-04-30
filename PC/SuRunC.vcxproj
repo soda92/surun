@@ -543,19 +543,19 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SuRunC.cpp" />
+    <ClCompile Include="..\surun_com\SuRunC.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="SuRunC.rc" />
+    <ResourceCompile Include="..\surun_com\SuRunC.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="..\surun_com\resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\SuRun.ico" />
+    <Image Include="..\resources\SuRun.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="res\app.manifest" />
+    <Manifest Include="..\resources\app.manifest" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

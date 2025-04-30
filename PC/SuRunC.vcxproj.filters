@@ -30,11 +30,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\SuRun.ico">
+    <Image Include="..\resources\SuRun.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="res\app.manifest" />
+    <Manifest Include="..\resources\app.manifest" />
   </ItemGroup>
 </Project>

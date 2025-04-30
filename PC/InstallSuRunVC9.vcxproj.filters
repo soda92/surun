@@ -58,7 +58,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\res\SuRun.ico">
+    <Image Include="..\resources\SuRun.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
