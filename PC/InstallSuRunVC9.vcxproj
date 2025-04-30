@@ -124,7 +124,8 @@
       <Culture>0x0407</Culture>
     </ResourceCompile>
     <Link>
-      <OutputFile>.\Debug/InstallSuRun.exe</OutputFile>
+      <!-- Debug version is at PC/InstallSuRun.exe -->
+      <OutputFile>./InstallSuRun.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug/InstallSuRun.pdb</ProgramDatabaseFile>
@@ -320,14 +321,14 @@
     <Image Include="..\resources\SuRun.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="SuRunExtVC9.vcxproj">
+    <!-- <ProjectReference Include="SuRunExtVC9.vcxproj">
       <Project>{dafa8e39-3de2-4f20-9379-5ee5999d2baf}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="SuRunVC9.vcxproj">
       <Project>{eed1fea4-9c37-4452-a8c0-b01f2ed49c68}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
+    </ProjectReference> -->
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
