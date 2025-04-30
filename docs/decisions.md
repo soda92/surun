@@ -21,3 +21,5 @@ that means, you will create directories for scripts, docs, and tests.
     - font size? -hard to test, no fix!
     - icon size in GUI? -no fix!
     - these problems can be fixed once I learned WinUI
+
+C++ is too legacy so hard to fix, and sometimes there is even no solution. Keep trying is just tiring.

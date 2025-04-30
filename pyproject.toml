@@ -1,13 +1,10 @@
 [project]
-name = "surun"
-version = "2025.4.30.0"
+name = "soda-surun"
+version = "2025.5.1.0"
 description = "surun and related tools"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = [
-    "pywin32>=310",
-    "sodatools>=2025.2.16.0",
-]
+dependencies = ["sodatools>=2025.2.16.0"]
 
 [project.urls]
 Repository = "https://github.com/soda92/surun"
@@ -27,10 +24,9 @@ packages = ["surun_tools"]
 exclude = ["__pycache__", "*.pyc"]
 
 [dependency-groups]
-dev = [
-    "jupyter>=1.1.1",
-    "pytest>=8.3.5",
-]
+dev = ["hatchling>=1.27.0", "jupyter>=1.1.1", "pytest>=8.3.5"]
+
+[tool.hatch.build.hooks.custom]
 
 [project.scripts]
-st = "stools.main:main"
+surun_install = "surun_tools.install:main2"
