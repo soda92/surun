@@ -9,8 +9,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRun", "SuRunVC9.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRunExt", "SuRunExtVC9.vcxproj", "{DAFA8E39-3DE2-4F20-9379-5EE5999D2BAF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRunC", "SuRunC.vcxproj", "{7965D390-1BFC-4729-A404-C3D2064250BB}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestScreenshot", "..\tests\TestScreenshot\TestScreenshot.vcxproj", "{C3F2F605-32D6-49E5-A655-E2C7442BB467}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestScreenshotSuRun", "..\tests\TestScreenshotSuRun\TestScreenshotSuRun.vcxproj", "{7756BBCB-2821-4FF3-AF1D-0A0C3AD83ED3}"
@@ -119,33 +117,6 @@ Global
 		{DAFA8E39-3DE2-4F20-9379-5EE5999D2BAF}.x64 Unicode Release|Win32.Build.0 = x64 Unicode Release|Win32
 		{DAFA8E39-3DE2-4F20-9379-5EE5999D2BAF}.x64 Unicode Release|x64.ActiveCfg = x64 Unicode Release|x64
 		{DAFA8E39-3DE2-4F20-9379-5EE5999D2BAF}.x64 Unicode Release|x64.Build.0 = x64 Unicode Release|x64
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Debug|Win32.ActiveCfg = Debug|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Debug|Win32.Build.0 = Debug|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Debug|x64.ActiveCfg = Debug|x64
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Debug|x64.Build.0 = Debug|x64
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Release|Win32.ActiveCfg = Release|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Release|Win32.Build.0 = Release|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Release|x64.ActiveCfg = Release|x64
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Release|x64.Build.0 = Release|x64
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.SuRun32 Unicode Debug|Win32.ActiveCfg = SuRun32 Unicode Debug|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.SuRun32 Unicode Debug|x64.ActiveCfg = SuRun32 Unicode Debug|x64
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.SuRun32 Unicode Debug|x64.Build.0 = SuRun32 Unicode Debug|x64
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.SuRun32 Unicode Release|Win32.ActiveCfg = Release|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.SuRun32 Unicode Release|x64.ActiveCfg = Release|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Unicode Debug|Win32.ActiveCfg = Debug|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Unicode Debug|Win32.Build.0 = Debug|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Unicode Debug|x64.ActiveCfg = Debug|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Unicode Release|Win32.ActiveCfg = Release|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Unicode Release|Win32.Build.0 = Release|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.Unicode Release|x64.ActiveCfg = Release|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.x64 Unicode Debug|Win32.ActiveCfg = Debug|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.x64 Unicode Debug|Win32.Build.0 = Debug|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.x64 Unicode Debug|x64.ActiveCfg = x64 Unicode Debug|x64
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.x64 Unicode Debug|x64.Build.0 = x64 Unicode Debug|x64
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.x64 Unicode Release|Win32.ActiveCfg = Release|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.x64 Unicode Release|Win32.Build.0 = Release|Win32
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.x64 Unicode Release|x64.ActiveCfg = x64 Unicode Release|x64
-		{7965D390-1BFC-4729-A404-C3D2064250BB}.x64 Unicode Release|x64.Build.0 = x64 Unicode Release|x64
 		{C3F2F605-32D6-49E5-A655-E2C7442BB467}.Debug|Win32.ActiveCfg = Debug|Win32
 		{C3F2F605-32D6-49E5-A655-E2C7442BB467}.Debug|Win32.Build.0 = Debug|Win32
 		{C3F2F605-32D6-49E5-A655-E2C7442BB467}.Debug|x64.ActiveCfg = Debug|x64
