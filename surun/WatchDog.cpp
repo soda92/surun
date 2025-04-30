@@ -74,7 +74,7 @@ CWDMsgWnd::CWDMsgWnd(LPCTSTR Text, int IconId) {
   LoadLibrary(_T("Shell32.dll")); // Load Shell Window Classes
   m_Icon = (HICON)LoadImage(GetModuleHandle(0), MAKEINTRESOURCE(IconId),
                             IMAGE_ICON, 128, 128, 0);
-  m_hFont = CreateFont(-14, 0, 0, 0, FW_MEDIUM, 0, 0, 0, 0, 0, 0, 0, 0,
+  m_hFont = CreateFont(-20, 0, 0, 0, FW_MEDIUM, 0, 0, 0, 0, 0, 0, 0, 0,
                        _T("MS Shell Dlg"));
   {
     // Desktop Rect

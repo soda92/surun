@@ -110,7 +110,7 @@ CTrayMsgWnd::CTrayMsgWnd(LPCTSTR DlgTitle, LPCTSTR Text, int IconId,
                             IMAGE_ICON, 128, 128, 0);
   WM_SRTRMSGWNDCLOSED = RegisterWindowMessage(_T("WM_SRTRMSGWNDCLOSED"));
   m_DoSlide = 0;
-  m_hFont = CreateFont(-14, 0, 0, 0, FW_MEDIUM, 0, 0, 0, 0, 0, 0, 0, 0,
+  m_hFont = CreateFont(-20, 0, 0, 0, FW_MEDIUM, 0, 0, 0, 0, 0, 0, 0, 0,
                        _T("MS Shell Dlg"));
   {
     // Desktop Rect

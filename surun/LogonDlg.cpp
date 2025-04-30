@@ -485,12 +485,12 @@ INT_PTR CALLBACK DialogProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                                   MAKEINTRESOURCE(IDI_MAINICON), IMAGE_ICON, 16,
                                   16, 0));
     SendDlgItemMessage(hwnd, IDC_DLGQUESTION, WM_SETFONT,
-                       (WPARAM)CreateFont(-14, 0, 0, 0, FW_MEDIUM, 0, 0, 0, 0,
+                       (WPARAM)CreateFont(-20, 0, 0, 0, FW_MEDIUM, 0, 0, 0, 0,
                                           0, 0, 0, 0, _T("MS Shell Dlg")),
                        1);
     if (GetDlgItem(hwnd, IDC_HINT))
       SendDlgItemMessage(hwnd, IDC_HINT, WM_SETFONT,
-                         (WPARAM)CreateFont(-14, 0, 0, 0, FW_NORMAL, 0, 0, 0, 0,
+                         (WPARAM)CreateFont(-20, 0, 0, 0, FW_NORMAL, 0, 0, 0, 0,
                                             0, 0, 0, 0, _T("MS Shell Dlg")),
                          1);
     if (p->Msg)
