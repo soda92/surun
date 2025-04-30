@@ -683,27 +683,27 @@ if exist $(OutDir)SuRun.exe $(OutDir)SuRun.exe /DeleteService 1&gt;NUL 2&gt;NUL
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DBGTrace.cpp" />
-    <ClCompile Include="DynWTSAPI.cpp" />
-    <ClCompile Include="Helpers.cpp" />
-    <ClCompile Include="IsAdmin.cpp" />
-    <ClCompile Include="LogonDlg.cpp" />
-    <ClCompile Include="LSALogon.cpp" />
-    <ClCompile Include="lsa_laar.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="ReqAdmin.cpp" />
-    <ClCompile Include="Service.cpp" />
-    <ClCompile Include="Setup.cpp" />
-    <ClCompile Include="sspi_auth.cpp" />
-    <ClCompile Include="TrayMsgWnd.cpp" />
-    <ClCompile Include="TrayShowAdmin.cpp" />
-    <ClCompile Include="UserGroups.cpp" />
-    <ClCompile Include="WatchDog.cpp" />
-    <ClCompile Include="WinStaDesk.cpp" />
-    <ClCompile Include="launcher.cpp" />
+    <ClCompile Include="..\surun\DBGTrace.cpp" />
+    <ClCompile Include="..\surun\DynWTSAPI.cpp" />
+    <ClCompile Include="..\surun\Helpers.cpp" />
+    <ClCompile Include="..\surun\IsAdmin.cpp" />
+    <ClCompile Include="..\surun\LogonDlg.cpp" />
+    <ClCompile Include="..\surun\LSALogon.cpp" />
+    <ClCompile Include="..\surun\lsa_laar.cpp" />
+    <ClCompile Include="..\surun\main.cpp" />
+    <ClCompile Include="..\surun\ReqAdmin.cpp" />
+    <ClCompile Include="..\surun\Service.cpp" />
+    <ClCompile Include="..\surun\Setup.cpp" />
+    <ClCompile Include="..\surun\sspi_auth.cpp" />
+    <ClCompile Include="..\surun\TrayMsgWnd.cpp" />
+    <ClCompile Include="..\surun\TrayShowAdmin.cpp" />
+    <ClCompile Include="..\surun\UserGroups.cpp" />
+    <ClCompile Include="..\surun\WatchDog.cpp" />
+    <ClCompile Include="..\surun\WinStaDesk.cpp" />
+    <ClCompile Include="..\surun\launcher.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="SuRun.rc" />
+    <ResourceCompile Include="..\surun\SuRun.rc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\surun\anchor.h" />

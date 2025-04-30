@@ -718,21 +718,21 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='x64 Unicode Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='x64 Unicode Release|x64'">true</ExcludedFromBuild>
     </CustomBuild>
-    <None Include="SuRunExtVer.rc2" />
+    <None Include="..\surun_ext\SuRunExtVer.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="SuRunext.rc" />
+    <ResourceCompile Include="..\surun_ext\SuRunext.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\DynWTSAPI.h" />
-    <ClInclude Include="..\Helpers.h" />
-    <ClInclude Include="IATHook.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="SuRunext.h" />
-    <ClInclude Include="SysMenuHook.h" />
+    <ClInclude Include="..\surun\DynWTSAPI.h" />
+    <ClInclude Include="..\surun\Helpers.h" />
+    <ClInclude Include="..\surun_ext\IATHook.h" />
+    <ClInclude Include="..\surun_ext\resource.h" />
+    <ClInclude Include="..\surun_ext\SuRunext.h" />
+    <ClInclude Include="..\surun_ext\SysMenuHook.h" />
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="..\resources\app.manifest" />
+    <Manifest Include="..\surun\app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\resources\icon1.ico" />

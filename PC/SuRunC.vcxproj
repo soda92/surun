@@ -552,10 +552,10 @@
     <ClInclude Include="..\surun_com\resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\resources\SuRun.ico" />
+    <Image Include="..\surun_com\resources\SuRun.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="..\resources\app.manifest" />
+    <Manifest Include="..\surun_com\resources\app.manifest" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

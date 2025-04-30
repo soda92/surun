@@ -59,39 +59,27 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SuRunExtVer.rc2">
-      <Filter>Resource Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="SuRunext.rc">
-      <Filter>Source Files</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\DynWTSAPI.h">
+    <ClInclude Include="..\surun_ext\SysMenuHook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Helpers.h">
+    <ClInclude Include="..\surun_ext\SuRunext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IATHook.h">
+    <ClInclude Include="..\surun_ext\resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="..\surun_ext\IATHook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SuRunext.h">
+    <ClInclude Include="..\surun\Helpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SysMenuHook.h">
+    <ClInclude Include="..\surun\DynWTSAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="..\resources\app.manifest">
-      <Filter>Resource Files</Filter>
-    </Manifest>
+    <Manifest Include="..\surun\app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\resources\icon1.ico">
@@ -111,5 +99,15 @@
     <CustomBuild Include="SuRunExt32.Def">
       <Filter>Source Files</Filter>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\surun_ext\SuRunExtVer.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\surun_ext\SuRunext.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

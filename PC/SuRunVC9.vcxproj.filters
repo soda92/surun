@@ -15,131 +15,132 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DBGTrace.cpp">
+    <ClCompile Include="..\surun\LSALogon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DynWTSAPI.cpp">
+    <ClCompile Include="..\surun\DBGTrace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Helpers.cpp">
+    <ClCompile Include="..\surun\DynWTSAPI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IsAdmin.cpp">
+    <ClCompile Include="..\surun\Helpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LogonDlg.cpp">
+    <ClCompile Include="..\surun\IsAdmin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lsa_laar.cpp">
+    <ClCompile Include="..\surun\LogonDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LSALogon.cpp">
+    <ClCompile Include="..\surun\launcher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="..\surun\WinStaDesk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ReqAdmin.cpp">
+    <ClCompile Include="..\surun\TrayMsgWnd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Service.cpp">
+    <ClCompile Include="..\surun\TrayShowAdmin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Setup.cpp">
+    <ClCompile Include="..\surun\UserGroups.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sspi_auth.cpp">
+    <ClCompile Include="..\surun\WatchDog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TrayMsgWnd.cpp">
+    <ClCompile Include="..\surun\sspi_auth.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TrayShowAdmin.cpp">
+    <ClCompile Include="..\surun\ReqAdmin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UserGroups.cpp">
+    <ClCompile Include="..\surun\Service.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WatchDog.cpp">
+    <ClCompile Include="..\surun\Setup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WinStaDesk.cpp">
+    <ClCompile Include="..\surun\lsa_laar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\surun\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="SuRun.rc">
-      <Filter>Source Files</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="anchor.h">
+    <ClInclude Include="..\surun\WinStaDesk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CmdLine.h">
+    <ClInclude Include="..\surun\WatchDog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DBGTrace.H">
+    <ClInclude Include="..\surun\UserGroups.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DynWTSAPI.h">
+    <ClInclude Include="..\surun\TrayShowAdmin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Helpers.h">
+    <ClInclude Include="..\surun\TrayMsgWnd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IsAdmin.h">
+    <ClInclude Include="..\surun\SuRunVer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LogonDlg.h">
+    <ClInclude Include="..\surun\sspi_auth.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lsa_laar.h">
+    <ClInclude Include="..\surun\Setup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LSALogon.h">
+    <ClInclude Include="..\surun\Service.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pugxml.h">
+    <ClInclude Include="..\surun\ScreenSnap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ReqAdmin.h">
+    <ClInclude Include="..\surun\resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="..\surun\ResStr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ResStr.h">
+    <ClInclude Include="..\surun\ReqAdmin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenSnap.h">
+    <ClInclude Include="..\surun\main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Service.h">
+    <ClInclude Include="..\surun\pugxml.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Setup.h">
+    <ClInclude Include="..\surun\Helpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sspi_auth.h">
+    <ClInclude Include="..\surun\IsAdmin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SuRunVer.h">
+    <ClInclude Include="..\surun\LogonDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TrayMsgWnd.h">
+    <ClInclude Include="..\surun\lsa_laar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TrayShowAdmin.h">
+    <ClInclude Include="..\surun\LSALogon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UserGroups.h">
+    <ClInclude Include="..\surun\CmdLine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WatchDog.h">
+    <ClInclude Include="..\surun\anchor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WinStaDesk.h">
+    <ClInclude Include="..\surun\DynWTSAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\surun\DBGTrace.H">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -211,13 +212,18 @@
     </Manifest>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SuRunVer.rc2">
+    <Text Include="..\docs\ChangeLog.md" />
+    <Text Include="..\docs\gpedit.md" />
+    <Text Include="..\ReadMe.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\surun\SuRunVer.rc2">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ChangeLog.txt" />
-    <Text Include="gpedit.txt" />
-    <Text Include="ReadMe.txt" />
+    <ResourceCompile Include="..\surun\SuRun.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
