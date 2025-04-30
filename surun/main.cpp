@@ -45,9 +45,9 @@
 #pragma comment(lib, "shlwapi")
 
 #ifdef _WIN64
-#pragma comment(lib, "bin/Crypt32x64.lib")
+#pragma comment(lib, "../external_libs/Crypt32x64.lib")
 #else //_WIN64
-#pragma comment(lib, "bin/Crypt32x86.lib")
+#pragma comment(lib, "../external_libs/Crypt32x86.lib")
 #endif //_WIN64
 
 #ifdef _DEBUG

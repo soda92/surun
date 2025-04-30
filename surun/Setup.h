@@ -17,7 +17,7 @@
 #pragma once
 #include <windows.h>
 #include "IsAdmin.h"
-#include "SuRunExt/SuRunExt.h"
+#include "../surun_ext/SuRunExt.h"
 #include "UserGroups.h"
 #include "helpers.h"
 #include "resstr.h"

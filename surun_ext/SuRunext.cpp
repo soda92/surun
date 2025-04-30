@@ -28,7 +28,7 @@
 #include <psapi.h>
 #include <tlhelp32.h>
 #include <USERENV.H>
-#include "../DynWTSAPI.h"
+#include "../surun/DynWTSAPI.h"
 
 #pragma comment(lib,"User32.lib")
 #pragma comment(lib,"ole32.lib")
@@ -37,17 +37,17 @@
 #pragma comment(lib,"Shlwapi.lib")
 #pragma comment(lib,"PSAPI.lib")
 #pragma comment(lib,"Userenv.lib")
-#include "../Setup.h"
-#include "../Service.h"
+#include "../surun/Setup.h"
+#include "../surun/Service.h"
 #include "SuRunExt.h"
 #include "IATHook.h"
-#include "../ResStr.h"
-#include "../Helpers.h"
-#include "../UserGroups.h"
-#include "../IsAdmin.h"
+#include "../surun/ResStr.h"
+#include "../surun/Helpers.h"
+#include "../surun/UserGroups.h"
+#include "../surun/IsAdmin.h"
 #include "Resource.h"
 
-#include "../DBGTrace.h"
+#include "../surun/DBGTrace.h"
 
 #ifdef DoDBGTrace
 #include <msi.h>
@@ -55,9 +55,9 @@
 #endif //DoDBGTrace
 
 #ifdef _WIN64
-#pragma comment(lib,"../bin/Crypt32x64.lib")
+#pragma comment(lib,"../external_libs/Crypt32x64.lib")
 #else //_WIN64
-#pragma comment(lib,"../bin/Crypt32x86.lib")
+#pragma comment(lib,"../external_libs/Crypt32x86.lib")
 #endif //_WIN64
 
 //////////////////////////////////////////////////////////////////////////////

@@ -260,9 +260,9 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>../DebugU/SuRunExt.dll</OutputFile>
+      <OutputFile>DebugU/SuRunExt.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <ModuleDefinitionFile>.\SuRunExt.Def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>..\surun_ext\SuRunExt.Def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\DebugU/SuRunExt.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -334,7 +334,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>../ReleaseU/SuRunExt.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <ModuleDefinitionFile>.\SuRunExt.Def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>..\surun_ext\SuRunExt.Def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\ReleaseU/SuRunExt.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -425,7 +425,7 @@
       <OutputFile>../ReleaseUx64/SuRunExt.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>LIBCMT.LIB;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ModuleDefinitionFile>.\SuRunExt.Def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>..\surun_ext\SuRunExt.Def</ModuleDefinitionFile>
       <ProgramDatabaseFile>.\ReleaseUx64/SuRunExt.pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
       <FixedBaseAddress>false</FixedBaseAddress>
@@ -479,7 +479,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>../ReleaseUx64/SuRunExt32.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <ModuleDefinitionFile>.\SuRunExt32.Def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>../surun_ext/SuRunExt32.Def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\ReleaseUsr32/SuRunExt32.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -547,9 +547,9 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>../DebugU/SuRunExt.dll</OutputFile>
+      <OutputFile>DebugU/SuRunExt.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <ModuleDefinitionFile>.\SuRunExt.Def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>..\surun_ext\SuRunExt.Def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\DebugU/SuRunExt.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -591,9 +591,9 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>LIBCMTD.LIB;KERNEL32.LIB;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>../DebugUx64/SuRunExt.dll</OutputFile>
+      <OutputFile>DebugUx64/SuRunExt.dll</OutputFile>
       <IgnoreSpecificDefaultLibraries>LIBCMTD.LIB;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ModuleDefinitionFile>.\SuRunExt.Def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>..\surun_ext\SuRunExt.Def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AssemblyDebug>true</AssemblyDebug>
       <ProgramDatabaseFile>.\DebugUx64\SuRunExt.pdb</ProgramDatabaseFile>
@@ -643,9 +643,9 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>../DebugUx64/SuRunExt32.dll</OutputFile>
+      <OutputFile>DebugUx64/SuRunExt32.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <ModuleDefinitionFile>.\SuRunExt32.Def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>../surun_ext/SuRunExt32.Def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\DebugUsr32/SuRunExt.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -686,20 +686,20 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\DBGTrace.cpp" />
-    <ClCompile Include="..\DynWTSAPI.cpp" />
-    <ClCompile Include="..\Helpers.cpp" />
-    <ClCompile Include="..\IsAdmin.cpp" />
-    <ClCompile Include="..\LogonDlg.cpp" />
-    <ClCompile Include="..\LSALogon.cpp" />
-    <ClCompile Include="..\lsa_laar.cpp" />
-    <ClCompile Include="..\Setup.cpp" />
-    <ClCompile Include="..\sspi_auth.cpp" />
-    <ClCompile Include="..\UserGroups.cpp" />
-    <ClCompile Include="..\WinStaDesk.cpp" />
-    <ClCompile Include="IATHook.cpp" />
-    <ClCompile Include="SuRunext.cpp" />
-    <ClCompile Include="SysMenuHook.cpp" />
+    <ClCompile Include="..\surun\DBGTrace.cpp" />
+    <ClCompile Include="..\surun\DynWTSAPI.cpp" />
+    <ClCompile Include="..\surun\Helpers.cpp" />
+    <ClCompile Include="..\surun\IsAdmin.cpp" />
+    <ClCompile Include="..\surun\LogonDlg.cpp" />
+    <ClCompile Include="..\surun\LSALogon.cpp" />
+    <ClCompile Include="..\surun\lsa_laar.cpp" />
+    <ClCompile Include="..\surun\Setup.cpp" />
+    <ClCompile Include="..\surun\sspi_auth.cpp" />
+    <ClCompile Include="..\surun\UserGroups.cpp" />
+    <ClCompile Include="..\surun\WinStaDesk.cpp" />
+    <ClCompile Include="..\surun_ext\IATHook.cpp" />
+    <ClCompile Include="..\surun_ext\SuRunext.cpp" />
+    <ClCompile Include="..\surun_ext\SysMenuHook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="SuRunExt.Def">

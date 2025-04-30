@@ -21,11 +21,11 @@
 #include <shlwapi.h>
 
 #include "SysMenuHook.h"
-#include "../DBGTrace.H"
-#include "../ResStr.h"
-#include "../IsAdmin.h"
-#include "../Helpers.h"
-#include "../Setup.h"
+#include "../surun/DBGTrace.H"
+#include "../surun/ResStr.h"
+#include "../surun/IsAdmin.h"
+#include "../surun/Helpers.h"
+#include "../surun/Setup.h"
 #include "SuRunExt.h"
 #include "Resource.h"
 

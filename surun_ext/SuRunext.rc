@@ -72,7 +72,7 @@ IDI_SR_SHIELD           ICON                    "..\\resources\\Shield.ico"
 // RT_MANIFEST
 //
 
-1                       RT_MANIFEST             "..\\resources\\app.manifest"
+1                       RT_MANIFEST             "..\\surun\\app.manifest"
 
 /////////////////////////////////////////////////////////////////////////////
 //

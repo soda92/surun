@@ -22,12 +22,12 @@
 #include <list>
 
 
-#include "../DBGTrace.h"
-#include "../IsAdmin.h"
-#include "../Service.h"
-#include "../Setup.h"
-#include "../UserGroups.h"
-#include "../helpers.h"
+#include "../surun/DBGTrace.h"
+#include "../surun/IsAdmin.h"
+#include "../surun/Service.h"
+#include "../surun/Setup.h"
+#include "../surun/UserGroups.h"
+#include "../surun/helpers.h"
 
 
 #pragma comment(lib, "PSAPI.lib")

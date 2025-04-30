@@ -35,6 +35,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="..\resources\app.manifest" />
+    <Manifest Include="..\surun\app.manifest" />
   </ItemGroup>
 </Project>

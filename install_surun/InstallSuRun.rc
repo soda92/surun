@@ -50,10 +50,10 @@ END
 // must use one tab, or VS will throw an error!
 // build: first build surun and surunExt using "Surun32 unicode debug", then build "InstallSuRun"
 1   RT_MANIFEST "app.manifest"
-SURUN.EXE   EXE64_FILE  "..\\DebugU\\SuRun.exe"
-SURUNEXT.DLL    EXE64_FILE  "..\\DebugU\\SuRunExt.dll"
-SURUN32.BIN EXE64_FILE  "..\\DebugUx64\\SuRun32.bin"
-SURUNEXT32.DLL  EXE64_FILE  "..\\DebugUx64\\SuRunExt32.dll"
+SURUN.EXE   EXE64_FILE  "..\\PC\\DebugU\\SuRun.exe"
+SURUNEXT.DLL    EXE64_FILE  "..\\PC\\DebugU\\SuRunExt.dll"
+SURUN32.BIN EXE64_FILE  "..\\PC\\DebugUx64\\SuRun32.bin"
+SURUNEXT32.DLL  EXE64_FILE  "..\\PC\\DebugUx64\\SuRunExt32.dll"
 IDI_MAINICON    ICON    "..\\resources\\SuRun.ico"
 #else
 1   RT_MANIFEST "app.manifest"

@@ -754,7 +754,7 @@ if exist $(OutDir)SuRun.exe $(OutDir)SuRun.exe /DeleteService 1&gt;NUL 2&gt;NUL
     <Image Include="..\resources\Windows.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="..\resources\app.manifest" />
+    <Manifest Include="..\surun\app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\surun\SuRunVer.rc2" />

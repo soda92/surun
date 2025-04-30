@@ -49,8 +49,8 @@
 #include "ResStr.h"
 #include "Resource.h"
 #include "Setup.h"
-#include "SuRunExt/SuRunExt.h"
-#include "SuRunExt/SysMenuHook.h"
+#include "../surun_ext/SuRunExt.h"
+#include "../surun_ext/SysMenuHook.h"
 #include "TrayShowAdmin.h"
 #include "UserGroups.h"
 #include "WatchDog.h"
@@ -76,24 +76,24 @@ inline unsigned int _GetWinVer() {
 #ifndef _DEBUG
 
 #ifdef _WIN64
-#pragma comment(lib, "SuRunExt/ReleaseUx64/SuRunExt.lib")
+#pragma comment(lib, "ReleaseUx64/SuRunExt.lib")
 #else //_WIN64
 #ifdef _SR32
-#pragma comment(lib, "SuRunExt/ReleaseUsr32/SuRunExt32.lib")
+#pragma comment(lib, "ReleaseUsr32/SuRunExt32.lib")
 #else //_SR32
-#pragma comment(lib, "SuRunExt/ReleaseU/SuRunExt.lib")
+#pragma comment(lib, "ReleaseU/SuRunExt.lib")
 #endif //_SR32
 #endif //_WIN64
 
 #else //_DEBUG
 
 #ifdef _WIN64
-#pragma comment(lib, "SuRunExt/DebugUx64/SuRunExt.lib")
+#pragma comment(lib, "DebugUx64/SuRunExt.lib")
 #else //_WIN64
 #ifdef _SR32
-#pragma comment(lib, "SuRunExt/DebugUsr32/SuRunExt32.lib")
+#pragma comment(lib, "DebugUsr32/SuRunExt32.lib")
 #else //_SR32
-#pragma comment(lib, "SuRunExt/DebugU/SuRunExt.lib")
+#pragma comment(lib, "DebugU/SuRunExt.lib")
 #endif //_SR32
 #endif //_WIN64
 
