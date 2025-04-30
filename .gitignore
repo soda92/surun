@@ -4,6 +4,7 @@
 *.kra~
 src_bak/
 *.bmp
+/dist
 
 # include
 !vswhere.exe
