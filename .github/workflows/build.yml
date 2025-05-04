@@ -9,10 +9,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build debug
-        run: pwsh build-debug.ps1
-
-      - name: Build release
-        run: pwsh build.ps1
+        run: pwsh scripts/build.ps1
 
       - name: Set timestamp
         id: timestamp
@@ -20,17 +17,11 @@ jobs:
           $now = Get-Date -Format "yyyyMMddHHmmss"
           echo "TIMESTAMP=$now" | Out-File -Path $env:GITHUB_ENV -Append
 
-      - name: update artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: surun-release-${{ env.TIMESTAMP }}
-          path: |
-            InstallSuRun.exe
-            ReleaseUx64
-
       - uses: actions/upload-artifact@v4
         with:
           name: surun-debug-${{ env.TIMESTAMP }}
           path: |
-            DebugUx64
-            DebugU
+            PC/Debug
+            PC/DebugUsr32
+            PC/DebugUx64
+
