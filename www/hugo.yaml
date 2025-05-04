@@ -1,2 +1,13 @@
 languageCode: en-us
-title: My New Hugo Site
+title: SuRun Docs
+theme: ["PaperMod"]
+
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+
+params:
+  hideFooter: false

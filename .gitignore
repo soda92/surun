@@ -6,6 +6,7 @@ PC/packages
 
 # website
 /public
+www/public
 
 # Icon resources
 *.ico~
@@ -22,7 +23,7 @@ __pycache__
 # language server
 __cmake*
 /.cache
-/*.json
+/compile*.json
 
 # Visual Studio
 /SuRun32.bin
