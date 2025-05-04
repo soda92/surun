@@ -1,2 +1,13 @@
 languageCode: en-us
 title: My New Hugo Site
+theme: ["PaperMod"]
+
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+
+params:
+  hideFooter: false
