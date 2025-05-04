@@ -10,7 +10,7 @@ see [SuRun installation][install].
 
 ## Development
 
-see [Building SuRun][buiod].
+see [Building SuRun][build].
 
 ## modifications
 
