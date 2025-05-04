@@ -2,6 +2,7 @@
 /data.txt
 src_bak/
 *.bmp
+PC/packages
 
 # Icon resources
 *.ico~
