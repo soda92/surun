@@ -29,3 +29,7 @@ administrator credentials to join the SuRunners group.
 (SuRun does not store any administrator credentials!)
 
 [sudown]: http://SuDown.sourceforge.net
+
+[How to install SuRun][install]
+
+[install]: https://surun-docs.web.app/post/surun-installation/
