@@ -4,6 +4,9 @@ src_bak/
 *.bmp
 PC/packages
 
+# website
+/public
+
 # Icon resources
 *.ico~
 *.kra~
