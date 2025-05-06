@@ -13,7 +13,7 @@ A quick search finds that it's [been deprecated since VS2008][1].
 
 But there are a bunch of them in the project files:
 
-![](./bscmake-conf.png)
+<img src="./bscmake-conf.png" width=300>
 
 So I want to remove them programatically.
 
