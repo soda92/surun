@@ -5,7 +5,7 @@ title: 'Todo: Bscmake'
 
 Currently, when building SuRun, I always get this error:
 
-![](./bscmake.png)
+![BSCMAKE: error BK1513: nonincremental update requires all .SBR files](./bscmake.png)
 
 A quick search finds that it's [been deprecated since VS2008][1].
 
@@ -13,7 +13,7 @@ A quick search finds that it's [been deprecated since VS2008][1].
 
 But there are a bunch of them in the project files:
 
-<img src="./bscmake-conf.png" width=300>
+<img src="./bscmake-conf.png" width=300 alt="36 results in 4 files">
 
 So I want to remove them programatically.
 
