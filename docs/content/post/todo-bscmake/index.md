@@ -1,6 +1,6 @@
 ---
 date: '2025-05-06T15:46:35+08:00'
-title: 'Todo: Bscmake'
+title: 'finished: todo: Bscmake'
 ---
 
 Currently, when building SuRun, I always get this error:
@@ -20,6 +20,10 @@ So I want to remove them programatically.
 Python would be a good choice for reading and writing XML files. There are [many xml modules][xml] there. I need a library for both reading and writing, while preserving original formatting.
 
 Well then, this concludes this TODO post.
+
+## Update 5/7:
+
+finished.
 
 [1]: https://learn.microsoft.com/en-us/visualstudio/msbuild/bscmake-task?view=vs-2022
 [xml]: https://docs.python.org/3/library/xml.html
