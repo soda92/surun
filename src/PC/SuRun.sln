@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InstallSuRun", "InstallSuRunVC9.vcxproj", "{6A6CCFF6-F29A-441F-9E27-7E82F90968D3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InstallSuRun", "InstallSuRun.vcxproj", "{6A6CCFF6-F29A-441F-9E27-7E82F90968D3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRun", "SuRunVC9.vcxproj", "{EED1FEA4-9C37-4452-A8C0-B01F2ED49C68}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRun", "SuRun.vcxproj", "{EED1FEA4-9C37-4452-A8C0-B01F2ED49C68}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRunExt", "SuRunExtVC9.vcxproj", "{DAFA8E39-3DE2-4F20-9379-5EE5999D2BAF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuRunExt", "SuRunExt.vcxproj", "{DAFA8E39-3DE2-4F20-9379-5EE5999D2BAF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestScreenshot", "..\tests\TestScreenshot\TestScreenshot.vcxproj", "{C3F2F605-32D6-49E5-A655-E2C7442BB467}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestScreenshot", "..\..\tests\TestScreenshot\TestScreenshot.vcxproj", "{C3F2F605-32D6-49E5-A655-E2C7442BB467}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestScreenshotSuRun", "..\tests\TestScreenshotSuRun\TestScreenshotSuRun.vcxproj", "{7756BBCB-2821-4FF3-AF1D-0A0C3AD83ED3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestScreenshotSuRun", "..\..\tests\TestScreenshotSuRun\TestScreenshotSuRun.vcxproj", "{7756BBCB-2821-4FF3-AF1D-0A0C3AD83ED3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject

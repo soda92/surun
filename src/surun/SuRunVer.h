@@ -4,10 +4,10 @@
 #pragma once
 #include <windows.h>
 
-#define VERSION_HH 1
-#define VERSION_HL 2
-#define VERSION_LH 1
-#define VERSION_LL 6
+#define VERSION_HH 2025
+#define VERSION_HL 5
+#define VERSION_LH 7
+#define VERSION_LL 0
 // #define VERSION_BETA 1
 
 #define STRINGIZE2(s) #s
@@ -33,8 +33,8 @@
       STRINGIZE(VERSION_LH) STRINGIZE(VERSION_LL)
 #endif //(VERSION_BETA != 0)
 
-#define VER_COMPANYNAME "http://kay-bruns.de"
-#define VER_LEGALCOPYRIGHT "Copyright (C) 2007-2023"
+#define VER_COMPANYNAME "https://surun-docs.web.app/"
+#define VER_LEGALCOPYRIGHT "Copyright (C) 2025"
 #define VER_ORIGINALFILENAME
 #define VER_PRODUCTNAME "SuperUserRun"
 
