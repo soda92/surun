@@ -28,7 +28,7 @@ function Try_Exec {
 
 	if ($LastExitCode -ne 0) {
 		Write-Error "Command failed with exit code: $LastExitCode"
-		Write-Error $command
+		Write-Error $CommandToExecute
 		exit $LastExitCode
 	}
 }
