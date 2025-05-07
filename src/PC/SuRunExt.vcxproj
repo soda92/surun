@@ -163,21 +163,11 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="SuRunExt.Def">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SuRun32 Unicode Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SuRun32 Unicode Release|x64'">true</ExcludedFromBuild>
-    </CustomBuild>
+      </CustomBuild>
     <CustomBuild Include="SuRunExt32.Def">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SuRun32 Unicode Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='SuRun32 Unicode Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Unicode Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Unicode Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Unicode Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Unicode Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='x64 Unicode Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='x64 Unicode Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='x64 Unicode Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='x64 Unicode Release|x64'">true</ExcludedFromBuild>
-    </CustomBuild>
+      </CustomBuild>
     <None Include="..\surun_ext\SuRunExtVer.rc2" />
   </ItemGroup>
   <ItemGroup>
