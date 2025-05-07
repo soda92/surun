@@ -15,8 +15,8 @@ Pop-Location
 Write-Host "$name amd64 Command Prompt variables set." -ForegroundColor Green
 
 $root = Split-Path -Path $PSScriptRoot -Parent
-$surun = Join-Path -Path $root -ChildPath "PC/SuRunVC9.sln"
-$install_surun = Join-Path -Path $root -ChildPath "PC/InstallSuRunVC9.vcxproj"
+$surun = Join-Path -Path $root -ChildPath "src/PC/SuRun.sln"
+$install_surun = Join-Path -Path $root -ChildPath "src/PC/InstallSuRun.vcxproj"
 
 # for faster build, comment the next line and change "/t:Rebuild" to "/t:Build"
 # & "msbuild.exe" $surun /t:clean 1>NUL 2>NUL
