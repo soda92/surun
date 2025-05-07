@@ -602,7 +602,7 @@ void TestEmptyAdminPasswords() {
 //////////////////////////////////////////////////////////////////////////////
 BOOL InjectIATHook(HANDLE hProc) {
   HANDLE hThread = 0;
-  try {
+  __try {
     PROC pLoadLib =
         GetProcAddress(GetModuleHandleA("Kernel32"), "LoadLibraryA");
     if (!pLoadLib)
@@ -617,13 +617,15 @@ BOOL InjectIATHook(HANDLE hProc) {
       return false;
     }
     WriteProcessMemory(hProc, RmteName, (void *)DllName, nDll, NULL);
-    try {
+    __try {
       hThread = CreateRemoteThread(
           hProc, NULL, 0, (LPTHREAD_START_ROUTINE)pLoadLib, RmteName, 0, NULL);
       if (hThread == 0)
         DBGTrace1("InjectIATHook CreateRemoteThread failed: %s",
                   GetLastErrorNameStatic());
-    } catch (...) {
+    } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                    ? EXCEPTION_EXECUTE_HANDLER
+                    : EXCEPTION_CONTINUE_SEARCH) {
       DBGTrace("SuRun: CreateRemoteThread Exeption!");
     }
     if (hThread != NULL) {
@@ -631,7 +633,9 @@ BOOL InjectIATHook(HANDLE hProc) {
       CloseHandle(hThread);
     }
     VirtualFreeEx(hProc, RmteName, sizeof(DllName), MEM_RELEASE);
-  } catch (...) {
+  } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                  ? EXCEPTION_EXECUTE_HANDLER
+                  : EXCEPTION_CONTINUE_SEARCH) {
     DBGTrace("SuRun: InjectIATHook() Exeption!");
   }
   return hThread != 0;
@@ -1119,7 +1123,7 @@ LPCTSTR BeautifyCmdLine(LPTSTR cmd) {
 DWORD PrepareSuRun() {
   // #ifdef DoDBGTrace
   //   AddTime("PrepareSuRun start")
-  // #endif //DoDBGTrace
+  // #endif DoDBGTrace
   zero(g_RunPwd);
   if ((!g_CliIsInSuRunners) && GetNoConvUser) {
     DBGTrace1("PrepareSuRun EXIT: User %s is no SuRunner, no auto convert",
@@ -1153,7 +1157,7 @@ DWORD PrepareSuRun() {
   // Get real groups for the user: (Not just the groups from the Client Token)
   // #ifdef DoDBGTrace
   //   AddTime("IsInSuRunnersOrAdmins start")
-  // #endif //DoDBGTrace
+  // #endif DoDBGTrace
   g_RunData.Groups =
       IsInSuRunnersOrAdmins(g_RunData.UserName, g_RunData.SessionID);
   if (HideSuRun(g_RunData.UserName, g_RunData.Groups)) {
@@ -1165,7 +1169,7 @@ DWORD PrepareSuRun() {
   bool bFadeDesk = (!(g_RunData.Groups & IS_TERMINAL_USER)) && GetFadeDesk;
   // #ifdef DoDBGTrace
   //   AddTime("CreateSafeDesktop start")
-  // #endif //DoDBGTrace
+  // #endif DoDBGTrace
   if (!CreateSafeDesktop(g_RunData.WinSta, g_RunData.Desk, GetBlurDesk,
                          bFadeDesk)) {
     DBGTrace("PrepareSuRun EXIT: CreateSafeDesktop failed");
@@ -1173,8 +1177,8 @@ DWORD PrepareSuRun() {
   }
   // #ifdef DoDBGTrace
   //   AddTime("CreateSafeDesktop done")
-  // #endif //DoDBGTrace
-  try {
+  // #endif DoDBGTrace
+  __try {
     // safe desktop created...
     if ((!g_CliIsInSuRunners) &&
         (!BecomeSuRunner(g_RunData.UserName, g_RunData.SessionID,
@@ -1297,7 +1301,9 @@ DWORD PrepareSuRun() {
     }
     UpdLastRunTime(g_RunData.UserName);
     return RETVAL_OK;
-  } catch (...) {
+  } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                  ? EXCEPTION_EXECUTE_HANDLER
+                  : EXCEPTION_CONTINUE_SEARCH) {
     DBGTrace("FATAL: Exception in PrepareSuRun()");
     DeleteSafeDesktop(false);
     return RETVAL_CANCELLED;
@@ -1718,7 +1724,7 @@ void SuRun() {
   // #ifdef DoDBGTrace
   //   g_nTimes++;
   //   AddTime("Client to service comm.")
-  // #endif //DoDBGTrace
+  // #endif DoDBGTrace
   // This is called from a separate process created by the service
   if (!IsLocalSystem()) {
     DBGTrace("FATAL: SuRun() not running as SYSTEM; EXIT!");
@@ -1812,9 +1818,11 @@ void SuRun() {
       bool bFadeDesk = (!(g_RunData.Groups & IS_TERMINAL_USER)) & GetFadeDesk;
       if (CreateSafeDesktop(g_RunData.WinSta, g_RunData.Desk, GetBlurDesk,
                             bFadeDesk)) {
-        try {
+        __try {
           Setup();
-        } catch (...) {
+        } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                        ? EXCEPTION_EXECUTE_HANDLER
+                        : EXCEPTION_CONTINUE_SEARCH) {
         }
         DeleteSafeDesktop(bFadeDesk);
       } else {
@@ -1852,10 +1860,12 @@ void SuRun() {
     }
   } //(g_RunData.bRunAs)
   // copy the password to the client
-  try {
+  __try {
     KillProcess(g_RunData.KillPID);
     RetVal = LSAStartAdminProcess();
-  } catch (...) {
+  } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                  ? EXCEPTION_EXECUTE_HANDLER
+                  : EXCEPTION_CONTINUE_SEARCH) {
     DBGTrace("FATAL: Exception in StartAdminProcessTrampoline()");
   }
   ResumeClient(RetVal, true);

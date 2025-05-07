@@ -239,7 +239,7 @@ HANDLE SSPLogonUser(LPCTSTR szDomain, LPCTSTR szUser, LPCTSTR szPassword) {
   PVOID pServerBuf = NULL;
   PSecPkgInfo pSPI = NULL;
   SEC_WINNT_AUTH_IDENTITY ai;
-  try {
+  __try {
 
     if (!LoadSecurityDll()) {
       DBGTrace("SSPLogonUser: Exit because LoadSecurityDll failed!");
@@ -276,13 +276,13 @@ HANDLE SSPLogonUser(LPCTSTR szDomain, LPCTSTR szUser, LPCTSTR szPassword) {
     // Prepare client message (negotiate) .
     cbOut = cbMaxToken;
     if (!GenClientContext(&asClient, &ai, NULL, 0, pClientBuf, &cbOut, &fDone))
-      throw 123;
+      __leave;
     // Prepare server message (challenge) .
     cbIn = cbOut;
     cbOut = cbMaxToken;
     if (!GenServerContext(&asServer, pClientBuf, cbIn, pServerBuf, &cbOut,
                           &fDone))
-      throw 123;
+      __leave;
     // Most likely failure: AcceptServerContext fails with SEC_E_LOGON_DENIED
     // in the case of bad szUser or szPassword.
     // Unexpected Result: Logon will succeed if you pass in a bad szUser and
@@ -292,26 +292,26 @@ HANDLE SSPLogonUser(LPCTSTR szDomain, LPCTSTR szUser, LPCTSTR szPassword) {
     cbOut = cbMaxToken;
     if (!GenClientContext(&asClient, &ai, pServerBuf, cbIn, pClientBuf, &cbOut,
                           &fDone))
-      throw 123;
+      __leave;
     // Prepare server message (authentication) .
     cbIn = cbOut;
     cbOut = cbMaxToken;
     if (!GenServerContext(&asServer, pClientBuf, cbIn, pServerBuf, &cbOut,
                           &fDone))
-      throw 123;
+      __leave;
     _QuerySecurityContextToken(&asServer.hctxt, &hToken);
-  } catch (...) {
+  } __finally {
+    // Clean up resources
+    if (asClient.fHaveCtxtHandle)
+      _DeleteSecurityContext(&asClient.hctxt);
+    if (asClient.fHaveCredHandle)
+      _FreeCredentialsHandle(&asClient.hcred);
+    if (asServer.fHaveCtxtHandle)
+      _DeleteSecurityContext(&asServer.hctxt);
+    if (asServer.fHaveCredHandle)
+      _FreeCredentialsHandle(&asServer.hcred);
+    free(pClientBuf);
+    free(pServerBuf);
   }
-  // Clean up resources
-  if (asClient.fHaveCtxtHandle)
-    _DeleteSecurityContext(&asClient.hctxt);
-  if (asClient.fHaveCredHandle)
-    _FreeCredentialsHandle(&asClient.hcred);
-  if (asServer.fHaveCtxtHandle)
-    _DeleteSecurityContext(&asServer.hctxt);
-  if (asServer.fHaveCredHandle)
-    _FreeCredentialsHandle(&asServer.hcred);
-  free(pClientBuf);
-  free(pServerBuf);
   return hToken;
 }
