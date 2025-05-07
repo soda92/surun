@@ -36,3 +36,5 @@ dev = ["hatchling>=1.27.0", "jupyter>=1.1.1", "pytest>=8.3.5"]
 [project.scripts]
 surun_install = "surun_tools.install:main2"
 surun_format = "surun_tools.run_format:surun_format"
+surun_clean = "surun_tools.clean:clean"
+surun_build = "surun_tools.build:build"

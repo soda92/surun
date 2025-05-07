@@ -35,9 +35,8 @@ function Try_Exec {
 
 # for faster build, comment the next line and change "/t:Rebuild" to "/t:Build"
 & "msbuild.exe" $surun /t:clean 1>NUL 2>NUL
+Try_Exec "msbuild.exe $surun /t:Build /p:Configuration=`"SuRun32 Unicode Debug`" /p:Platform=Win32"
 Try_Exec "msbuild.exe $surun /t:Build /p:Configuration=`"x64 Unicode Debug`" /p:Platform=x64"
 
-Try_Exec "msbuild.exe $surun /t:Build /p:Configuration=`"SuRun32 Unicode Debug`" /p:Platform=Win32"
-
 & "msbuild.exe" $install_surun /t:clean 1>NUL 2>NUL
-Try_Exec "msbuild.exe $install_surun /t:Build /p:Configuration=`"Debug`" /p:Platform=Win32"
+Try_Exec "msbuild.exe $install_surun /t:Build /p:Configuration=`"SuRun32 Unicode Debug`" /p:Platform=Win32"
