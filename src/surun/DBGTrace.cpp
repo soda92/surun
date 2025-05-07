@@ -294,7 +294,7 @@ void WriteLog(LPTSTR S, ...) {
 }
 
 void TRACEx(LPCTSTR s, ...) {
-  try {
+  __try {
     static TCHAR S[4096] = {0};
     va_list va;
     va_start(va, s);
@@ -312,17 +312,16 @@ void TRACEx(LPCTSTR s, ...) {
       memmove(S, c0, (_tcslen(c0) + 1) * sizeof(TCHAR));
     }
     OutputDebugString(S);
-    //    char Sa[4096]={0};
-    //	  WideCharToMultiByte(CP_ACP,0,S,_tcslen(S),Sa,4096,NULL,NULL);
-    //	  DbgOutA(Sa);
     WriteLog(S);
-  } catch (...) {
+  } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                  ? EXCEPTION_EXECUTE_HANDLER
+                  : EXCEPTION_CONTINUE_SEARCH) {
     OutputDebugStringA("FATAL: Exception in TRACEx");
   }
 }
 
 void TRACExA(LPCSTR s, ...) {
-  try {
+  __try {
     static char S[4096] = {0};
     va_list va;
     va_start(va, s);
@@ -342,7 +341,9 @@ void TRACExA(LPCSTR s, ...) {
     //    DbgOutA(S);
     OutputDebugStringA(S);
     WriteLogA(S);
-  } catch (...) {
+  } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                  ? EXCEPTION_EXECUTE_HANDLER
+                  : EXCEPTION_CONTINUE_SEARCH) {
     OutputDebugStringA("FATAL: Exception in TRACExA");
   }
 }

@@ -451,30 +451,21 @@ DWORD HookIAT(char *fMod, HMODULE hMod, PIMAGE_IMPORT_DESCRIPTOR pID) {
           PIMAGE_IMPORT_BY_NAME pBN =
               RelPtr(PIMAGE_IMPORT_BY_NAME, hMod, pOrgThunk->u1.AddressOfData);
           PROC newFunc = DoHookFn(DllName, (char *)pBN->Name);
-          // PROC newFunc = DoHookFn(DllName,(PROC)pThunk->u1.Function);
           if (newFunc && (pThunk->u1.Function != (DWORD_PTR)newFunc)) {
-            try {
-              // MEMORY_BASIC_INFORMATION mbi;
+            __try {
               DWORD oldProt = PAGE_READWRITE;
               if (VirtualProtect(&pThunk->u1.Function,
                                  sizeof(pThunk->u1.Function),
                                  PAGE_EXECUTE_WRITECOPY, &oldProt)) {
-#ifdef DoDBGTrace
-//                if((newFunc==(PROC)ShellExExW)
-//                  ||(newFunc==(PROC)ShellExExA)
-//                  ||(newFunc==(PROC)ShellExA)
-//                  ||(newFunc==(PROC)ShellExW))
-//                  TRACExA("%s: %sHookFunc(%s):%s,%s (%x->%x) newProt:%x;
-//                  oldProt:%x\n",DLLNAME,
-//                    (bUnHook?"Un":""),fmod,DllName,pBN->Name,pThunk->u1.Function,newFunc,PAGE_EXECUTE_WRITECOPY,oldProt);
-#endif // DoDBGTrace
                 InterlockedExchangePointer((VOID **)&pThunk->u1.Function,
                                            (void *)newFunc);
                 VirtualProtect(&pThunk->u1.Function,
                                sizeof(pThunk->u1.Function), oldProt, &oldProt);
                 nHooked++;
               }
-            } catch (...) {
+            } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                            ? EXCEPTION_EXECUTE_HANDLER
+                            : EXCEPTION_CONTINUE_SEARCH) {
               DBGTrace("FATAL: Exception in HookIAT");
             }
           }

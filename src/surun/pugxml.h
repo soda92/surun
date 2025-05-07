@@ -50,7 +50,7 @@ using std::min;
 //<summary>
 //	Library variant ID. The ID 0x58475550 is owned by Kristen Wegner. You
 //*MUST* 	provide your own unique ID if you modify or fork the code in
-//this library to 	your own purposes. If you change this then *you* are now
+// this library to 	your own purposes. If you change this then *you* are now
 // the maintainer, not me. 	Change also in the package section of
 // pugxml.xml, and append yourself to the 	authors section.
 //</summary>
@@ -1616,8 +1616,8 @@ public:
 public:
   bool empty() {
     return (_size == 0);
-  }                                // True if there is no data in the
-                                   // array.
+  } // True if there is no data in the
+    // array.
   void remove_all() { _size = 0; } // Remove all data elements from the array.
   void clear()                     // Free any allocated memory.
   {
@@ -2107,7 +2107,7 @@ public:
   //<summary>Cast attribute value as stdstring. If not found, return
   // empty.</summary> <returns>The stdstring attribute value, or
   // empty.</returns> <remarks>Note: Modifying this will not change the value,
-  //e.g. read only.</remarks>
+  // e.g. read only.</remarks>
   operator stdstring() {
     stdstring temp;
     if (!empty() && has_value()) {
@@ -2900,7 +2900,7 @@ public:
   // NULL.</returns> <remarks> 	Used to get the PCDATA for the current element.
   // This handles elements 	like:
   //&lt;LINE&gt;&lt;STAGEDIR&gt;Aside&lt;/STAGEDIR&gt;Thy father, 	Pompey,
-  //would ne'er have&lt;/LINE&gt;, where 'this' points to &lt;LINE&gt;.
+  // would ne'er have&lt;/LINE&gt;, where 'this' points to &lt;LINE&gt;.
   //</remarks>
   TCHAR *child_value(TCHAR *value, const unsigned int valuelen) const {
     if (_root->children) {
@@ -2929,7 +2929,7 @@ public:
   // found.</summary> <param name="name">Reference to name of attribute to
   // find.</param> <returns>Pointer to attribute, or NULL if not
   // found.</returns> <remarks>Implement your own hash table if you have a great
-  //many attributes.</remarks>
+  // many attributes.</remarks>
   xml_attribute_struct *mapto_attribute_ptr(const stdstring &name) {
     return mapto_attribute_ptr(name.c_str());
   }
@@ -2938,7 +2938,7 @@ public:
   // found.</summary> <param name="name">Pointer to name of attribute to
   // find.</param> <returns>Pointer to attribute, or NULL if not
   // found.</returns> <remarks>Implement your own hash table if you have a great
-  //many attributes.</remarks>
+  // many attributes.</remarks>
   xml_attribute_struct *mapto_attribute_ptr(const TCHAR *name) {
     if (!_root || !name)
       return NULL;

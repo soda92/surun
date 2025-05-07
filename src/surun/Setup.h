@@ -395,8 +395,9 @@ void UpdLastRunTime(LPTSTR UserName);
 // App elevated
 #define FLAG_AUTOCANCEL 0x08 // SuRun will always answer "cancel"
 #define FLAG_CANCEL_SX 0x10  // SuRun will answer "cancel" on ShellExec
-#define FLAG_NEVERASK 0x20   // Never ask for password, even after password
-                             // timeout
+#define FLAG_NEVERASK                                                          \
+  0x20 // Never ask for password, even after password
+       // timeout
 
 BOOL IsInWhiteList(LPCTSTR User, LPCTSTR CmdLine, DWORD Flag);
 DWORD GetCommonWhiteListFlags(LPCTSTR User, LPCTSTR CmdLine, DWORD Default);
