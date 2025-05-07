@@ -3,6 +3,9 @@ msys: msys-surun msys-32 bi
 
 .PHONY: build32
 
+format:
+	surun_format.exe
+
 surun:
 	cmake --preset windows-only
 	cmake --build build

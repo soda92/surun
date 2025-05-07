@@ -1,25 +1,29 @@
 from sodatools import CD
-import glob
 from pathlib import Path
+from surun_tools.glob1 import glob_files
+import subprocess
 
-files = list(glob.glob("*.h"))
-files.extend(list(glob.glob("*.cpp")))
+proj_root = Path(__file__).resolve().parent.parent
 
-files.extend(list(glob.glob("SuRunC/*.h")))
-files.extend(list(glob.glob("SuRunC/*.cpp")))
+files = []
 
-files.extend(list(glob.glob("SuRunExt/*.h")))
-files.extend(list(glob.glob("SuRunExt/*.cpp")))
+def surun_format():
+    with CD(proj_root):
+        files.extend(glob_files("*.h"))
+        files.extend(glob_files("*.cpp"))
 
-CURRENT = Path(__file__).resolve().parent
-for file in files:
-    with CD(CURRENT.parent):
-        import subprocess
+        files.extend(glob_files("SuRunC/*.h"))
+        files.extend(glob_files("SuRunC/*.cpp"))
 
+        files.extend(glob_files("SuRunExt/*.h"))
+        files.extend(glob_files("SuRunExt/*.cpp"))
+
+    for file in files:
+        file_path = proj_root.joinpath(file)
         subprocess.run(
             [
-                "C:/src/llvm-project-install/bin/clang-format",
-                CURRENT.name + "/" + file,
+                "clang-format",
+                file_path,
                 "-i",
             ]
         )

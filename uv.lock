@@ -240,6 +240,28 @@ wheels = [
 ]
 
 [[package]]
+name = "clang-format"
+version = "20.1.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0c/f3/c6641b19aad867eff10add438e1a8f4fd2f801a6a641daed865173cc0794/clang_format-20.1.3.tar.gz", hash = "sha256:3ec909edce6d9ef1f6f0f78b0ef75519a88e9678c4ea3758d39b08c3acfabd1b", size = 11225, upload_time = "2025-04-28T13:35:36.964Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/59/57/11efc2f350454f421a9e9cbdce6046c7a12f2fa3537e946b03bdc2871dc0/clang_format-20.1.3-py2.py3-none-macosx_10_9_x86_64.whl", hash = "sha256:1380f866e4ca1dd92167d9fb7f7847fdf2b11a6f435811da15ee5e04853aaf1b", size = 1436122, upload_time = "2025-04-28T13:35:13.18Z" },
+    { url = "https://files.pythonhosted.org/packages/a8/ab/4311f99f6cb3cb88146f08b63224d1fa7963206b5b4f4582e662518e4bd3/clang_format-20.1.3-py2.py3-none-macosx_11_0_arm64.whl", hash = "sha256:e6440f53333a42c46ea3f78cbf2f19ccec2d40f4233ee7ca027d3b6a75e81558", size = 1410102, upload_time = "2025-04-28T13:35:15.587Z" },
+    { url = "https://files.pythonhosted.org/packages/0a/c3/244e279da51c9622c548641c9e398fa58f0b414cfb4e1ef2ddd7034061b7/clang_format-20.1.3-py2.py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f5aff27ada318fa5204a5f916779b53c44c12a41e2de42ec0b2bc336865fddb2", size = 1793492, upload_time = "2025-04-28T13:35:17.551Z" },
+    { url = "https://files.pythonhosted.org/packages/e6/93/1dfc36705e611fb78eff5843f612459490a1f185cc46d961eceb39841c67/clang_format-20.1.3-py2.py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:40272f1ba17c430ac8f6ffc4e6bf4a57e859ce655438afea677faf962da20de0", size = 1968079, upload_time = "2025-04-28T13:35:18.989Z" },
+    { url = "https://files.pythonhosted.org/packages/c7/33/2bf9c32f405b9393a3f99f027d3e6ba4e0a98b8a17dd09ff049f6dfbbeac/clang_format-20.1.3-py2.py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:622cf026ce331c33b267f05edea027cee3b6ca96028ea695c8c73708d99e9918", size = 2724419, upload_time = "2025-04-28T13:35:20.401Z" },
+    { url = "https://files.pythonhosted.org/packages/3d/cf/3b84d415c570e4d5c3120f83de3832b8698a0cc765384d1da5161bfd5d58/clang_format-20.1.3-py2.py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:789944ef03de0b97bd5f621d3f05d3cf8a0a2a77cc937ed5bc334184fa223fc8", size = 1788249, upload_time = "2025-04-28T13:35:21.83Z" },
+    { url = "https://files.pythonhosted.org/packages/d3/e2/70887cb55ef738be4e7431d2f0280e305953e6a1406e52548b7b9d1dd0ba/clang_format-20.1.3-py2.py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:de902d607f54ce2047f45afae29d2ecefe2138b73558f619d2758a619bac75c2", size = 1800488, upload_time = "2025-04-28T13:35:23.244Z" },
+    { url = "https://files.pythonhosted.org/packages/70/ae/cae4b5678970035f27a3594c43a22f3a434dafff9460c29d4c00e0582269/clang_format-20.1.3-py2.py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:2ff61a21394124e11b51d8ac7b3cda7a19643a2b45c0b20381dc6757d3764e46", size = 2775071, upload_time = "2025-04-28T13:35:24.735Z" },
+    { url = "https://files.pythonhosted.org/packages/6e/9c/617c1d951189f4c16aa5129f5f4642c15c14ef04047883096dd88e29237b/clang_format-20.1.3-py2.py3-none-musllinux_1_2_i686.whl", hash = "sha256:f9edfd36ffb9566e24c35b0783a98275dbcd70ec73efaf51fe9ea22df1b11587", size = 3100386, upload_time = "2025-04-28T13:35:27.171Z" },
+    { url = "https://files.pythonhosted.org/packages/86/3f/f316c56914692947c2874533d71277bb403274be7b4430b230944fc75dd6/clang_format-20.1.3-py2.py3-none-musllinux_1_2_ppc64le.whl", hash = "sha256:67c182d447d351423a0b80de446a459f9833ba234e32a3fb4a93e04d995468d2", size = 3186173, upload_time = "2025-04-28T13:35:28.747Z" },
+    { url = "https://files.pythonhosted.org/packages/33/fb/01b500cd177f6cc3ce0176b049afc3ac17fc1a47b3ef1c214fb4ca2714bb/clang_format-20.1.3-py2.py3-none-musllinux_1_2_s390x.whl", hash = "sha256:6491d9dd9eb5e92e4a0554d5f7200d93d27e0e6bf440d780a7d525d7c6991ec3", size = 3224130, upload_time = "2025-04-28T13:35:30.553Z" },
+    { url = "https://files.pythonhosted.org/packages/75/96/f502059ac94e38fa21d67b2ea4063671d8a9f041f88e145d4db63066822c/clang_format-20.1.3-py2.py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:98d508344b830783e8d2dac76f63fbc3c21b7f299fa83715e7f71702479d0bda", size = 2881596, upload_time = "2025-04-28T13:35:31.972Z" },
+    { url = "https://files.pythonhosted.org/packages/1f/4d/8a49531b8cf6e006943e573390b142ed2914ac107da38c9f3df522974edf/clang_format-20.1.3-py2.py3-none-win32.whl", hash = "sha256:8ab1c0fe45e6baa34910cc9195160a2854ac71ae40d6f83ae5b4dc467969d1ab", size = 1258802, upload_time = "2025-04-28T13:35:33.432Z" },
+    { url = "https://files.pythonhosted.org/packages/08/e0/0bd989900eadb896520442f80d6af1a67bbc5fd0ace965a425c979c3943d/clang_format-20.1.3-py2.py3-none-win_amd64.whl", hash = "sha256:2584cac1070c058432c6374bac0099464e8c2f5e61bbe51cd8ad58c883e0911f", size = 1443493, upload_time = "2025-04-28T13:35:35.213Z" },
+]
+
+[[package]]
 name = "colorama"
 version = "0.4.6"
 source = { registry = "https://pypi.org/simple" }
@@ -1386,15 +1408,15 @@ wheels = [
 
 [[package]]
 name = "soda-hugo-nbconvert"
-version = "2025.5.7.2"
+version = "2025.5.7.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "jupyter" },
     { name = "nbconvert" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f1/ec/a4d0dfd9e30f1aa7caf1a19e6f66eaa71b9c138fa6ea82c844fffc3e6a9d/soda_hugo_nbconvert-2025.5.7.2.tar.gz", hash = "sha256:8051ffeeb17823151e13a8f0288072cb6a7b4838bd8cd465cfbb752e29018cba", size = 10538, upload_time = "2025-05-07T05:27:43.048Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/74/00/dd0955182a819a40293e9314b01bfd2d2d2e23411c1bcd31d966f1cfaf62/soda_hugo_nbconvert-2025.5.7.4.tar.gz", hash = "sha256:9ebde8f25eae7d2e522d168ffad2068757e389efc6dce3d2190744837bcb7f6c", size = 10572, upload_time = "2025-05-07T08:53:52.507Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/1f/a7/e1e77e831ed7d8bde79e1e1a31001ff7bffb9eb622c24f3a3559333c2676/soda_hugo_nbconvert-2025.5.7.2-py3-none-any.whl", hash = "sha256:b2f7949087dde5b1bbcf49f04e954a751e9bdc57dcf3b10f93e725493ff27196", size = 12964, upload_time = "2025-05-07T05:27:41.63Z" },
+    { url = "https://files.pythonhosted.org/packages/3e/e9/f253653f69b82b507625e2ca8b82a1951e7628d55a7b6ce7a089fea5a841/soda_hugo_nbconvert-2025.5.7.4-py3-none-any.whl", hash = "sha256:24cb2d4169cbb0d611549578dde612f5d37ba9656bc8bba23e45a08f338cd536", size = 13012, upload_time = "2025-05-07T08:53:51.1Z" },
 ]
 
 [[package]]
@@ -1402,6 +1424,7 @@ name = "soda-surun"
 version = "2025.5.1.1"
 source = { editable = "." }
 dependencies = [
+    { name = "clang-format" },
     { name = "soda-hugo-nbconvert" },
     { name = "sodatools" },
 ]
@@ -1415,7 +1438,8 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "soda-hugo-nbconvert", specifier = ">=2025.5.7.2" },
+    { name = "clang-format", specifier = ">=20.1.3" },
+    { name = "soda-hugo-nbconvert", specifier = ">=2025.5.7.3" },
     { name = "sodatools", specifier = ">=2025.2.16.0" },
 ]
 
