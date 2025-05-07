@@ -110,6 +110,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AssemblyDebug>true</AssemblyDebug>
+      <AdditionalDependencies>DebugUx64/SuRunExt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>true</GenerateMapFile>
       <MapExports>true</MapExports>
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
@@ -159,6 +160,7 @@
     </PreLinkEvent>
     <Link>
       <OutputFile>DebugUx64/SuRun32.bin</OutputFile>
+      <AdditionalDependencies>./DebugUsr32/SuRunExt32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\DebugUsr32/SuRun.pdb</ProgramDatabaseFile>
@@ -258,7 +260,7 @@
     <Text Include="..\ReadMe.md" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="SuRunExtVC9.vcxproj">
+    <ProjectReference Include="SuRunExt.vcxproj">
       <Project>{dafa8e39-3de2-4f20-9379-5ee5999d2baf}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

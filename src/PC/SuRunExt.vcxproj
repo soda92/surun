@@ -137,7 +137,7 @@
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
       <FixedBaseAddress>false</FixedBaseAddress>
       <DataExecutionPrevention>true</DataExecutionPrevention>
-      <ImportLibrary>.\DebugUsr32/SuRunExt32.lib</ImportLibrary>
+      <ImportLibrary>./DebugUsr32/SuRunExt32.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>

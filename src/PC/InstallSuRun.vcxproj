@@ -115,14 +115,6 @@
     <Image Include="..\resources\SuRun.ico" />
   </ItemGroup>
   <ItemGroup>
-    <!-- <ProjectReference Include="SuRunExtVC9.vcxproj">
-      <Project>{dafa8e39-3de2-4f20-9379-5ee5999d2baf}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="SuRunVC9.vcxproj">
-      <Project>{eed1fea4-9c37-4452-a8c0-b01f2ed49c68}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference> -->
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
