@@ -12,11 +12,17 @@
 #pragma comment(lib, "shlwapi.lib")
 
 #define InfoDBGTrace(msg)                                                      \
-  { (void)0; }
+  {                                                                            \
+    (void)0;                                                                   \
+  }
 #define InfoDBGTrace1(msg, d1)                                                 \
-  { (void)0; }
+  {                                                                            \
+    (void)0;                                                                   \
+  }
 #define InfoDBGTrace2(msg, d1, d2)                                             \
-  { (void)0; }
+  {                                                                            \
+    (void)0;                                                                   \
+  }
 
 // Define this in any implementation, before "pugxml.h", to be notified of API
 // campatibility.
@@ -85,7 +91,7 @@ BOOL CALLBACK EnumResProc(HMODULE hExe, LPCTSTR rType, LPTSTR rName,
     free(m);
     InfoDBGTrace("RequiresAdmin: MultiByteToWideChar!");
   }
-#else //UNICODE
+#else  // UNICODE
   if ((Manifest[0] == 0xFF) || (Manifest[0] == 0xFE)) {
     LPTSTR m = (LPTSTR)calloc(siz + 1, 2);
     memmove(m, Manifest, 2 * siz);
@@ -94,7 +100,7 @@ BOOL CALLBACK EnumResProc(HMODULE hExe, LPCTSTR rType, LPTSTR rName,
     free(m);
     InfoDBGTrace("RequiresAdmin: WideCharToMultiByte!");
   }
-#endif //UNICODE
+#endif // UNICODE
   if (Manifest) {
     xml_parser xml; // Construct.
     if (xml.parse(Manifest))

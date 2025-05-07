@@ -27,7 +27,6 @@
 #include <TCHAR.h>
 #include <ntsecapi.h>
 
-
 #pragma warning(disable : 4996)
 
 class LsaUnicodeString : public _LSA_UNICODE_STRING {
@@ -199,11 +198,11 @@ LPWSTR GetAccountPrivileges(LPWSTR Account) {
   PLSA_UNICODE_STRING Rights = 0;
   LPWSTR sRet = 0;
   // open the policy object on the target computer
-  static SECURITY_QUALITY_OF_SERVICE sqos = {sizeof (SECURITY_QUALITY_OF_SERVICE),
-                                             SecurityImpersonation,
-                                             SECURITY_DYNAMIC_TRACKING, FALSE};
+  static SECURITY_QUALITY_OF_SERVICE sqos = {
+      sizeof(SECURITY_QUALITY_OF_SERVICE), SecurityImpersonation,
+      SECURITY_DYNAMIC_TRACKING, FALSE};
   static LSA_OBJECT_ATTRIBUTES lsaOA = {
-      sizeof (LSA_OBJECT_ATTRIBUTES), NULL, NULL, 0, NULL, &sqos};
+      sizeof(LSA_OBJECT_ATTRIBUTES), NULL, NULL, 0, NULL, &sqos};
   RET_ERR(LsaOpenPolicy(
       0, &lsaOA, GENERIC_READ | GENERIC_EXECUTE | POLICY_LOOKUP_NAMES, &hPol));
   // translate the account name to a RID plus associated domain SID
@@ -266,9 +265,9 @@ PSID GetAccountSID(LPWSTR Account) {
   PLSA_TRANSLATED_SID sidList = NULL;
   PLSA_UNICODE_STRING Rights = 0;
   // open the policy object on the target computer
-  static SECURITY_QUALITY_OF_SERVICE sqos = {sizeof (SECURITY_QUALITY_OF_SERVICE),
-                                             SecurityImpersonation,
-                                             SECURITY_DYNAMIC_TRACKING, FALSE};
+  static SECURITY_QUALITY_OF_SERVICE sqos = {
+      sizeof(SECURITY_QUALITY_OF_SERVICE), SecurityImpersonation,
+      SECURITY_DYNAMIC_TRACKING, FALSE};
   static LSA_OBJECT_ATTRIBUTES lsaOA = {
       sizeof(LSA_OBJECT_ATTRIBUTES), NULL, NULL, 0, NULL, &sqos};
   RET_ERR(LsaOpenPolicy(0, &lsaOA, POLICY_LOOKUP_NAMES, &hPol));

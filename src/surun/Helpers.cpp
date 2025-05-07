@@ -27,7 +27,6 @@
 #include <tchar.h>
 #include "DynWTSAPI.h"
 
-
 #include "DBGTRace.h"
 #include "Helpers.h"
 #include "IsAdmin.h"
@@ -37,9 +36,8 @@
 #include "lsa_laar.h"
 #include "resource.h"
 #include <algorithm>
-using std::min;
 using std::max;
-
+using std::min;
 
 #pragma comment(lib, "ShlWapi.lib")
 #pragma comment(lib, "advapi32.lib")
@@ -2057,7 +2055,7 @@ HBITMAP GetMenuShieldIcon() {
   HICON ico = NULL;
 #ifndef _SR32
   HMODULE hMod = GetModuleHandle(L"SuRunExt.dll");
-#else //_SR32
+#else  //_SR32
   HMODULE hMod = GetModuleHandle(L"SuRunExt32.dll");
 #endif //_SR32
   if (!ico)
@@ -2066,9 +2064,9 @@ HBITMAP GetMenuShieldIcon() {
   if (!ico)
     return NULL;
   // Copy the icon to a Bitmap
-  BITMAPINFO bmi = {
-      {sizeof(BITMAPINFOHEADER), cx, cy, 1, 32, 0, static_cast<DWORD>(cx * cy * 4), 0, 0, 0, 0},
-      {{0, 0, 0, 0}}};
+  BITMAPINFO bmi = {{sizeof(BITMAPINFOHEADER), cx, cy, 1, 32, 0,
+                     static_cast<DWORD>(cx * cy * 4), 0, 0, 0, 0},
+                    {{0, 0, 0, 0}}};
   void *Bits = 0;
   HDC dc = CreateCompatibleDC(NULL);
   HBITMAP hbm = CreateDIBSection(dc, &bmi, DIB_RGB_COLORS, &Bits, NULL, 0);

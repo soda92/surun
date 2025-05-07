@@ -37,11 +37,10 @@
 #include "Resource.h"
 #include "Setup.h"
 
-
 #ifdef DoDBGTrace
 #include <Sddl.h>
 #pragma comment(lib, "Advapi32.lib")
-#endif //DoDBGTrace
+#endif // DoDBGTrace
 
 #pragma comment(lib, "shlwapi.lib")
 #pragma comment(lib, "Netapi32.lib")
@@ -647,7 +646,7 @@ void USERLIST::AddGroupUsers(LPWSTR GroupName, BOOL bScanDomain) {
 //      DBGTrace4("Group %s Name: %s; Type: %d; SID: %s",
 //        GroupName,p->lgrmi2_domainandname,p->lgrmi2_sidusage,sSID);
 //      LocalFree(sSID);
-#endif //DoDBGTrace
+#endif // DoDBGTrace
       switch (p->lgrmi2_sidusage) {
       case SidTypeUser: {
         TCHAR un[2 * UNLEN + 2] = {0};

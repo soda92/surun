@@ -33,8 +33,6 @@
 #include "WinStaDesk.h"
 #include "sspi_auth.h"
 
-
-
 #pragma comment(lib, "shlwapi.lib")
 #pragma comment(lib, "Netapi32.lib")
 #pragma comment(lib, "Gdi32.lib")
@@ -50,8 +48,8 @@ extern DWORD g_nTimes;
     g_RunTimes[g_nTimes] = timeGetTime();                                      \
     g_RunTimeNames[g_nTimes++] = _TEXT(s);                                     \
   }
-#endif //DoDBGTrace
-#endif //SuRunEXT_EXPORTS
+#endif // DoDBGTrace
+#endif // SuRunEXT_EXPORTS
 extern TOKEN_STATISTICS g_AdminTStat;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -173,8 +171,9 @@ void SaveRunAsPassword(LPTSTR RunAsUser, LPTSTR UserName, LPTSTR Password) {
     return;
   DATA_BLOB pw = {0};
   DATA_BLOB entropy = {sizeof(KEYPASS), KEYPASS};
-  DATA_BLOB PW = {static_cast<DWORD>((DWORD)(_tcslen(Password) + 1) * sizeof(TCHAR)),
-                  (BYTE *)Password};
+  DATA_BLOB PW = {
+      static_cast<DWORD>((DWORD)(_tcslen(Password) + 1) * sizeof(TCHAR)),
+      (BYTE *)Password};
   if (!CryptProtectData(&PW, _T("SuRunRAPW"), &entropy, 0, 0,
                         CRYPTPROTECT_UI_FORBIDDEN, &pw))
     DBGTrace1("CryptProtectData failed: %s", GetLastErrorNameStatic());

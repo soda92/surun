@@ -25,13 +25,13 @@
 
 #ifndef DBG_PRINTEXCEPTION_C
 #define DBG_PRINTEXCEPTION_C (0x40010006L)
-#endif //DBG_PRINTEXCEPTION_C
+#endif // DBG_PRINTEXCEPTION_C
 
 // #define _TEST_STABILITY
 
 #ifdef VERSION_BETA
 #define DoDBGTrace
-#endif //VERSION_BETA
+#endif // VERSION_BETA
 
 #ifdef _DEBUG
 #define DoDBGTrace
@@ -77,7 +77,7 @@ LPCTSTR MsgName(UINT msg);
            d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15);          \
   }
 
-#else //DoDBGTrace
+#else // DoDBGTrace
 
 #define DBGTrace(msg) (void)0
 #define DBGTrace1(msg, d1) (void)0
@@ -93,7 +93,7 @@ LPCTSTR MsgName(UINT msg);
                    d13, d14, d15)                                              \
   (void)0
 
-#endif //DoDBGTrace
+#endif // DoDBGTrace
 
 void GetErrorName(int ErrorCode, LPTSTR s);
 LPCTSTR GetErrorNameStatic(int ErrorCode);
@@ -110,21 +110,21 @@ public:
     va_end(args);
     TRACEx(_T("%s init.\n"), (LPCTSTR)m_logTitle);
     m_StartTime = timeGetTime();
-#endif //DoDBGTrace
+#endif // DoDBGTrace
   }
   virtual ~CTimeLog() {
 #ifdef DoDBGTrace
     DoLog(_T("exit"));
-#endif //DoDBGTrace
+#endif // DoDBGTrace
   };
   void DoLog(LPCTSTR s) {
 #ifdef DoDBGTrace
     TRACEx(_T("%s %s: %d ms\n"), (LPCTSTR)m_logTitle, s,
            timeGetTime() - m_StartTime);
-#endif //DoDBGTrace
+#endif // DoDBGTrace
   };
 #ifdef DoDBGTrace
   DWORD m_StartTime;
   TCHAR m_logTitle[4096];
-#endif //DoDBGTrace
+#endif // DoDBGTrace
 };

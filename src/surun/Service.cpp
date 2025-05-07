@@ -623,7 +623,7 @@ BOOL InjectIATHook(HANDLE hProc) {
       if (hThread == 0)
         DBGTrace1("InjectIATHook CreateRemoteThread failed: %s",
                   GetLastErrorNameStatic());
-    }catch(...) {
+    } catch (...) {
       DBGTrace("SuRun: CreateRemoteThread Exeption!");
     }
     if (hThread != NULL) {
@@ -631,7 +631,7 @@ BOOL InjectIATHook(HANDLE hProc) {
       CloseHandle(hThread);
     }
     VirtualFreeEx(hProc, RmteName, sizeof(DllName), MEM_RELEASE);
-  } catch(...) {
+  } catch (...) {
     DBGTrace("SuRun: InjectIATHook() Exeption!");
   }
   return hThread != 0;
@@ -1086,8 +1086,8 @@ LPCTSTR BeautifyCmdLine(LPTSTR cmd) {
       {IDS_SHNAME6, _T("::{D20EA4E1-3957-11d2-A40B-0C5020524152}")}, //"Fonts"
       {IDS_SHNAME7,
        _T("::{D20EA4E1-3957-11d2-A40B-0C5020524153}")}, //"Administrative Tools"
-      {IDS_SHNAME8,
-       _T("::{450D8FBA-AD25-11D0-98A8-0800361B1103}")} //"My Documents"
+      {IDS_SHNAME8, _T("::{450D8FBA-AD25-11D0-98A8-0800361B1103}")}
+      //"My Documents"
   };
   static TCHAR c1[4096];
   zero(c1);
@@ -1297,7 +1297,7 @@ DWORD PrepareSuRun() {
     }
     UpdLastRunTime(g_RunData.UserName);
     return RETVAL_OK;
-  } catch(...) {
+  } catch (...) {
     DBGTrace("FATAL: Exception in PrepareSuRun()");
     DeleteSafeDesktop(false);
     return RETVAL_CANCELLED;
@@ -1814,7 +1814,7 @@ void SuRun() {
                             bFadeDesk)) {
         try {
           Setup();
-        } catch(...) {
+        } catch (...) {
         }
         DeleteSafeDesktop(bFadeDesk);
       } else {
@@ -1855,7 +1855,7 @@ void SuRun() {
   try {
     KillProcess(g_RunData.KillPID);
     RetVal = LSAStartAdminProcess();
-  } catch(...) {
+  } catch (...) {
     DBGTrace("FATAL: Exception in StartAdminProcessTrampoline()");
   }
   ResumeClient(RetVal, true);
@@ -2677,7 +2677,7 @@ DWORD WINAPI HKThreadProc(void *p) {
 static void HandleHooks() {
 #ifdef _WIN64
   CreateMutex(NULL, true, _T("SuRun64_SysMenuHookIsRunning"));
-#else //_WIN64
+#else  //_WIN64
   CreateMutex(NULL, true, _T("SuRun_SysMenuHookIsRunning"));
 #endif //_WIN64
   if (GetLastError() == ERROR_ALREADY_EXISTS)
@@ -2762,7 +2762,7 @@ static void HandleHooks() {
     }
   }
   CloseTrayShowAdmin();
-#else //_SR32
+#else  //_SR32
     Sleep(1000);
   }
 #endif //_SR32

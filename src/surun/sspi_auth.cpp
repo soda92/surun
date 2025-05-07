@@ -15,7 +15,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 #define SECURITY_WIN32
 
-
 #include <windows.h>
 #include <sspi.h>
 #include <tchar.h>
@@ -277,13 +276,13 @@ HANDLE SSPLogonUser(LPCTSTR szDomain, LPCTSTR szUser, LPCTSTR szPassword) {
     // Prepare client message (negotiate) .
     cbOut = cbMaxToken;
     if (!GenClientContext(&asClient, &ai, NULL, 0, pClientBuf, &cbOut, &fDone))
-       throw 123;
+      throw 123;
     // Prepare server message (challenge) .
     cbIn = cbOut;
     cbOut = cbMaxToken;
     if (!GenServerContext(&asServer, pClientBuf, cbIn, pServerBuf, &cbOut,
                           &fDone))
-       throw 123;
+      throw 123;
     // Most likely failure: AcceptServerContext fails with SEC_E_LOGON_DENIED
     // in the case of bad szUser or szPassword.
     // Unexpected Result: Logon will succeed if you pass in a bad szUser and
@@ -299,20 +298,20 @@ HANDLE SSPLogonUser(LPCTSTR szDomain, LPCTSTR szUser, LPCTSTR szPassword) {
     cbOut = cbMaxToken;
     if (!GenServerContext(&asServer, pClientBuf, cbIn, pServerBuf, &cbOut,
                           &fDone))
-       throw 123;
+      throw 123;
     _QuerySecurityContextToken(&asServer.hctxt, &hToken);
-  } catch(...) {
+  } catch (...) {
   }
-    // Clean up resources
-    if (asClient.fHaveCtxtHandle)
-      _DeleteSecurityContext(&asClient.hctxt);
-    if (asClient.fHaveCredHandle)
-      _FreeCredentialsHandle(&asClient.hcred);
-    if (asServer.fHaveCtxtHandle)
-      _DeleteSecurityContext(&asServer.hctxt);
-    if (asServer.fHaveCredHandle)
-      _FreeCredentialsHandle(&asServer.hcred);
-    free(pClientBuf);
-    free(pServerBuf);
+  // Clean up resources
+  if (asClient.fHaveCtxtHandle)
+    _DeleteSecurityContext(&asClient.hctxt);
+  if (asClient.fHaveCredHandle)
+    _FreeCredentialsHandle(&asClient.hcred);
+  if (asServer.fHaveCtxtHandle)
+    _DeleteSecurityContext(&asServer.hctxt);
+  if (asServer.fHaveCredHandle)
+    _FreeCredentialsHandle(&asServer.hcred);
+  free(pClientBuf);
+  free(pServerBuf);
   return hToken;
 }

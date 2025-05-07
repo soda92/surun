@@ -28,13 +28,13 @@
 #include "Helpers.h"
 #include "DbgTrace.h"
 extern "C" {
-    #include <gdiplus.h>
-    #include <TCHAR.h>
-    #include <WINDOWS.h>
+#include <gdiplus.h>
+#include <TCHAR.h>
+#include <WINDOWS.h>
 }
 #pragma comment(lib, "Gdiplus.lib")
-using std::min;
 using std::max;
+using std::min;
 // Simplified 3x3 Gausian blur
 inline void Blur(COLORREF *pDst, COLORREF *pSrc, DWORD w, DWORD h) {
   CTimeLog l(_T("Blur %dx%d"), w, h);
@@ -254,7 +254,7 @@ public:
       DWORD StartTime = timeGetTime();
       BYTE a = 255;
       while (a) {
-        a = 255 - (BYTE)min(255,(int)( (timeGetTime() - StartTime) / 2));
+        a = 255 - (BYTE)min(255, (int)((timeGetTime() - StartTime) / 2));
         SetLayeredWindowAttributes(m_hWndTrans, 0, a, LWA_ALPHA);
         MsgLoop();
       }

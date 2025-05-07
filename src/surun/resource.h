@@ -2,8 +2,8 @@
 //go:build ignore
 // clang-format on
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by SuRun.rc
+//  Microsoft Visual C++ generated include file.
+//  Used by SuRun.rc
 //
 #define IDS_USAGE 1
 #define IDS_ASKOK 2

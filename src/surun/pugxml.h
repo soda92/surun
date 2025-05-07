@@ -31,8 +31,8 @@
 #include <string>
 #include <tchar.h>
 #include <algorithm>
-using std::min;
 using std::max;
+using std::min;
 
 #if defined(PUGOPT_MEMFIL) | defined(PUGOPT_NONSEG)
 #include <assert.h>
@@ -49,17 +49,17 @@ using std::max;
 #define PUGAPI_VERSION_MINOR 2
 //<summary>
 //	Library variant ID. The ID 0x58475550 is owned by Kristen Wegner. You
-//*MUST* 	provide your own unique ID if you modify or fork the code in this
-//library to 	your own purposes. If you change this then *you* are now the
-//maintainer, not me. 	Change also in the package section of pugxml.xml, and
-//append yourself to the 	authors section.
+//*MUST* 	provide your own unique ID if you modify or fork the code in
+//this library to 	your own purposes. If you change this then *you* are now
+// the maintainer, not me. 	Change also in the package section of
+// pugxml.xml, and append yourself to the 	authors section.
 //</summary>
 #define PUGAPI_INTERNAL_VARIANT 0x58475550
 //<summary>Major version. Increment for each major release. Only change if you
-//own the variant.</summary>
+// own the variant.</summary>
 #define PUGAPI_INTERNAL_VERSION_MAJOR 1
 //<summary>Minor version. Increment for each minor release. Only change if you
-//own the variant ID.</summary>
+// own the variant ID.</summary>
 #define PUGAPI_INTERNAL_VERSION_MINOR 2
 
 #define PUGAPI_INTERNAL_VERSION                                                \
@@ -74,10 +74,10 @@ using std::max;
 namespace pug {
 
 //<summary>The Library Variant ID. See PUGAPI_INTERNAL_VARIANT for an
-//explanation.</summary> <returns>The current Library Variant ID.</returns>
+// explanation.</summary> <returns>The current Library Variant ID.</returns>
 inline static unsigned long lib_variant() { return PUGAPI_INTERNAL_VARIANT; }
 //<summary>The library version. High word is major version. Low word is minor
-//version.</summary> <returns>The current Library Version.</returns>
+// version.</summary> <returns>The current Library Version.</returns>
 inline static unsigned long lib_version() { return PUGAPI_INTERNAL_VERSION; }
 
 //<summary>A 'name=value' XML attribute structure.</summary>
@@ -178,7 +178,7 @@ typedef struct t_xml_node_struct {
 
 //<summary>Concatenate 'rhs' to 'lhs', growing 'rhs' if neccessary.</summary>
 //<param name="lhs">Pointer to pointer to receiving string. Note: If '*lhs' is
-//not null, it must have been dynamically allocated using 'malloc'.</param>
+// not null, it must have been dynamically allocated using 'malloc'.</param>
 //<param name="rhs">Source.</param>
 //<returns>Success if 'realloc' was successful.</returns>
 //<remarks>'rhs' is resized and 'rhs' is concatenated to it.</remarks>
@@ -258,11 +258,11 @@ inline static bool chartype_rbracket(TCHAR c) // Character is ']'.
 
 //<summary>Concatenate 'rhs' to 'lhs', growing 'lhs' if neccessary.</summary>
 //<param name="lhs">Pointer to pointer to receiving string. Note: If '*lhs' is
-//not null, it must have been dynamically allocated using 'malloc'.</param>
+// not null, it must have been dynamically allocated using 'malloc'.</param>
 //<param name="rhs">Source.</param>
 //<param name="lsize">Specifies the length of *lhs in bytes and returns its new
-//length.</param> <param name="rsize">Specifies the length of *rhs in
-//bytes.</param> <returns>Success if 'realloc' was successful.</returns>
+// length.</param> <param name="rsize">Specifies the length of *rhs in
+// bytes.</param> <returns>Success if 'realloc' was successful.</returns>
 //<remarks>'lhs' is resized and 'rhs' is concatenated to it.</remarks>
 inline static bool strcatgrown_impl(TCHAR **lhs, const TCHAR *rhs,
                                     unsigned int &lsize, unsigned int rsize) {
@@ -292,10 +292,10 @@ inline static bool strcatgrown_impl(TCHAR **lhs, const TCHAR *rhs,
 
 //<summary>Concatenate 'rhs' to 'lhs', growing 'lhs' if neccessary.</summary>
 //<param name="lhs">Pointer to pointer to receiving string. Note: If '*lhs' is
-//not null, it must have been dynamically allocated using 'malloc'.</param>
+// not null, it must have been dynamically allocated using 'malloc'.</param>
 //<param name="rhs">Source.</param>
 //<param name="lsize">Specifies the length of *lhs in bytes and returns its new
-//length.</param> <returns>Success if 'realloc' was successful.</returns>
+// length.</param> <returns>Success if 'realloc' was successful.</returns>
 //<remarks>'lhs' is resized and 'rhs' is concatenated to it.</remarks>
 inline static bool strcatgrown(TCHAR **lhs, const TCHAR *rhs,
                                unsigned int &lsize) {
@@ -306,8 +306,8 @@ inline static bool strcatgrown(TCHAR **lhs, const TCHAR *rhs,
 //<summary>Trim leading and trailing whitespace.</summary>
 //<param name="s">Pointer to pointer to string.</param>
 //<param name="len">Specifies the length of *s in bytes and returns its new
-//length.</param> <returns>Success.</returns> <remarks>*s is modified to point
-//to the first non-white character in the string.</remarks>
+// length.</param> <returns>Success.</returns> <remarks>*s is modified to point
+// to the first non-white character in the string.</remarks>
 inline static bool strwtrim(TCHAR **s, unsigned int &len) {
   if (!s || !*s)
     return false;
@@ -349,7 +349,7 @@ inline static bool strwtrim(TCHAR **s) {
 
 //<summary>
 //	In situ trim leading and trailing whitespace, then convert all
-//consecutive 	whitespace to a single space TCHAR.
+// consecutive 	whitespace to a single space TCHAR.
 //</summary>
 //<param name="s">Pointer to pointer to string.</param>
 //<returns>Success.</returns>
@@ -449,8 +449,8 @@ inline static bool strcpyinsitu(TCHAR **dest, const TCHAR *src, bool *insitu
 
 //<summary>Character set pattern match.</summary>
 //<param name="lhs">String or expression for left-hand side of
-//comparison.</param> <param name="rhs">String for right-hand side of
-//comparison.</param> <remarks>Used by 'strcmpwild'.</remarks>
+// comparison.</param> <param name="rhs">String for right-hand side of
+// comparison.</param> <remarks>Used by 'strcmpwild'.</remarks>
 inline int strcmpwild_cset(const TCHAR **src, const TCHAR **dst) {
   int find = 0;
   int excl = 0;
@@ -484,8 +484,8 @@ int strcmpwild_impl(const TCHAR *src, const TCHAR *dst); // Forward declaration.
 
 //<summary>Wildcard pattern match.</summary>
 //<param name="lhs">String or expression for left-hand side of
-//comparison.</param> <param name="rhs">String for right-hand side of
-//comparison.</param> <remarks>Used by 'strcmpwild'.</remarks>
+// comparison.</param> <param name="rhs">String for right-hand side of
+// comparison.</param> <remarks>Used by 'strcmpwild'.</remarks>
 inline int strcmpwild_astr(const TCHAR **src, const TCHAR **dst) {
   int find = 1;
   ++(*src);
@@ -517,8 +517,8 @@ inline int strcmpwild_astr(const TCHAR **src, const TCHAR **dst) {
 
 //<summary>Compare two strings, with globbing, and character sets.</summary>
 //<param name="lhs">String or expression for left-hand side of
-//comparison.</param> <param name="rhs">String for right-hand side of
-//comparison.</param> <remarks>Used by 'strcmpwild'.</remarks>
+// comparison.</param> <param name="rhs">String for right-hand side of
+// comparison.</param> <remarks>Used by 'strcmpwild'.</remarks>
 inline int strcmpwild_impl(const TCHAR *src, const TCHAR *dst) {
   int find = 1;
   for (; *src != 0 && find == 1 && *dst != 0; ++src) {
@@ -546,16 +546,16 @@ inline int strcmpwild_impl(const TCHAR *src, const TCHAR *dst) {
 
 //<summary>Compare two strings, with globbing, and character sets.</summary>
 //<param name="lhs">String or expression for left-hand side of
-//comparison.</param> <param name="rhs">String for right-hand side of
-//comparison.</param> <returns> 	Returns 1 if src does not match dst, or -1 if
-//either src or dst are null, 	or 0 if src matches dst.
+// comparison.</param> <param name="rhs">String for right-hand side of
+// comparison.</param> <returns> 	Returns 1 if src does not match dst, or
+// -1 if either src or dst are null, 	or 0 if src matches dst.
 //</returns>
 //<remarks>
 //	Simple regular expressions are permitted in 'src': The character '*'
-//matches 	zero or more characters up to the next pattern, or the end of the
-//string. The
+// matches 	zero or more characters up to the next pattern, or the end of
+// the string. The
 //	'?' character matches any single character. Character sets and negation
-//are 	also permitted, for example, '[abcd]', '[a-zA-Z]', etc.
+// are 	also permitted, for example, '[abcd]', '[a-zA-Z]', etc.
 //</remarks>
 inline int strcmpwild(const TCHAR *src, const TCHAR *dst) {
   if (!src || !dst)
@@ -616,10 +616,11 @@ inline static xml_node_struct *new_node(xml_node_type type = node_element) {
 }
 
 //<summary>Allocate & append a new xml_node_struct onto the given
-//parent.</summary> <param name="parent">Pointer to parent node.</param> <param
-//name="grow">Pointer space growth increment.</param> <param name="type">Desired
-//node type.</param> <returns>Pointer to new node.</returns> <remarks>Child
-//pointer space of 'node' may be reallocated.</remarks>
+// parent.</summary> <param name="parent">Pointer to parent node.</param> <param
+// name="grow">Pointer space growth increment.</param> <param
+// name="type">Desired node type.</param> <returns>Pointer to new
+// node.</returns> <remarks>Child pointer space of 'node' may be
+// reallocated.</remarks>
 inline static xml_node_struct *append_node(xml_node_struct *parent, long grow,
                                            xml_node_type type = node_element) {
   if (!parent)
@@ -643,7 +644,7 @@ inline static xml_node_struct *append_node(xml_node_struct *parent, long grow,
 }
 
 //<summary>Allocate & append a new attribute to the given
-//xml_node_struct.</summary> <param name="node">Pointer to parent node.</param>
+// xml_node_struct.</summary> <param name="node">Pointer to parent node.</param>
 //<param name="grow">Pointer space growth increment.</param>
 //<returns>Pointer to appended xml_attribute_struct.</returns>
 //<remarks>Attribute pointer space of 'node' may be reallocated.</remarks>
@@ -779,9 +780,13 @@ inline static void free_node_recursive(xml_node_struct *root) {
   }
 #define OPTSET(OPT) (optmsk & OPT)
 #define PUSHNODE(TYPE)                                                         \
-  { cursor = append_node(cursor, growby, TYPE); }
+  {                                                                            \
+    cursor = append_node(cursor, growby, TYPE);                                \
+  }
 #define POPNODE()                                                              \
-  { cursor = cursor->parent; }
+  {                                                                            \
+    cursor = cursor->parent;                                                   \
+  }
 #define SCANFOR(X)                                                             \
   {                                                                            \
     while (*s != 0 && !(X))                                                    \
@@ -1555,10 +1560,10 @@ static TCHAR *parse(register TCHAR *s, xml_node_struct *xmldoc, long growby,
 
 //<summary>Read data from the file at 'path' into the buffer. Free with
 //'free'.</summary> <param name="path">File path.</param> <param
-//name="buffer">Pointer to pointer to string to recieve buffer.</param> <param
-//name="size">Pointer to count bytes read and stored in 'buffer'.</param> <param
-//name="tempsize">Temporary read buffer size.</param> <returns>Success if file
-//at 'path' was opened and bytes were read into memory.</returns>
+// name="buffer">Pointer to pointer to string to recieve buffer.</param> <param
+// name="size">Pointer to count bytes read and stored in 'buffer'.</param>
+// <param name="tempsize">Temporary read buffer size.</param> <returns>Success
+// if file at 'path' was opened and bytes were read into memory.</returns>
 //<remarks>Memory is allocated at '*buffer'. Free with 'free'.</remarks>
 inline static bool load_file(const TCHAR *path, TCHAR **buffer,
                              unsigned long *size,
@@ -1587,7 +1592,7 @@ inline static bool load_file(const TCHAR *path, TCHAR **buffer,
 }
 
 //<summary>A void pointer array. Used by various xml_node::find*
-//functions.</summary>
+// functions.</summary>
 class pointer_array {
   // Internal Data Members
 protected:
@@ -1609,8 +1614,10 @@ public:
   }
 
 public:
-  bool empty() { return (_size == 0); } // True if there is no data in the
-                                        // array.
+  bool empty() {
+    return (_size == 0);
+  }                                // True if there is no data in the
+                                   // array.
   void remove_all() { _size = 0; } // Remove all data elements from the array.
   void clear()                     // Free any allocated memory.
   {
@@ -1714,7 +1721,7 @@ public:
 //<summary>
 //	Stream output. Recursively writes the given xml_node_struct structure to
 //	the given stream. NOTE: Use this recursive implementation for debug
-//purposes 	only, since a large tree may cause a stack overflow.
+// purposes 	only, since a large tree may cause a stack overflow.
 //</summary>
 //<param name="os">Reference to output stream.</param>
 //<param name="indent">Reference to indentation stack.</param>
@@ -1983,7 +1990,7 @@ outer_xml(std::basic_ostream<TCHAR, std::char_traits<TCHAR>> &os,
 }
 
 //<summary>Abstract iterator class for interating over a node's
-//members.</summary> <remarks>Used as base class for 'xml_node_iterator' and
+// members.</summary> <remarks>Used as base class for 'xml_node_iterator' and
 //'xml_attribute_iterator'.</remarks>
 template <class _Ty, class _Diff, class _Pointer, class _Reference>
 class xml_iterator {
@@ -2000,7 +2007,7 @@ public:
 public:
   virtual bool good() = 0; // Internal validity of '_vref'.
   virtual bool oob() = 0;  // Out of bounds check for '_sscr' with respect to
-                          // '_vref'. Returns true if '_sscr' is O.O.B.
+                           // '_vref'. Returns true if '_sscr' is O.O.B.
 public:
   virtual long subscript() { return _sscr; } // Get subscript value;
   virtual void subscript(long new_subscript) {
@@ -2037,7 +2044,7 @@ public:
   virtual xml_iterator &operator--() {
     _sscr--;
     return *this;
-  }                             // Decrement the iterator (subscript).
+  } // Decrement the iterator (subscript).
   virtual _Ty &operator*() = 0; // Dereference operator.
   virtual _Ty *operator->() = 0;
 };
@@ -2070,9 +2077,9 @@ public:
 };
 
 //<summary>Provides a light-weight wrapper for manipulating xml_attribute_struct
-//structures.</summary> <remarks> 	Note: xml_attribute does not create any memory
-//for the attribute it wraps; 	it only wraps a pointer to an existing
-//xml_attribute_struct.
+// structures.</summary> <remarks> 	Note: xml_attribute does not create any
+// memory for the attribute it wraps; 	it only wraps a pointer to an existing
+// xml_attribute_struct.
 //</remarks>
 class xml_attribute {
   // Internal Data Members
@@ -2098,9 +2105,9 @@ public:
   bool operator!=(const xml_attribute &r) { return (_attr != r._attr); }
   operator xml_attribute_struct *() { return _attr; }
   //<summary>Cast attribute value as stdstring. If not found, return
-  //empty.</summary> <returns>The stdstring attribute value, or empty.</returns>
-  //<remarks>Note: Modifying this will not change the value, e.g. read
-  //only.</remarks>
+  // empty.</summary> <returns>The stdstring attribute value, or
+  // empty.</returns> <remarks>Note: Modifying this will not change the value,
+  //e.g. read only.</remarks>
   operator stdstring() {
     stdstring temp;
     if (!empty() && has_value()) {
@@ -2113,9 +2120,9 @@ public:
     return temp;
   }
   //<summary>Cast attribute value as integral character string. If not found,
-  //return NULL.</summary> <returns>Integral character string attribute value,
-  //or NULL.</returns> <remarks>Warning: Modifying this may corrupt portions of
-  //the document tree.</remarks>
+  // return NULL.</summary> <returns>Integral character string attribute value,
+  // or NULL.</returns> <remarks>Warning: Modifying this may corrupt portions of
+  // the document tree.</remarks>
   operator const TCHAR *() {
     if (empty() || !has_value())
       return NULL;
@@ -2124,7 +2131,7 @@ public:
   //<summary>Cast attribute value as long. If not found, return 0.</summary>
   //<returns>Attribute value as long, or 0.</returns>
   //<remarks>Note: Modifying this will not change the value, e.g. read
-  //only.</remarks>
+  // only.</remarks>
   operator long() {
     if (empty() || !has_value())
       return 0;
@@ -2143,7 +2150,7 @@ public:
   //<summary>Cast attribute value as double. If not found, return 0.0.</summary>
   //<returns>Attribute value as double, or 0.0.</returns>
   //<remarks>Note: Modifying this will not change the value, e.g. read
-  //only.</remarks>
+  // only.</remarks>
   operator double() {
     if (empty() || !has_value())
       return 0.0;
@@ -2162,7 +2169,7 @@ public:
   //<summary>Cast attribute value as bool. If not found, return false.</summary>
   //<returns>Attribute value as bool, or false.</returns>
   //<remarks>Note: Modifying this will not change the value, e.g. read
-  //only.</remarks>
+  // only.</remarks>
   operator bool() {
     if (empty() || !has_value())
       return false;
@@ -2399,7 +2406,7 @@ public:
 };
 
 //<summary>Provides a light-weight wrapper for manipulating xml_node_struct
-//structures.</summary>
+// structures.</summary>
 class xml_node {
   // Internal Data Members
 protected:
@@ -2465,7 +2472,7 @@ public:
     } // Initializing constructor.
     xml_node_iterator(const xml_node_iterator &r)
         : _wrap(), xml_iterator<xml_node, long, xml_node *, xml_node &>(r) {
-    }                   // Copy constructor.
+    } // Copy constructor.
     virtual bool good() // Internal validity.
     {
       if (_vref != 0 &&        // Pointing to some node.
@@ -2579,76 +2586,76 @@ public:
   typedef xml_attribute_iterator attribute_iterator;
 
   //<summary>Access the begin iterator for this node's collection of child
-  //nodes.</summary> <returns>The begin iterator for this node's collection of
-  //child nodes.</returns> <remarks>Same as 'children_begin'.</remarks>
+  // nodes.</summary> <returns>The begin iterator for this node's collection of
+  // child nodes.</returns> <remarks>Same as 'children_begin'.</remarks>
   iterator begin() { return iterator(_root, 0); }
   //<summary>Access the end iterator for this node's collection of child
-  //nodes.</summary> <returns>The end iterator for this node's collection of
-  //child nodes.</returns> <remarks>Same as 'children_end'.</remarks>
+  // nodes.</summary> <returns>The end iterator for this node's collection of
+  // child nodes.</returns> <remarks>Same as 'children_end'.</remarks>
   iterator end() { return iterator(_root, _root->children); }
   //<summary>Erase the given node from node's collection of child
-  //nodes.</summary> <returns>The begin iterator for this node's collection of
-  //child nodes.</returns> <remarks>Same as 'children_erase'.</remarks>
+  // nodes.</summary> <returns>The begin iterator for this node's collection of
+  // child nodes.</returns> <remarks>Same as 'children_erase'.</remarks>
   iterator erase(iterator where) {
     remove_child((unsigned int)where.subscript());
     return iterator(_root, 0);
   }
 
   //<summary>Access the begin iterator for this node's collection of child
-  //nodes.</summary> <returns>The begin iterator for this node's collection of
-  //child nodes.</returns> <remarks>Same as 'begin'.</remarks>
+  // nodes.</summary> <returns>The begin iterator for this node's collection of
+  // child nodes.</returns> <remarks>Same as 'begin'.</remarks>
   child_iterator children_begin() { return child_iterator(_root, 0); }
   //<summary>Access the end iterator for this node's collection of child
-  //nodes.</summary> <returns>The end iterator for this node's collection of
-  //child nodes.</returns> <remarks>Same as 'end'.</remarks>
+  // nodes.</summary> <returns>The end iterator for this node's collection of
+  // child nodes.</returns> <remarks>Same as 'end'.</remarks>
   child_iterator children_end() {
     return child_iterator(_root, _root->children);
   }
   //<summary>Erase the given node from node's collection of child
-  //nodes.</summary> <returns>The begin iterator for this node's collection of
-  //child nodes.</returns> <remarks>Same as 'erase'.</remarks>
+  // nodes.</summary> <returns>The begin iterator for this node's collection of
+  // child nodes.</returns> <remarks>Same as 'erase'.</remarks>
   child_iterator children_erase(child_iterator where) {
     remove_child((unsigned int)where.subscript());
     return child_iterator(_root, 0);
   }
 
   //<summary>Access the begin iterator for this node's collection of
-  //attributes.</summary> <returns>The begin iterator for this node's collection
-  //of attributes.</returns>
+  // attributes.</summary> <returns>The begin iterator for this node's
+  // collection of attributes.</returns>
   attribute_iterator attributes_begin() { return attribute_iterator(_root, 0); }
   //<summary>Access the end iterator for this node's collection of
-  //attributes.</summary> <returns>The end iterator for this node's collection
-  //of attributes.</returns>
+  // attributes.</summary> <returns>The end iterator for this node's collection
+  // of attributes.</returns>
   attribute_iterator attributes_end() {
     return attribute_iterator(_root, _root->attributes);
   }
   //<summary>Erase the given attribute from node's collection of
-  //attributes.</summary> <returns>The begin iterator for this node's collection
-  //of attributes.</returns>
+  // attributes.</summary> <returns>The begin iterator for this node's
+  // collection of attributes.</returns>
   attribute_iterator attributes_erase(attribute_iterator where) {
     remove_attribute((unsigned int)where.subscript());
     return attribute_iterator(_root, 0);
   }
 
   //<summary>Access the begin iterator for this node's collection of
-  //siblings.</summary> <returns>The begin iterator for this node's collection
-  //of siblings.</returns>
+  // siblings.</summary> <returns>The begin iterator for this node's collection
+  // of siblings.</returns>
   sibling_iterator siblings_begin() {
     if (!empty())
       return sibling_iterator(_root->parent, 0);
     return sibling_iterator();
   }
   //<summary>Access the end iterator for this node's collection of
-  //siblings.</summary> <returns>The end iterator for this node's collection of
-  //siblings.</returns>
+  // siblings.</summary> <returns>The end iterator for this node's collection of
+  // siblings.</returns>
   sibling_iterator siblings_end() {
     if (!empty())
       return sibling_iterator(_root->parent, _root->parent->children);
     return sibling_iterator();
   }
   //<summary>Erase the given sibling from node's collection of
-  //siblings.</summary> <returns>The begin iterator for this node's collection
-  //of siblings.</returns>
+  // siblings.</summary> <returns>The begin iterator for this node's collection
+  // of siblings.</returns>
   sibling_iterator siblings_erase(sibling_iterator where) {
     parent().remove_child((unsigned int)where.subscript());
     return iterator(_root->parent, 0);
@@ -2887,13 +2894,13 @@ public:
   } // Access node's parent if any, else xml_node(NULL)
 
   //<summary>Return the first child that has data's data. If none, return
-  //NULL.</summary> <param name="value">Returns a copy of the data.</param>
+  // NULL.</summary> <param name="value">Returns a copy of the data.</param>
   //<param name="valuelen">Specifies the maximum number of characters to copy
-  //into value.</param> <returns>Pointer to value if exists, else
-  //NULL.</returns> <remarks> 	Used to get the PCDATA for the current element.
-  //This handles elements 	like:
-  //&lt;LINE&gt;&lt;STAGEDIR&gt;Aside&lt;/STAGEDIR&gt;Thy father, 	Pompey, would
-  //ne'er have&lt;/LINE&gt;, where 'this' points to &lt;LINE&gt;.
+  // into value.</param> <returns>Pointer to value if exists, else
+  // NULL.</returns> <remarks> 	Used to get the PCDATA for the current element.
+  // This handles elements 	like:
+  //&lt;LINE&gt;&lt;STAGEDIR&gt;Aside&lt;/STAGEDIR&gt;Thy father, 	Pompey,
+  //would ne'er have&lt;/LINE&gt;, where 'this' points to &lt;LINE&gt;.
   //</remarks>
   TCHAR *child_value(TCHAR *value, const unsigned int valuelen) const {
     if (_root->children) {
@@ -2919,19 +2926,19 @@ public:
   // Name-To-Object Mapping
 public:
   //<summary>Map an attribute name to a pointer to that attribute, if
-  //found.</summary> <param name="name">Reference to name of attribute to
-  //find.</param> <returns>Pointer to attribute, or NULL if not found.</returns>
-  //<remarks>Implement your own hash table if you have a great many
-  //attributes.</remarks>
+  // found.</summary> <param name="name">Reference to name of attribute to
+  // find.</param> <returns>Pointer to attribute, or NULL if not
+  // found.</returns> <remarks>Implement your own hash table if you have a great
+  //many attributes.</remarks>
   xml_attribute_struct *mapto_attribute_ptr(const stdstring &name) {
     return mapto_attribute_ptr(name.c_str());
   }
 
   //<summary>Map an attribute name to a pointer to that attribute, if
-  //found.</summary> <param name="name">Pointer to name of attribute to
-  //find.</param> <returns>Pointer to attribute, or NULL if not found.</returns>
-  //<remarks>Implement your own hash table if you have a great many
-  //attributes.</remarks>
+  // found.</summary> <param name="name">Pointer to name of attribute to
+  // find.</param> <returns>Pointer to attribute, or NULL if not
+  // found.</returns> <remarks>Implement your own hash table if you have a great
+  //many attributes.</remarks>
   xml_attribute_struct *mapto_attribute_ptr(const TCHAR *name) {
     if (!_root || !name)
       return NULL;
@@ -2950,10 +2957,10 @@ public:
   }
 
   //<summary>Map an attribute name to the index of that attribute, if
-  //found.</summary> <param name="name">Pointer to name of attribute to
-  //find.</param> <returns>Index of attribute, or -1 if not found.</returns>
+  // found.</summary> <param name="name">Pointer to name of attribute to
+  // find.</param> <returns>Index of attribute, or -1 if not found.</returns>
   //<remarks>Implement your own hash table if you have a great many
-  //attributes.</remarks>
+  // attributes.</remarks>
   int mapto_attribute_idx(const TCHAR *name) {
     if (!_root || !name)
       return -1;
@@ -2972,19 +2979,19 @@ public:
   }
 
   //<summary>Map a child name to a pointer to the first instance, if
-  //found.</summary> <param name="name">Reference to name of child to
-  //find.</param> <returns>Index of child, or -1 if not found.</returns>
+  // found.</summary> <param name="name">Reference to name of child to
+  // find.</param> <returns>Index of child, or -1 if not found.</returns>
   //<remarks>Implement your own hash table if you have a great many
-  //children.</remarks>
+  // children.</remarks>
   xml_node_struct *mapto_child_ptr(const stdstring &name) {
     return mapto_child_ptr(name.c_str());
   }
 
   //<summary>Map a child name to a pointer to the first instance, if
-  //found.</summary> <param name="name">Pointer to name of child to
-  //find.</param> <returns>Index of child, or -1 if not found.</returns>
+  // found.</summary> <param name="name">Pointer to name of child to
+  // find.</param> <returns>Index of child, or -1 if not found.</returns>
   //<remarks>Implement your own hash table if you have a great many
-  //children.</remarks>
+  // children.</remarks>
   xml_node_struct *mapto_child_ptr(const TCHAR *name) {
     if (!_root || !name)
       return NULL;
@@ -3006,19 +3013,19 @@ public:
   }
 
   //<summary>Map a child name to the index of the first instance, if
-  //found.</summary> <param name="name">Reference to name of child to
-  //find.</param> <returns>Index of child, or -1 if not found.</returns>
+  // found.</summary> <param name="name">Reference to name of child to
+  // find.</param> <returns>Index of child, or -1 if not found.</returns>
   //<remarks>Implement your own hash table if you have a great many
-  //children.</remarks>
+  // children.</remarks>
   int mapto_child_idx(const stdstring &name) {
     return mapto_child_idx(name.c_str());
   }
 
   //<summary>Map a child name to the index of the first instance, if
-  //found.</summary> <param name="name">Pointer to name of child to
-  //find.</param> <returns>Index of child, or -1 if not found.</returns>
+  // found.</summary> <param name="name">Pointer to name of child to
+  // find.</param> <returns>Index of child, or -1 if not found.</returns>
   //<remarks>Implement your own hash table if you have a great many
-  //children.</remarks>
+  // children.</remarks>
   int mapto_child_idx(const TCHAR *name) {
     if (!_root || !name)
       return -1;
@@ -3044,7 +3051,7 @@ public:
   //<summary>Find all elements having the given name.</summary>
   //<param name="name">Reference to name of child to find.</param>
   //<param name="found">Reference to xml_node_list or pointer_array to receive
-  //the matching elements.
+  // the matching elements.
   void all_elements_by_name(const stdstring &name, pointer_array &found) {
     all_elements_by_name(name.c_str(), found);
   }
@@ -3052,7 +3059,7 @@ public:
   //<summary>Find all elements having the given name.</summary>
   //<param name="name">Pointer to name of child to find.</param>
   //<param name="found">Reference to xml_node_list or pointer_array to receive
-  //the matching elements.</param>
+  // the matching elements.</param>
   void all_elements_by_name(const TCHAR *name, pointer_array &found) {
     if (empty() || !name)
       return;                // Invalid node, so fail.
@@ -3315,7 +3322,7 @@ public:
   //<summary>Move to the absolute root of the document tree.</summary>
   //<returns>True if the current node is valid.</returns>
   //<remarks>Member '_root' may now point to absolute root of the
-  //document.</remarks>
+  // document.</remarks>
   bool moveto_root() {
     if (empty())
       return false; // Nowhere to go.
@@ -3326,8 +3333,8 @@ public:
 
   //<summary>Move to the current node's parent.</summary>
   //<returns>true if there is a parent and cursor is not parent, and cursor
-  //points thereto.</returns> <remarks>'_root' may now point to
-  //parent.</remarks>
+  // points thereto.</returns> <remarks>'_root' may now point to
+  // parent.</remarks>
   bool moveto_parent() {
     if (empty() || type_document())
       return false;        // Invalid, or at the root (has no parent).
@@ -3361,19 +3368,19 @@ public:
   }
 
   //<summary>Move to the current node's first sibling matching given
-  //name.</summary> <param name="name">Element name of sibling to move
-  //to.</param> <returns>True if sibling was found, and cursor points
-  //thereto.</returns> <remarks>If matching co-node was found, '_root' points
-  //thereto.</remarks>
+  // name.</summary> <param name="name">Element name of sibling to move
+  // to.</param> <returns>True if sibling was found, and cursor points
+  // thereto.</returns> <remarks>If matching co-node was found, '_root' points
+  // thereto.</remarks>
   bool moveto_first_sibling(const stdstring &name) {
     return moveto_first_sibling(name.c_str());
   }
 
   //<summary>Move to the current node's first sibling matching given
-  //name.</summary> <param name="name">Element name of sibling to move
-  //to.</param> <returns>True if sibling was found, and cursor points
-  //thereto.</returns> <remarks>If matching co-node was found, '_root' points
-  //thereto.</remarks>
+  // name.</summary> <param name="name">Element name of sibling to move
+  // to.</param> <returns>True if sibling was found, and cursor points
+  // thereto.</returns> <remarks>If matching co-node was found, '_root' points
+  // thereto.</remarks>
   bool moveto_first_sibling(const TCHAR *name) {
     if (empty() || !name)
       return false; // Nowhere to go, or nothing to find.
@@ -3465,17 +3472,17 @@ public:
   }
 
   //<summary>Move to the current node's next sibling by position and
-  //name.</summary> <param name="name">Name of sibling to move to if
-  //found.</param> <returns>True if there is a next sibling, and cursor points
-  //thereto.</returns>
+  // name.</summary> <param name="name">Name of sibling to move to if
+  // found.</param> <returns>True if there is a next sibling, and cursor points
+  // thereto.</returns>
   bool moveto_next_sibling(const stdstring &name) {
     return moveto_next_sibling(name.c_str());
   }
 
   //<summary>Move to the current node's next sibling by position and
-  //name.</summary> <param name="name">Name of sibling to move to if
-  //found.</param> <returns>True if there is a next sibling, and cursor points
-  //thereto.</returns>
+  // name.</summary> <param name="name">Name of sibling to move to if
+  // found.</param> <returns>True if there is a next sibling, and cursor points
+  // thereto.</returns>
   bool moveto_next_sibling(const TCHAR *name) {
     if (empty() || type_document() || !_root->parent || !name)
       return false; // Null, or at root, or no name, so there are no valid
@@ -3512,7 +3519,7 @@ public:
 
   //<summary>Move to the current node's next sibling by position.</summary>
   //<returns>True if there is a next sibling, and cursor points
-  //thereto.</returns>
+  // thereto.</returns>
   bool moveto_next_sibling() {
     if (empty() || type_document() || !_root->parent)
       return false; // Null or at root, so there are no valid siblings.
@@ -3538,8 +3545,9 @@ public:
   }
 
   //<summary>Compile the absolute node path from root as a text
-  //string.</summary> <param name="delimiter">Delimiter string to insert between
-  //element names.</param> <returns>Path string (e.g. with '/' as delimiter,
+  // string.</summary> <param name="delimiter">Delimiter string to insert
+  // between element names.</param> <returns>Path string (e.g. with '/' as
+  // delimiter,
   //'/document/.../this'.</returns>
   stdstring path(const TCHAR *delimiter = _T("/")) {
     TCHAR *path = NULL;      // Current path.
@@ -3675,8 +3683,8 @@ public:
 
   //<summary>Recursively traverse the tree.</summary>
   //<param name="walker">Reference to tree walker derived from
-  //xml_tree_walker.</param> <returns>True if traversal was not halted by
-  //xml_tree_walker::for_each() callback.</returns>
+  // xml_tree_walker.</param> <returns>True if traversal was not halted by
+  // xml_tree_walker::for_each() callback.</returns>
   bool traverse(xml_tree_walker &walker) {
     if (walker.depth() == 0 && !walker.begin(*this))
       return false; // Send the callback for begin traverse if depth is zero.
@@ -3783,7 +3791,7 @@ public:
   //<param name="value">Value thereof.</param>
   //<returns>Attribute structure wrapper.</returns>
   //<remarks>Pointer space may be grown, memory for name/value members
-  //allocated.</remarks>
+  // allocated.</remarks>
   xml_attribute append_attribute(const stdstring &name,
                                  const stdstring &value) {
     return append_attribute(name.c_str(), value.c_str());
@@ -3794,7 +3802,7 @@ public:
   //<param name="value">Value thereof.</param>
   //<returns>Attribute structure wrapper.</returns>
   //<remarks>Pointer space may be grown, memory for name/value members
-  //allocated.</remarks>
+  // allocated.</remarks>
   xml_attribute append_attribute(const TCHAR *name, const TCHAR *value) {
     if (!name || !value)
       return xml_attribute(); // We must have both to proceed.
@@ -3817,10 +3825,10 @@ public:
   }
 
   //<summary>Append a new attribute of type long to the node list of
-  //attributes.</summary> <param name="name">Name.</param> <param
-  //name="value">Value thereof.</param> <returns>Attribute structure
-  //wrapper.</returns> <remarks>Pointer space may be grown, memory for
-  //name/value members allocated.</remarks>
+  // attributes.</summary> <param name="name">Name.</param> <param
+  // name="value">Value thereof.</param> <returns>Attribute structure
+  // wrapper.</returns> <remarks>Pointer space may be grown, memory for
+  // name/value members allocated.</remarks>
   xml_attribute append_attribute(const TCHAR *name, long value) {
     if (!name) {
       xml_attribute a;
@@ -3832,10 +3840,10 @@ public:
   }
 
   //<summary>Append a new attribute of type double to the node list of
-  //attributes.</summary> <param name="name">Name.</param> <param
-  //name="value">Value thereof.</param> <returns>Attribute structure
-  //wrapper.</returns> <remarks>Pointer space may be grown, memory for
-  //name/value members allocated.</remarks>
+  // attributes.</summary> <param name="name">Name.</param> <param
+  // name="value">Value thereof.</param> <returns>Attribute structure
+  // wrapper.</returns> <remarks>Pointer space may be grown, memory for
+  // name/value members allocated.</remarks>
   xml_attribute append_attribute(const TCHAR *name, double value) {
     if (!name)
       return {};
@@ -3845,10 +3853,10 @@ public:
   }
 
   //<summary>Append a new attribute of type bool to the node list of
-  //attributes.</summary> <param name="name">Name.</param> <param
-  //name="value">Value thereof.</param> <returns>Attribute structure
-  //wrapper.</returns> <remarks>Pointer space may be grown, memory for
-  //name/value members allocated.</remarks>
+  // attributes.</summary> <param name="name">Name.</param> <param
+  // name="value">Value thereof.</param> <returns>Attribute structure
+  // wrapper.</returns> <remarks>Pointer space may be grown, memory for
+  // name/value members allocated.</remarks>
   xml_attribute append_attribute(const TCHAR *name, bool value) {
     if (!name)
       return {};
@@ -3859,7 +3867,7 @@ public:
   //<param name="new_type">New type to set.</param>
   //<returns>Previous type.</returns>
   //<remarks>If has children and now is not node_element, children are
-  //obscured.</remarks>
+  // obscured.</remarks>
   xml_node_type type(xml_node_type new_type) {
     xml_node_type prev = _root->type; // Save old type.
     _root->type = new_type;           // Set new type.
@@ -3873,7 +3881,7 @@ public:
   //<param name="type">New child node type.</param>
   //<returns>xml_node wrapping the new child.</returns>
   //<remarks>Pointer space may be grown. An xml_node_struct structure is
-  //allocated.</remarks>
+  // allocated.</remarks>
   xml_node append_child(xml_node_type type) {
     if (type_document() ||
         type_element()) // Don't do anything if not an node_element or root.
@@ -3888,7 +3896,7 @@ public:
   }
 
   //<summary>Allocate & insert a child node of the given type at
-  //subscript.</summary> <param name="i">Subscript at which to insert.</param>
+  // subscript.</summary> <param name="i">Subscript at which to insert.</param>
   //<param name="type">New child node type.</param>
   //<returns>xml_node wrapping the new child.</returns>
   //<remarks>
@@ -3923,7 +3931,7 @@ public:
   //<param name="i">Subscript.</param>
   //<returns>Success.</returns>
   //<remarks>Shifts child array element positions. Frees entire tree under child
-  //to be deleted.</remarks>
+  // to be deleted.</remarks>
   bool remove_child(unsigned int i) {
     unsigned int n = _root->children;
     if (i < n) // Ensure subscript is in bounds.
@@ -4037,7 +4045,7 @@ public:
   //<param name="autdel">Delete tree on destruct?</param>
   //<param name="growby">Parser pointer space growth increment.</param>
   //<remarks>Root node structure is allocated, string is parsed & tree may be
-  //grown.</remarks>
+  // grown.</remarks>
   xml_parser(TCHAR *xmlstr, unsigned long optmsk = parse_default,
              bool autdel = true, long growby = parse_grow)
       : _xmldoc(0), _growby(growby), _autdel(autdel), _optmsk(optmsk),
@@ -4202,10 +4210,11 @@ public:
   }
 
   //<summary>Load into memory and parse the contents of the file at the given
-  //path.</summary> <param name="path">File path.</param> <param
-  //name="optmsk">Parser options.</param> <returns>Success if the file was
-  //loaded.</returns> <remarks> 	The file contents is loaded and stored in the
-  //member '_buffer' until 	freed by calling 'Parse', 'parse_file', 'clear' or
+  // path.</summary> <param name="path">File path.</param> <param
+  // name="optmsk">Parser options.</param> <returns>Success if the file was
+  // loaded.</returns> <remarks> 	The file contents is loaded and stored
+  // in the member '_buffer' until 	freed by calling 'Parse', 'parse_file',
+  // 'clear' or
   //'~xml_parser'.
   //</remarks>
   bool parse_file(const TCHAR *path, unsigned long optmsk = parse_noset) {
@@ -4228,10 +4237,10 @@ public:
 #ifdef PUGOPT_MEMFIL
 
   //<summary>Parse the contents of the file at the given path, using a
-  //memory-mapped file.</summary> <param name="path">File path.</param> <param
-  //name="optmsk">Parser options.</param> <returns> 	True (1) if the file was
-  //parsed successfully, false (0) if open failed, 	and -1 if an exception
-  //occured.
+  // memory-mapped file.</summary> <param name="path">File path.</param> <param
+  // name="optmsk">Parser options.</param> <returns> 	True (1) if the file was
+  // parsed successfully, false (0) if open failed, 	and -1 if an exception
+  // occured.
   //</returns>
   //<remarks>
   //	The file contents are available until closed by calling 'parse',
@@ -4341,7 +4350,7 @@ public:
       return os;
     unsigned int n = list.size();
     for (unsigned int i = 0; i < n; ++i)
-      os << (void*)list[i];
+      os << (void *)list[i];
     return os;
   }
 };
@@ -4349,7 +4358,7 @@ public:
 }; // namespace pug
 
 //<summary>Check for Pug XML Library Variant/API Version
-//campatibility.</summary>
+// campatibility.</summary>
 #if !defined(PUGAPI_VARIANT) || (PUGAPI_VARIANT != PUGAPI_INTERNAL_VARIANT)
 #pragma message(                                                               \
     "Severe: The Pug XML library API variant does not match your implementation!")

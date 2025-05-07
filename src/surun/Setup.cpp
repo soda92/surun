@@ -29,7 +29,6 @@
 #include <tchar.h>
 #include <windowsx.h>
 
-
 #include "Setup.h"
 #include "Anchor.h"
 #include "DBGTrace.h"
@@ -40,7 +39,6 @@
 #include "UserGroups.h"
 #include "WinStaDesk.h"
 #include "lsa_laar.h"
-
 
 #pragma comment(lib, "comctl32.lib")
 #pragma comment(lib, "Comdlg32.lib")
@@ -97,8 +95,9 @@ void DeletePassword(LPTSTR UserName) {
 void SavePassword(LPTSTR UserName, LPTSTR Password) {
   DATA_BLOB pw = {0};
   DATA_BLOB entropy = {sizeof(KEYPASS), KEYPASS};
-  DATA_BLOB PW = {static_cast<DWORD>((DWORD)(_tcslen(Password) + 1) * sizeof(TCHAR)),
-                  (BYTE *)Password};
+  DATA_BLOB PW = {
+      static_cast<DWORD>((DWORD)(_tcslen(Password) + 1) * sizeof(TCHAR)),
+      (BYTE *)Password};
   if (!CryptProtectData(&PW, _T("SuRunUPW"), &entropy, 0, 0,
                         CRYPTPROTECT_UI_FORBIDDEN, &pw))
     DBGTrace1("CryptProtectData failed: %s", GetLastErrorNameStatic());
@@ -2238,9 +2237,10 @@ INT_PTR CALLBACK SetupDlg4Proc(HWND hwnd, UINT msg, WPARAM wParam,
   switch (msg) {
   case WM_INITDIALOG: {
     CheckDlgButton(hwnd, IDC_NOLOGONDESK, GetUseWinLogonDesk == 0);
-    SetDlgItemInt(hwnd, IDC_START_DELAY,
-                  max(0, min(600, int(GetRegInt(HKLM, SURUNKEY, L"StartDelay", 0)))),
-                  false);
+    SetDlgItemInt(
+        hwnd, IDC_START_DELAY,
+        max(0, min(600, int(GetRegInt(HKLM, SURUNKEY, L"StartDelay", 0)))),
+        false);
     CheckDlgButton(hwnd, IDC_DORUNAS, GetHandleRunAs);
     if (GetUseSuRunGrp) {
       CheckDlgButton(hwnd, IDC_ALLOWTIME, GetSetTime(SURUNNERSGROUP));
@@ -2289,8 +2289,9 @@ INT_PTR CALLBACK SetupDlg4Proc(HWND hwnd, UINT msg, WPARAM wParam,
     {
     ApplyChanges:
       SetUseWinLogonDesk(IsDlgButtonChecked(hwnd, IDC_NOLOGONDESK) == 0);
-      SetRegInt(HKLM, SURUNKEY, L"StartDelay",
-                max(0, min(600, (int)(GetDlgItemInt(hwnd, IDC_START_DELAY, 0, 0)))));
+      SetRegInt(
+          HKLM, SURUNKEY, L"StartDelay",
+          max(0, min(600, (int)(GetDlgItemInt(hwnd, IDC_START_DELAY, 0, 0)))));
       switch (IsDlgButtonChecked(hwnd, IDC_DORUNAS)) {
       case BST_CHECKED:
         ReplaceRunAsWithSuRun();

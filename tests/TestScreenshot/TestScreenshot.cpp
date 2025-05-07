@@ -20,7 +20,6 @@ std::wstring GetTimestamp() {
   return std::wstring(buffer);
 }
 
-
 int GetEncoderClsid(const WCHAR *format, CLSID *pClsid) {
   UINT numEncoders;
   UINT size;

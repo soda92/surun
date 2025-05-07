@@ -7,7 +7,6 @@
 #include "DynWTSAPI.h"
 #include <tchar.h>
 
-
 HINSTANCE g_wtsapi32 = NULL;
 
 BOOL WINAPI WTSQueryUserToken(ULONG SessionId, PHANDLE phToken) {

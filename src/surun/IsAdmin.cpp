@@ -20,12 +20,10 @@
 #include <SHLWAPI.H>
 #include <TCHAR.h>
 
-
 #include "IsAdmin.h"
 #include "DBGTrace.H"
 #include "Helpers.h"
 #include "LogonDlg.h"
-
 
 #pragma comment(lib, "ShlWapi.lib")
 #pragma comment(lib, "advapi32.lib")
@@ -62,35 +60,35 @@ BOOL IsAdmin(HANDLE hToken /*=NULL*/) {
     if (!AllocateAndInitializeSid(
             &SystemSidAuthority, 2, SECURITY_BUILTIN_DOMAIN_RID,
             DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0, 0, &psidAdmin))
-       throw 123;
+      throw 123;
     psdAdmin = LocalAlloc(LPTR, SECURITY_DESCRIPTOR_MIN_LENGTH);
     if (psdAdmin == NULL)
-       throw 123;
+      throw 123;
     if (!InitializeSecurityDescriptor(psdAdmin, SECURITY_DESCRIPTOR_REVISION))
-       throw 123;
+      throw 123;
     // Compute size needed for the ACL.
     DWORD dwACLSize = sizeof(ACL) + sizeof(ACCESS_ALLOWED_ACE) +
                       GetLengthSid(psidAdmin) - sizeof(DWORD);
     // Allocate memory for ACL.
     pACL = (PACL)LocalAlloc(LPTR, dwACLSize);
     if (pACL == NULL)
-       throw 123;
+      throw 123;
     // Initialize the new ACL.
     if (!InitializeAcl(pACL, dwACLSize, ACL_REVISION2))
-       throw 123;
+      throw 123;
     // Add the access-allowed ACE to the DACL.
     if (!AddAccessAllowedAce(pACL, ACL_REVISION2, ACCESS_READ | ACCESS_WRITE,
                              psidAdmin))
-       throw 123;
+      throw 123;
     // Set our DACL to the SD.
     if (!SetSecurityDescriptorDacl(psdAdmin, TRUE, pACL, FALSE))
-       throw 123;
+      throw 123;
     // AccessCheck is sensitive about what is in the SD; set the group and
     // owner.
     SetSecurityDescriptorGroup(psdAdmin, psidAdmin, FALSE);
     SetSecurityDescriptorOwner(psdAdmin, psidAdmin, FALSE);
     if (!IsValidSecurityDescriptor(psdAdmin))
-       throw 123;
+      throw 123;
     // Initialize GenericMapping structure even though we won't be using generic
     // rights.
     GENERIC_MAPPING GenericMapping;
@@ -103,8 +101,10 @@ BOOL IsAdmin(HANDLE hToken /*=NULL*/) {
     DWORD dwStatus;
     if (!AccessCheck(psdAdmin, hToken, ACCESS_READ, &GenericMapping, &ps,
                      &dwStructureSize, &dwStatus, &bReturn))
-       throw 123;
-  } catch(...) {} {
+      throw 123;
+  } catch (...) {
+  }
+  {
     // Cleanup
     if (pACL)
       LocalFree(pACL);
@@ -145,7 +145,7 @@ typedef enum _TOKEN_ELEVATION_TYPE {
   TokenElevationTypeLimited,
 } TOKEN_ELEVATION_TYPE,
     *PTOKEN_ELEVATION_TYPE;
-#endif //SYSTEM_MANDATORY_LABEL_NO_WRITE_UP
+#endif // SYSTEM_MANDATORY_LABEL_NO_WRITE_UP
 
 bool IsInAdminGroup(HANDLE hToken) {
   bool bRet = false;

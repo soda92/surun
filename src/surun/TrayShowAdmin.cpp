@@ -18,8 +18,6 @@
 #include "service.h"
 #include "setup.h"
 
-
-
 #pragma comment(lib, "advapi32.lib")
 
 #define CLASSNAME _T("SuRunTrayShowAdminClass")

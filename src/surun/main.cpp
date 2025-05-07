@@ -27,7 +27,6 @@
 #include <stdio.h>
 #include <tchar.h>
 
-
 #include "DBGTrace.h"
 #include "Helpers.h"
 #include "IsAdmin.h"
@@ -75,7 +74,7 @@ static void HideAppStartCursor() {
 
 // extern LPTSTR GetSvcName();
 int WINAPI _WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPTSTR lpCmdLine,
-                   int nCmdShow) {
+                    int nCmdShow) {
   UNREFERENCED_PARAMETER(hInst);
   UNREFERENCED_PARAMETER(hPrevInst);
   UNREFERENCED_PARAMETER(lpCmdLine);
@@ -218,7 +217,7 @@ int WINAPI _WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPTSTR lpCmdLine,
         Args = PathGetArgs(Args);
 #ifndef _WIN64
         g_RunData.RetPtr = wcstoul(Args, 0, 16);
-#else //_WIN64
+#else  //_WIN64
         g_RunData.RetPtr = _wcstoui64(Args, 0, 16);
 #endif //_WIN64
         Args = PathGetArgs(Args);

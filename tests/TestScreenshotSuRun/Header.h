@@ -32,7 +32,7 @@ extern "C" {
 #include <gdiplus.h>
 }
 #pragma comment(lib, "Gdiplus.lib")
-namespace Test{
+namespace Test {
 #define _CRT_SECURE_NO_WARNINGS
 using std::max;
 using std::min;
@@ -142,11 +142,11 @@ public:
     m_pblurbmBits = 0;
     m_blurbm = 0;
     m_Thread = NULL;
-    //timeBeginPeriod(1);
+    // timeBeginPeriod(1);
   }
   ~CBlurredScreen1() {
     Done();
-    //timeEndPeriod(1);
+    // timeEndPeriod(1);
   }
   HWND hWnd() { return m_hWndTrans; };
   void Init() {
@@ -194,7 +194,7 @@ public:
     WNDCLASS wc = {0};
     OSVERSIONINFO oie;
     oie.dwOSVersionInfoSize = sizeof(oie);
-    //GetVersionEx(&oie);
+    // GetVersionEx(&oie);
     bool bWin2k = false;
     wc.lpfnWndProc = CBlurredScreen1::WindowProc;
     wc.lpszClassName = _T("ScreenWndClass");
@@ -261,7 +261,7 @@ public:
         // The thread is responsible for deleting it
       } else {
         delete params; // Clean up if thread creation failed
-        //DBGTrace1("CreateThread failed: %s", GetLastErrorNameStatic());
+        // DBGTrace1("CreateThread failed: %s", GetLastErrorNameStatic());
       }
     }
   }
@@ -359,4 +359,4 @@ public:
   HANDLE m_Thread;
   HDESK m_hDesk;
 };
-}
+} // namespace Test

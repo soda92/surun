@@ -316,7 +316,7 @@ void TRACEx(LPCTSTR s, ...) {
     //	  WideCharToMultiByte(CP_ACP,0,S,_tcslen(S),Sa,4096,NULL,NULL);
     //	  DbgOutA(Sa);
     WriteLog(S);
-  } catch(...) {
+  } catch (...) {
     OutputDebugStringA("FATAL: Exception in TRACEx");
   }
 }

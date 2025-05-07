@@ -6,7 +6,6 @@ extern "C" {
 #include "header.h"
 #pragma comment(lib, "gdi32.lib")
 
-
 int main() {
   // Initialize and capture the screen
   Test::CBlurredScreen1 screenCapture;
