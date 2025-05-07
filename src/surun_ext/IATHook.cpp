@@ -1009,18 +1009,17 @@ FARPROC WINAPI GetProcAddr(HMODULE hModule, LPCSTR lpProcName) {
 }
 
 HMODULE WINAPI LoadLibA(LPCSTR lpLibFileName) {
-#ifdef DoDBGTrace
-//    TRACExA("%s: call to LoadLibA(%s)",DLLNAME,lpLibFileName);
-#endif // DoDBGTrace
   if (g_IATInit) {
     DWORD dwe = GetLastError();
     EnterCriticalSection(&g_HookCs);
     HMODULE hMOD = NULL;
-    try {
+    __try {
       hMOD = ((lpLoadLibraryA)hkLdLibA.OrgFunc())(lpLibFileName);
       if (hMOD)
         HookModules();
-    } catch (...) {
+    } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                    ? EXCEPTION_EXECUTE_HANDLER
+                    : EXCEPTION_CONTINUE_SEARCH) {
       DBGTrace("FATAL: Exception in LoadLibA");
     }
     LeaveCriticalSection(&g_HookCs);
@@ -1033,18 +1032,17 @@ HMODULE WINAPI LoadLibA(LPCSTR lpLibFileName) {
 }
 
 HMODULE WINAPI LoadLibW(LPCWSTR lpLibFileName) {
-#ifdef DoDBGTrace
-//    TRACEx(L"%s: call to LoadLibW(%s)",_T(DLLNAME),lpLibFileName);
-#endif // DoDBGTrace
   if (g_IATInit) {
     EnterCriticalSection(&g_HookCs);
     DWORD dwe = GetLastError();
     HMODULE hMOD = NULL;
-    try {
+    __try {
       hMOD = ((lpLoadLibraryW)hkLdLibW.OrgFunc())(lpLibFileName);
       if (hMOD)
         HookModules();
-    } catch (...) {
+    } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                    ? EXCEPTION_EXECUTE_HANDLER
+                    : EXCEPTION_CONTINUE_SEARCH) {
       DBGTrace("FATAL: Exception in LoadLibW");
     }
     LeaveCriticalSection(&g_HookCs);
@@ -1057,19 +1055,18 @@ HMODULE WINAPI LoadLibW(LPCWSTR lpLibFileName) {
 }
 
 HMODULE WINAPI LoadLibExA(LPCSTR lpLibFileName, HANDLE hFile, DWORD dwFlags) {
-#ifdef DoDBGTrace
-//    TRACExA("%s: call to LoadLibExA(%s)",DLLNAME,lpLibFileName);
-#endif // DoDBGTrace
   if (g_IATInit) {
     EnterCriticalSection(&g_HookCs);
     DWORD dwe = GetLastError();
     HMODULE hMOD = NULL;
-    try {
+    __try {
       hMOD = ((lpLoadLibraryExA)hkLdLibXA.OrgFunc())(lpLibFileName, hFile,
                                                      dwFlags);
       if (hMOD)
         HookModules();
-    } catch (...) {
+    } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                    ? EXCEPTION_EXECUTE_HANDLER
+                    : EXCEPTION_CONTINUE_SEARCH) {
       DBGTrace("FATAL: Exception in LoadLibExA");
     }
     LeaveCriticalSection(&g_HookCs);
@@ -1083,19 +1080,18 @@ HMODULE WINAPI LoadLibExA(LPCSTR lpLibFileName, HANDLE hFile, DWORD dwFlags) {
 }
 
 HMODULE WINAPI LoadLibExW(LPCWSTR lpLibFileName, HANDLE hFile, DWORD dwFlags) {
-#ifdef DoDBGTrace
-//    TRACEx(L"%s: call to LoadLibExW(%s)",_T(DLLNAME),lpLibFileName);
-#endif // DoDBGTrace
   if (g_IATInit) {
     EnterCriticalSection(&g_HookCs);
     DWORD dwe = GetLastError();
     HMODULE hMOD = NULL;
-    try {
+    __try {
       hMOD = ((lpLoadLibraryExW)hkLdLibXW.OrgFunc())(lpLibFileName, hFile,
                                                      dwFlags);
       if (hMOD)
         HookModules();
-    } catch (...) {
+    } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                    ? EXCEPTION_EXECUTE_HANDLER
+                    : EXCEPTION_CONTINUE_SEARCH) {
       DBGTrace("FATAL: Exception in LoadLibExW");
     }
     LeaveCriticalSection(&g_HookCs);
@@ -1109,9 +1105,6 @@ HMODULE WINAPI LoadLibExW(LPCWSTR lpLibFileName, HANDLE hFile, DWORD dwFlags) {
 }
 
 BOOL WINAPI FreeLib(HMODULE hLibModule) {
-#ifdef DoDBGTrace
-//    TRACExA("%s: call to FreeLib()",DLLNAME);
-#endif // DoDBGTrace
   // The DLL must not be unloaded while the process is running!
   if (hLibModule == l_hInst) {
     if (g_IATInit) {
@@ -1138,9 +1131,6 @@ VOID WINAPI FreeLibAndExitThread(HMODULE hLibModule, DWORD dwExitCode) {
 }
 
 BOOL WINAPI SwitchDesk(HDESK Desk) {
-#ifdef DoDBGTrace
-//  DBGTrace1("%s: call to SwitchDesk()",_T(DLLNAME));
-#endif // DoDBGTrace
   if ((!l_IsAdmin) && (!IsLocalSystem())) {
     HDESK d = OpenInputDesktop(0, 0, 0);
     if (!d) {
@@ -1186,9 +1176,7 @@ void LoadHooks() {
     ((lpLoadLibraryA)hkLdLibA.OrgFunc())(fmod);
     if (!IsWin2k) {
       HMODULE hMod = 0;
-#ifndef GET_MODULE_HANDLE_EX_FLAG_PIN
 #define GET_MODULE_HANDLE_EX_FLAG_PIN (0x00000001)
-#endif
       typedef BOOL(WINAPI * GMHExA)(DWORD, LPCSTR, HMODULE *);
       GMHExA GetModuleHandleExA = (GMHExA)GetProcAddress(
           GetModuleHandleA("kernel32.dll"), "GetModuleHandleExA");
@@ -1210,9 +1198,11 @@ void LoadHooks() {
     for (int i = 0; i < countof(hdt); i++)
       PROC p = hdt[i]->OrgFunc();
   }
-  try {
+  __try {
     HookModules();
-  } catch (...) {
+  } __except ((GetExceptionCode() != DBG_PRINTEXCEPTION_C)
+                  ? EXCEPTION_EXECUTE_HANDLER
+                  : EXCEPTION_CONTINUE_SEARCH) {
     DBGTrace("FATAL: Exception in LoadHooks()");
   }
   LeaveCriticalSection(&g_HookCs);
