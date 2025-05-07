@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version='1.0' encoding='UTF-8'?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="Current">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="SuRun32 Unicode Debug|Win32">
       <Configuration>SuRun32 Unicode Debug</Configuration>
@@ -273,10 +273,6 @@
       <ImportLibrary>.\DebugU/SuRunExt.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
-    <Bscmake>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\DebugU/SuRunExt.bsc</OutputFile>
-    </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
       <Command>if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(TargetPath)</Command>
@@ -345,10 +341,6 @@
       <ImportLibrary>.\ReleaseU/SuRunExt.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
-    <Bscmake>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\ReleaseU/SuRunExt.bsc</OutputFile>
-    </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
       <Command>if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(TargetPath)</Command>
@@ -433,10 +425,6 @@
       <ImportLibrary>.\ReleaseUx64/SuRunExt.lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
-    <Bscmake>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\ReleaseUx64/SuRunExt.bsc</OutputFile>
-    </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
       <Command>if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(TargetPath)</Command>
@@ -490,10 +478,6 @@
       <ImportLibrary>.\ReleaseUsr32/SuRunExt32.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
-    <Bscmake>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>ReleaseUsr32/SuRunExt32.bsc</OutputFile>
-    </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
       <Command>if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(TargetPath)</Command>
@@ -560,10 +544,6 @@
       <ImportLibrary>.\DebugU/SuRunExt.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
-    <Bscmake>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\DebugU/SuRunExt.bsc</OutputFile>
-    </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
       <Command>if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(TargetPath)</Command>
@@ -656,10 +636,6 @@
       <ImportLibrary>.\DebugUsr32/SuRunExt32.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
-    <Bscmake>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\DebugU/SuRunExt.bsc</OutputFile>
-    </Bscmake>
     <PostBuildEvent>
       <Message>Applying Certificate</Message>
       <Command>if exist $(SolutionDir)..\Cert\certify.cmd $(SolutionDir)..\Cert\certify.cmd $(TargetPath)</Command>
