@@ -1,3 +1,9 @@
+---
+date: '2022-10-03T19:01:44+08:00'
+title: 'Changelog (by Kay Bruns)'
+---
+
+
 ToDo:
 ---------------------
 * Handle \??\C:\Windows\System32\conhost.exe* make Tray Windows for automagically started apps configurable

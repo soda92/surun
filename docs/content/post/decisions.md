@@ -1,4 +1,7 @@
-# Decisions
+---
+date: '2025-04-27T19:01:44+08:00'
+title: 'Decisions'
+---
 
 - always use debug builds for simplified debugging,
 and, no create so much intermidiate directories that's hard to clean.

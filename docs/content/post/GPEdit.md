@@ -1,3 +1,8 @@
+---
+date: '2019-10-04T19:01:44+08:00'
+title: 'GPEdit keys and values'
+---
+
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SeCEdit\Reg Values
 
 *Richtlinien für Lokaler Computer

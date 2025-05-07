@@ -2,11 +2,11 @@
 /data.txt
 src_bak/
 *.bmp
-PC/packages
+packages
+.hugo_build.lock
 
 # website
-/public
-www/public
+public
 
 # Icon resources
 *.ico~
