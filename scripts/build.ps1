@@ -19,8 +19,9 @@ $surun = Join-Path -Path $root -ChildPath "src/PC/SuRun.sln"
 $install_surun = Join-Path -Path $root -ChildPath "src/PC/InstallSuRun.vcxproj"
 
 # for faster build, comment the next line and change "/t:Rebuild" to "/t:Build"
-# & "msbuild.exe" $surun /t:clean 1>NUL 2>NUL
+& "msbuild.exe" $surun /t:clean 1>NUL 2>NUL
 & "msbuild.exe" $surun /t:Build /p:Configuration="x64 Unicode Debug" /p:Platform=x64
 & "msbuild.exe" $surun /t:Build /p:Configuration="SuRun32 Unicode Debug" /p:Platform=Win32
 
+& "msbuild.exe" $install_surun /t:clean 1>NUL 2>NUL
 & "msbuild.exe" $install_surun /t:Build /p:Configuration="Debug" /p:Platform=Win32
