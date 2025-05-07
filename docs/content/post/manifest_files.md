@@ -1,9 +1,7 @@
 ---
-date: 2025-05-01T00:58:19+08:00
-title: Manifest_Files
+date: '2025-05-01T00:58:19+08:00'
+title: 'About manifest files'
 ---
-
-# About manifest files
 
 [reference docs][1]
 
