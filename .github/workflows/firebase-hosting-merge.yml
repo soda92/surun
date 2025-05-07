@@ -14,7 +14,7 @@ jobs:
       - run: sudo apt -y install wget
       - run: wget https://github.com/gohugoio/hugo/releases/download/v0.140.2/hugo_0.140.2_linux-amd64.deb
       - run: sudo dpkg -i hugo_0.140.2_linux-amd64.deb
-      - run: pushd www && hugo && popd
+      - run: pushd docs && hugo && popd
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
