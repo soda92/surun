@@ -15,7 +15,7 @@ SuRun contains both 64bit and 32bit parts. to build you can use config "x64 Unic
 
 As with [decisions][dec], I have dropped Release builds.
 
-You can use [a conveience script][script] for building.
+You can just run `surun_build` in the python venv, it calls the [build script][script].
 
 [script]: https://github.com/soda92/surun/blob/main/scripts/build.ps1
-[dec]: https://github.com/soda92/surun/blob/main/docs/decisions.md
+[dec]: https://surun-docs.web.app/post/decisions/
