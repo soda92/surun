@@ -20,7 +20,7 @@ I have changed code to make surun:
 
 ## [original README][or]
 
-[or]: docs/original_readme.md
+[or]: https://surun-docs.web.app/post/original_readme/
 [4k-commit]: https://github.com/soda92/surun/commit/bad6e31f13f115a65a314c6615c8d585eb1bb325
 [1]: https://kay-bruns.de/wp/software/surun/
 
