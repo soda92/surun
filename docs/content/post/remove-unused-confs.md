@@ -3,11 +3,16 @@ date: '2025-05-07T18:39:45+08:00'
 title: 'Remove Unused Confs'
 ---
 
+Get the confs
 
+
+{{< details summary="Input collapsed:" altSummary="Input expanded:" >}}
 ```python
 from surun_tools.glob1 import glob_files
 glob_files("*.vcxproj")
 ```
+{{< /details >}}
+
 
 
 
@@ -19,6 +24,8 @@ glob_files("*.vcxproj")
      WindowsPath('C:/src/surun/tests/TestScreenshotSuRun/TestScreenshotSuRun.vcxproj')]
 
 
+
+some confs are test projects. filter out them
 
 
 ```python
@@ -34,6 +41,8 @@ proj_files
      WindowsPath('C:/src/surun/src/PC/SuRunExt.vcxproj')]
 
 
+
+Select a demo proj file
 
 
 ```python
@@ -79,6 +88,7 @@ def save():
 
 
 ```python
+# idea from Gemini
 ns = {"default": "http://schemas.microsoft.com/developer/msbuild/2003"}
 
 
@@ -94,6 +104,8 @@ def remove(tag, tag2="Condition"):
 
     save()
 ```
+
+Test gradually
 
 
 ```python
@@ -120,6 +132,8 @@ remove("ItemDefinitionGroup")
 ```python
 remove("ItemGroup/CustomBuild/ExcludedFromBuild")
 ```
+
+Put it all together
 
 
 ```python
