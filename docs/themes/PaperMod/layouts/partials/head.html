@@ -154,8 +154,8 @@
 
 {{- /* Misc */}}
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
-{{- template "_internal/google_analytics.html" . }}
-{{- template "templates/opengraph.html" . }}
-{{- template "templates/twitter_cards.html" . }}
-{{- template "templates/schema_json.html" . }}
+{{- partial "_internal/google_analytics.html" . }}
+{{- partial "templates/opengraph.html" . }}
+{{- partial "templates/twitter_cards.html" . }}
+{{- partial "templates/schema_json.html" . }}
 {{- end -}}
