@@ -22,7 +22,7 @@ def build_sdist():
     from pathlib import Path
     cr = Path(__file__).resolve().parent
     # Binary data
-    binary_data = cr.joinpath("PC/InstallSuRun.exe").read_bytes()
+    binary_data = cr.joinpath("src/PC/Debug/InstallSuRun.exe").read_bytes()
 
     # Encode to Base64
     base64_encoded_data = base64.b64encode(binary_data)
