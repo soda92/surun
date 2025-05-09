@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        // Python
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "ms-python.debugpy",
+        "charliermarsh.ruff",
+        "ms-vscode.powershell",
+        "ms-toolsai.jupyter",
+        // Toml
+        "tamasfe.even-better-toml",
+        // Go
+        "golang.go",
+    ]
+}
