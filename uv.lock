@@ -1793,7 +1793,7 @@ wheels = [
 
 [[package]]
 name = "soda-surun"
-version = "2025.5.10.1"
+version = "2025.5.10.4"
 source = { editable = "." }
 dependencies = [
     { name = "sodatools" },
