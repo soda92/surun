@@ -98,7 +98,7 @@
     <ClInclude Include="..\surun\Service.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\surun\ScreenSnap.h">
+    <ClInclude Include="..\surun\BlurredScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\surun\resource.h">

@@ -15,7 +15,7 @@
 #pragma once
 
 #include <windows.h>
-#include "ScreenSnap.h"
+#include "BlurredScreen.h"
 
 // This class creates a new desktop with a darkened blurred image of the
 // current dektop as background.

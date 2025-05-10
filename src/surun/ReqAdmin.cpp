@@ -9,6 +9,8 @@
 #include "DBGTrace.h"
 #include "Setup.h"
 
+// Checks if program requires administrator privileges in the manifest file.
+
 #pragma comment(lib, "shlwapi.lib")
 
 #define InfoDBGTrace(msg)                                                      \

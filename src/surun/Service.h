@@ -18,10 +18,11 @@ typedef struct {
 // This is the pipe named used to get the SuRun command to the service
 #define ServicePipeName _T("\\\\.\\Pipe\\SuperUserRun")
 
-// This structure is passed from SuRun.exe to the service
-// RUNDATA is bigger than required, but I'll leave it this way
+
 #pragma pack(push)
 #pragma pack(1)
+// This structure is passed from SuRun.exe to the service
+// RUNDATA is bigger than required, but I'll leave it this way
 typedef struct {
   DWORD CliProcessId;
   DWORD CliThreadId;

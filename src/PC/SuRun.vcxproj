@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="Current">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="SuRun32 Unicode Debug|Win32">
@@ -215,7 +215,7 @@
     <ClInclude Include="..\surun\ReqAdmin.h" />
     <ClInclude Include="..\surun\resource.h" />
     <ClInclude Include="..\surun\ResStr.h" />
-    <ClInclude Include="..\surun\ScreenSnap.h" />
+    <ClInclude Include="..\surun\BlurredScreen.h" />
     <ClInclude Include="..\surun\Service.h" />
     <ClInclude Include="..\surun\Setup.h" />
     <ClInclude Include="..\surun\sspi_auth.h" />

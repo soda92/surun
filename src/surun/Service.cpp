@@ -164,7 +164,8 @@ static BOOL SwitchToSession(DWORD SessionId) {
   return bRet;
 }
 
-static DWORD DoFUS() // Do Fast User Switching
+// Do Fast User Switching
+static DWORD DoFUS()
 {
   TCHAR UserName[UNLEN + UNLEN + 2];
   DWORD SessID = wcstol(SR_PathGetArgsW(g_RunData.cmdLine), 0, 10) - 1;
@@ -419,7 +420,6 @@ BOOL ResumeClient(int RetVal, bool bWriteRunData = false) {
 //  The Service:
 //
 //////////////////////////////////////////////////////////////////////////////
-
 VOID WINAPI SvcCtrlHndlr(DWORD dwControl) {
   // service control handler
   if (dwControl == SERVICE_CONTROL_STOP) {
