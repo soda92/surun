@@ -2,12 +2,17 @@ from pathlib import Path
 
 import argparse
 import re
-
+import subprocess
 
 parser = argparse.ArgumentParser()
 parser.add_argument("version", help="target version")
 args = parser.parse_args()
 version: str = args.version
+
+tree = subprocess.getoutput("git status")
+if "working tree clean" not in tree:
+    print("please commit or stash changes first")
+    exit(-1)
 
 if not re.match(r"[0-9]{4}.[0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}", version):
     print(f"invalid version {version}")
@@ -32,3 +37,9 @@ content = re.sub(
     content,
 )
 toml.write_text(content, encoding="utf8")
+
+subprocess.run("git add .", shell=True, check=True)
+subprocess.run(["git", "commit", "-m", f"update version to {version}"], check=True)
+subprocess.run(["git", "tag", version], check=True)
+subprocess.run(["git", "push"], check=True)
+subprocess.run(["git", "push", "--tags"], check=True)
