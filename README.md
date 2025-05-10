@@ -6,7 +6,7 @@
 
 A program for grant app admin rights without UAC prompt.
 
-Forked from [Kay Bruns's surun][1].
+Forked from [Kay Bruns' surun][1].
 
 ## Install
 ```
