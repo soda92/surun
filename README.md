@@ -1,5 +1,9 @@
 # SuRun
 
+<a href="https://pypi.org/project/soda-surun/">
+    <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/soda-surun">
+</a>
+
 A program for grant app admin rights without UAC prompt.
 
 Forked from [Kay Bruns's surun][1].
