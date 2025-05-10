@@ -1,6 +1,6 @@
 [project]
 name = "soda-surun"
-version = "2025.5.8.1"
+version = "2025.5.10.0"
 description = "surun and related tools"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -15,13 +15,28 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.sdist]
 ignore-vcs = true
-packages = ["surun_tools"]
-exclude = ["__pycache__", "*.pyc", "*.exe"]
+packages = ["surun_tools", "src", "scripts", "tests"]
+exclude = [
+    "__pycache__",
+    "*.pyc",
+    "*.exe",
+    "!vswhere.exe",
+    ".vs",
+    "Debug",
+    "DebugUsr32",
+    "DebugUx64",
+    "InstallSuRun",
+    "packages",
+    "Release",
+    "x64",
+    "*.aps",
+    "*.vcxproj.user",
+]
 
 [tool.hatch.build.targets.wheel]
 ignore-vcs = true
 packages = ["surun_tools"]
-exclude = ["__pycache__", "*.pyc"]
+exclude = ["src", "tests", "__pycache__", "*.pyc"]
 
 [dependency-groups]
 dev = [

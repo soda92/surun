@@ -13,3 +13,7 @@ and InstallSurun was at
 `InstallSuRun\Debug\InstallSuRun.exe`
 
 (I might not install it correctly all along...)
+
+# Update 5/10 2025
+
+After cleanup build profiles, InstallSuRun is at "PC/Debug/InstallSuRun.exe".
