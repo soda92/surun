@@ -79,8 +79,7 @@ jobs:
       - name: Publish to PyPI
         if: startsWith(github.ref, 'refs/tags/')
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          # The 'path' parameter defaults to 'dist/', so it's often not needed.
-          # Make sure your built packages are in the 'dist/' directory after download.
-          # path: dist/ # Explicitly specify if your artifacts are in a different subfolder within the downloaded artifact
-          # No need for TWINE_USERNAME or TWINE_PASSWORD with trusted publishers
+        # The 'path' parameter defaults to 'dist/', so it's often not needed.
+        # Make sure your built packages are in the 'dist/' directory after download.
+        # path: dist/ # Explicitly specify if your artifacts are in a different subfolder within the downloaded artifact
+        # No need for TWINE_USERNAME or TWINE_PASSWORD with trusted publishers
