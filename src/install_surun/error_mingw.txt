@@ -1,8 +1,0 @@
-FAILED: InstallSuRun.exe
-C:\WINDOWS\system32\cmd.exe /C "cd . && C:\Users\fts-guest-05600\scoop\apps\msys2\2024-12-08\ucrt64\bin\c++.exe -g -mwindows  -lmingwex CMakeFiles/InstallSuRun.dir/InstallSuRun.cpp.obj CMakeFiles/InstallSuRun.dir/InstallSuRun.rc.obj -o InstallSuRun.exe -Wl,--out-implib,libInstallSuRun.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lwinmm  -lPsapi  -lNetapi32  -lShlwapi  -lSecur32  -lMpr  -lUserenv  -ladvapi32  -lole32  -lshell32  -lversion  -lcomctl32  -lkernel32  -lrpcrt4  -lmsi  -lcrypt32  -lmingwex  -lmsvcrt  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
-C:/Users/fts-guest-05600/scoop/apps/msys2/2024-12-08/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: CMakeFiles/InstallSuRun.dir/InstallSuRun.cpp.obj: in function `GetVersionStringFileInfoString(char*, char const*, char*)':
-D:/a/surun/surun/InstallSuRun/InstallSuRun.cpp:232:(.text+0xb24): undefined reference to `__ms_sprintf'
-collect2.exe: error: ld returned 1 exit status
-ninja: build stopped: subcommand failed.
-make[1]: *** [Makefile:53: _msys_installer] Error 1
-make[1]: Leaving directory '/d/a/surun/surun'
