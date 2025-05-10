@@ -1,18 +1,6 @@
 // clang-format off
 //go:build ignore
 // clang-format on
-//////////////////////////////////////////////////////////////////////////////
-//
-// This source code is part of SuRun
-//
-// Some sources in this project evolved from Microsoft sample code, some from
-// other free sources. The Shield Icons are taken from Windows XP Service Pack
-// 2 (xpsp2res.dll)
-//
-// Feel free to use the SuRun sources for your liking.
-//
-//                                (c) Kay Bruns (http://kay-bruns.de), 2007-15
-//////////////////////////////////////////////////////////////////////////////
 
 #define _WIN32_WINNT 0x0A00
 #define WINVER 0x0A00
@@ -442,52 +430,9 @@ CRunOnNewDeskTop::~CRunOnNewDeskTop() { CleanUp(); }
 
 bool CRunOnNewDeskTop::IsValid() { return m_bOk; };
 
-// LONG WINAPI ExceptionFilter(struct _EXCEPTION_POINTERS *ExceptionInfo )
-// {
-//   DBGTrace("FATAL: Exception in SuRun!");
-//   DeleteSafeDesktop(0);
-//   return EXCEPTION_EXECUTE_HANDLER;
-// }
-
 HANDLE g_WatchDogEvent = NULL;
 HANDLE g_WatchDogProcess = NULL;
 UINT_PTR g_WatchDogTimer = 0;
-
-// #define WM_LOGONNOTIFY      0x004C
-// #define LOCK_WORKSTATION    5
-// #define UNLOCK_WORKSTATION  6
-//
-// static BOOL CALLBACK GetSASWndProc(HWND w,LPARAM p)
-//{
-//   TCHAR cn[MAX_PATH]={0};
-//   GetClassName(w,cn,MAX_PATH);
-//   if (_tcscmp(cn,_T("SAS window class"))==0)
-//   {
-//     *((HWND*)p)=w;
-//     return FALSE;
-//   }
-//   return TRUE;
-// }
-//
-// void LockWndSta()
-//{
-//   SetProcWinStaDesk(0,L"Winlogon");
-//   HWND w=0;
-//   EnumWindows(GetSASWndProc,(LPARAM)&w);
-//   if (w==0)
-//     return;
-//   PostMessage(w,WM_LOGONNOTIFY,LOCK_WORKSTATION,0);
-// }
-//
-// void UnLockWndSta()
-//{
-//   SetProcWinStaDesk(0,L"Winlogon");
-//   HWND w=0;
-//   EnumWindows(GetSASWndProc,(LPARAM)&w);
-//   if (w==0)
-//     return;
-//   PostMessage(w,WM_LOGONNOTIFY,UNLOCK_WORKSTATION,0);
-// }
 
 // callback function for window enumeration
 static BOOL CALLBACK CloseAppEnum(HWND hwnd, LPARAM lParam) {
@@ -610,25 +555,7 @@ bool CreateSafeDesktop(LPTSTR WinSta, LPCTSTR UserDesk, bool BlurDesk,
     ResumeThread(pi.hThread);
     CloseHandle(pi.hThread);
   }
-  //  if (_winmajor>=6)
-  //  {
-  //    typedef HRESULT (WINAPI* Win32DwmEnableComposition)(UINT);
-  //    static Win32DwmEnableComposition dwmenablecomposition=NULL;
-  //    if (!dwmenablecomposition)
-  //    {
-  //      HINSTANCE dwmapi=LoadLibrary(_T("dwmapi.dll"));
-  //      if (dwmapi)
-  //        dwmenablecomposition=(Win32DwmEnableComposition)GetProcAddress(dwmapi,"DwmEnableComposition");
-  //    }
-  //    if(dwmenablecomposition)
-  //    {
-  //      HRESULT hr=dwmenablecomposition(1);
-  //      if (hr!=S_OK)
-  //        DBGTrace1("DwmEnableComposition failed: %s",GetErrorNameStatic(hr));
-  //    }else
-  //      DBGTrace("Could not link to DwmEnableComposition");
-  //  }
-  //  LockWndSta();
+
   return true;
 }
 
