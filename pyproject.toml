@@ -1,6 +1,6 @@
 [project]
 name = "soda-surun"
-version = "2025.5.10.9"
+version = "2025.5.10.10"
 description = "surun and related tools"
 readme = "README.md"
 requires-python = ">=3.11"
