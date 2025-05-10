@@ -8,6 +8,15 @@ markup:
     renderer:
       unsafe: true
 
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    menu:
+      main:
+        - name: Archive
+          url: archives
+          weight: 3
 
 params:
   hideFooter: false
