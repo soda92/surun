@@ -6,11 +6,8 @@ on:
       - '*' # Trigger on tags like v1.0, v1.0.0, v2.0-beta, etc.
 
 jobs:
-  release_and_pypi:
+  build_on_windows:
     runs-on: windows-latest
-    permissions:
-      contents: write # Required for creating GitHub Release
-      id-token: write # Required for trusted publishing (optional, see note below)
 
     steps:
       - name: Checkout code
@@ -33,6 +30,34 @@ jobs:
           ls dist/
           # Optional: python -m twine check dist/*
 
+      - name: Upload distributions as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-dist
+          path: dist/
+          retention-days: 1 # Keep artifacts for a short period
+
+ # Job 2: Create GitHub Release (can be on Windows or Linux) and publish to PyPI on Linux
+  release_and_pypi:
+    runs-on: ubuntu-latest # Run this job on a Linux runner
+    needs: build_on_windows # This job depends on 'build_on_windows' job completing successfully
+    permissions:
+      contents: write # Required for creating GitHub Release
+      id-token: write # Required for PyPI Trusted Publishers
+
+    steps:
+      - name: Checkout code # Required to access repository details for GitHub Release
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download distributions artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: python-dist
+          path: dist/ # Downloads artifacts into the 'dist/' directory in this job
+
+      # Create GitHub Release (can be done after downloading artifacts)
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
@@ -43,13 +68,19 @@ jobs:
             Automated release for tag `${{ github.ref_name }}`.
           draft: false
           prerelease: false
-          # Upload all built distributions as release assets
+          # Upload all downloaded distributions as release assets
           assets: |
             ./dist/*.tar.gz
             ./dist/*.whl
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # Publish to PyPI (using the PyPA action on Linux)
       - name: Publish to PyPI
         if: startsWith(github.ref, 'refs/tags/')
-        uses: pypa/gh-action-pypi-publish@v1.12.4
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          # The 'path' parameter defaults to 'dist/', so it's often not needed.
+          # Make sure your built packages are in the 'dist/' directory after download.
+          # path: dist/ # Explicitly specify if your artifacts are in a different subfolder within the downloaded artifact
+          # No need for TWINE_USERNAME or TWINE_PASSWORD with trusted publishers
