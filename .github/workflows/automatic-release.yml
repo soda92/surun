@@ -69,7 +69,7 @@ jobs:
           draft: false
           prerelease: false
           # Upload all downloaded distributions as release assets
-          assets: |
+          files: |
             ./dist/*.tar.gz
             ./dist/*.whl
         env:

@@ -9,10 +9,10 @@ parser.add_argument("version", help="target version")
 args = parser.parse_args()
 version: str = args.version
 
-tree = subprocess.getoutput("git status")
-if "working tree clean" not in tree:
-    print("please commit or stash changes first")
-    exit(-1)
+# tree = subprocess.getoutput("git status")
+# if "working tree clean" not in tree:
+#     print("please commit or stash changes first")
+#     exit(-1)
 
 if not re.match(r"[0-9]{4}.[0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}", version):
     print(f"invalid version {version}")
