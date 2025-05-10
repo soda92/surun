@@ -1,9 +1,7 @@
 name: Auto Release & Publish to PyPI
 
 on:
-  push:
-    tags:
-      - 'v*' # Trigger on tags like v1.0, v1.0.0, v2.0-beta, etc.
+  push: ["tags"]
 
 jobs:
   release_and_pypi:
